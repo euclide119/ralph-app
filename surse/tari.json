@@ -1,0 +1,1226 @@
+{
+ "AO": {
+  "nume": "Angola",
+  "cap": "Luanda",
+  "fapt": "Este unul dintre cei mai mari producători de petrol din Africa.",
+  "cap_info": "Luanda este cel mai mare oraș al țării, port la Oceanul Atlantic."
+ },
+ "BF": {
+  "nume": "Burkina Faso",
+  "cap": "Ouagadougou",
+  "fapt": "Numele ei înseamnă „țara oamenilor integri”.",
+  "cap_info": "Ouagadougou se pronunță aproximativ „Uagadugu”."
+ },
+ "BI": {
+  "nume": "Burundi",
+  "cap": "Gitega",
+  "fapt": "Este una dintre cele mai mici țări din Africa și nu are ieșire la mare.",
+  "cap_info": "Gitega este capitala politică din 2019; cel mai mare oraș, Bujumbura, e la Lacul Tanganyika."
+ },
+ "BJ": {
+  "nume": "Benin",
+  "cap": "Porto-Novo",
+  "fapt": "Pe teritoriul ei a existat regatul Dahomey, cu o armată de femei-războinic.",
+  "cap_info": "Porto-Novo este capitala oficială, dar guvernul lucrează mai ales în Cotonou."
+ },
+ "BW": {
+  "nume": "Botswana",
+  "cap": "Gaborone",
+  "fapt": "Aici se află Delta Okavango, un râu care se pierde în deșertul Kalahari în loc să ajungă la mare.",
+  "cap_info": "Gaborone este capitala țării din 1965, înainte de independență."
+ },
+ "CD": {
+  "nume": "Republica Democrată Congo",
+  "cap": "Kinshasa",
+  "fapt": "Prin ea curge fluviul Congo, al doilea din lume ca debit, după Amazon.",
+  "cap_info": "Kinshasa se află față în față, peste fluviul Congo, cu Brazzaville, capitala altei țări."
+ },
+ "CF": {
+  "nume": "Republica Centrafricană",
+  "cap": "Bangui",
+  "fapt": "Nu are ieșire la mare, iar mare parte din ea este acoperită de savană și păduri.",
+  "cap_info": "Bangui se află pe râul Ubangi, chiar la granița cu Republica Democrată Congo."
+ },
+ "CG": {
+  "nume": "Republica Congo",
+  "cap": "Brazzaville",
+  "fapt": "În pădurile ei trăiesc gorile de câmpie și cimpanzei.",
+  "cap_info": "Brazzaville este despărțit de Kinshasa doar de fluviul Congo."
+ },
+ "CI": {
+  "nume": "Coasta de Fildeș",
+  "cap": "Yamoussoukro",
+  "fapt": "Este cel mai mare producător de cacao din lume, din care se face ciocolata.",
+  "cap_info": "Yamoussoukro este capitala oficială, dar cel mai mare oraș este portul Abidjan."
+ },
+ "CM": {
+  "nume": "Camerun",
+  "cap": "Yaoundé",
+  "fapt": "Este numit „Africa în miniatură”, pentru că are deșert, junglă, munți și plaje.",
+  "cap_info": "Yaoundé este construit pe dealuri, în sudul țării."
+ },
+ "CV": {
+  "nume": "Capul Verde",
+  "cap": "Praia",
+  "fapt": "Este un arhipelag de insule vulcanice în Oceanul Atlantic, la vest de Africa.",
+  "cap_info": "Praia se află pe insula Santiago, cea mai mare din arhipelag."
+ },
+ "DJ": {
+  "nume": "Djibouti",
+  "cap": "Djibouti",
+  "fapt": "Lacul Assal este cel mai coborât punct din Africa și unul dintre cele mai sărate lacuri din lume.",
+  "cap_info": "Capitala poartă același nume ca țara și este un port la Golful Aden."
+ },
+ "DZ": {
+  "nume": "Algeria",
+  "cap": "Alger",
+  "fapt": "Este cea mai mare țară din Africa, iar o mare parte din ea este deșertul Sahara.",
+  "cap_info": "Alger este port la Marea Mediterană și are o veche cetate numită Casbah."
+ },
+ "EG": {
+  "nume": "Egipt",
+  "cap": "Cairo",
+  "fapt": "Aici se află piramidele din Giza, construite acum aproape 4500 de ani.",
+  "cap_info": "Cairo se află pe fluviul Nil și este cel mai mare oraș din lumea arabă."
+ },
+ "ER": {
+  "nume": "Eritreea",
+  "cap": "Asmara",
+  "fapt": "Are o coastă lungă la Marea Roșie și zeci de insule în largul ei.",
+  "cap_info": "Asmara este în patrimoniul UNESCO pentru clădirile moderniste din secolul al XX-lea."
+ },
+ "ET": {
+  "nume": "Etiopia",
+  "cap": "Addis Abeba",
+  "fapt": "Are propriul calendar cu 13 luni, așa că anul nou vine la alte date decât la noi.",
+  "cap_info": "Addis Abeba se află la peste 2300 m altitudine, una dintre cele mai înalte capitale din lume."
+ },
+ "GA": {
+  "nume": "Gabon",
+  "cap": "Libreville",
+  "fapt": "Aproape toată țara este acoperită de păduri tropicale.",
+  "cap_info": "Numele Libreville înseamnă „oraș liber” în franceză."
+ },
+ "GH": {
+  "nume": "Ghana",
+  "cap": "Accra",
+  "fapt": "A fost prima țară din Africa subsahariană care a devenit independentă, în 1957.",
+  "cap_info": "Accra se află pe malul Golfului Guineei."
+ },
+ "GM": {
+  "nume": "Gambia",
+  "cap": "Banjul",
+  "fapt": "Este o fâșie îngustă de țară, de-a lungul fluviului Gambia, înconjurată aproape toată de Senegal.",
+  "cap_info": "Banjul este pe o insulă, acolo unde fluviul Gambia se varsă în Atlantic."
+ },
+ "GN": {
+  "nume": "Guineea",
+  "cap": "Conakry",
+  "fapt": "Din munții ei izvorăsc fluviile Niger, Gambia și Senegal.",
+  "cap_info": "Conakry este construit pe o peninsulă îngustă la Oceanul Atlantic."
+ },
+ "GQ": {
+  "nume": "Guineea Ecuatorială",
+  "cap": "Malabo",
+  "fapt": "Este singura țară din Africa în care spaniola este limbă oficială.",
+  "cap_info": "Malabo se află pe insula Bioko, nu pe continent."
+ },
+ "GW": {
+  "nume": "Guineea-Bissau",
+  "cap": "Bissau",
+  "fapt": "Are arhipelagul Bijagós, cu zeci de insule protejate de UNESCO.",
+  "cap_info": "Bissau este un port la gura fluviului Geba."
+ },
+ "KE": {
+  "nume": "Kenya",
+  "cap": "Nairobi",
+  "fapt": "Aici are loc marea migrație a gnuilor și zebrelor din Masai Mara.",
+  "cap_info": "Nairobi are un parc național cu lei și girafe chiar lângă oraș."
+ },
+ "KM": {
+  "nume": "Comore",
+  "cap": "Moroni",
+  "fapt": "Este un arhipelag vulcanic, iar vulcanul Karthala este unul dintre cei mai activi din Africa.",
+  "cap_info": "Moroni se află pe insula Grande Comore."
+ },
+ "LR": {
+  "nume": "Liberia",
+  "cap": "Monrovia",
+  "fapt": "A fost întemeiată de foști sclavi eliberați, veniți din America.",
+  "cap_info": "Monrovia poartă numele președintelui american James Monroe."
+ },
+ "LS": {
+  "nume": "Lesotho",
+  "cap": "Maseru",
+  "fapt": "Este înconjurată în întregime de Africa de Sud, iar tot teritoriul ei e la peste 1000 m altitudine.",
+  "cap_info": "Maseru se află chiar la granița cu Africa de Sud."
+ },
+ "LY": {
+  "nume": "Libia",
+  "cap": "Tripoli",
+  "fapt": "Cea mai mare parte a țării este deșert, parte din Sahara.",
+  "cap_info": "Tripoli este un port la Marea Mediterană, vechi de peste 2000 de ani."
+ },
+ "MA": {
+  "nume": "Maroc",
+  "cap": "Rabat",
+  "fapt": "Are munți Atlas acoperiți de zăpadă și dune de nisip din Sahara.",
+  "cap_info": "Rabat este capitala, deși cel mai mare oraș este Casablanca."
+ },
+ "MG": {
+  "nume": "Madagascar",
+  "cap": "Antananarivo",
+  "fapt": "Lemurienii trăiesc în sălbăticie doar pe această insulă uriașă.",
+  "cap_info": "Antananarivo este adesea numit pe scurt „Tana”."
+ },
+ "ML": {
+  "nume": "Mali",
+  "cap": "Bamako",
+  "fapt": "Orașul Timbuktu din Mali a fost în Evul Mediu un mare centru de comerț și învățătură.",
+  "cap_info": "Bamako se află pe fluviul Niger."
+ },
+ "MR": {
+  "nume": "Mauritania",
+  "cap": "Nouakchott",
+  "fapt": "Prin deșert trece unul dintre cele mai lungi trenuri din lume, care duce minereu de fier.",
+  "cap_info": "Nouakchott se află în deșert, aproape de Oceanul Atlantic."
+ },
+ "MW": {
+  "nume": "Malawi",
+  "cap": "Lilongwe",
+  "fapt": "Lacul Malawi ocupă o mare parte din țară și are sute de specii de pești colorați.",
+  "cap_info": "Lilongwe a devenit capitală în 1975."
+ },
+ "MZ": {
+  "nume": "Mozambic",
+  "cap": "Maputo",
+  "fapt": "Are o coastă de peste 2400 km la Oceanul Indian.",
+  "cap_info": "Maputo se numea Lourenço Marques până în 1976."
+ },
+ "NA": {
+  "nume": "Namibia",
+  "cap": "Windhoek",
+  "fapt": "Aici este deșertul Namib, unul dintre cele mai vechi deșerturi din lume.",
+  "cap_info": "Windhoek se află în centrul țării, la peste 1600 m altitudine."
+ },
+ "NE": {
+  "nume": "Niger",
+  "cap": "Niamey",
+  "fapt": "Cea mai mare parte a țării este în Sahara, iar numele îl are de la fluviul Niger.",
+  "cap_info": "Niamey se află pe malul fluviului Niger."
+ },
+ "NG": {
+  "nume": "Nigeria",
+  "cap": "Abuja",
+  "fapt": "Este cea mai populată țară din Africa.",
+  "cap_info": "Abuja a fost construită special ca nouă capitală și a înlocuit Lagosul în 1991."
+ },
+ "RW": {
+  "nume": "Rwanda",
+  "cap": "Kigali",
+  "fapt": "Este numită „țara celor o mie de dealuri”, iar în munții ei trăiesc gorile.",
+  "cap_info": "Kigali este cunoscut pentru străzile curate și dealurile verzi."
+ },
+ "SD": {
+  "nume": "Sudan",
+  "cap": "Khartoum",
+  "fapt": "Are mai multe piramide decât Egiptul, construite de regii nubieni.",
+  "cap_info": "La Khartoum se întâlnesc Nilul Alb și Nilul Albastru."
+ },
+ "SL": {
+  "nume": "Sierra Leone",
+  "cap": "Freetown",
+  "fapt": "Numele ei vine din portugheză și înseamnă „munții leului”.",
+  "cap_info": "Freetown a fost întemeiat pentru foști sclavi eliberați."
+ },
+ "SN": {
+  "nume": "Senegal",
+  "cap": "Dakar",
+  "fapt": "Are un lac cu apă roz, Lacul Retba, lângă Dakar.",
+  "cap_info": "Dakar este cea mai vestică capitală de pe continentul african."
+ },
+ "SO": {
+  "nume": "Somalia",
+  "cap": "Mogadiscio",
+  "fapt": "Are cea mai lungă coastă din Africa continentală.",
+  "cap_info": "Mogadiscio este port la Oceanul Indian."
+ },
+ "SS": {
+  "nume": "Sudanul de Sud",
+  "cap": "Juba",
+  "fapt": "Este cea mai nouă țară membră ONU, independentă din 2011.",
+  "cap_info": "Juba se află pe malul Nilului Alb."
+ },
+ "ST": {
+  "nume": "São Tomé și Príncipe",
+  "cap": "São Tomé",
+  "fapt": "Este o țară insulară mică, aproape de ecuator, cu plantații de cacao.",
+  "cap_info": "Orașul São Tomé se află pe insula cu același nume."
+ },
+ "SZ": {
+  "nume": "Eswatini",
+  "cap": "Mbabane",
+  "fapt": "Până în 2018 se numea Swaziland și este condusă de un rege.",
+  "cap_info": "Mbabane este capitala administrativă; parlamentul se află la Lobamba."
+ },
+ "TD": {
+  "nume": "Ciad",
+  "cap": "N'Djamena",
+  "fapt": "Își are numele de la Lacul Ciad, care s-a micșorat mult în ultimii zeci de ani.",
+  "cap_info": "N'Djamena se află la granița cu Camerunul, pe râul Chari."
+ },
+ "TG": {
+  "nume": "Togo",
+  "cap": "Lomé",
+  "fapt": "Este o țară îngustă, cu o coastă de doar circa 50 km la Golful Guineei.",
+  "cap_info": "Lomé se află chiar lângă granița cu Ghana."
+ },
+ "TN": {
+  "nume": "Tunisia",
+  "cap": "Tunis",
+  "fapt": "Unele scene din filmele Războiul stelelor au fost filmate în deșertul ei.",
+  "cap_info": "Lângă Tunis sunt ruinele Cartaginei, orașul antic al lui Hannibal."
+ },
+ "TZ": {
+  "nume": "Tanzania",
+  "cap": "Dodoma",
+  "fapt": "Aici se află Kilimanjaro, cel mai înalt munte din Africa.",
+  "cap_info": "Dodoma este capitala oficială, dar cel mai mare oraș este portul Dar es Salaam."
+ },
+ "UG": {
+  "nume": "Uganda",
+  "cap": "Kampala",
+  "fapt": "Nilul își începe drumul spre Egipt din Lacul Victoria, la marginea Ugandei.",
+  "cap_info": "Kampala este construit pe mai multe dealuri, lângă Lacul Victoria."
+ },
+ "ZA": {
+  "nume": "Africa de Sud",
+  "cap": "Pretoria",
+  "fapt": "Are trei capitale și cuprinde în interior un alt stat, Lesotho.",
+  "cap_info": "Pretoria este capitala executivă; Cape Town este capitala legislativă, iar Bloemfontein cea judiciară."
+ },
+ "ZM": {
+  "nume": "Zambia",
+  "cap": "Lusaka",
+  "fapt": "Împarte cu Zimbabwe Cascada Victoria, una dintre cele mai mari cascade din lume.",
+  "cap_info": "Lusaka este capitala și cel mai mare oraș al țării."
+ },
+ "ZW": {
+  "nume": "Zimbabwe",
+  "cap": "Harare",
+  "fapt": "Își are numele de la Marele Zimbabwe, ruinele unui străvechi oraș de piatră.",
+  "cap_info": "Harare este capitala și cel mai mare oraș al țării."
+ },
+ "AE": {
+  "nume": "Emiratele Arabe Unite",
+  "cap": "Abu Dhabi",
+  "fapt": "La Dubai se află Burj Khalifa, cea mai înaltă clădire din lume.",
+  "cap_info": "Abu Dhabi este capitala, nu Dubai, care este cel mai mare oraș."
+ },
+ "AF": {
+  "nume": "Afganistan",
+  "cap": "Kabul",
+  "fapt": "Este o țară muntoasă, străbătută de lanțul munților Hindu Kush.",
+  "cap_info": "Kabul se află la aproape 1800 m altitudine."
+ },
+ "AM": {
+  "nume": "Armenia",
+  "cap": "Erevan",
+  "fapt": "A fost prima țară din lume care a adoptat creștinismul ca religie de stat, în anul 301.",
+  "cap_info": "Erevan a fost întemeiat în anul 782 î.Hr., deci e mai vechi decât Roma."
+ },
+ "AZ": {
+  "nume": "Azerbaidjan",
+  "cap": "Baku",
+  "fapt": "Are aproape jumătate dintre vulcanii de noroi din lume.",
+  "cap_info": "Baku este port la Marea Caspică."
+ },
+ "BD": {
+  "nume": "Bangladesh",
+  "cap": "Dacca",
+  "fapt": "În sud are Sundarbans, cea mai mare pădure de mangrove din lume, unde trăiește tigrul de Bengal.",
+  "cap_info": "Dacca este numit „orașul rickșelor”, după tricicletele cu pasageri."
+ },
+ "BH": {
+  "nume": "Bahrain",
+  "cap": "Manama",
+  "fapt": "Este un stat-arhipelag în Golful Persic.",
+  "cap_info": "Manama se află pe insula principală, Bahrain."
+ },
+ "BN": {
+  "nume": "Brunei",
+  "cap": "Bandar Seri Begawan",
+  "fapt": "Sultanul său locuiește într-unul dintre cele mai mari palate din lume.",
+  "cap_info": "Capitala are o moschee faimoasă, cu cupolă aurie."
+ },
+ "BT": {
+  "nume": "Bhutan",
+  "cap": "Thimphu",
+  "fapt": "Țara măsoară „fericirea națională brută”, nu doar banii.",
+  "cap_info": "Thimphu este o capitală fără semafoare."
+ },
+ "CN": {
+  "nume": "China",
+  "cap": "Beijing",
+  "fapt": "Aici se află Marele Zid, lung de mii de kilometri.",
+  "cap_info": "Beijing are Orașul Interzis, fostul palat al împăraților."
+ },
+ "CY": {
+  "nume": "Cipru",
+  "cap": "Nicosia",
+  "fapt": "Este o insulă în Marea Mediterană, unde, după legende, s-a născut zeița Afrodita.",
+  "cap_info": "Nicosia este un oraș împărțit în două de o zonă tampon."
+ },
+ "GE": {
+  "nume": "Georgia",
+  "cap": "Tbilisi",
+  "fapt": "Arheologii cred că aici s-a făcut vin acum aproximativ 8000 de ani.",
+  "cap_info": "Tbilisi este cunoscut pentru băile sale cu apă termală."
+ },
+ "HK": {
+  "nume": "Hong Kong",
+  "cap": "Hong Kong",
+  "fapt": "Este un oraș cu zgârie-nori înalți, înghesuiți între mare și munți.",
+  "cap_info": "Nu are altă capitală; Hong Kong este în același timp oraș și teritoriu."
+ },
+ "ID": {
+  "nume": "Indonezia",
+  "cap": "Jakarta",
+  "fapt": "Este formată din peste 17 000 de insule.",
+  "cap_info": "Jakarta se află pe insula Java, una dintre cele mai mari zone urbane din lume."
+ },
+ "IL": {
+  "nume": "Israel",
+  "cap": "Ierusalim",
+  "fapt": "Marea Moartă, de la granița ei, este cel mai coborât loc de pe uscat.",
+  "cap_info": "Ierusalimul este un oraș sfânt pentru evrei, creștini și musulmani."
+ },
+ "IN": {
+  "nume": "India",
+  "cap": "New Delhi",
+  "fapt": "Este cea mai populată țară din lume.",
+  "cap_info": "New Delhi este capitala, în interiorul marii zone urbane Delhi."
+ },
+ "IQ": {
+  "nume": "Irak",
+  "cap": "Bagdad",
+  "fapt": "Pe teritoriul lui, în Mesopotamia, au apărut primele orașe și scrierea.",
+  "cap_info": "Bagdad se află pe fluviul Tigru."
+ },
+ "IR": {
+  "nume": "Iran",
+  "cap": "Teheran",
+  "fapt": "Mai demult țara se numea Persia.",
+  "cap_info": "Teheran se află la poalele munților Elburz."
+ },
+ "JO": {
+  "nume": "Iordania",
+  "cap": "Amman",
+  "fapt": "Aici se află Petra, un oraș săpat în stâncă roz.",
+  "cap_info": "Amman este construit pe mai multe dealuri."
+ },
+ "JP": {
+  "nume": "Japonia",
+  "cap": "Tokyo",
+  "fapt": "Este formată din mii de insule, iar simbolul ei este Muntele Fuji.",
+  "cap_info": "Tokyo este una dintre cele mai mari zone urbane din lume."
+ },
+ "KG": {
+  "nume": "Kârgâzstan",
+  "cap": "Bișkek",
+  "fapt": "Cea mai mare parte a țării este acoperită de munți.",
+  "cap_info": "Bișkek se află la poalele munților Ala-Too."
+ },
+ "KH": {
+  "nume": "Cambodgia",
+  "cap": "Phnom Penh",
+  "fapt": "Aici se află Angkor Wat, cel mai mare templu din lume.",
+  "cap_info": "Phnom Penh se află unde se întâlnesc fluviul Mekong și râul Tonlé Sap."
+ },
+ "KP": {
+  "nume": "Coreea de Nord",
+  "cap": "Phenian",
+  "fapt": "Este despărțită de Coreea de Sud printr-o zonă demilitarizată.",
+  "cap_info": "Phenian este capitala și cel mai mare oraș al țării."
+ },
+ "KR": {
+  "nume": "Coreea de Sud",
+  "cap": "Seul",
+  "fapt": "Aici s-a născut K-pop, muzica pop coreeană, ascultată în toată lumea.",
+  "cap_info": "Seul este capitală de peste 600 de ani."
+ },
+ "KW": {
+  "nume": "Kuweit",
+  "cap": "Kuweit",
+  "fapt": "Dinarul kuweitian este una dintre cele mai valoroase monede din lume.",
+  "cap_info": "Orașul Kuweit se află pe malul Golfului Persic."
+ },
+ "KZ": {
+  "nume": "Kazahstan",
+  "cap": "Astana",
+  "fapt": "Este cea mai mare țară din lume fără ieșire la mare.",
+  "cap_info": "Capitala a fost mutată la Astana din Almatî în 1997."
+ },
+ "LA": {
+  "nume": "Laos",
+  "cap": "Vientiane",
+  "fapt": "Este singura țară din Asia de Sud-Est fără ieșire la mare.",
+  "cap_info": "Vientiane se află pe fluviul Mekong, la granița cu Thailanda."
+ },
+ "LB": {
+  "nume": "Liban",
+  "cap": "Beirut",
+  "fapt": "Pe steag are un cedru, simbolul țării.",
+  "cap_info": "Beirut este un port vechi de mii de ani la Marea Mediterană."
+ },
+ "LK": {
+  "nume": "Sri Lanka",
+  "cap": "Colombo",
+  "fapt": "Este celebră pentru ceaiul de Ceylon.",
+  "cap_info": "Colombo este cel mai mare oraș; capitala oficială legislativă este Sri Jayawardenepura Kotte."
+ },
+ "MM": {
+  "nume": "Myanmar",
+  "cap": "Naypyidaw",
+  "fapt": "Mai este numită și Birmania.",
+  "cap_info": "Naypyidaw este capitală din 2006; cel mai mare oraș este Yangon."
+ },
+ "MN": {
+  "nume": "Mongolia",
+  "cap": "Ulan Bator",
+  "fapt": "Are mai multe animale, cai și oi, decât oameni.",
+  "cap_info": "Ulan Bator este una dintre cele mai reci capitale din lume."
+ },
+ "MO": {
+  "nume": "Macao",
+  "cap": "Macao",
+  "fapt": "A fost colonie portugheză până în 1999.",
+  "cap_info": "Nu are altă capitală; Macao este în același timp oraș și teritoriu."
+ },
+ "MY": {
+  "nume": "Malaysia",
+  "cap": "Kuala Lumpur",
+  "fapt": "Turnurile Petronas au fost cele mai înalte clădiri din lume între 1998 și 2004.",
+  "cap_info": "Numele Kuala Lumpur înseamnă „confluență noroioasă”."
+ },
+ "NP": {
+  "nume": "Nepal",
+  "cap": "Katmandu",
+  "fapt": "Aici se află Muntele Everest, cel mai înalt vârf din lume, la granița cu China.",
+  "cap_info": "Katmandu se află într-o vale înconjurată de munți."
+ },
+ "OM": {
+  "nume": "Oman",
+  "cap": "Muscat",
+  "fapt": "Din Oman vine tămâia, folosită de mii de ani.",
+  "cap_info": "Muscat este port la Marea Arabiei, între munți și mare."
+ },
+ "PH": {
+  "nume": "Filipine",
+  "cap": "Manila",
+  "fapt": "Este formată din peste 7000 de insule.",
+  "cap_info": "Manila se află pe insula Luzon."
+ },
+ "PK": {
+  "nume": "Pakistan",
+  "cap": "Islamabad",
+  "fapt": "Aici se află K2, al doilea cel mai înalt munte din lume.",
+  "cap_info": "Islamabad a fost construit special ca nouă capitală, începând din anii 1960."
+ },
+ "QA": {
+  "nume": "Qatar",
+  "cap": "Doha",
+  "fapt": "Aici s-a desfășurat Campionatul Mondial de Fotbal din 2022.",
+  "cap_info": "Doha este port la Golful Persic."
+ },
+ "SA": {
+  "nume": "Arabia Saudită",
+  "cap": "Riad",
+  "fapt": "Nu are niciun râu care să curgă tot anul.",
+  "cap_info": "Riad se află în mijlocul deșertului."
+ },
+ "SG": {
+  "nume": "Singapore",
+  "cap": "Singapore",
+  "fapt": "Este un oraș-stat pe o insulă, una dintre cele mai dens populate țări din lume.",
+  "cap_info": "Numele înseamnă „orașul leului”, iar orașul este și țară."
+ },
+ "SY": {
+  "nume": "Siria",
+  "cap": "Damasc",
+  "fapt": "Pe teritoriul ei se află ruinele orașului antic Palmira.",
+  "cap_info": "Damascul este unul dintre cele mai vechi orașe locuite neîntrerupt din lume."
+ },
+ "TH": {
+  "nume": "Thailanda",
+  "cap": "Bangkok",
+  "fapt": "Elefantul este animalul ei național.",
+  "cap_info": "Numele ceremonial al Bangkokului este cel mai lung nume de capitală din lume."
+ },
+ "TJ": {
+  "nume": "Tadjikistan",
+  "cap": "Dușanbe",
+  "fapt": "Cea mai mare parte a țării este acoperită de munți.",
+  "cap_info": "Numele Dușanbe înseamnă „luni”, ziua de piață din vechime."
+ },
+ "TL": {
+  "nume": "Timorul de Est",
+  "cap": "Dili",
+  "fapt": "Este una dintre cele mai tinere țări din lume, independentă din 2002.",
+  "cap_info": "Dili este port pe coasta de nord a insulei Timor."
+ },
+ "TM": {
+  "nume": "Turkmenistan",
+  "cap": "Așgabat",
+  "fapt": "Craterul de gaz de la Darvaza arde de zeci de ani și e numit „Poarta Iadului”.",
+  "cap_info": "Așgabat are foarte multe clădiri din marmură albă."
+ },
+ "TR": {
+  "nume": "Turcia",
+  "cap": "Ankara",
+  "fapt": "Orașul Istanbul se află pe două continente, Europa și Asia.",
+  "cap_info": "Ankara este capitală din 1923, nu Istanbul."
+ },
+ "TW": {
+  "nume": "Taiwan",
+  "cap": "Taipei",
+  "fapt": "Este un mare producător de cipuri electronice.",
+  "cap_info": "Taipei 101 a fost cea mai înaltă clădire din lume între 2004 și 2010."
+ },
+ "UZ": {
+  "nume": "Uzbekistan",
+  "cap": "Tașkent",
+  "fapt": "Este una dintre cele două țări din lume înconjurate doar de țări fără ieșire la mare.",
+  "cap_info": "Tașkent este cel mai mare oraș din Asia Centrală."
+ },
+ "VN": {
+  "nume": "Vietnam",
+  "cap": "Hanoi",
+  "fapt": "Este unul dintre cei mai mari exportatori de cafea din lume.",
+  "cap_info": "Hanoi are o istorie de peste 1000 de ani."
+ },
+ "YE": {
+  "nume": "Yemen",
+  "cap": "Sanaa",
+  "fapt": "Pe insula Socotra cresc copaci „sânge de dragon” care nu se găsesc aproape nicăieri altundeva.",
+  "cap_info": "Sanaa are case înalte din lut, în patrimoniul UNESCO."
+ },
+ "AR": {
+  "nume": "Argentina",
+  "cap": "Buenos Aires",
+  "fapt": "Aici se află Aconcagua, cel mai înalt munte din America de Sud.",
+  "cap_info": "Buenos Aires este orașul în care s-a născut dansul tango."
+ },
+ "BO": {
+  "nume": "Bolivia",
+  "cap": "Sucre",
+  "fapt": "Aici este Salar de Uyuni, cel mai mare deșert de sare din lume.",
+  "cap_info": "Sucre este capitala constituțională; guvernul își are sediul la La Paz."
+ },
+ "BR": {
+  "nume": "Brazilia",
+  "cap": "Brasília",
+  "fapt": "Este singura țară din America de Sud în care se vorbește portugheza.",
+  "cap_info": "Brasília a fost construită special și este capitală din 1960."
+ },
+ "CL": {
+  "nume": "Chile",
+  "cap": "Santiago",
+  "fapt": "Este o țară foarte lungă și îngustă, de peste 4000 km.",
+  "cap_info": "Santiago se află la poalele munților Anzi."
+ },
+ "CO": {
+  "nume": "Columbia",
+  "cap": "Bogotá",
+  "fapt": "Este un mare producător de cafea și de smaralde.",
+  "cap_info": "Bogotá se află la circa 2600 m altitudine."
+ },
+ "EC": {
+  "nume": "Ecuador",
+  "cap": "Quito",
+  "fapt": "Numele ei înseamnă „ecuator”, iar țara include Insulele Galápagos.",
+  "cap_info": "Quito este una dintre cele mai înalte capitale din lume, la circa 2800 m."
+ },
+ "FK": {
+  "nume": "Insulele Falkland",
+  "cap": "Stanley",
+  "fapt": "Trăiesc mai multe oi decât oameni, plus pinguini.",
+  "cap_info": "Stanley este principalul oraș și port al insulelor."
+ },
+ "GY": {
+  "nume": "Guyana",
+  "cap": "Georgetown",
+  "fapt": "Aici se află cascada Kaieteur, una dintre cele mai înalte cascade dintr-o singură cădere.",
+  "cap_info": "Georgetown se află la gura fluviului Demerara."
+ },
+ "PE": {
+  "nume": "Peru",
+  "cap": "Lima",
+  "fapt": "Aici se află Machu Picchu, orașul de munte al incașilor.",
+  "cap_info": "Lima este port la Oceanul Pacific."
+ },
+ "PY": {
+  "nume": "Paraguay",
+  "cap": "Asunción",
+  "fapt": "Nu are ieșire la mare, iar limba guarani este oficială alături de spaniolă.",
+  "cap_info": "Asunción a fost fondat în 1537, unul dintre cele mai vechi orașe din America de Sud."
+ },
+ "SR": {
+  "nume": "Surinam",
+  "cap": "Paramaribo",
+  "fapt": "Este singura țară din America de Sud în care olandeza este limbă oficială.",
+  "cap_info": "Centrul istoric din Paramaribo este în patrimoniul UNESCO."
+ },
+ "UY": {
+  "nume": "Uruguay",
+  "cap": "Montevideo",
+  "fapt": "A câștigat primul Campionat Mondial de Fotbal, în 1930.",
+  "cap_info": "Montevideo este port la estuarul Río de la Plata."
+ },
+ "VE": {
+  "nume": "Venezuela",
+  "cap": "Caracas",
+  "fapt": "Aici este Salto Angel, cea mai înaltă cascadă din lume, de 979 m.",
+  "cap_info": "Caracas se află într-o vale între munți, aproape de coasta Mării Caraibilor."
+ },
+ "AD": {
+  "nume": "Andorra",
+  "cap": "Andorra la Vella",
+  "fapt": "Este o țară mică din Munții Pirinei, între Franța și Spania.",
+  "cap_info": "Andorra la Vella este cea mai înaltă capitală din Europa."
+ },
+ "AL": {
+  "nume": "Albania",
+  "cap": "Tirana",
+  "fapt": "În albaneză se numește Shqipëria, adică „țara vulturilor”.",
+  "cap_info": "Tirana este un oraș cu multe clădiri vopsite în culori vii."
+ },
+ "AT": {
+  "nume": "Austria",
+  "cap": "Viena",
+  "fapt": "Mozart s-a născut aici, la Salzburg.",
+  "cap_info": "Viena este cunoscută pentru vals și pentru muzica clasică."
+ },
+ "AX": {
+  "nume": "Insulele Åland",
+  "cap": "Mariehamn",
+  "fapt": "Este un arhipelag cu peste 6000 de insule, parte din Finlanda, unde se vorbește suedeza.",
+  "cap_info": "Mariehamn este singurul oraș al arhipelagului."
+ },
+ "BA": {
+  "nume": "Bosnia și Herțegovina",
+  "cap": "Sarajevo",
+  "fapt": "Podul Vechi din Mostar, reconstruit după război, este în patrimoniul UNESCO.",
+  "cap_info": "Sarajevo a găzduit Jocurile Olimpice de iarnă din 1984."
+ },
+ "BE": {
+  "nume": "Belgia",
+  "cap": "Bruxelles",
+  "fapt": "Aici se fac multe feluri de ciocolată și de vafe celebre.",
+  "cap_info": "Bruxelles găzduiește sediul principal al Uniunii Europene."
+ },
+ "BG": {
+  "nume": "Bulgaria",
+  "cap": "Sofia",
+  "fapt": "Alfabetul chirilic își are originea în Bulgaria medievală.",
+  "cap_info": "Sofia se află la poalele muntelui Vitoșa."
+ },
+ "BY": {
+  "nume": "Belarus",
+  "cap": "Minsk",
+  "fapt": "Aici se află pădurea Białowieża, unde trăiește zimbrul european.",
+  "cap_info": "Minsk este cel mai mare oraș al țării."
+ },
+ "CH": {
+  "nume": "Elveția",
+  "cap": "Berna",
+  "fapt": "Are patru limbi oficiale.",
+  "cap_info": "Berna este capitala, deși Zürich este cel mai mare oraș."
+ },
+ "CZ": {
+  "nume": "Cehia",
+  "cap": "Praga",
+  "fapt": "Cehii beau mai multă bere pe cap de locuitor decât oricine altcineva din lume.",
+  "cap_info": "Castelul din Praga este unul dintre cele mai mari complexe de castele din lume."
+ },
+ "DE": {
+  "nume": "Germania",
+  "cap": "Berlin",
+  "fapt": "Pe unele porțiuni de autostradă nu există limită de viteză.",
+  "cap_info": "Berlin a fost împărțit de un zid între 1961 și 1989."
+ },
+ "DK": {
+  "nume": "Danemarca",
+  "cap": "Copenhaga",
+  "fapt": "Cuburile LEGO au fost inventate aici.",
+  "cap_info": "În portul Copenhagăi stă statuia Mica Sirenă."
+ },
+ "EE": {
+  "nume": "Estonia",
+  "cap": "Tallinn",
+  "fapt": "Skype a fost creat de ingineri din Estonia.",
+  "cap_info": "Orașul vechi medieval din Tallinn este în patrimoniul UNESCO."
+ },
+ "ES": {
+  "nume": "Spania",
+  "cap": "Madrid",
+  "fapt": "Aici se dansează flamenco și are loc festivalul La Tomatina, cu bătaie cu roșii.",
+  "cap_info": "Madrid are Muzeul Prado, cu mari picturi."
+ },
+ "FI": {
+  "nume": "Finlanda",
+  "cap": "Helsinki",
+  "fapt": "Are peste 180 000 de lacuri.",
+  "cap_info": "Helsinki este port la Marea Baltică."
+ },
+ "FR": {
+  "nume": "Franța",
+  "cap": "Paris",
+  "fapt": "Mont Blanc, cel mai înalt vârf din Alpi, se află la granița ei cu Italia.",
+  "cap_info": "Aici se află Turnul Eiffel, construit în 1889."
+ },
+ "GB": {
+  "nume": "Regatul Unit",
+  "cap": "Londra",
+  "fapt": "Este format din Anglia, Scoția, Țara Galilor și Irlanda de Nord.",
+  "cap_info": "Big Ben este un clopot mare, dintr-un turn al Palatului Westminster din Londra."
+ },
+ "GG": {
+  "nume": "Guernsey",
+  "cap": "St Peter Port",
+  "fapt": "Este o insulă în Canalul Mânecii, dependență a Coroanei britanice.",
+  "cap_info": "St Peter Port este portul și orașul principal al insulei."
+ },
+ "GR": {
+  "nume": "Grecia",
+  "cap": "Atena",
+  "fapt": "Primele Jocuri Olimpice moderne au avut loc la Atena, în 1896.",
+  "cap_info": "În Atena se află Acropole, cu templul Partenon."
+ },
+ "HR": {
+  "nume": "Croația",
+  "cap": "Zagreb",
+  "fapt": "Are peste 1000 de insule în Marea Adriatică.",
+  "cap_info": "Zagreb este cel mai mare oraș al țării."
+ },
+ "HU": {
+  "nume": "Ungaria",
+  "cap": "Budapesta",
+  "fapt": "Cubul lui Rubik a fost inventat de un maghiar, Ernő Rubik.",
+  "cap_info": "Dunărea desparte în Budapesta cele două părți vechi: Buda și Pesta."
+ },
+ "IE": {
+  "nume": "Irlanda",
+  "cap": "Dublin",
+  "fapt": "Simbolul ei național este harpa, nu un animal.",
+  "cap_info": "Dublin se află pe râul Liffey."
+ },
+ "IM": {
+  "nume": "Insula Man",
+  "cap": "Douglas",
+  "fapt": "Parlamentul ei, Tynwald, are o istorie de peste 1000 de ani.",
+  "cap_info": "Douglas este cel mai mare oraș al insulei."
+ },
+ "IS": {
+  "nume": "Islanda",
+  "cap": "Reykjavík",
+  "fapt": "Are vulcani și ghețari în același timp și aproape nu are țânțari.",
+  "cap_info": "Reykjavík este cea mai nordică capitală a unui stat suveran din lume."
+ },
+ "IT": {
+  "nume": "Italia",
+  "cap": "Roma",
+  "fapt": "Aici se află vulcanii Vezuviu și Etna.",
+  "cap_info": "Roma este numită Orașul Etern și are Colosseumul."
+ },
+ "JE": {
+  "nume": "Jersey",
+  "cap": "Saint Helier",
+  "fapt": "Este o insulă în Canalul Mânecii, dependență a Coroanei britanice.",
+  "cap_info": "Saint Helier este orașul principal al insulei."
+ },
+ "LI": {
+  "nume": "Liechtenstein",
+  "cap": "Vaduz",
+  "fapt": "Are mai puțin de 40 000 de locuitori, deci este printre cele mai mici țări din lume.",
+  "cap_info": "Deasupra orașului Vaduz se află castelul în care locuiește prințul."
+ },
+ "LT": {
+  "nume": "Lituania",
+  "cap": "Vilnius",
+  "fapt": "Limba lituaniană este una dintre cele mai vechi limbi indo-europene încă vorbite.",
+  "cap_info": "Vilnius are un oraș vechi mare, în patrimoniul UNESCO."
+ },
+ "LU": {
+  "nume": "Luxemburg",
+  "cap": "Luxemburg",
+  "fapt": "Este una dintre cele mai mici țări din Europa și are trei limbi oficiale.",
+  "cap_info": "Capitala are același nume ca țara."
+ },
+ "LV": {
+  "nume": "Letonia",
+  "cap": "Riga",
+  "fapt": "Mai bine de jumătate din țară este acoperită de păduri.",
+  "cap_info": "Riga are foarte multe clădiri în stil Art Nouveau."
+ },
+ "MC": {
+  "nume": "Monaco",
+  "cap": "Monaco",
+  "fapt": "Este a doua cea mai mică țară din lume, după Vatican.",
+  "cap_info": "Capitala are același nume ca țara."
+ },
+ "MD": {
+  "nume": "Republica Moldova",
+  "cap": "Chișinău",
+  "fapt": "Pivnițele Mileștii Mici păstrează una dintre cele mai mari colecții de vinuri din lume.",
+  "cap_info": "Chișinău este cel mai mare oraș al țării."
+ },
+ "ME": {
+  "nume": "Muntenegru",
+  "cap": "Podgorica",
+  "fapt": "Numele ei înseamnă „munte negru”.",
+  "cap_info": "Podgorica este cel mai mare oraș al țării."
+ },
+ "MK": {
+  "nume": "Macedonia de Nord",
+  "cap": "Skopje",
+  "fapt": "Aici se află Lacul Ohrid, unul dintre cele mai vechi lacuri din lume.",
+  "cap_info": "Skopje a fost grav lovită de un cutremur în 1963."
+ },
+ "MT": {
+  "nume": "Malta",
+  "cap": "Valletta",
+  "fapt": "Este o țară-arhipelag, cu malteza și engleza ca limbi oficiale.",
+  "cap_info": "Valletta este cea mai mică capitală din Uniunea Europeană."
+ },
+ "NL": {
+  "nume": "Țările de Jos",
+  "cap": "Amsterdam",
+  "fapt": "O mare parte din țară se află sub nivelul mării.",
+  "cap_info": "Amsterdam este capitala; guvernul își are sediul la Haga."
+ },
+ "NO": {
+  "nume": "Norvegia",
+  "cap": "Oslo",
+  "fapt": "Are fiorduri adânci, tăiate în munți de ghețari.",
+  "cap_info": "Premiul Nobel pentru Pace se acordă la Oslo."
+ },
+ "PL": {
+  "nume": "Polonia",
+  "cap": "Varșovia",
+  "fapt": "Astronomul Copernic s-a născut în Polonia, la Toruń.",
+  "cap_info": "Orașul vechi al Varșoviei a fost reconstruit după al Doilea Război Mondial."
+ },
+ "PT": {
+  "nume": "Portugalia",
+  "cap": "Lisabona",
+  "fapt": "Are una dintre cele mai vechi granițe neschimbate din Europa.",
+  "cap_info": "Lisabona este construită pe șapte coline, la gura fluviului Tejo."
+ },
+ "RO": {
+  "nume": "România",
+  "cap": "București",
+  "fapt": "Palatul Parlamentului din București este una dintre cele mai mari clădiri din lume.",
+  "cap_info": "Bucureștiul este cel mai mare oraș al țării."
+ },
+ "RS": {
+  "nume": "Serbia",
+  "cap": "Belgrad",
+  "fapt": "Dunărea trece prin Serbia, pe lângă Porțile de Fier, spre România.",
+  "cap_info": "Belgrad se află la întâlnirea dintre Dunăre și Sava."
+ },
+ "RU": {
+  "nume": "Rusia",
+  "cap": "Moscova",
+  "fapt": "Este cea mai mare țară din lume și are 11 fusuri orare.",
+  "cap_info": "Moscova are Kremlinul și Piața Roșie."
+ },
+ "SE": {
+  "nume": "Suedia",
+  "cap": "Stockholm",
+  "fapt": "Aici se acordă Premiul Nobel, cu excepția celui pentru pace.",
+  "cap_info": "Stockholm este construit pe mai multe insule."
+ },
+ "SI": {
+  "nume": "Slovenia",
+  "cap": "Ljubljana",
+  "fapt": "Mai bine de jumătate din țară este acoperită de păduri.",
+  "cap_info": "În Ljubljana, Podul Dragonilor are patru statui de dragoni."
+ },
+ "SK": {
+  "nume": "Slovacia",
+  "cap": "Bratislava",
+  "fapt": "Aici se află munții Tatra, cu vârfuri înalte și lacuri de munte.",
+  "cap_info": "Bratislava se află pe Dunăre, lângă granițele cu Austria și Ungaria."
+ },
+ "SM": {
+  "nume": "San Marino",
+  "cap": "San Marino",
+  "fapt": "Se spune că este cea mai veche republică din lume, întemeiată în anul 301.",
+  "cap_info": "Capitala are același nume ca țara."
+ },
+ "UA": {
+  "nume": "Ucraina",
+  "cap": "Kiev",
+  "fapt": "Este cea mai mare țară din Europa ca suprafață, fără Rusia.",
+  "cap_info": "Kiev se află pe fluviul Nipru."
+ },
+ "VA": {
+  "nume": "Vatican",
+  "cap": "Vatican",
+  "fapt": "Este cel mai mic stat din lume, mai mic decât multe parcuri.",
+  "cap_info": "Orașul Vatican este și țară, și oraș, în interiorul Romei."
+ },
+ "XK": {
+  "nume": "Kosovo",
+  "cap": "Priștina",
+  "fapt": "A declarat independența în 2008.",
+  "cap_info": "Priștina este cel mai mare oraș al țării."
+ },
+ "AU": {
+  "nume": "Australia",
+  "cap": "Canberra",
+  "fapt": "Aici trăiesc cangurul și koala.",
+  "cap_info": "Canberra este capitala, nu Sydney, care e cel mai mare oraș."
+ },
+ "FJ": {
+  "nume": "Fiji",
+  "cap": "Suva",
+  "fapt": "Este formată din peste 300 de insule.",
+  "cap_info": "Suva se află pe insula Viti Levu."
+ },
+ "FM": {
+  "nume": "Micronezia",
+  "cap": "Palikir",
+  "fapt": "Este formată din peste 600 de insule mici.",
+  "cap_info": "Palikir se află pe insula Pohnpei."
+ },
+ "KI": {
+  "nume": "Kiribati",
+  "cap": "Tarawa de Sud",
+  "fapt": "Este formată din atoli joși, amenințați de creșterea nivelului mării.",
+  "cap_info": "Tarawa de Sud este zona unde trăiește o mare parte din populație."
+ },
+ "MH": {
+  "nume": "Insulele Marshall",
+  "cap": "Majuro",
+  "fapt": "Este formată din atoli de corali în Oceanul Pacific.",
+  "cap_info": "Majuro este un atol, o insulă în formă de inel."
+ },
+ "NR": {
+  "nume": "Nauru",
+  "cap": "Yaren",
+  "fapt": "Este cea mai mică republică din lume.",
+  "cap_info": "Nauru nu are capitală oficială, dar guvernul este în districtul Yaren."
+ },
+ "NZ": {
+  "nume": "Noua Zeelandă",
+  "cap": "Wellington",
+  "fapt": "Păsărea kiwi, care nu zboară, este simbolul ei.",
+  "cap_info": "Wellington este una dintre cele mai sudice capitale din lume."
+ },
+ "PG": {
+  "nume": "Papua Noua Guinee",
+  "cap": "Port Moresby",
+  "fapt": "Aici se vorbesc peste 800 de limbi.",
+  "cap_info": "Port Moresby este port pe coasta de sud a insulei Noua Guinee."
+ },
+ "PW": {
+  "nume": "Palau",
+  "cap": "Ngerulmud",
+  "fapt": "Are un lac cu meduze inofensive, în care se poate înota.",
+  "cap_info": "Ngerulmud este capitală din 2006."
+ },
+ "SB": {
+  "nume": "Insulele Solomon",
+  "cap": "Honiara",
+  "fapt": "Este formată din sute de insule.",
+  "cap_info": "Honiara se află pe insula Guadalcanal."
+ },
+ "TO": {
+  "nume": "Tonga",
+  "cap": "Nuku'alofa",
+  "fapt": "Este un regat insular în Oceanul Pacific.",
+  "cap_info": "Nuku'alofa se află pe insula Tongatapu."
+ },
+ "TV": {
+  "nume": "Tuvalu",
+  "cap": "Funafuti",
+  "fapt": "Este una dintre cele mai mici țări din lume.",
+  "cap_info": "Funafuti este un atol îngust, în care locuiește mare parte din populație."
+ },
+ "VU": {
+  "nume": "Vanuatu",
+  "cap": "Port Vila",
+  "fapt": "Ritualul local de sărit cu liane legate de picioare a inspirat bungee jumping-ul.",
+  "cap_info": "Port Vila se află pe insula Efate."
+ },
+ "WS": {
+  "nume": "Samoa",
+  "cap": "Apia",
+  "fapt": "În 2011 a sărit peste o zi din calendar, 30 decembrie, ca să schimbe data.",
+  "cap_info": "Apia se află pe insula Upolu."
+ },
+ "AG": {
+  "nume": "Antigua și Barbuda",
+  "cap": "Saint John's",
+  "fapt": "Este formată din două insule principale, în Marea Caraibilor.",
+  "cap_info": "Saint John's se află pe insula Antigua."
+ },
+ "AW": {
+  "nume": "Aruba",
+  "cap": "Oranjestad",
+  "fapt": "Este parte din Regatul Țărilor de Jos și are plaje cu nisip alb.",
+  "cap_info": "Oranjestad are clădiri colorate în stil olandez."
+ },
+ "BB": {
+  "nume": "Barbados",
+  "cap": "Bridgetown",
+  "fapt": "Cântăreața Rihanna s-a născut aici.",
+  "cap_info": "Bridgetown este port pe coasta de sud-vest a insulei."
+ },
+ "BS": {
+  "nume": "Bahamas",
+  "cap": "Nassau",
+  "fapt": "Este formată din peste 700 de insule.",
+  "cap_info": "Nassau se află pe insula New Providence."
+ },
+ "BZ": {
+  "nume": "Belize",
+  "cap": "Belmopan",
+  "fapt": "Are al doilea mare recif de corali din lume.",
+  "cap_info": "Belmopan este capitală din 1970."
+ },
+ "CA": {
+  "nume": "Canada",
+  "cap": "Ottawa",
+  "fapt": "Este a doua țară din lume ca suprafață, după Rusia.",
+  "cap_info": "Ottawa este capitala, nu Toronto."
+ },
+ "CR": {
+  "nume": "Costa Rica",
+  "cap": "San José",
+  "fapt": "Nu are armată din 1949.",
+  "cap_info": "San José se află într-o vale înconjurată de munți."
+ },
+ "CU": {
+  "nume": "Cuba",
+  "cap": "Havana",
+  "fapt": "Este cea mai mare insulă din Marea Caraibilor.",
+  "cap_info": "În Havana circulă multe mașini vechi, din secolul trecut."
+ },
+ "CW": {
+  "nume": "Curaçao",
+  "cap": "Willemstad",
+  "fapt": "Este o insulă în Caraibe, parte din Regatul Țărilor de Jos.",
+  "cap_info": "Willemstad are case colorate, în stil olandez."
+ },
+ "DM": {
+  "nume": "Dominica",
+  "cap": "Roseau",
+  "fapt": "Are un lac fierbinte, numit Boiling Lake, într-o pădure tropicală.",
+  "cap_info": "Roseau este cel mai mare oraș al insulei."
+ },
+ "DO": {
+  "nume": "Republica Dominicană",
+  "cap": "Santo Domingo",
+  "fapt": "Împarte insula Hispaniola cu Haiti.",
+  "cap_info": "Santo Domingo este cel mai vechi oraș colonial european din America, fondat în 1496."
+ },
+ "GD": {
+  "nume": "Grenada",
+  "cap": "Saint George's",
+  "fapt": "Este numită „insula condimentelor”, pentru nucșoara pe care o cultivă.",
+  "cap_info": "Saint George's are un port în formă de potcoavă."
+ },
+ "GL": {
+  "nume": "Groenlanda",
+  "cap": "Nuuk",
+  "fapt": "Este cea mai mare insulă din lume.",
+  "cap_info": "Nuuk este capitala și cel mai mare oraș al insulei."
+ },
+ "GT": {
+  "nume": "Guatemala",
+  "cap": "Ciudad de Guatemala",
+  "fapt": "Aici se află Tikal, un mare oraș al mayașilor, ascuns în junglă.",
+  "cap_info": "Ciudad de Guatemala este cel mai mare oraș din America Centrală."
+ },
+ "HN": {
+  "nume": "Honduras",
+  "cap": "Tegucigalpa",
+  "fapt": "Aici se află Copán, un oraș străvechi al mayașilor.",
+  "cap_info": "Tegucigalpa se află într-o vale între munți."
+ },
+ "HT": {
+  "nume": "Haiti",
+  "cap": "Port-au-Prince",
+  "fapt": "A fost prima republică condusă de foști sclavi, independentă din 1804.",
+  "cap_info": "Port-au-Prince este port pe coasta insulei Hispaniola."
+ },
+ "JM": {
+  "nume": "Jamaica",
+  "cap": "Kingston",
+  "fapt": "Aici s-a născut muzica reggae, iar Usain Bolt este jamaican.",
+  "cap_info": "În Kingston se află muzeul lui Bob Marley."
+ },
+ "KN": {
+  "nume": "Saint Kitts și Nevis",
+  "cap": "Basseterre",
+  "fapt": "Este cea mai mică țară din America, ca suprafață și populație.",
+  "cap_info": "Basseterre se află pe insula Saint Kitts."
+ },
+ "LC": {
+  "nume": "Sfânta Lucia",
+  "cap": "Castries",
+  "fapt": "Are doi munți vulcanici în formă de con, numiți Pitons.",
+  "cap_info": "Castries este port pe coasta de nord-vest a insulei."
+ },
+ "MX": {
+  "nume": "Mexic",
+  "cap": "Ciudad de México",
+  "fapt": "Aici se află piramida de la Chichén Itzá, construită de mayași.",
+  "cap_info": "Ciudad de México este construit pe locul vechii capitale aztece Tenochtitlan."
+ },
+ "NI": {
+  "nume": "Nicaragua",
+  "cap": "Managua",
+  "fapt": "Are cel mai mare lac din America Centrală, Lacul Nicaragua.",
+  "cap_info": "Managua se află pe malul Lacului Managua."
+ },
+ "PA": {
+  "nume": "Panama",
+  "cap": "Panama",
+  "fapt": "Canalul Panama leagă Oceanul Atlantic de Oceanul Pacific.",
+  "cap_info": "Orașul Panama se află la intrarea în canal, dinspre Pacific."
+ },
+ "SV": {
+  "nume": "El Salvador",
+  "cap": "San Salvador",
+  "fapt": "Este cea mai mică țară din America Centrală.",
+  "cap_info": "San Salvador se află la poalele unui vulcan."
+ },
+ "SX": {
+  "nume": "Sint Maarten",
+  "cap": "Philipsburg",
+  "fapt": "Avioanele aterizează foarte jos, peste plaja Maho.",
+  "cap_info": "Philipsburg se află pe un istm îngust între mare și o lagună."
+ },
+ "TT": {
+  "nume": "Trinidad și Tobago",
+  "cap": "Port of Spain",
+  "fapt": "Aici a apărut instrumentul steelpan, făcut dintr-un butoi de metal.",
+  "cap_info": "Port of Spain se află pe insula Trinidad."
+ },
+ "US": {
+  "nume": "Statele Unite ale Americii",
+  "cap": "Washington",
+  "fapt": "Statuia Libertății a fost un dar din partea Franței.",
+  "cap_info": "Washington găzduiește Casa Albă, reședința președintelui."
+ },
+ "VC": {
+  "nume": "Saint Vincent și Grenadinele",
+  "cap": "Kingstown",
+  "fapt": "Este formată dintr-o insulă principală și multe insule mici, Grenadinele.",
+  "cap_info": "Kingstown se află lângă un vulcan numit La Soufrière."
+ }
+}

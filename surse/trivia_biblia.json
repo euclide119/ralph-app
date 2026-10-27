@@ -1,0 +1,648 @@
+{
+ "titlu": "Biblia",
+ "emoji": "📖",
+ "seturi": [
+  {
+   "nume": "Setul 1 · Începuturi: de la Creație la Iosif",
+   "intrebari": [
+    {
+     "q": "Câte zile și nopți a plouat fără oprire în timpul Potopului?",
+     "a": [
+      "40 de zile și 40 de nopți",
+      "7 zile și 7 nopți",
+      "100 de zile și 100 de nopți",
+      "150 de zile și 150 de nopți"
+     ],
+     "c": 0,
+     "e": "Ploaia a căzut 40 de zile și 40 de nopți (Geneza 7)."
+    },
+    {
+     "q": "Ce pasăre a trimis Noe prima, ca să afle dacă apele au scăzut?",
+     "a": [
+      "Porumbelul",
+      "Vulturul",
+      "Rândunica",
+      "Corbul"
+     ],
+     "c": 3,
+     "e": "Noe a trimis întâi un corb, apoi un porumbel (Geneza 8)."
+    },
+    {
+     "q": "Câți frați a avut Iosif, fiul lui Iacov?",
+     "a": [
+      "9",
+      "10",
+      "11",
+      "12"
+     ],
+     "c": 2,
+     "e": "Iacov a avut 12 fii, deci Iosif a avut 11 frați (Geneza 35)."
+    },
+    {
+     "q": "Pe câți arginți a fost vândut Iosif negustorilor?",
+     "a": [
+      "10",
+      "20",
+      "30",
+      "50"
+     ],
+     "c": 1,
+     "e": "Frații l-au vândut pe Iosif pentru 20 de arginți (Geneza 37)."
+    },
+    {
+     "q": "Ce meserie avea Abel, fiul lui Adam?",
+     "a": [
+      "Păstor de oi",
+      "Agricultor",
+      "Pescar",
+      "Fierar"
+     ],
+     "c": 0,
+     "e": "Abel era păstor de oi, iar Cain lucra pământul (Geneza 4)."
+    },
+    {
+     "q": "În a câta zi a Creației l-a făcut Dumnezeu pe om?",
+     "a": [
+      "În a treia zi",
+      "În a patra zi",
+      "În a șaptea zi",
+      "În a șasea zi"
+     ],
+     "c": 3,
+     "e": "Omul a fost făcut în ziua a șasea (Geneza 1)."
+    },
+    {
+     "q": "Câți ani avea Avraam când s-a născut fiul său Isaac?",
+     "a": [
+      "75 de ani",
+      "90 de ani",
+      "100 de ani",
+      "120 de ani"
+     ],
+     "c": 2,
+     "e": "Avraam avea 100 de ani la nașterea lui Isaac (Geneza 21)."
+    },
+    {
+     "q": "Cum se numea soția lui Isaac?",
+     "a": [
+      "Rahela",
+      "Rebeca",
+      "Lea",
+      "Sara"
+     ],
+     "c": 1,
+     "e": "Isaac s-a căsătorit cu Rebeca (Geneza 24)."
+    },
+    {
+     "q": "Ce a primit Iacov de la Esau în schimbul dreptului de întâi-născut?",
+     "a": [
+      "O mâncare de linte",
+      "Un miel",
+      "Un sac de grâu",
+      "O turmă de capre"
+     ],
+     "c": 0,
+     "e": "Esau și-a vândut dreptul pentru o mâncare de linte (Geneza 25)."
+    },
+    {
+     "q": "Ce a visat Iacov la Betel, când dormea cu capul pe o piatră?",
+     "a": [
+      "Șapte vaci grase",
+      "Un soare și o lună care i se închinau",
+      "Un rug aprins",
+      "O scară care ajungea la cer, cu îngeri urcând și coborând"
+     ],
+     "c": 3,
+     "e": "Iacov a visat o scară întinsă între pământ și cer (Geneza 28)."
+    },
+    {
+     "q": "Cât timp a muncit Iacov la Laban, în total, pentru a se căsători cu Rahela?",
+     "a": [
+      "7 ani",
+      "10 ani",
+      "14 ani",
+      "20 de ani"
+     ],
+     "c": 2,
+     "e": "A slujit 7 ani, apoi încă 7 pentru Rahela (Geneza 29)."
+    },
+    {
+     "q": "Care dintre frați a propus ca Iosif să fie vândut, în loc să fie omorât?",
+     "a": [
+      "Ruben",
+      "Iuda",
+      "Simeon",
+      "Levi"
+     ],
+     "c": 1,
+     "e": "Iuda a spus să-l vândă ismaeliților (Geneza 37)."
+    },
+    {
+     "q": "Câte vaci grase a visat Faraon că ies din râu?",
+     "a": [
+      "7",
+      "3",
+      "5",
+      "12"
+     ],
+     "c": 0,
+     "e": "Faraon a visat șapte vaci frumoase și grase (Geneza 41)."
+    },
+    {
+     "q": "În ce s-a prefăcut soția lui Lot când s-a uitat înapoi la Sodoma?",
+     "a": [
+      "Într-o stâncă",
+      "Într-un copac",
+      "În pulbere",
+      "Într-un stâlp de sare"
+     ],
+     "c": 3,
+     "e": "Ea s-a făcut un stâlp de sare (Geneza 19)."
+    },
+    {
+     "q": "Ce animal a găsit Avraam prins într-un tufiș, pe care l-a adus jertfă în locul lui Isaac?",
+     "a": [
+      "Un miel",
+      "Un ied",
+      "Un berbec",
+      "Un taur"
+     ],
+     "c": 2,
+     "e": "Dumnezeu a pregătit un berbec (Geneza 22)."
+    },
+    {
+     "q": "Ce semn al legământului a pus Dumnezeu în nori după Potop?",
+     "a": [
+      "Un nor de foc",
+      "Curcubeul",
+      "O stea strălucitoare",
+      "Un fulger"
+     ],
+     "c": 1,
+     "e": "Curcubeul a fost semnul făgăduinței (Geneza 9)."
+    },
+    {
+     "q": "Cum se numea orașul în care oamenii au început să construiască un turn până la cer și li s-au încurcat limbile?",
+     "a": [
+      "Babel",
+      "Sodoma",
+      "Haran",
+      "Ur"
+     ],
+     "c": 0,
+     "e": "Locul a primit numele Babel (Geneza 11)."
+    },
+    {
+     "q": "Care a fost cel mai mic dintre cei 12 fii ai lui Iacov?",
+     "a": [
+      "Iosif",
+      "Gad",
+      "Neftali",
+      "Beniamin"
+     ],
+     "c": 3,
+     "e": "Beniamin a fost ultimul fiu al lui Iacov (Geneza 35)."
+    },
+    {
+     "q": "Câți ani a trăit Matusalem, cel mai bătrân om din Biblie?",
+     "a": [
+      "777 de ani",
+      "930 de ani",
+      "969 de ani",
+      "950 de ani"
+     ],
+     "c": 2,
+     "e": "Matusalem a trăit 969 de ani (Geneza 5)."
+    }
+   ]
+  },
+  {
+   "nume": "Setul 2 · Moise, judecători, regi și profeți",
+   "intrebari": [
+    {
+     "q": "Pe ce munte a primit Moise Tablele Legii?",
+     "a": [
+      "Muntele Carmel",
+      "Muntele Sinai",
+      "Muntele Ararat",
+      "Muntele Tabor"
+     ],
+     "c": 1,
+     "e": "Moise a primit Cele Zece Porunci pe Sinai (Exod 19–20)."
+    },
+    {
+     "q": "Câte plăgi a trimis Dumnezeu peste Egipt?",
+     "a": [
+      "10",
+      "7",
+      "12",
+      "5"
+     ],
+     "c": 0,
+     "e": "Au fost zece plăgi (Exod 7–12)."
+    },
+    {
+     "q": "Cum se numea fratele mai mare al lui Moise?",
+     "a": [
+      "Iosua",
+      "Caleb",
+      "Hur",
+      "Aaron"
+     ],
+     "c": 3,
+     "e": "Aaron era fratele lui Moise (Exod 7)."
+    },
+    {
+     "q": "În ce a fost pus bebelușul Moise și lăsat pe râul Nil?",
+     "a": [
+      "Într-o barcă de lemn de cedru",
+      "Într-un ulcior mare",
+      "Într-un coș de papură",
+      "Într-o covată de piatră"
+     ],
+     "c": 2,
+     "e": "Mama lui l-a pus într-un coș de papură (Exod 2)."
+    },
+    {
+     "q": "Cât timp au rătăcit israeliții prin pustie?",
+     "a": [
+      "7 ani",
+      "40 de ani",
+      "12 ani",
+      "70 de ani"
+     ],
+     "c": 1,
+     "e": "Au rătăcit 40 de ani (Numeri 14)."
+    },
+    {
+     "q": "Pe ce munte a murit Moise, după ce a privit Țara Făgăduinței?",
+     "a": [
+      "Muntele Nebo",
+      "Muntele Sinai",
+      "Muntele Carmel",
+      "Muntele Tabor"
+     ],
+     "c": 0,
+     "e": "Moise a urcat pe Nebo și a murit acolo (Deuteronom 34)."
+    },
+    {
+     "q": "De câte ori au înconjurat israeliții zidurile Ierihonului în ultima zi?",
+     "a": [
+      "De 3 ori",
+      "De 10 ori",
+      "De 12 ori",
+      "De 7 ori"
+     ],
+     "c": 3,
+     "e": "În ziua a șaptea au înconjurat cetatea de șapte ori (Iosua 6)."
+    },
+    {
+     "q": "Cum se numea judecătoarea care a condus Israelul și l-a chemat pe Barac la luptă?",
+     "a": [
+      "Rut",
+      "Estera",
+      "Debora",
+      "Miriam"
+     ],
+     "c": 2,
+     "e": "Debora era judecătoare și profetesă (Judecători 4)."
+    },
+    {
+     "q": "Câți oameni a păstrat Ghedeon pentru lupta împotriva madianiților?",
+     "a": [
+      "100",
+      "300",
+      "1000",
+      "10.000"
+     ],
+     "c": 1,
+     "e": "Dumnezeu a lăsat doar 300 de oameni (Judecători 7)."
+    },
+    {
+     "q": "Cu ce a ucis Samson o mie de filisteni?",
+     "a": [
+      "Cu o falcă de măgar",
+      "Cu o sabie",
+      "Cu un ciomag",
+      "Cu o praștie"
+     ],
+     "c": 0,
+     "e": "A luat o falcă de măgar și a ucis o mie de oameni (Judecători 15)."
+    },
+    {
+     "q": "Cum se numea soacra Rutei?",
+     "a": [
+      "Orpa",
+      "Debora",
+      "Ana",
+      "Naomi"
+     ],
+     "c": 3,
+     "e": "Rut a rămas lângă soacra ei, Naomi (Rut 1)."
+    },
+    {
+     "q": "Cum se numea profetul care l-a uns pe David rege?",
+     "a": [
+      "Natan",
+      "Ilie",
+      "Samuel",
+      "Elisei"
+     ],
+     "c": 2,
+     "e": "Samuel l-a uns pe David în casa lui Isai (1 Samuel 16)."
+    },
+    {
+     "q": "Câte pietre a luat David din pârâu pentru lupta cu Goliat?",
+     "a": [
+      "2",
+      "5",
+      "3",
+      "7"
+     ],
+     "c": 1,
+     "e": "David a luat cinci pietre netede din pârâu (1 Samuel 17)."
+    },
+    {
+     "q": "Cum se numea fiul lui Saul, care a fost cel mai bun prieten al lui David?",
+     "a": [
+      "Ionatan",
+      "Abner",
+      "Ioab",
+      "Absalom"
+     ],
+     "c": 0,
+     "e": "Ionatan l-a iubit pe David ca pe sufletul lui (1 Samuel 18)."
+    },
+    {
+     "q": "Ce i-a cerut Solomon lui Dumnezeu, când acesta i s-a arătat în vis?",
+     "a": [
+      "Bogăție",
+      "Viață lungă",
+      "Biruință asupra dușmanilor",
+      "Înțelepciune"
+     ],
+     "c": 3,
+     "e": "Solomon a cerut o inimă înțeleaptă (1 Regi 3)."
+    },
+    {
+     "q": "Câți ani a durat construirea Templului lui Solomon?",
+     "a": [
+      "3 ani",
+      "12 ani",
+      "7 ani",
+      "20 de ani"
+     ],
+     "c": 2,
+     "e": "Templul a fost gata în șapte ani (1 Regi 6)."
+    },
+    {
+     "q": "Câți profeți ai lui Baal au fost adunați de Ilie pe muntele Carmel?",
+     "a": [
+      "100",
+      "450",
+      "250",
+      "850"
+     ],
+     "c": 1,
+     "e": "Au fost 450 de profeți ai lui Baal (1 Regi 18)."
+    },
+    {
+     "q": "Cât timp a stat Iona în pântecele peștelui celui mare?",
+     "a": [
+      "3 zile și 3 nopți",
+      "O zi și o noapte",
+      "7 zile",
+      "40 de zile"
+     ],
+     "c": 0,
+     "e": "Iona a stat trei zile și trei nopți (Iona 1)."
+    },
+    {
+     "q": "Cum se numea regele care l-a aruncat pe Daniel în groapa cu lei?",
+     "a": [
+      "Nebucadnețar",
+      "Belșațar",
+      "Cir",
+      "Dariu"
+     ],
+     "c": 3,
+     "e": "Regele Dariu a poruncit aruncarea lui Daniel în groapa cu lei (Daniel 6)."
+    }
+   ]
+  },
+  {
+   "nume": "Setul 3 · Viața lui Iisus și apostolii",
+   "intrebari": [
+    {
+     "q": "Ce daruri i-au adus magii pruncului Iisus?",
+     "a": [
+      "Aur, argint și mir",
+      "Grâu, vin și untdelemn",
+      "Aur, tămâie și smirnă",
+      "Tămâie, miere și mătase"
+     ],
+     "c": 2,
+     "e": "Magii au adus aur, tămâie și smirnă (Matei 2)."
+    },
+    {
+     "q": "Cum se numea mama lui Ioan Botezătorul?",
+     "a": [
+      "Ana",
+      "Elisabeta",
+      "Marta",
+      "Maria Magdalena"
+     ],
+     "c": 1,
+     "e": "Elisabeta, soția lui Zaharia, a născut pe Ioan (Luca 1)."
+    },
+    {
+     "q": "Cu ce se hrănea Ioan Botezătorul în pustie?",
+     "a": [
+      "Cu lăcuste și miere sălbatică",
+      "Cu pâine și pește",
+      "Cu smochine și curmale",
+      "Cu mană și apă"
+     ],
+     "c": 0,
+     "e": "Ioan mânca lăcuste și miere sălbatică (Matei 3)."
+    },
+    {
+     "q": "În ce râu a fost botezat Iisus de Ioan?",
+     "a": [
+      "În Nil",
+      "În Eufrat",
+      "În Tigru",
+      "În Iordan"
+     ],
+     "c": 3,
+     "e": "Iisus a venit la Iordan să fie botezat de Ioan (Matei 3)."
+    },
+    {
+     "q": "Câți ani avea Iisus când părinții lui l-au căutat trei zile și l-au găsit în Templu?",
+     "a": [
+      "8 ani",
+      "10 ani",
+      "12 ani",
+      "14 ani"
+     ],
+     "c": 2,
+     "e": "Avea 12 ani când a rămas la Ierusalim (Luca 2)."
+    },
+    {
+     "q": "Ce meserie aveau frații Petru și Andrei când Iisus i-a chemat?",
+     "a": [
+      "Păstori",
+      "Pescari",
+      "Zidari",
+      "Dulgheri"
+     ],
+     "c": 1,
+     "e": "Erau pescari pe Marea Galileii (Matei 4)."
+    },
+    {
+     "q": "Care a fost prima minune a lui Iisus, săvârșită la o nuntă?",
+     "a": [
+      "A prefăcut apa în vin",
+      "A înmulțit pâinile",
+      "A vindecat un orb",
+      "A potolit furtuna"
+     ],
+     "c": 0,
+     "e": "Minunea de la nunta din Cana Galileii (Ioan 2)."
+    },
+    {
+     "q": "Câte pâini și câți pești au avut ucenicii când Iisus a hrănit cinci mii de oameni?",
+     "a": [
+      "7 pâini și 3 pești",
+      "2 pâini și 5 pești",
+      "12 pâini și 2 pești",
+      "5 pâini și 2 pești"
+     ],
+     "c": 3,
+     "e": "Aveau cinci pâini și doi pești (Matei 14)."
+    },
+    {
+     "q": "În ce copac s-a urcat Zacheu ca să-l vadă pe Iisus?",
+     "a": [
+      "Într-un măslin",
+      "Într-un cedru",
+      "Într-un sicomor",
+      "Într-un palmier"
+     ],
+     "c": 2,
+     "e": "Zacheu era scund și s-a urcat într-un sicomor (Luca 19)."
+    },
+    {
+     "q": "Pentru câți arginți l-a trădat Iuda Iscarioteanul pe Iisus?",
+     "a": [
+      "10",
+      "30",
+      "20",
+      "50"
+     ],
+     "c": 1,
+     "e": "Preoții i-au dat 30 de arginți (Matei 26)."
+    },
+    {
+     "q": "Ce a cântat după ce Petru s-a lepădat de Iisus a treia oară?",
+     "a": [
+      "Cocoșul",
+      "Privighetoarea",
+      "Corbul",
+      "Cucul"
+     ],
+     "c": 0,
+     "e": "Petru a plâns amar când a cântat cocoșul (Matei 26)."
+    },
+    {
+     "q": "Cine a cerut lui Pilat trupul lui Iisus ca să-l îngroape?",
+     "a": [
+      "Nicodim",
+      "Simon din Cirene",
+      "Barnaba",
+      "Iosif din Arimateea"
+     ],
+     "c": 3,
+     "e": "Iosif din Arimateea l-a pus într-un mormânt nou (Matei 27)."
+    },
+    {
+     "q": "Cum se numea Pavel înainte de convertirea sa?",
+     "a": [
+      "Simon",
+      "Barnaba",
+      "Saul",
+      "Silas"
+     ],
+     "c": 2,
+     "e": "Saul din Tars a devenit Pavel (Fapte 9, 13)."
+    },
+    {
+     "q": "Pe ce insulă a primit apostolul Ioan descoperirile din Apocalipsa?",
+     "a": [
+      "Creta",
+      "Patmos",
+      "Cipru",
+      "Malta"
+     ],
+     "c": 1,
+     "e": "Ioan era exilat pe insula Patmos (Apocalipsa 1)."
+    },
+    {
+     "q": "Cine a fost silit să care crucea lui Iisus?",
+     "a": [
+      "Simon din Cirene",
+      "Petru",
+      "Iosif din Arimateea",
+      "Barabas"
+     ],
+     "c": 0,
+     "e": "Soldații l-au silit pe Simon din Cirene (Matei 27)."
+    },
+    {
+     "q": "Între ce două orașe călătorea omul atacat de tâlhari în pilda bunului samaritean?",
+     "a": [
+      "Betleem și Nazaret",
+      "Capernaum și Cana",
+      "Damasc și Antiohia",
+      "Ierusalim și Ierihon"
+     ],
+     "c": 3,
+     "e": "Omul cobora de la Ierusalim la Ierihon (Luca 10)."
+    },
+    {
+     "q": "Ce apostol a mers pe apă spre Iisus?",
+     "a": [
+      "Ioan",
+      "Iacov",
+      "Petru",
+      "Toma"
+     ],
+     "c": 2,
+     "e": "Petru a pășit pe apă, apoi a început să se scufunde (Matei 14)."
+    },
+    {
+     "q": "Care dintre ucenici a spus că nu va crede până nu va vedea rănile lui Iisus?",
+     "a": [
+      "Filip",
+      "Toma",
+      "Natanael",
+      "Andrei"
+     ],
+     "c": 1,
+     "e": "Toma a vrut să vadă rănile Domnului înviat (Ioan 20)."
+    },
+    {
+     "q": "Câte zile era mort Lazăr când a ajuns Iisus la mormântul lui?",
+     "a": [
+      "4 zile",
+      "2 zile",
+      "3 zile",
+      "7 zile"
+     ],
+     "c": 0,
+     "e": "Lazăr era în mormânt de patru zile (Ioan 11)."
+    }
+   ]
+  }
+ ]
+}

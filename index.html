@@ -53,8 +53,8 @@ main{padding:14px 12px}
 .fab{position:fixed;right:18px;bottom:calc(88px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:32px;font-weight:300;box-shadow:0 8px 20px rgba(10,110,200,.35);z-index:25;line-height:1}
 .fab:active{transform:scale(.92)}
 nav#tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(249,251,253,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);padding:5px 4px calc(4px + env(safe-area-inset-bottom));border-top:.5px solid rgba(0,0,0,.15);z-index:30}
-nav#tabs button{flex:1;min-width:0;border:0;background:none;font-size:9.5px;letter-spacing:-.02em;white-space:nowrap;font-weight:500;color:#8a96a3;display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 0}
-nav#tabs button .i{font-size:22px;transition:transform .2s;filter:grayscale(1) opacity(.55)}
+nav#tabs button{flex:1;min-width:0;border:0;background:none;font-size:9px;line-height:1.05;letter-spacing:-.02em;text-align:center;font-weight:500;color:#8a96a3;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2px;padding:4px 0}
+nav#tabs button .i{font-size:21px;transition:transform .2s;filter:grayscale(1) opacity(.55)}
 nav#tabs button.on{color:var(--acc)}
 nav#tabs button.on .i{filter:none}
 nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
@@ -69,6 +69,41 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 .cnt{text-align:center;margin:6px 0}.cnt b{font-size:48px;font-weight:800;letter-spacing:-.03em;color:var(--acc)}.cnt span{display:block;color:var(--mut);font-size:14px;margin-top:-4px}
 .cbtn{margin:8px 0}.cbtn .btn{flex:1;padding:12px 0;font-size:17px}
 .chwon{background:linear-gradient(135deg,#fff8d9,#fff 60%)}
+/* jocuri */
+.gcard{display:flex;align-items:center;gap:12px;width:100%;border:0;background:#fff;border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:var(--sh);text-align:left}
+.gcard .gi{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;font-size:30px;background:var(--soft);flex:none}
+.gcard b{display:block;font-size:18px}.gcard small{display:block;color:var(--mut);font-size:13.5px;margin-top:2px}
+.gcard.lock{opacity:.55}.gcard .pct{font-weight:700;color:var(--acc);font-size:15px}
+.gbar{display:flex;align-items:center;gap:10px;margin-bottom:12px}.gbar b{font-size:18px;flex:1;min-width:0}
+.nokia{background:#8fa58a;border-radius:24px;padding:12px;box-shadow:inset 0 2px 10px rgba(0,0,0,.3);position:relative}
+.nk-top{display:flex;justify-content:space-between;font:700 15px ui-monospace,Menlo,monospace;color:#43523d;background:#c7f0d8;padding:5px 8px;border-bottom:2px solid #43523d;margin:0 auto}
+#snk{display:block;margin:0 auto;touch-action:none}
+#snkMsg{position:absolute;left:12px;right:12px;bottom:12px;top:12px;display:flex;align-items:center;justify-content:center;text-align:center;background:rgba(199,240,216,.9);color:#43523d;font:800 19px/1.4 ui-monospace,Menlo,monospace;white-space:pre-line;border-radius:4px}
+.dpad{display:grid;grid-template-columns:repeat(3,76px);grid-template-rows:repeat(3,58px);gap:7px;justify-content:center;margin-top:14px}
+.dpad button{border:0;border-radius:16px;background:#2f3a2b;color:#c7f0d8;font-size:26px;touch-action:manipulation;-webkit-user-select:none}
+.dpad button:active{background:#56684f}.dpad .pl{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:15px;font-weight:800}
+.tq{font-size:20px;font-weight:700;line-height:1.3;margin:12px 0 4px;letter-spacing:-.015em}
+.ans{display:block;width:100%;text-align:left;border:1.5px solid #dfe6ee;background:#fff;border-radius:14px;padding:14px;margin-top:9px;font-size:16.5px;font-weight:500;color:var(--ink)}
+.ans.ok{background:#e3f9e9;border-color:#34c759;font-weight:700}.ans.bad{background:#ffecec;border-color:#ff3b30}
+.expl{background:var(--soft);border-radius:12px;padding:11px 12px;margin-top:12px;font-size:15px;line-height:1.45}
+.setb{display:flex;align-items:center;gap:10px;width:100%;border:0;background:#f5f9fc;border-radius:12px;padding:12px;margin-top:8px;text-align:left;font-size:15.5px}
+.setb b{flex:1}.setb span{color:var(--mut);font-size:13px;white-space:nowrap}
+.gq{display:flex;align-items:center;gap:12px;min-height:78px}
+.gq img,.gq .ph0{width:76px;height:76px;border-radius:14px;object-fit:cover;flex:none;background:var(--soft);display:grid;place-items:center;font-size:36px}
+.gq .big{font-size:22px;font-weight:800;line-height:1.15;letter-spacing:-.02em}.gq .flag{font-size:62px;line-height:1}
+.gq small{display:block;color:var(--mut);font-size:13px;margin-top:2px}
+.gq p{margin:6px 0 0;font-size:15px;line-height:1.4}
+.ginfo{border:2px solid #34c759}.ginfo.miss{border-color:#ff9f0a}
+.mapbox{position:relative;background:#cfe8f7;border-radius:16px;overflow:hidden;box-shadow:var(--sh);margin-bottom:12px;display:flex;justify-content:center}
+#map{display:block;touch-action:none}
+#map path{stroke:#fff;stroke-width:.8;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+#map .np{fill:#e6eaee}#map .pc{fill:#a9cdea}#map .old{fill:#bfe6c9}
+#map .dot{stroke:#fff;stroke-width:1.5;vector-effect:non-scaling-stroke}
+#map .got{fill:#34c759}#map .wrong{fill:#ff3b30}#map .hint{animation:hint .9s infinite}
+@keyframes hint{50%{fill:#ffd60a}}
+.zbtn{position:absolute;right:8px;top:8px;display:flex;flex-direction:column;gap:6px}
+.zbtn button{width:38px;height:38px;border-radius:10px;border:0;background:rgba(255,255,255,.92);font-size:19px;box-shadow:var(--sh)}
+.gprog{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-bottom:6px}
 .banner{display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#0a84ff,#2ad4c9);color:#fff;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.35}
 .banner .btn{background:#fff;color:#0a84ff;flex:none}
 .share-ic{display:inline-block;border:1.5px solid currentColor;border-radius:4px;padding:0 4px;font-size:12px}
@@ -294,7 +329,8 @@ const TABS=[
  {id:'vise',ico:'🌈',name:'Vise',title:'Vise și dorințe',c1:'#3d5afe',c2:'#2ac8e6',soft:'#e8edff'},
  {id:'provocari',ico:'⚡',name:'Provocări',title:'Provocări',c1:'#0a6cff',c2:'#00d4ff',soft:'#e3f4ff'},
  {id:'neagra',ico:'⛔',name:'Lista neagră',title:'Lista neagră',c1:'#14213d',c2:'#1f8fff',soft:'#e7edf5'},
- {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#0057d9',c2:'#00c2d1',soft:'#e1f1fb'}];
+ {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#0057d9',c2:'#00c2d1',soft:'#e1f1fb'},
+ {id:'jocuri',ico:'🎮',name:'Jocuri',title:'Jocuri',c1:'#2563eb',c2:'#22d3ee',soft:'#e4f3fd'}];
 let UI={tab:'agenda',scope:'zi',bank:'panou',open:new Set()};
 try{const t=localStorage.getItem('ralph_tab');if(TABS.some(x=>x.id===t))UI.tab=t}catch(e){}
 const VIEWS={},A={},FORMS={};
@@ -304,7 +340,8 @@ function renderTop(){const t=TABS.find(x=>x.id===UI.tab),p=S.profile;const nb=BA
  $('#top').innerHTML=`<div class="row"><button class="me" data-act="settings">${esc(p.avatar)}</button><div class="hi"><small>Salut, ${esc(p.name||'campionule')}! ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
  <div class="nxt">${nb?`<div class="bar w"><i style="width:${(p.stars-lo)/(nb[0]-lo)*100}%"></i></div><small>Următorul premiu: ${nb[1]} ${nb[2]} la ${nb[0]} ⭐</small>`:'<small>Ai toate premiile! Ești o legendă 🚀</small>'}</div>`}
 function render(){const t=TABS.find(x=>x.id===UI.tab);const st=document.documentElement.style;st.setProperty('--acc',t.c1);st.setProperty('--acc2',t.c2);st.setProperty('--soft',t.soft);
- renderTop();$('#main').innerHTML=banners()+VIEWS[UI.tab]();
+ if(UI.tab!=='jocuri'||UI.game!=='snake')snakeStop();
+ renderTop();$('#main').innerHTML=(UI.tab==='jocuri'&&UI.game?'':banners())+VIEWS[UI.tab]();if(UI.tab==='jocuri')gameMount();
  $('#tabs').innerHTML=TABS.map(x=>`<button class="${x.id===UI.tab?'on':''}" data-act="tab" data-k="${x.id}"><span class="i">${x.ico}</span>${x.name}</button>`).join('')}
 
 /* ===== 1. AGENDA ===== */
@@ -449,6 +486,144 @@ A.addBl=()=>formSheet({title:'⛔ Pe lista neagră',fields:blF,data:{cat:'obicei
 A.editBl=d=>{const b=S.black.find(x=>x.id===d.id);formSheet({title:'✏️ Lista neagră',fields:blF,data:b,onSave:v=>Object.assign(b,v),onDelete:()=>S.black=S.black.filter(x=>x!==b)})};
 A.blOk=(d,el)=>{const b=S.black.find(x=>x.id===d.id);if(b.lastOk===today())return;b.lastOk=today();const n=streak(b);b.best=Math.max(b.best||0,n);const big=n>0&&n%7===0;reward(big?5:1,pos(el),big);if(big)setTimeout(()=>toast(`🔥 ${n} zile la rând! Ești de neoprit!`),1200);render()};
 A.blFail=d=>{const b=S.black.find(x=>x.id===d.id);if(!confirm('Ai greșit azi? Nu-i nimic — o luăm de la capăt, mai puternici.'))return;b.best=Math.max(b.best||0,streak(b));b.start=today();b.lastOk='';save();render();toast('💙 Se întâmplă oricui. Mâine încerci din nou!')};
+
+/* ===== 8. JOCURI ===== */
+const DATA={};
+async function loadData(k,path){if(DATA[k])return DATA[k];const r=await fetch(path);if(!r.ok)throw 0;DATA[k]=await r.json();return DATA[k]}
+const backBtn=t=>`<div class="gbar"><button class="btn sm ghost" data-act="backGame">‹ Înapoi</button><b>${t}</b></div>`;
+const loading=t=>backBtn(t)+'<div class="empty"><div class="e">⏳</div><b>Se încarcă…</b>Ai nevoie de internet prima dată.</div>';
+function need(k,path){if(DATA[k])return true;loadData(k,path).then(()=>{if(UI.tab==='jocuri')render()}).catch(()=>toast('Nu am putut încărca jocul — verifică internetul'));return false}
+VIEWS.jocuri=()=>{if(UI.game==='snake')return snakeView();if(UI.game==='trivia')return triviaView();if(UI.game==='geo')return geoView();
+ return `<p class="lead">🎮 Jocuri care te fac mai deștept. Câștigi ⭐ când joci bine și când îți bați recordul!</p>
+ <button class="gcard" data-act="openGame" data-k="snake"><span class="gi" style="background:#43523d">🐍</span><span class="grow"><b>Snake</b><small>Ca pe Nokia: mănâncă și crește · record ${S.games.snake.best||0}</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="openGame" data-k="trivia"><span class="gi">🧠</span><span class="grow"><b>Trivia</b><small>Grecia antică și Biblia · seturi de câte 19 întrebări</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="openGame" data-k="geo"><span class="gi">🌍</span><span class="grow"><b>Geografie pe hartă</b><small>Țări, capitale, steaguri, celebrități — pe continente</small></span><span class="chev">›</span></button>`};
+A.openGame=d=>{UI.game=d.k;UI.sub=null;render();scrollTo(0,0)};
+A.backGame=()=>{snakeStop();if(UI.game==='geo'&&UI.sub&&UI.sub.l){UI.sub={c:UI.sub.c};G.geo=null}else if(UI.sub&&UI.game!=='snake')UI.sub=null;else UI.game=null;render();scrollTo(0,0)};
+const G={};
+function gameMount(){if(UI.game==='snake')snakeInit();if(UI.game==='geo')geoMount()}
+
+/* --- Snake (ca pe Nokia: trece prin pereți, moare dacă se mușcă) --- */
+const SN={N:21};
+function snakeView(){return `${backBtn('🐍 Snake')}<div class="nokia"><div class="nk-top" id="nkTop"><span id="snkSc">0000</span><span>REC ${String(S.games.snake.best||0).padStart(4,'0')}</span></div><canvas id="snk"></canvas><div id="snkMsg" data-act="snkPlay">SNAKE\n\n▶ Apasă ca să începi</div></div>
+ <div class="dpad"><span></span><button data-d="0,-1">▲</button><span></span><button data-d="-1,0">◀</button><button class="pl" data-act="snkPlay">START</button><button data-d="1,0">▶</button><span></span><button data-d="0,1">▼</button><span></span></div>
+ <p class="hint" style="text-align:center">Poți și glisa cu degetul pe ecran. ⭐ pentru fiecare 5 mere.</p>`}
+function snakeInit(){const c=$('#snk');if(!c)return;const W=Math.min(c.parentNode.clientWidth-24,400);SN.cell=Math.floor(W/SN.N);const px=SN.cell*SN.N,r=devicePixelRatio||1;
+ c.width=px*r;c.height=px*r;c.style.width=c.style.height=px+'px';$('#nkTop').style.width=px+'px';SN.x=c.getContext('2d');SN.x.setTransform(r,0,0,r,0,0);
+ snakeReset();snakeDraw();
+ document.querySelectorAll('.dpad [data-d]').forEach(b=>b.addEventListener('pointerdown',e=>{e.preventDefault();snakeDir(b.dataset.d.split(',').map(Number))}));
+ let t0=null;c.addEventListener('touchstart',e=>{t0=[e.touches[0].clientX,e.touches[0].clientY]},{passive:true});
+ c.addEventListener('touchend',e=>{if(!t0)return;const dx=e.changedTouches[0].clientX-t0[0],dy=e.changedTouches[0].clientY-t0[1];if(Math.max(Math.abs(dx),Math.abs(dy))>18)snakeDir(Math.abs(dx)>Math.abs(dy)?[Math.sign(dx),0]:[0,Math.sign(dy)]);t0=null},{passive:true})}
+function snakeDir(d){if(!SN.alive||!SN.t){return}const q=SN.q;const last=q.length?q[q.length-1]:SN.d;if((d[0]===-last[0]&&d[1]===-last[1])||(d[0]===last[0]&&d[1]===last[1]))return;if(q.length<3)q.push(d)}
+addEventListener('keydown',e=>{if(UI.game!=='snake')return;const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[e.key];if(m){e.preventDefault();snakeDir(m)}else if(e.key===' '&&!SN.t)A.snkPlay()});
+function snakeReset(){const m=Math.floor(SN.N/2);SN.s=[[m-3,m],[m-2,m],[m-1,m],[m,m]];SN.d=[1,0];SN.q=[];SN.score=0;SN.speed=165;SN.alive=true;snakeFood()}
+function snakeFood(){do{SN.f=[Math.floor(Math.random()*SN.N),Math.floor(Math.random()*SN.N)]}while(SN.s.some(p=>p[0]===SN.f[0]&&p[1]===SN.f[1]))}
+function snakeStop(){clearTimeout(SN.t);SN.t=null}
+A.snkPlay=()=>{if(SN.t)return;if(!SN.alive||SN.over){snakeReset();SN.over=false}$('#snkMsg').style.display='none';SN.alive=true;SN.t=setTimeout(snakeTick,SN.speed)};
+function beep(f,d){if(!S.profile.sound)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type='square';o.frequency.value=f;g.gain.value=.05;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+function snakeTick(){if(!$('#snk')){snakeStop();return}if(SN.q.length)SN.d=SN.q.shift();const N=SN.N,h=SN.s[SN.s.length-1],n=[(h[0]+SN.d[0]+N)%N,(h[1]+SN.d[1]+N)%N];
+ const eat=n[0]===SN.f[0]&&n[1]===SN.f[1],body=eat?SN.s:SN.s.slice(1);
+ if(body.some(p=>p[0]===n[0]&&p[1]===n[1]))return snakeOver();
+ SN.s.push(n);if(eat){SN.score++;SN.speed=Math.max(70,SN.speed-4);snakeFood();beep(880,.06);$('#snkSc').textContent=String(SN.score).padStart(4,'0')}else SN.s.shift();
+ snakeDraw();SN.t=setTimeout(snakeTick,SN.speed)}
+function snakeDraw(){const x=SN.x,c=SN.cell,N=SN.N;x.fillStyle='#c7f0d8';x.fillRect(0,0,c*N,c*N);x.fillStyle='#43523d';
+ SN.s.forEach(([a,b])=>x.fillRect(a*c+1,b*c+1,c-2,c-2));const h=SN.s[SN.s.length-1];x.fillStyle='#c7f0d8';x.fillRect(h[0]*c+c/2-1.5,h[1]*c+c/2-1.5,3,3);
+ const[a,b]=SN.f,m=c/2;x.fillStyle='#43523d';x.beginPath();x.moveTo(a*c+m,b*c+2);x.lineTo(a*c+c-2,b*c+m);x.lineTo(a*c+m,b*c+c-2);x.lineTo(a*c+2,b*c+m);x.fill()}
+function snakeOver(){snakeStop();SN.alive=false;SN.over=true;beep(160,.35);const g=S.games.snake,rec=SN.score>(g.best||0);if(rec)g.best=SN.score;g.games=(g.games||0)+1;
+ const st=Math.min(5,Math.floor(SN.score/5));$('#snkMsg').style.display='flex';$('#snkMsg').textContent=`GAME OVER\n\nMere: ${SN.score}${rec&&SN.score?'\n★ RECORD NOU ★':''}\n\n▶ Încă o dată`;
+ if(st)reward(st+(rec?2:0),mid(),rec);else save()}
+
+/* --- Trivia --- */
+function triviaView(){if(!need('trivia','data/trivia.json'))return loading('🧠 Trivia');const T=DATA.trivia.teme;
+ if(!UI.sub)return `${backBtn('🧠 Trivia')}${T.map((t,ti)=>`<div class="card"><b style="font-size:19px">${t.emoji} ${esc(t.titlu)}</b>${t.seturi.map((s,si)=>{const b=S.games.trivia[t.id+si];return `<button class="setb" data-act="trStart" data-t="${ti}" data-s="${si}"><b>${esc(s.nume)}</b><span>${b!=null?(b===s.intrebari.length?'🏆 ':'⭐ ')+b+'/'+s.intrebari.length:'nou'}</span></button>`}).join('')}</div>`).join('')}
+ <p class="hint">Pentru fiecare 2 răspunsuri peste recordul tău primești ⭐. Toate corecte = 🏆 +5 ⭐.</p>`;
+ const g=G.tr,t=T[g.t];if(g.end)return `${backBtn(t.emoji+' '+esc(t.titlu))}<div class="card trophy"><div class="t">${g.ok===g.q.length?'🏆':g.ok>=14?'🥇':g.ok>=10?'🥈':'💪'}</div><b>${g.ok} din ${g.q.length}</b><div class="mut">${g.ok===g.q.length?'Perfect! Ești un adevărat savant!':g.ok>=14?'Foarte bine!':g.ok>=10?'Bine! Mai încearcă o dată ca să-ți bați recordul.':'Fiecare încercare te învață ceva nou. Hai din nou!'}${g.gain?`<br>+${g.gain} ⭐`:''}</div><button class="btn big" data-act="trStart" data-t="${g.t}" data-s="${g.s}">🔁 Joc din nou</button><button class="btn ghost big" data-act="backGame">Alt set</button></div>`;
+ const q=g.q[g.i],ans=g.ans;
+ return `${backBtn(t.emoji+' '+esc(t.seturi[g.s].nume))}<div class="card"><div class="gprog"><span>Întrebarea ${g.i+1} din ${g.q.length}</span><span>✅ ${g.ok}</span></div><div class="bar"><i style="width:${g.i/g.q.length*100}%"></i></div>
+ <div class="tq">${esc(q.q)}</div>${q.a.map((a,i)=>`<button class="ans ${ans==null?'':i===q.c?'ok':i===ans?'bad':''}" data-act="trAns" data-i="${i}" ${ans!=null?'disabled':''}>${ans!=null&&i===q.c?'✅ ':ans===i?'❌ ':''}${esc(a)}</button>`).join('')}
+ ${ans!=null?`<div class="expl">${ans===q.c?'🎉 <b>Corect!</b> ':'💡 '}${esc(q.e)}</div><button class="btn big" data-act="trNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi rezultatul 🏁'}</button>`:''}</div>`}
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+A.trStart=d=>{const t=DATA.trivia.teme[+d.t],s=t.seturi[+d.s];G.tr={t:+d.t,s:+d.s,i:0,ok:0,ans:null,end:false,q:shuf(s.intrebari).map(q=>{const o=shuf(q.a.map((a,i)=>({a,i})));return{q:q.q,e:q.e,a:o.map(x=>x.a),c:o.findIndex(x=>x.i===q.c)}})};UI.sub={t:+d.t,s:+d.s};render();scrollTo(0,0)};
+A.trAns=(d,el)=>{const g=G.tr;if(g.ans!=null)return;g.ans=+d.i;const p=pos(el);if(g.ans===g.q[g.i].c){g.ok++;burst(p.x,p.y,30);chime()}else beep(200,.15);render()};
+A.trNext=()=>{const g=G.tr;g.i++;g.ans=null;if(g.i>=g.q.length){g.end=true;const t=DATA.trivia.teme[g.t],k=t.id+g.s,old=S.games.trivia[k];const best=old==null?0:old;
+ g.gain=Math.max(0,Math.floor((g.ok-best)/2))+(g.ok===g.q.length&&best<g.q.length?5:0);if(old==null||g.ok>old)S.games.trivia[k]=g.ok;
+ if(g.gain)reward(g.gain,mid(),g.ok===g.q.length);else{save();if(g.ok>=14)fireworks()}}render();scrollTo(0,0)};
+
+/* --- Geografie pe hartă --- */
+const CONT=[['europa','Europa','🏰'],['asia','Asia','🐉'],['africa','Africa','🦁'],['america_nord','America de Nord','🗽'],['america_sud','America de Sud','🦜'],['oceania','Oceania','🦘']];
+const LV=[['tari','🗺️','Țări','Găsește țara pe hartă'],['capitale','🏙️','Capitale','Unde se află capitala?'],['steaguri','🚩','Steaguri','Al cui e steagul?'],['celebru','⭐','Celebrități și cultură','Fotbaliști, invenții, clădiri, mașini, strămoși, scrieri']];
+const CAT={fotbalist:'⚽ Fotbalist',celebritate:'🌟 Celebritate',inventie:'💡 Invenție',cladire:'🏛️ Clădire celebră',masina:'🚗 Mașină',istorie:'📜 Istorie',stramosi:'🏺 Strămoși',scrieri:'📚 Scrieri'};
+const flag=iso=>iso&&iso.length===2?String.fromCodePoint(...[...iso.toUpperCase()].map(c=>127397+c.charCodeAt())):'🏳️';
+let RN;try{RN=new Intl.DisplayNames(['ro'],{type:'region'})}catch(e){}
+const cname=iso=>(DATA.geo&&DATA.geo.tari[iso]&&DATA.geo.tari[iso].nume)||(RN&&iso?RN.of(iso):iso)||'';
+const gst=c=>S.games.geo[c]||(S.games.geo[c]={learned:{},pass:{}});
+const unlocked=(c,l)=>l==='tari'||l==='capitale'||(gst(c).pass.tari&&gst(c).pass.capitale);
+const playSet=c=>{const m=DATA['map_'+c];return new Set(m.c.filter(r=>r[1]&&DATA.geo.tari[r[0]]).map(r=>r[0]))};
+const imgTag=(src,fb)=>src?`<img src="${src}" alt="" onerror="this.outerHTML='<span class=&quot;ph0&quot;>${fb}</span>'">`:`<span class="ph0">${fb}</span>`;
+function geoView(){if(!need('geo','data/geo.json'))return loading('🌍 Geografie');const s=UI.sub;
+ if(!s)return `${backBtn('🌍 Geografie')}<p class="lead">Alege un continent. Începe cu <b>Țări</b> și <b>Capitale</b> — după ce le treci (minim 7 din 10), se deblochează steagurile și celebritățile.</p>
+ ${CONT.map(([k,n,e])=>{const L=gst(k).learned,cnt=Object.keys(L).filter(x=>x.startsWith('tari:')).length;return `<button class="gcard" data-act="geoCont" data-k="${k}"><span class="gi">${e}</span><span class="grow"><b>${n}</b><small>${cnt?cnt+' țări învățate':'neînceput'} · ${['tari','capitale','steaguri','celebru'].filter(l=>gst(k).pass[l]).length}/4 niveluri</small></span><span class="chev">›</span></button>`}).join('')}`;
+ const cn=CONT.find(x=>x[0]===s.c);if(!need('map_'+s.c,'geo/'+s.c+'.json'))return loading(cn[2]+' '+cn[1]);
+ if(!s.l)return `${backBtn(cn[2]+' '+cn[1])}${LV.map(([l,e,n,dsc])=>{const ok=unlocked(s.c,l),p=gst(s.c).pass[l];return `<button class="gcard ${ok?'':'lock'}" data-act="geoLvl" data-l="${l}"><span class="gi">${ok?e:'🔒'}</span><span class="grow"><b>${n}${p?' ✅':''}</b><small>${ok?dsc:'Se deblochează după ce treci Țări și Capitale'}</small></span><span class="chev">›</span></button>`}).join('')}`;
+ const g=G.geo,lv=LV.find(x=>x[0]===s.l);
+ if(g.done){const pass=g.ok>=Math.ceil(g.items.length*.7);return `${backBtn(cn[1]+' · '+lv[2])}<div class="card trophy"><div class="t">${pass?'🏆':'💪'}</div><b>${g.ok} din ${g.items.length} din prima</b><div class="mut">${pass?(g.newPass?'Nivel trecut! +5 ⭐'+(g.unlock?'<br>🔓 Ai deblocat Steaguri și Celebrități!':''):'Bravo, încă o rundă reușită!'):'Ai nevoie de '+Math.ceil(g.items.length*.7)+' ca să treci nivelul. Mai încearcă!'}</div><button class="btn big" data-act="geoLvl" data-l="${s.l}">🔁 Încă o rundă</button><button class="btn ghost big" data-act="backGame">Alt nivel</button></div>`}
+ return `${backBtn(cn[2]+' '+cn[1]+' · '+lv[2])}<div class="card" id="gq"></div><div class="mapbox" id="mapHolder"></div><p class="hint" style="text-align:center">Mărești cu ＋ sau cu două degete, muți harta trăgând de ea.</p>`}
+A.geoCont=d=>{UI.sub={c:d.k};render();scrollTo(0,0)};
+A.geoLvl=d=>{const c=UI.sub.c;if(!unlocked(c,d.l)){toast('🔒 Treci întâi Țări și Capitale (minim 7 din 10)');return}
+ const P=[...playSet(c)],T=DATA.geo.tari,L=gst(c).learned;let pool;
+ if(d.l==='celebru')pool=P.flatMap(iso=>(DATA.geo.det[iso]||[]).map(x=>({iso,key:iso+':'+x.nume,...x})));
+ else pool=P.map(iso=>({iso,key:iso}));
+ if(!pool.length){toast('Încă nu avem date pentru acest nivel aici');return}
+ const fresh=shuf(pool.filter(x=>!L[d.l+':'+x.key])),old=shuf(pool.filter(x=>L[d.l+':'+x.key]));
+ G.geo={c,l:d.l,items:[...fresh,...old].slice(0,10),i:0,ok:0,tries:0,wait:false,done:false};UI.sub={c,l:d.l};render();scrollTo(0,0)};
+function geoMount(){const g=G.geo,hold=$('#mapHolder');if(!g||!hold||g.done)return;const m=DATA['map_'+g.c],P=playSet(g.c);
+ const aw=hold.clientWidth,h=Math.min(aw*m.h/m.w,innerHeight*.5),w=h*m.w/m.h;
+ let s=`<svg id="map" viewBox="0 0 ${m.w} ${m.h}" style="width:${w}px;height:${h}px">`;
+ m.c.forEach(r=>{const pl=r[1]&&P.has(r[0]);s+=`<path d="${r[2]}" class="${pl?'pc':'np'}" ${pl?`data-iso="${r[0]}"`:r[0]?`data-x="${r[0]}"`:''}/>`});
+ m.c.forEach(r=>{if(r[5]&&r[1]&&P.has(r[0]))s+=`<circle cx="${r[3]}" cy="${r[4]}" r="8" class="pc dot" data-iso="${r[0]}"/>`});
+ hold.innerHTML=s+'</svg><div class="zbtn"><button data-act="mz" data-z="0.6">＋</button><button data-act="mz" data-z="1.6">－</button><button data-act="mz" data-z="0">⟲</button></div>';
+ if(g.l!=='celebru'){const L=gst(g.c).learned;Object.keys(L).filter(k=>k.startsWith(g.l+':')).forEach(k=>mapCls(k.split(':')[1],'old',true))}
+ g.vb=[0,0,m.w,m.h];panZoom($('#map'),m);geoShow()}
+function mapCls(iso,c,on){document.querySelectorAll(`#map [data-iso="${iso}"]`).forEach(e=>e.classList.toggle(c,on))}
+function panZoom(svg,m){const P=new Map();let st=null,pin=null,moved=false;const g=G.geo;
+ const ap=()=>svg.setAttribute('viewBox',g.vb.map(v=>v.toFixed(1)).join(' '));
+ const toS=(x,y)=>{const r=svg.getBoundingClientRect();return[g.vb[0]+(x-r.left)/r.width*g.vb[2],g.vb[1]+(y-r.top)/r.height*g.vb[3]]};
+ const cl=()=>{g.vb[2]=Math.min(m.w,Math.max(m.w/10,g.vb[2]));g.vb[3]=g.vb[2]*m.h/m.w;g.vb[0]=Math.min(m.w-g.vb[2],Math.max(0,g.vb[0]));g.vb[1]=Math.min(m.h-g.vb[3],Math.max(0,g.vb[1]))};
+ g.zoom=(k,c)=>{if(!k){g.vb=[0,0,m.w,m.h];ap();return}c=c||[g.vb[0]+g.vb[2]/2,g.vb[1]+g.vb[3]/2];const b=[...g.vb],w=b[2]*k;g.vb=[c[0]-(c[0]-b[0])*k,c[1]-(c[1]-b[1])*k,w,w*m.h/m.w];cl();ap()};
+ const dist=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
+ svg.addEventListener('pointerdown',e=>{svg.setPointerCapture(e.pointerId);P.set(e.pointerId,[e.clientX,e.clientY]);if(P.size===1){moved=false;st={x:e.clientX,y:e.clientY,vb:[...g.vb]}}if(P.size===2){const[a,b]=[...P.values()];pin={d:dist(a,b),vb:[...g.vb],c:toS((a[0]+b[0])/2,(a[1]+b[1])/2)};moved=true}});
+ svg.addEventListener('pointermove',e=>{if(!P.has(e.pointerId))return;P.set(e.pointerId,[e.clientX,e.clientY]);const r=svg.getBoundingClientRect();
+  if(P.size===2&&pin){const[a,b]=[...P.values()],k=pin.d/Math.max(1,dist(a,b));g.vb=[...pin.vb];g.zoom(k,pin.c)}
+  else if(P.size===1&&st){const dx=e.clientX-st.x,dy=e.clientY-st.y;if(Math.abs(dx)+Math.abs(dy)>8)moved=true;if(moved){g.vb[0]=st.vb[0]-dx/r.width*g.vb[2];g.vb[1]=st.vb[1]-dy/r.height*g.vb[3];cl();ap()}}});
+ const up=e=>{if(!P.has(e.pointerId))return;P.delete(e.pointerId);if(P.size<2)pin=null;if(P.size===1){const[p]=[...P.values()];st={x:p[0],y:p[1],vb:[...g.vb]}}
+  if(P.size===0){if(!moved&&e.type==='pointerup'){const t=document.elementFromPoint(e.clientX,e.clientY);const hit=t&&t.closest&&t.closest('#map [data-iso],#map [data-x]');geoTap(hit,e.clientX,e.clientY)}st=null}};
+ svg.addEventListener('pointerup',up);svg.addEventListener('pointercancel',up)}
+A.mz=d=>G.geo&&G.geo.zoom&&G.geo.zoom(+d.z);
+function geoQ(it,l){const T=DATA.geo.tari[it.iso];
+ if(l==='tari')return `<span class="ph0">🗺️</span><div><div class="big">${esc(T.nume)}</div><small>Atinge țara pe hartă</small></div>`;
+ if(l==='capitale')return `${imgTag(T.capImg,'🏙️')}<div><div class="big">${esc(T.cap)}</div><small>E capitala cărei țări?</small></div>`;
+ if(l==='steaguri')return `<span class="flag">${flag(it.iso)}</span><div><div class="big">Al cui e steagul?</div><small>Atinge țara pe hartă</small></div>`;
+ return `${imgTag(it.img,(CAT[it.cat]||'⭐').split(' ')[0])}<div><small>${CAT[it.cat]||''}</small><div class="big">${esc(it.nume)}</div><small>Din ce țară e?</small></div>`}
+function geoShow(){const g=G.geo,it=g.items[g.i];$('#gq').className='card';$('#gq').innerHTML=`<div class="gprog"><span>${g.i+1} din ${g.items.length}</span><span>✅ ${g.ok}</span></div><div class="gq">${geoQ(it,g.l)}</div>`}
+function geoInfo(it,first){const g=G.geo,T=DATA.geo.tari[it.iso],f=flag(it.iso);let h;
+ if(g.l==='tari')h=`<span class="flag">${f}</span><div><div class="big">${esc(T.nume)}</div><small>Capitala: ${esc(T.cap)}</small><p>${esc(T.fapt)}</p></div>`;
+ else if(g.l==='capitale')h=`${imgTag(T.capImg,'🏙️')}<div><div class="big">${esc(T.cap)}</div><small>capitala țării ${f} ${esc(T.nume)}</small><p>${esc(T.cap_info)}</p></div>`;
+ else if(g.l==='steaguri')h=`<span class="flag">${f}</span><div><div class="big">${esc(T.nume)}</div><small>Capitala: ${esc(T.cap)}</small><p>${esc(T.fapt)}</p></div>`;
+ else h=`${imgTag(it.img,'⭐')}<div><small>${CAT[it.cat]||''} · ${f} ${esc(T.nume)}</small><div class="big">${esc(it.nume)}</div><p>${esc(it.info)}</p></div>`;
+ $('#gq').className='card ginfo'+(first?'':' miss');$('#gq').innerHTML=`<div class="gprog"><span>${first?'🎉 Corect din prima!':'👉 Aici era'}</span><span>✅ ${g.ok}</span></div><div class="gq" style="align-items:flex-start">${h}</div><button class="btn big" data-act="geoNext">${g.i+1<g.items.length?'Mai departe ›':'Vezi rezultatul 🏁'}</button>`;
+ $('#gq').scrollIntoView({behavior:'smooth',block:'nearest'})}
+function geoTap(el,x,y){const g=G.geo;if(!g||g.wait||!el)return;const it=g.items[g.i],iso=el.dataset.iso;
+ if(!iso){toast(`Asta e ${cname(el.dataset.x)} — nu e în joc aici`);return}
+ if(iso===it.iso){g.wait=true;const first=g.tries===0;mapCls(it.iso,'hint',false);mapCls(iso,'got',true);
+  if(first){g.ok++;const L=gst(g.c).learned,k=g.l+':'+it.key;if(!L[k]){L[k]=1;reward(1,{x,y})}else{burst(x,y,26);chime()}}else chime();
+  geoInfo(it,first)}
+ else{g.tries++;mapCls(iso,'wrong',true);setTimeout(()=>mapCls(iso,'wrong',false),700);beep(200,.12);toast(`Nu — asta e ${cname(iso)}`);
+  if(g.tries===2)mapCls(it.iso,'hint',true);
+  if(g.tries>=3){g.wait=true;mapCls(it.iso,'hint',false);mapCls(it.iso,'got',true);geoInfo(it,false)}}}
+A.geoNext=()=>{const g=G.geo;g.i++;g.tries=0;g.wait=false;if(g.i<g.items.length){geoShow();$('#gq').scrollIntoView({behavior:'smooth',block:'nearest'});return}
+ g.done=true;const s=gst(g.c),pass=g.ok>=Math.ceil(g.items.length*.7);
+ if(pass&&!s.pass[g.l]){s.pass[g.l]=today();g.newPass=true;g.unlock=(g.l==='tari'||g.l==='capitale')&&s.pass.tari&&s.pass.capitale;reward(5,mid(),true)}else{save();if(pass)fireworks()}
+ render();scrollTo(0,0)};
 
 /* ===== 5. BANCA ===== */
 const BT=[['panou','📊','Panou'],['deps','💰','Deponenți'],['invs','🤝','Investitori'],['loans','📝','Datornici'],['projects','🚀','Proiecte'],['lectii','📖','Lecții']];
@@ -656,8 +831,9 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=3;
+const APP_VER=4;
 function migrate(){let news=false;if(!S.challenges){S.challenges=defChallenges();news=!!S.profile.welcomed}if(!S.black)S.black=[];
+ if(!S.games){S.games={snake:{best:0},trivia:{},geo:{}};news=news||!!S.profile.welcomed}
  if((S.ver||1)<APP_VER){S.ver=APP_VER;save()}return news}
 
 /* ---------- pornire ---------- */
@@ -666,7 +842,7 @@ function migrate(){let news=false;if(!S.challenges){S.challenges=defChallenges()
  if(!S){try{S=JSON.parse(localStorage.getItem('ralph')||'null')}catch(e){}}
  if(!S)S=defState();
  const news=migrate();
- render();if(news)setTimeout(()=>{fireworks();toast('✨ Ralph.app s-a actualizat: ⚡ Provocări și ⛔ Lista neagră!')},700);if(UI.tab==='banca'&&UI.bank==='lectii')calc();
+ render();if(news)setTimeout(()=>{fireworks();toast('✨ Ralph.app s-a actualizat: 🎮 Jocuri noi — Snake, Trivia, Geografie!')},700);if(UI.tab==='banca'&&UI.bank==='lectii')calc();
  if(!S.profile.welcomed)setTimeout(welcome,400);
  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
  if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
