@@ -6,64 +6,68 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Misiunea Mea">
-<meta name="theme-color" content="#6c3cff">
+<meta name="apple-mobile-web-app-title" content="Ralph">
+<meta name="theme-color" content="#0a84ff">
 <meta name="color-scheme" content="light">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
-<title>Misiunea Mea</title>
+<title>Ralph.app</title>
 <style>
-:root{--bg:#f3f0ff;--ink:#2a2350;--mut:#7a7399;--acc:#ff7a45;--acc2:#ffb02e;--soft:#fff0e6;--sh:0 6px 18px rgba(60,40,140,.12);color-scheme:light}
+:root{--bg:#f2f6fa;--ink:#0b1b2b;--mut:#6b7a8c;--acc:#0a84ff;--acc2:#2ad4c9;--soft:#e6f4fb;--sh:0 1px 2px rgba(10,40,80,.06),0 4px 14px rgba(10,60,120,.08);color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-rounded,"SF Pro Rounded",-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:16px}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"SF Pro Text","SF Pro Display",system-ui,"Helvetica Neue",sans-serif;font-size:17px;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
 body{padding-bottom:calc(96px + env(safe-area-inset-bottom));-webkit-user-select:none;user-select:none}
 input,textarea,select{-webkit-user-select:text;user-select:text}
 button{font:inherit;color:inherit;cursor:pointer}
-#top{position:sticky;top:0;z-index:20;padding:calc(12px + env(safe-area-inset-top)) 16px 12px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:0 0 26px 26px;box-shadow:var(--sh);transition:background .3s}
+#top{position:sticky;top:0;z-index:20;padding:calc(10px + env(safe-area-inset-top)) 16px 12px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:0 0 22px 22px;box-shadow:0 6px 20px rgba(10,100,180,.22);transition:background .3s}
 .row{display:flex;align-items:center;gap:10px}.row.end{justify-content:flex-end;flex-wrap:wrap}.grow{flex:1;min-width:0}
 .me{width:48px;height:48px;border-radius:50%;border:3px solid rgba(255,255,255,.7);background:rgba(255,255,255,.25);font-size:28px;display:grid;place-items:center;padding:0}
-.hi{flex:1;min-width:0}.hi small{display:block;opacity:.9}.hi b{display:block;font-size:21px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.stars{border:0;background:rgba(255,255,255,.95);color:#e08a00;border-radius:99px;padding:8px 14px;font-size:18px;box-shadow:0 3px 10px rgba(0,0,0,.12)}
+.hi{flex:1;min-width:0}.hi small{display:block;opacity:.9;font-size:13px}.hi b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stars{border:0;background:rgba(255,255,255,.95);color:#e08a00;border-radius:99px;padding:7px 13px;font-size:17px;font-weight:600}
 .stars b{color:var(--ink)}
 .nxt{margin-top:10px}.nxt small{opacity:.95;font-size:12px}
-.bar{height:12px;background:#ece8ff;border-radius:99px;overflow:hidden;margin:6px 0}
+.bar{height:10px;background:#e3ecf4;border-radius:99px;overflow:hidden;margin:6px 0}
 .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width .5s}
 .bar.w{background:rgba(255,255,255,.3);height:9px}.bar.w>i{background:#fff}
 main{padding:14px 12px}
-.card{background:#fff;border-radius:20px;padding:14px;margin-bottom:12px;box-shadow:var(--sh)}
+.card{background:#fff;border-radius:16px;padding:14px 16px;margin-bottom:12px;box-shadow:var(--sh)}
 .chips{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{border:0;background:#fff;border-radius:99px;padding:9px 14px;white-space:nowrap;box-shadow:var(--sh);font-weight:600;color:var(--mut)}
+.chip{border:0;background:#fff;border-radius:99px;padding:8px 14px;white-space:nowrap;box-shadow:var(--sh);font-weight:600;font-size:15px;color:var(--mut)}
 .chip.on{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
 .chip small{opacity:.8;font-weight:500}
 .masonry{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
-.note{border-radius:18px;padding:12px;box-shadow:0 4px 12px rgba(60,40,140,.1);min-width:0}
+.note{border-radius:18px;padding:12px;box-shadow:0 4px 12px rgba(10,60,120,.1);min-width:0}
 .nh{display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}.nh b{flex:1;font-size:17px}
 .mini{border:0;background:rgba(0,0,0,.06);border-radius:10px;padding:2px 9px;font-size:16px}
 .it{display:flex;align-items:flex-start;gap:9px;padding:6px 0}
-.ck{flex:none;width:28px;height:28px;border-radius:50%;border:2.5px solid rgba(42,35,80,.35);display:grid;place-items:center;background:rgba(255,255,255,.7);font-size:16px;font-weight:800;padding:0;color:#fff}
-.it.done .ck{background:#22b07d;border-color:#22b07d;animation:pop .35s}
-.tx{flex:1;padding-top:4px;line-height:1.3;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+.ck{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid rgba(11,27,43,.28);display:grid;place-items:center;background:rgba(255,255,255,.7);font-size:16px;font-weight:800;padding:0;color:#fff}
+.it.done .ck{background:#34c759;border-color:#34c759;animation:pop .35s}
+.tx{flex:1;padding-top:4px;line-height:1.3;overflow-wrap:break-word}
 .it.done .tx{text-decoration:line-through;opacity:.5}
 .del{border:0;background:none;opacity:.3;font-size:13px;padding:6px 2px}
 .add input,.add2 input{width:100%;border:0;background:rgba(255,255,255,.6);border-radius:12px;padding:9px 10px;font:inherit;font-size:16px;margin-top:4px;outline:none}
 .add2{display:flex;gap:6px;align-items:center}.add2 .dt{width:130px;flex:none}
 @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
-.fab{position:fixed;right:18px;bottom:calc(92px + env(safe-area-inset-bottom));width:62px;height:62px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:34px;box-shadow:0 8px 22px rgba(60,40,140,.35);z-index:25;line-height:1}
+.fab{position:fixed;right:18px;bottom:calc(88px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:32px;font-weight:300;box-shadow:0 8px 20px rgba(10,110,200,.35);z-index:25;line-height:1}
 .fab:active{transform:scale(.92)}
-nav#tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:#fff;padding:6px 6px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(60,40,140,.12);border-radius:24px 24px 0 0;z-index:30}
-nav#tabs button{flex:1;border:0;background:none;font-size:11px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border-radius:16px}
-nav#tabs button .i{font-size:25px;transition:transform .2s}
-nav#tabs button.on{color:var(--ink);font-weight:700;background:var(--soft)}
+nav#tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(249,251,253,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);padding:5px 4px calc(4px + env(safe-area-inset-bottom));border-top:.5px solid rgba(0,0,0,.15);z-index:30}
+nav#tabs button{flex:1;border:0;background:none;font-size:10.5px;font-weight:500;color:#8a96a3;display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 0}
+nav#tabs button .i{font-size:24px;transition:transform .2s;filter:grayscale(1) opacity(.55)}
+nav#tabs button.on{color:var(--acc)}
+nav#tabs button.on .i{filter:none}
 nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 .empty{text-align:center;padding:34px 16px;color:var(--mut)}.empty .e{font-size:58px}.empty b{display:block;color:var(--ink);font-size:19px;margin:6px 0}
 .lead{background:var(--soft);border-radius:16px;padding:11px 13px;margin:0 0 12px;font-size:14px;line-height:1.4}
-.btn{border:0;border-radius:14px;padding:11px 16px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
-.btn.sm{padding:7px 12px;font-size:14px;border-radius:12px}
-.btn.big{width:100%;padding:14px;font-size:17px;margin-top:12px}
-.btn.ghost{background:var(--soft);color:var(--ink)}
-.btn.danger{background:#ffe6e6;color:#d32f2f;width:100%;margin-top:8px}
+.btn{border:0;border-radius:12px;padding:11px 16px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:600}
+.btn.sm{padding:7px 12px;font-size:15px;border-radius:10px}
+.btn.big{width:100%;padding:15px;font-size:17px;margin-top:14px;border-radius:14px}
+.btn.ghost{background:var(--soft);color:var(--acc)}
+.btn.danger{background:#fff0f0;color:#ff3b30;width:100%;margin-top:8px}
+.banner{display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#0a84ff,#2ad4c9);color:#fff;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.35}
+.banner .btn{background:#fff;color:#0a84ff;flex:none}
+.share-ic{display:inline-block;border:1.5px solid currentColor;border-radius:4px;padding:0 4px;font-size:12px}
 .btn:active{transform:scale(.96)}
 /* prieteni */
 .friend{padding:0;overflow:hidden}
@@ -88,8 +92,8 @@ details[open]>summary .chev{transform:rotate(90deg)}
 .badge{font-size:12px;font-weight:700;border-radius:99px;padding:4px 9px;background:#eee;white-space:nowrap}
 .gact .badge{background:#ffe9d6;color:#e8590c}.gdone .badge{background:#dff7ea;color:#17a673}.glock .badge{background:#eee;color:#777}
 .smart{display:flex;gap:6px;margin:12px 0 6px}
-.L{flex:1;border:2px dashed #cfc8ee;background:#faf9ff;border-radius:14px;padding:6px 0;display:flex;flex-direction:column;align-items:center}
-.L b{font-size:22px;color:#b5aedb}.L small{font-size:9.5px;color:var(--mut)}
+.L{flex:1;border:2px dashed #c9d6e2;background:#f5f9fc;border-radius:14px;padding:6px 0;display:flex;flex-direction:column;align-items:center}
+.L b{font-size:22px;color:#a9b8c6}.L small{font-size:9.5px;color:var(--mut)}
 .L.ok{border:2px solid #17a673;background:#e3f8ee;animation:pop .35s}.L.ok b{color:#17a673}
 .hint{font-size:13px;color:var(--mut);margin:6px 0 0}
 .due{font-size:13px;margin-top:8px;color:var(--mut)}
@@ -100,7 +104,7 @@ details[open]>summary .chev{transform:rotate(90deg)}
 /* vise */
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .dream{padding:0;overflow:hidden;margin:0}
-.ph{position:relative;aspect-ratio:1/1;background:linear-gradient(135deg,#efeaff,#ffe8f2);display:grid;place-items:center;text-align:center;font-size:34px;color:var(--mut)}
+.ph{position:relative;aspect-ratio:1/1;background:linear-gradient(135deg,#dff1fb,#d9f7f3);display:grid;place-items:center;text-align:center;font-size:34px;color:var(--mut)}
 .ph small{font-size:12px}
 .ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .ph .cam{position:absolute;right:8px;bottom:8px;font-style:normal;font-size:14px;background:rgba(255,255,255,.9);border-radius:99px;padding:3px 8px}
@@ -118,49 +122,50 @@ details[open]>summary .chev{transform:rotate(90deg)}
 .stack{display:flex;height:22px;border-radius:99px;overflow:hidden;margin:10px 0 8px;background:#eee}
 .stack i{display:block;height:100%}
 .leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;background:var(--c)}
-.tip{padding:9px 0;border-top:1px solid #f0edfa;font-size:14px;line-height:1.4}.tip:first-of-type{border-top:0}
+.tip{padding:9px 0;border-top:1px solid #edf2f6;font-size:14px;line-height:1.4}.tip:first-of-type{border-top:0}
 .golden{background:linear-gradient(135deg,#fff7d6,#ffe9b3);font-size:14px;line-height:1.45}
 .ent .ava{font-size:28px;width:46px;height:46px;border-radius:14px;background:var(--soft);display:grid;place-items:center;flex:none}
 .ent b{font-size:17px}.ent small{display:block;color:var(--mut);font-size:12.5px}
 .amt{font-size:17px;white-space:nowrap}
-.kv{display:grid;grid-template-columns:1fr auto;gap:5px 10px;font-size:13.5px;margin:12px 0 8px;background:#faf9ff;border-radius:12px;padding:10px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:5px 10px;font-size:13.5px;margin:12px 0 8px;background:#f5f9fc;border-radius:12px;padding:10px}
 .kv span{color:var(--mut)}.kv b{font-size:13.5px;text-align:right}
 .grade{font-weight:900;font-size:15px;border-radius:12px;padding:5px 10px;color:#fff;white-space:nowrap}
 .warn{background:#fff1e6;border-radius:10px;padding:8px 10px;font-size:13px;margin:6px 0}
 .okb{background:#e3f8ee;border-radius:10px;padding:8px 10px;font-size:13px;margin:6px 0}
-.sc{display:flex;gap:6px;font-size:11.5px;margin:6px 0}.sc div{flex:1;background:#faf9ff;border-radius:10px;padding:6px;text-align:center}.sc b{display:block;font-size:15px}
-.gl{margin-bottom:10px}.gl b{font-size:16px}.gl p{margin:4px 0 0;font-size:14px;line-height:1.45;color:#4a4370}
+.sc{display:flex;gap:6px;font-size:11.5px;margin:6px 0}.sc div{flex:1;background:#f5f9fc;border-radius:10px;padding:6px;text-align:center}.sc b{display:block;font-size:15px}
+.gl{margin-bottom:10px}.gl b{font-size:16px}.gl p{margin:4px 0 0;font-size:14px;line-height:1.45;color:#3c4a58}
 #calc .fl{margin-top:8px}
 .res{background:var(--soft);border-radius:14px;padding:12px;margin-top:12px;font-size:15px;line-height:1.6}
 .res b{font-size:20px}
 .medal{font-size:20px}
 /* sheet & forms */
 #sheet{position:fixed;inset:0;z-index:50;display:none}#sheet.on{display:block}
-.sheet-bg{position:absolute;inset:0;background:rgba(30,20,70,.5);animation:fade .2s}
-.sheet-card{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;border-radius:26px 26px 0 0;padding:16px 16px calc(24px + env(safe-area-inset-bottom));animation:up .28s cubic-bezier(.2,.9,.3,1.2)}
+.sheet-bg{position:absolute;inset:0;background:rgba(5,20,40,.5);animation:fade .2s}
+.sheet-card{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow:auto;-webkit-overflow-scrolling:touch;background:#f7f9fb;border-radius:14px 14px 0 0;padding:22px 16px calc(24px + env(safe-area-inset-bottom));animation:up .32s cubic-bezier(.2,.9,.25,1)}
+.sheet-card::before{content:"";position:absolute;top:7px;left:50%;width:36px;height:5px;margin-left:-18px;border-radius:3px;background:#c7ced6}
 @keyframes up{from{transform:translateY(100%)}to{transform:none}}@keyframes fade{from{opacity:0}}
 .sh-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.sh-head b{flex:1;font-size:20px}.sh-head>div{flex:1}
-.x{border:0;background:#f1eefb;border-radius:50%;width:36px;height:36px;font-size:16px;flex:none}
+.x{border:0;background:#e9eef3;border-radius:50%;width:36px;height:36px;font-size:16px;flex:none}
 .mut{color:var(--mut);font-size:14px}
 .fl{display:block;margin-top:12px}.fl-l{display:block;font-weight:700;font-size:14px;margin-bottom:5px}
-.fl input,.fl textarea,.fl select,#lt{width:100%;border:2px solid #ebe7fa;border-radius:14px;padding:11px 12px;font:inherit;font-size:16px;background:#faf9ff;outline:none;-webkit-appearance:none;appearance:none;color:var(--ink)}
+.fl input,.fl textarea,.fl select,#lt{width:100%;border:1px solid #dfe6ee;border-radius:12px;padding:12px;font:inherit;font-size:17px;background:#fff;outline:none;-webkit-appearance:none;appearance:none;color:var(--ink)}
 .fl input:focus,.fl textarea:focus,#lt:focus{border-color:var(--acc)}
 .fh{display:block;color:var(--mut);font-size:12.5px;margin-top:4px;line-height:1.35}
 .chk{display:flex;align-items:center;gap:8px;font-weight:600}.chk input{width:22px;height:22px;-webkit-appearance:auto;appearance:auto}
 .starsel button{border:0;background:none;font-size:34px;color:#ddd;padding:0 3px}.starsel button.on{color:#ffb800}
 .colsel,.emosel{display:flex;flex-wrap:wrap;gap:8px}
 .colsel button{width:38px;height:38px;border-radius:50%;border:2px solid #ddd}.colsel button.on{border:3px solid var(--ink);transform:scale(1.1)}
-.emosel button{width:46px;height:46px;border-radius:14px;border:2px solid transparent;background:#f6f4ff;font-size:26px;padding:0}.emosel button.on{border-color:var(--acc);background:var(--soft)}
+.emosel button{width:46px;height:46px;border-radius:14px;border:2px solid transparent;background:#f1f6fa;font-size:26px;padding:0}.emosel button.on{border-color:var(--acc);background:var(--soft)}
 .phsel{display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:var(--soft);font-size:36px;overflow:hidden;border:3px dashed var(--acc2);position:relative}
 .phsel img{width:100%;height:100%;object-fit:cover}
 .vh{position:absolute;opacity:0;width:1px;height:1px;overflow:hidden;pointer-events:none}
-#toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top));transform:translate(-50%,-150%);background:#2a2350;color:#fff;padding:11px 18px;border-radius:99px;font-weight:700;z-index:70;transition:transform .3s cubic-bezier(.2,.9,.3,1.3);box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:92vw;text-align:center;font-size:15px}
+#toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top));transform:translate(-50%,-150%);background:#0b1b2b;color:#fff;padding:11px 18px;border-radius:99px;font-weight:700;z-index:70;transition:transform .3s cubic-bezier(.2,.9,.3,1.3);box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:92vw;text-align:center;font-size:15px}
 #toast.on{transform:translate(-50%,0)}
 #fx{position:fixed;inset:0;pointer-events:none;z-index:60}
 .bdg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
-.bdg div{text-align:center;background:#faf9ff;border-radius:14px;padding:8px 2px;font-size:11px}
+.bdg div{text-align:center;background:#f5f9fc;border-radius:14px;padding:8px 2px;font-size:11px}
 .bdg div i{display:block;font-style:normal;font-size:30px}.bdg .lk{opacity:.35;filter:grayscale(1)}
-.rw{display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid #f0edfa}
+.rw{display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid #edf2f6}
 .trophy{text-align:center;padding:10px 0}.trophy .t{font-size:90px;animation:pop .6s}.trophy b{display:block;font-size:24px;margin:6px 0}
 .cert img{width:100%;border-radius:12px;box-shadow:var(--sh);-webkit-user-select:auto;user-select:auto;-webkit-touch-callout:default}
 .viewer img{width:100%;border-radius:14px}
@@ -192,27 +197,27 @@ const daysTo=s=>Math.round((D(s)-D(today()))/864e5);
 const daysLeft=s=>{const n=daysTo(s);return n>1?`· mai sunt ${n} zile`:n===1?'· mâine!':n===0?'· azi!':'· termenul a trecut'};
 const pick=a=>a[Math.floor(Math.random()*a.length)];
 const PRAISE=['Bravo!','Super!','Ești tare!','Campion!','Așa da!','Wow!','Excelent!','Ce frumos!','Fantastic!','Încă unul!'];
-const KEEP=['#fff4a3','#ffd6a5','#ffadad','#caffbf','#9bf6ff','#bdb2ff','#ffc6ff','#ffffff'];
+const KEEP=['#fff6bf','#d9f2e3','#ffe3e3','#cff7f0','#d7f0ff','#e4e9ff','#f1e4ff','#ffffff'];
 const AVATARS=['🦸','🦁','🐯','🦊','🐼','🐸','🐵','🦖','🐲','🚀','⚽','🎮','🤖','👾','🧙','🥷'];
 const FEMO=['🙂','😎','🤓','😄','🦁','🐶','⚽','🎮','🎸','🏀','🚲','🧩'];
 const BADGES=[[10,'🥉','Începător'],[25,'🥈','Harnic'],[50,'🥇','Campion'],[100,'🏆','Super-erou'],[200,'💎','Diamant'],[350,'👑','Regele planurilor'],[500,'🚀','Legendă']];
 
 /* ---------- memorie (IndexedDB, cu rezervă localStorage) ---------- */
 const DB={db:null,
- open(){return new Promise((res,rej)=>{try{const r=indexedDB.open('misiunea',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>{this.db=r.result;res()};r.onerror=()=>rej(r.error)}catch(e){rej(e)}})},
+ open(){return new Promise((res,rej)=>{try{const r=indexedDB.open('ralph',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>{this.db=r.result;res()};r.onerror=()=>rej(r.error)}catch(e){rej(e)}})},
  get(k){return new Promise((res,rej)=>{const q=this.db.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})},
  set(k,v){return new Promise((res,rej)=>{const t=this.db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}};
 let S,saveT;
-function save(){clearTimeout(saveT);saveT=setTimeout(async()=>{try{if(!DB.db)throw 0;await DB.set('state',JSON.parse(JSON.stringify(S)))}catch(e){try{localStorage.setItem('misiunea',JSON.stringify(S))}catch(e2){toast('⚠️ Memoria e plină — fă o copie de rezervă')}}},250)}
+function save(){clearTimeout(saveT);saveT=setTimeout(async()=>{try{if(!DB.db)throw 0;await DB.set('state',JSON.parse(JSON.stringify(S)))}catch(e){try{localStorage.setItem('ralph',JSON.stringify(S))}catch(e2){toast('⚠️ Memoria e plină — fă o copie de rezervă')}}},250)}
 
 function defState(){const d=today();return{v:1,
- profile:{name:'',avatar:'🦸',stars:0,spent:0,badges:[],sound:true},
+ profile:{name:'Ralph',avatar:'🦸',stars:0,spent:0,badges:[],sound:true,created:d,lastBackup:'',welcomed:false},
  rewards:[{id:uid(),name:'30 min de joc în plus',cost:30},{id:uid(),name:'Aleg eu filmul de seară',cost:50},{id:uid(),name:'Ieșire la înghețată',cost:80}],
  notes:[
-  {id:uid(),scope:'zi',title:'Azi 🌞',color:'#fff4a3',items:[{id:uid(),text:'Îmi fac patul',done:false},{id:uid(),text:'Temele la mate',done:false},{id:uid(),text:'30 de minute de citit',done:false}]},
-  {id:uid(),scope:'zi',title:'După școală',color:'#ffc6ff',items:[{id:uid(),text:'Antrenament',done:false},{id:uid(),text:'Pregătesc ghiozdanul',done:false}]},
-  {id:uid(),scope:'sapt',title:'Săptămâna asta',color:'#caffbf',items:[{id:uid(),text:'Sun bunicii',done:false},{id:uid(),text:'Fac ordine în cameră',done:false}]},
-  {id:uid(),scope:'luna',title:'Luna asta 🚀',color:'#9bf6ff',items:[{id:uid(),text:'Termin o carte întreagă',done:false}]}],
+  {id:uid(),scope:'zi',title:'Azi 🌞',color:'#fff6bf',items:[{id:uid(),text:'Îmi fac patul',done:false},{id:uid(),text:'Temele la mate',done:false},{id:uid(),text:'30 de minute de citit',done:false}]},
+  {id:uid(),scope:'zi',title:'După școală',color:'#f1e4ff',items:[{id:uid(),text:'Antrenament',done:false},{id:uid(),text:'Pregătesc ghiozdanul',done:false}]},
+  {id:uid(),scope:'sapt',title:'Săptămâna asta',color:'#cff7f0',items:[{id:uid(),text:'Sun bunicii',done:false},{id:uid(),text:'Fac ordine în cameră',done:false}]},
+  {id:uid(),scope:'luna',title:'Luna asta 🚀',color:'#d7f0ff',items:[{id:uid(),text:'Termin o carte întreagă',done:false}]}],
  friends:[],
  goals:[{id:uid(),title:'Să înot 25 m fără pauză',top:true,activated:false,done:false,steps:[],
   L:{S:{t:'Să învăț să înot craul',ok:true},M:{t:'',ok:false},A:{t:'',ok:false},R:{t:'',ok:false},T:{t:'',ok:false,date:''}}}],
@@ -225,7 +230,7 @@ function defState(){const d=today();return{v:1,
 
 /* ---------- artificii + sunet ---------- */
 const fx={c:null,x:null,p:[],run:false};
-const FXC=['#ff4f9a','#ffb02e','#22b07d','#1677ff','#7a5cff','#ff5a36','#ffd60a'];
+const FXC=['#0a84ff','#2ad4c9','#5ac8fa','#ffd60a','#34c759','#ff9f0a','#bf5af2'];
 function fxSize(){const r=devicePixelRatio||1;fx.c.width=innerWidth*r;fx.c.height=innerHeight*r;fx.x.setTransform(r,0,0,r,0,0)}
 function burst(x,y,n=36,pw=1){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=(2+Math.random()*6)*pw;fx.p.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-2.5*pw,l:0,L:55+Math.random()*40,c:FXC[i%FXC.length],r:3+Math.random()*4,sh:Math.random()<.14?'s':Math.random()<.5?'c':'r',rot:Math.random()*6})}
  if(!fx.run){fx.run=true;requestAnimationFrame(fxLoop)}}
@@ -279,13 +284,13 @@ const itemHTML=(x,act,attrs)=>`<div class="it ${x.done?'done':''}"><button class
 
 /* ---------- capitole ---------- */
 const TABS=[
- {id:'agenda',ico:'📅',name:'Agenda',title:'Agenda mea',c1:'#ff7a45',c2:'#ffb02e',soft:'#fff0e6'},
- {id:'prieteni',ico:'🤝',name:'Prieteni',title:'Prietenii mei',c1:'#ff4f9a',c2:'#ff8ac0',soft:'#ffe8f2'},
- {id:'smart',ico:'🎯',name:'Obiective',title:'Obiective SMART',c1:'#17a673',c2:'#5fd39c',soft:'#e3f8ee'},
- {id:'vise',ico:'🌈',name:'Vise',title:'Vise și dorințe',c1:'#7a5cff',c2:'#b48cff',soft:'#efeaff'},
- {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#1677ff',c2:'#38c3ff',soft:'#e6f2ff'}];
+ {id:'agenda',ico:'📅',name:'Agenda',title:'Agenda mea',c1:'#0a84ff',c2:'#2ad4c9',soft:'#e3f3fb'},
+ {id:'prieteni',ico:'🤝',name:'Prieteni',title:'Prietenii mei',c1:'#1e6bff',c2:'#5ac8fa',soft:'#e6f0ff'},
+ {id:'smart',ico:'🎯',name:'Obiective',title:'Obiective SMART',c1:'#0898b8',c2:'#30d5b0',soft:'#e0f6f2'},
+ {id:'vise',ico:'🌈',name:'Vise',title:'Vise și dorințe',c1:'#3d5afe',c2:'#2ac8e6',soft:'#e8edff'},
+ {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#0057d9',c2:'#00c2d1',soft:'#e1f1fb'}];
 let UI={tab:'agenda',scope:'zi',bank:'panou',open:new Set()};
-try{const t=localStorage.getItem('misiunea_tab');if(TABS.some(x=>x.id===t))UI.tab=t}catch(e){}
+try{const t=localStorage.getItem('ralph_tab');if(TABS.some(x=>x.id===t))UI.tab=t}catch(e){}
 const VIEWS={},A={},FORMS={};
 const bankName=()=>S.bank.name||('Banca lui '+(S.profile.name||'Campion'));
 
@@ -293,7 +298,7 @@ function renderTop(){const t=TABS.find(x=>x.id===UI.tab),p=S.profile;const nb=BA
  $('#top').innerHTML=`<div class="row"><button class="me" data-act="settings">${esc(p.avatar)}</button><div class="hi"><small>Salut, ${esc(p.name||'campionule')}! ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
  <div class="nxt">${nb?`<div class="bar w"><i style="width:${(p.stars-lo)/(nb[0]-lo)*100}%"></i></div><small>Următorul premiu: ${nb[1]} ${nb[2]} la ${nb[0]} ⭐</small>`:'<small>Ai toate premiile! Ești o legendă 🚀</small>'}</div>`}
 function render(){const t=TABS.find(x=>x.id===UI.tab);const st=document.documentElement.style;st.setProperty('--acc',t.c1);st.setProperty('--acc2',t.c2);st.setProperty('--soft',t.soft);
- renderTop();$('#main').innerHTML=VIEWS[UI.tab]();
+ renderTop();$('#main').innerHTML=banners()+VIEWS[UI.tab]();
  $('#tabs').innerHTML=TABS.map(x=>`<button class="${x.id===UI.tab?'on':''}" data-act="tab" data-k="${x.id}"><span class="i">${x.ico}</span>${x.name}</button>`).join('')}
 
 /* ===== 1. AGENDA ===== */
@@ -349,7 +354,7 @@ function goalHTML(g){const ok=okCount(g),act=ok===5,st=g.steps||[],sd=st.filter(
  <div class="smart">${SM.map(([k,n])=>`<button class="L ${g.L[k].ok?'ok':''}" data-act="letter" data-id="${g.id}" data-k="${k}"><b>${k}</b><small>${n}</small></button>`).join('')}</div>
  ${act?`<div class="row"><span class="sec-t grow">👣 Pașii mei</span><small>${sd}/${st.length}</small></div><div class="bar"><i style="width:${st.length?sd/st.length*100:0}%"></i></div>
   ${st.map(s=>itemHTML(s,'tStep',`data-g="${g.id}"`)).join('')}
-  ${g.done?'':`<form class="add" data-form="addStep" data-id="${g.id}"><input name="t" placeholder="＋ pas nou (ex: prima lecție de înot)" autocomplete="off" style="background:#f6f4ff"></form><button class="btn big" data-act="goalDone" data-id="${g.id}">🏁 Am atins obiectivul!</button>`}`
+  ${g.done?'':`<form class="add" data-form="addStep" data-id="${g.id}"><input name="t" placeholder="＋ pas nou (ex: prima lecție de înot)" autocomplete="off" style="background:#f1f6fa"></form><button class="btn big" data-act="goalDone" data-id="${g.id}">🏁 Am atins obiectivul!</button>`}`
   :`<p class="hint">🔒 Mai ai ${5-ok} ${5-ok===1?'literă':'litere'} de bifat ca să pornești obiectivul.</p>`}
  ${g.L.T.date?`<div class="due">⏰ Termen: ${fmtD(g.L.T.date)} ${g.done?'':daysLeft(g.L.T.date)}</div>`:''}</div>`}
 A.addGoal=()=>formSheet({title:'🎯 Obiectiv nou',fields:[{k:'title',l:'Ce vreau să reușesc?',ph:'ex: Să citesc 10 cărți',req:1},{k:'top',l:'⭐ Îl pun în Top obiective',t:'check'}],onSave:v=>{if(v.top&&S.goals.filter(g=>g.top&&!g.done).length>=3){v.top=false;toast('În Top încap doar 3 obiective')}S.goals.unshift({id:uid(),title:v.title,top:v.top,activated:false,done:false,steps:[],L:{S:{t:v.title,ok:false},M:{t:'',ok:false},A:{t:'',ok:false},R:{t:'',ok:false},T:{t:'',ok:false,date:''}}})}});
@@ -417,7 +422,7 @@ function pc(p,k){const inv=+p.invest||0,ret=+p.ret||0,m=Math.max(1,+p.months||1)
 VIEWS.banca=()=>{const k=bk();return `<div class="chips">${BT.map(([id,ic,n])=>`<button class="chip ${UI.bank===id?'on':''}" data-act="bankTab" data-k="${id}">${ic} ${n}</button>`).join('')}</div>${BV[UI.bank](k)}`};
 const BV={};
 const tile=(ic,l,v,s,act)=>`<button class="tile" ${act?`data-act="${act}"`:''}><span class="ic">${ic}</span><small>${l}</small><b>${v}</b><span class="s">${s}</span></button>`;
-BV.panou=k=>{const segs=[['#22b07d','Disponibili',Math.max(0,k.cash)],['#ff7a45','La datornici',k.owed],['#7a5cff','În proiecte',k.projAct]];const T=segs.reduce((s,x)=>s+x[2],0)||1;
+BV.panou=k=>{const segs=[['#2ad4c9','Disponibili',Math.max(0,k.cash)],['#5ac8fa','La datornici',k.owed],['#3d5afe','În proiecte',k.projAct]];const T=segs.reduce((s,x)=>s+x[2],0)||1;
  return `<div class="tiles">
  ${tile('💼','Capital strâns',lei(k.cap),`${lei(k.dep)} depozite + ${lei(k.inv)} investitori`)}
  ${tile('💵','Bani disponibili',lei(k.cash),k.cash<0?'⚠️ ai dat mai mult decât ai!':'gata de folosit')}
@@ -511,18 +516,18 @@ A.lesson=()=>{UI.bank='lectii';render();calc()};
 /* certificate (imagine de salvat sau trimis) */
 function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
 function wrap(x,t,cx,y,w,lh){const ws=t.split(' ');let l='';for(const s of ws){const tt=l?l+' '+s:s;if(x.measureText(tt).width>w&&l){x.fillText(l,cx,y);l=s;y+=lh}else l=tt}x.fillText(l,cx,y);return y}
-function certImg(o){const W=1400,H=1000,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d'),F='ui-rounded,-apple-system,"Helvetica Neue",sans-serif';
- let g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#fffaf0');g.addColorStop(1,'#f1ebff');x.fillStyle=g;x.fillRect(0,0,W,H);
- g=x.createLinearGradient(0,0,W,0);g.addColorStop(0,'#1677ff');g.addColorStop(.5,'#7a5cff');g.addColorStop(1,'#ff4f9a');x.lineWidth=20;x.strokeStyle=g;rr(x,28,28,W-56,H-56,40);x.stroke();
+function certImg(o){const W=1400,H=1000,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d'),F='-apple-system,"Helvetica Neue",sans-serif';
+ let g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#f7fbff');g.addColorStop(1,'#e3f7f4');x.fillStyle=g;x.fillRect(0,0,W,H);
+ g=x.createLinearGradient(0,0,W,0);g.addColorStop(0,'#0a84ff');g.addColorStop(.5,'#2ad4c9');g.addColorStop(1,'#5ac8fa');x.lineWidth=20;x.strokeStyle=g;rr(x,28,28,W-56,H-56,40);x.stroke();
  x.lineWidth=3;x.strokeStyle='#d4af37';rr(x,62,62,W-124,H-124,26);x.stroke();
- x.textAlign='center';x.fillStyle='#2a2350';x.font=`bold 40px ${F}`;x.fillText('🏦 '+bankName(),W/2,140);
+ x.textAlign='center';x.fillStyle='#0b1b2b';x.font=`bold 40px ${F}`;x.fillText('🏦 '+bankName(),W/2,140);
  x.fillStyle='#1d3d8f';x.font='bold 74px Georgia,serif';x.fillText(o.title,W/2,235);
- x.fillStyle='#7a7399';x.font=`26px ${F}`;x.fillText(`Nr. ${o.nr} · emis la ${fmtD(today())}`,W/2,282);
- x.fillStyle='#2a2350';x.font='italic 32px Georgia,serif';let y=wrap(x,o.text,W/2,345,W-280,44)+60;
- x.font=`26px ${F}`;const colW=(W-300)/2;o.rows.forEach((r,i)=>{const cx=150+(i%2)*(colW+0),yy=y+Math.floor(i/2)*54;x.textAlign='left';x.fillStyle='#7a7399';x.fillText(r[0],cx,yy);x.textAlign='right';x.fillStyle='#2a2350';x.font=`bold 27px ${F}`;x.fillText(r[1],cx+colW-30,yy);x.font=`26px ${F}`;x.strokeStyle='#e6e0f7';x.lineWidth=1.5;x.beginPath();x.moveTo(cx,yy+14);x.lineTo(cx+colW-30,yy+14);x.stroke()});
+ x.fillStyle='#6b7a8c';x.font=`26px ${F}`;x.fillText(`Nr. ${o.nr} · emis la ${fmtD(today())}`,W/2,282);
+ x.fillStyle='#0b1b2b';x.font='italic 32px Georgia,serif';let y=wrap(x,o.text,W/2,345,W-280,44)+60;
+ x.font=`26px ${F}`;const colW=(W-300)/2;o.rows.forEach((r,i)=>{const cx=150+(i%2)*(colW+0),yy=y+Math.floor(i/2)*54;x.textAlign='left';x.fillStyle='#6b7a8c';x.fillText(r[0],cx,yy);x.textAlign='right';x.fillStyle='#0b1b2b';x.font=`bold 27px ${F}`;x.fillText(r[1],cx+colW-30,yy);x.font=`26px ${F}`;x.strokeStyle='#e6e0f7';x.lineWidth=1.5;x.beginPath();x.moveTo(cx,yy+14);x.lineTo(cx+colW-30,yy+14);x.stroke()});
  const sx=W-215,sy=H-205;g=x.createRadialGradient(sx,sy,10,sx,sy,92);g.addColorStop(0,'#ffe58a');g.addColorStop(1,'#d4a017');x.fillStyle=g;x.beginPath();x.arc(sx,sy,90,0,7);x.fill();x.strokeStyle='#fff';x.lineWidth=4;x.beginPath();x.arc(sx,sy,76,0,7);x.stroke();
  x.textAlign='center';x.fillStyle='#6b4a00';x.font=`bold 24px ${F}`;x.fillText('APROBAT',sx,sy-18);x.font=`bold 46px ${F}`;x.fillText(o.seal,sx,sy+34);
- x.textAlign='left';x.fillStyle='#2a2350';x.font=`24px ${F}`;[[150,'Bancher: '+(S.profile.name||'')],[560,o.sign]].forEach(([sx2,t])=>{x.strokeStyle='#2a2350';x.lineWidth=2;x.beginPath();x.moveTo(sx2,H-140);x.lineTo(sx2+330,H-140);x.stroke();x.fillText(t,sx2,H-105)});
+ x.textAlign='left';x.fillStyle='#0b1b2b';x.font=`24px ${F}`;[[150,'Bancher: '+(S.profile.name||'')],[560,o.sign]].forEach(([sx2,t])=>{x.strokeStyle='#0b1b2b';x.lineWidth=2;x.beginPath();x.moveTo(sx2,H-140);x.lineTo(sx2+330,H-140);x.stroke();x.fillText(t,sx2,H-105)});
  return c.toDataURL('image/png')}
 function showCert(o,fname){const u=certImg(o);sheet(`<div class="sh-head"><b>📜 ${o.title.charAt(0)+o.title.slice(1).toLowerCase()}</b><button class="x" data-act="closeSheet">✕</button></div><div class="cert"><img src="${u}"></div><p class="mut">Ține apăsat pe imagine ca s-o salvezi în Poze, sau trimite-o direct:</p><button class="btn big" id="shc">📤 Trimite / Salvează</button>`,o2=>{o2.querySelector('#shc').onclick=()=>shareFile(u,fname,'image/png')});fireworks()}
 async function shareFile(url,name,type){try{const bl=await(await fetch(url)).blob();const f=new File([bl],name,{type});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return}const a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=name;document.body.appendChild(a);a.click();a.remove()}catch(e){}}
@@ -539,21 +544,51 @@ A.prizes=()=>{const p=S.profile,av=p.stars-(p.spent||0);sheet(`<div class="sh-he
  <div class="bdg">${BADGES.map(b=>`<div class="${p.stars>=b[0]?'':'lk'}"><i>${b[1]}</i>${b[2]}<br><small>${b[0]} ⭐</small></div>`).join('')}</div>
  <div class="h2" style="margin-left:0">🎁 Magazinul de recompense <small class="mut">(poți cheltui ${av} ⭐)</small></div>
  ${S.rewards.map(r=>`<div class="rw"><span class="grow">${esc(r.name)}</span><b>${r.cost} ⭐</b><button class="btn sm" data-act="redeem" data-id="${r.id}" ${av<r.cost?'disabled style="opacity:.4"':''}>Iau!</button><button class="del" data-act="delRw" data-id="${r.id}">✕</button></div>`).join('')}
- <form class="add2" data-form="addRw" style="margin-top:10px"><input name="t" placeholder="recompensă nouă" style="background:#f6f4ff" autocomplete="off"><input name="c" inputmode="numeric" placeholder="⭐" style="width:64px;background:#f6f4ff"><button class="btn sm">＋</button></form>
+ <form class="add2" data-form="addRw" style="margin-top:10px"><input name="t" placeholder="recompensă nouă" style="background:#f1f6fa" autocomplete="off"><input name="c" inputmode="numeric" placeholder="⭐" style="width:64px;background:#f1f6fa"><button class="btn sm">＋</button></form>
  <p class="hint">Recompensele le stabilești împreună cu părinții. 😉</p>`)};
 A.redeem=d=>{const r=S.rewards.find(x=>x.id===d.id),p=S.profile;if(p.stars-(p.spent||0)<r.cost)return;if(!confirm(`Folosești ${r.cost} ⭐ pentru „${r.name}”?`))return;p.spent=(p.spent||0)+r.cost;save();fireworks();toast('🎁 Bucură-te de: '+r.name+'!');A.prizes()};
 A.delRw=d=>{S.rewards=S.rewards.filter(x=>x.id!==d.id);save();A.prizes()};
 FORMS.addRw=f=>{const t=f.t.value.trim(),c=Math.round(num(f.c.value));if(!t||!c){toast('Scrie recompensa și câte ⭐ costă');return}S.rewards.push({id:uid(),name:t,cost:c});save();A.prizes()};
+/* copii de rezervă: .json (copie completă, cu poze — se poate încărca înapoi) și .csv (tabel pentru Excel/Numbers) */
+const sinceBackup=()=>{const b=S.profile.lastBackup||S.profile.created;return b?-daysTo(b):0};
+async function shareBlob(bl,name){const f=new File([bl],name,{type:bl.type});
+ if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:name});return true}catch(e){return e.name!=='AbortError'?dl():false}}
+ return dl();function dl(){const a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=name;document.body.appendChild(a);a.click();a.remove();return true}}
+async function backupJSON(){if(await shareBlob(new Blob([JSON.stringify(S)],{type:'application/json'}),'ralph-copie-'+today()+'.json')){S.profile.lastBackup=today();save();render();toast('💾 Copia e salvată!')}}
+function csv(){const R=[['Capitol','Tip','Nume / Titlu','Detalii','Sumă (lei)','Dată','Stare']],k=bk(),dn=x=>x.done?'bifat':'de făcut';
+ S.notes.forEach(n=>n.items.forEach(i=>R.push(['Agenda',{zi:'Azi',sapt:'Săptămâna',luna:'Luna'}[n.scope],n.title,i.text,'','',dn(i)])));
+ S.friends.forEach(f=>{R.push(['Prieteni','Prieten',f.name,f.likes||'','','','']);(f.acts||[]).forEach(a=>R.push(['Prieteni','Activitate',f.name,a.text,'',a.date||'',dn(a)]));FSEC.forEach(([kk,,lab])=>f[kk]&&R.push(['Prieteni',lab.replace('{n}',f.name),f.name,f[kk],'','','']))});
+ S.goals.forEach(g=>{R.push(['Obiective','Obiectiv',g.title,SM.map(([l])=>l+': '+(g.L[l].t||'—')).join(' | '),'',g.L.T.date||'',g.done?'atins':okCount(g)===5?'activ':'blocat '+okCount(g)+'/5']);(g.steps||[]).forEach(s=>R.push(['Obiective','Pas',g.title,s.text,'','',dn(s)]))});
+ S.dreams.forEach(v=>R.push(['Vise','Vis',v.title,v.why||'',v.cost?r2(v.saved)+' din '+r2(v.cost):'','',v.done?'împlinit':'în așteptare']));
+ S.bank.deps.forEach(d=>R.push(['Banca','Deponent',d.name,(d.type==='unic'?'o dată':d.amount+' lei '+FREQ[d.freq])+` · dobândă ${d.rate}% · ${d.months||'—'} luni`,r2(depBal(d)),d.start,'']));
+ S.bank.invs.forEach(x=>R.push(['Banca','Investitor',x.name,`câștig promis ${x.exp}%/an`,r2(x.amount),x.date,'']));
+ S.bank.loans.forEach(l=>{const s=score(l);R.push(['Banca','Datornic',l.name,`${l.purpose||''} · dobândă ${l.rate}% · ${l.months} luni · scor ${s.gr[0]} ${s.t}/100 · garanție: ${l.guar||'—'}`,r2(l.amount),l.start,`returnat ${r2(loanPaid(l))} din ${r2(loanTot(l))}`])});
+ S.bank.projects.forEach(p=>{const c=pc(p,k);R.push(['Banca','Proiect',p.name,`investiție ${p.invest} → ${p.ret} în ${p.months} luni · ROI/an ${r2(c.an)}%`,r2(p.invest),p.fdate||'',p.status])});
+ R.push(['Premii','Stele',S.profile.name,'',S.profile.stars,today(),'']);
+ return '﻿'+R.map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(';')).join('\r\n')}
+A.backup=()=>backupJSON();
+A.hideInstall=()=>{UI.noInstall=true;render()};
+const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent),standalone=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
+function banners(){let h='';
+ if(isIOS&&!standalone&&!UI.noInstall)h+=/CriOS|FxiOS|EdgiOS/.test(navigator.userAgent)?`<div class="banner">🧭<div class="grow"><b>Deschide linkul în Safari</b><br>De acolo se poate pune Ralph.app pe ecranul principal.</div></div>`
+  :`<div class="banner">📲<div class="grow"><b>Instalează Ralph.app</b><br>Apasă <span class="share-ic">⬆︎</span> <b>Distribuie</b> (jos) → <b>Adaugă pe ecranul principal</b></div><button class="x" data-act="hideInstall" style="background:rgba(255,255,255,.25);color:#fff">✕</button></div>`;
+ if(sinceBackup()>=7)h+=`<div class="banner">💾<div class="grow"><b>E timpul pentru o copie</b><br>${S.profile.lastBackup?'Ultima copie: acum '+sinceBackup()+' zile':'Nu ai salvat încă nicio copie'}</div><button class="btn sm" data-act="backup">Salvează</button></div>`;
+ return h}
 A.settings=()=>{const p=S.profile;formSheet({title:'⚙️ Profilul meu',fields:[{k:'name',l:'Numele meu',req:1},{k:'avatar',l:'Avatarul meu',t:'emoji',o:AVATARS},{k:'sound',l:'🔊 Sunete la bifat',t:'check'}],data:p,onSave:v=>Object.assign(p,v),
- top:''});const fm=$('#fs');fm.insertAdjacentHTML('beforeend',`<div class="h2" style="margin-left:0">💾 Copie de rezervă</div><p class="hint">Datele stau doar pe acest telefon. Fă din când în când o copie (ex. în Fișiere sau iCloud).</p><div class="row"><button type="button" class="btn ghost grow" id="exp">📤 Salvez o copie</button><label class="btn ghost grow" style="text-align:center">📥 Încarc o copie<input type="file" accept=".json,application/json" class="vh" id="imp"></label></div>
- <div class="h2" style="margin-left:0">📲 Pune aplicația pe ecran</div><p class="hint">În Safari: apasă butonul <b>Distribuie</b> (pătratul cu săgeată) → <b>Adaugă pe ecranul principal</b>.</p><button type="button" class="btn danger" id="rst">♻️ Șterge tot și o iau de la capăt</button>`);
- $('#exp').onclick=()=>shareFile('data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(S)),'misiunea-copie-'+today()+'.json','application/json');
+ top:''});const fm=$('#fs');fm.insertAdjacentHTML('beforeend',`<div class="h2" style="margin-left:0">💾 Datele mele</div><p class="hint">Datele stau pe acest telefon și nu se pierd cât timp Ralph.app e pe ecranul principal. Se pierd doar dacă ștergi aplicația sau schimbi telefonul — de aceea, o dată pe săptămână, salvează o copie: în <b>Fișiere → iCloud Drive</b> sau trimite-o pe e-mail/WhatsApp unui părinte.${p.lastBackup?'<br>Ultima copie: <b>'+fmtD(p.lastBackup)+'</b>':''}</p>
+ <button type="button" class="btn big" id="exp" style="margin-top:6px">💾 Salvez copia completă (cu poze)</button>
+ <button type="button" class="btn ghost big" id="csv" style="margin-top:8px">📊 Trimit tabel pentru Excel (.csv)</button>
+ <label class="btn ghost big" style="display:block;text-align:center;margin-top:8px">📥 Încarc o copie salvată<input type="file" accept=".json,application/json" class="vh" id="imp"></label>
+ <p class="hint">Copia completă (.json) se poate încărca înapoi pe orice telefon. Tabelul (.csv) e doar pentru citit, fără poze.</p>
+ <div class="h2" style="margin-left:0">📲 Pune aplicația pe ecran</div><p class="hint">În Safari: apasă <span class="share-ic">⬆︎</span> <b>Distribuie</b> → <b>Adaugă pe ecranul principal</b>.</p><button type="button" class="btn danger" id="rst">♻️ Șterge tot și o iau de la capăt</button>`);
+ $('#exp').onclick=()=>{closeSheet();backupJSON()};
+ $('#csv').onclick=()=>shareBlob(new Blob([csv()],{type:'text/csv'}),'ralph-tabel-'+today()+'.csv');
  $('#imp').onchange=async e=>{try{const o=JSON.parse(await e.target.files[0].text());if(!o.profile||!o.notes)throw 0;if(!confirm('Înlocuiesc datele de acum cu copia?'))return;S=o;save();closeSheet();render();toast('✅ Copia a fost încărcată')}catch(er){toast('Fișierul nu e o copie validă')}};
  $('#rst').onclick=()=>{if(confirm('Sigur ștergi TOT?')&&confirm('Chiar sigur? Nu se mai poate recupera.')){S=defState();save();closeSheet();render();welcome()}}};
-function welcome(){formSheet({title:'👋 Bun venit în Misiunea Mea!',top:'<p class="mut">Aici îți plănuiești zilele, prieteniile, obiectivele, visele și chiar propria bancă. Pentru fiecare lucru bifat primești ⭐ și artificii!</p>',fields:[{k:'name',l:'Cum te cheamă?',req:1},{k:'avatar',l:'Alege-ți avatarul',t:'emoji',o:AVATARS}],data:S.profile,onSave:v=>{Object.assign(S.profile,v);setTimeout(()=>{fireworks();toast('Hai să începem, '+v.name+'! 🚀')},300)}})}
+function welcome(){formSheet({title:'👋 Bun venit în Ralph.app!',top:'<p class="mut">Aici îți plănuiești zilele, prieteniile, obiectivele, visele și chiar propria bancă. Pentru fiecare lucru bifat primești ⭐ și artificii!</p>',fields:[{k:'name',l:'Cum te cheamă?',req:1},{k:'avatar',l:'Alege-ți avatarul',t:'emoji',o:AVATARS}],data:S.profile,onSave:v=>{Object.assign(S.profile,v,{welcomed:true});setTimeout(()=>{fireworks();toast('Hai să începem, '+v.name+'! 🚀')},300)}})}
 
 /* ---------- evenimente ---------- */
-A.tab=d=>{UI.tab=d.k;try{localStorage.setItem('misiunea_tab',d.k)}catch(e){}render();scrollTo(0,0);if(d.k==='banca'&&UI.bank==='lectii')calc()};
+A.tab=d=>{UI.tab=d.k;try{localStorage.setItem('ralph_tab',d.k)}catch(e){}render();scrollTo(0,0);if(d.k==='banca'&&UI.bank==='lectii')calc()};
 A.closeSheet=()=>closeSheet();
 A.starSel=(d,el)=>{const p=el.parentNode;p.dataset.v=d.i;[...p.children].forEach((b,i)=>b.classList.toggle('on',i<d.i))};
 A.optSel=(d,el)=>{const p=el.parentNode;p.dataset.v=d.v;[...p.children].forEach(b=>b.classList.toggle('on',b===el))};
@@ -567,10 +602,10 @@ addEventListener('resize',fxSize);
 /* ---------- pornire ---------- */
 (async()=>{fx.c=$('#fx');fx.x=fx.c.getContext('2d');fxSize();
  try{await DB.open();S=await DB.get('state')}catch(e){}
- if(!S){try{S=JSON.parse(localStorage.getItem('misiunea')||'null')}catch(e){}}
+ if(!S){try{S=JSON.parse(localStorage.getItem('ralph')||'null')}catch(e){}}
  if(!S)S=defState();
  render();if(UI.tab==='banca'&&UI.bank==='lectii')calc();
- if(!S.profile.name)setTimeout(welcome,400);
+ if(!S.profile.welcomed)setTimeout(welcome,400);
  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
  if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 })();
