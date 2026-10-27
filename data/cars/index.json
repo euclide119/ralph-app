@@ -8,6 +8,13 @@
    "n": 100
   },
   {
+   "id": "clasice",
+   "titlu": "Mașini clasice",
+   "emoji": "🏆",
+   "file": "cars/clasice.json",
+   "n": 100
+  },
+  {
    "id": "2025",
    "titlu": "Mașinile din 2025",
    "emoji": "⚡"
@@ -16,11 +23,6 @@
    "id": "2024",
    "titlu": "Mașinile din 2024",
    "emoji": "🏁"
-  },
-  {
-   "id": "clasice",
-   "titlu": "Mașini clasice",
-   "emoji": "🏆"
   }
  ]
 }

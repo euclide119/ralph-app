@@ -635,7 +635,7 @@ const CARN=19,CARPASS=13;
 function cst(m){S.games.cars=S.games.cars||{};return S.games.cars[m]||(S.games.cars[m]={pass:{},best:{},learned:{}})}
 const carUnl=(m,l)=>l==='marca'||(l==='model'&&!!cst(m).pass.marca)||(l==='tehnic'&&!!cst(m).pass.model);
 const carName=c=>c.marca+' '+c.model;
-const nfmt={cp:v=>v+' CP',acc:v=>String(v).replace('.',',')+' s',vmax:v=>v+' km/h',autonomie:v=>v+' km'};
+const nfmt={cp:v=>v+' CP',acc:v=>String(v).replace('.',',')+' s',vmax:v=>v+' km/h',autonomie:v=>v+' km',an:v=>'în '+v};
 function carPool(m,k){const L=DATA['cars_'+m]||[];return k==='toate'?L:L.filter(c=>c.continent===k)}
 function carsView(){if(!need('cars','data/cars/index.json'))return loading('🏎️ Cars');const s=UI.sub,M=DATA.cars.module;
  if(!s)return `${backBtn('🏎️ Cars')}<p class="lead">🏎️ Alege colecția. Începi cu mașinile din 2026; urmează 2025, 2024 și mașinile clasice.</p>
@@ -652,22 +652,22 @@ function carsView(){if(!need('cars','data/cars/index.json'))return loading('🏎
  return `${backBtn(lv[1]+' '+lv[2])}<div class="card"><div class="gprog"><span>${g.i+1} din ${g.q.length}</span><span>✅ ${g.ok}</span></div><div class="bar"><i style="width:${g.i/g.q.length*100}%"></i></div>
  <div class="carph">${c.img?`<img src="${c.img}" alt="">`:'<span>🚗</span>'}</div>
  <div class="tq">${q.txt}</div>${q.o.map((o,i)=>`<button class="ans ${a==null?'':i===q.c?'ok':i===a?'bad':''}" data-act="carAns" data-i="${i}" ${a!=null?'disabled':''}>${a!=null&&i===q.c?'✅ ':a===i?'❌ ':''}${esc(o)}</button>`).join('')}
- ${a!=null?`<div class="expl">${a===q.c?'🎉 <b>Corect!</b> ':'💡 '}<b>${esc(carName(c))}</b> · ${flag(c.tara)} · ${c.cp?c.cp+' CP':'putere nedezvăluită'} · 0–100 în ${nfmt.acc(c.acc)} · ${c.vmax} km/h<br>${esc(c.curiozitate||'')}</div><button class="btn big" data-act="carNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi recenzia 🏁'}</button>`:''}</div>`}
+ ${a!=null?`<div class="expl">${a===q.c?'🎉 <b>Corect!</b> ':'💡 '}<b>${esc(carName(c))}</b> · ${flag(c.tara)} · ${[c.status==='istoric'?'din '+c.an:'',c.cp?c.cp+' CP':'putere nedezvăluită',c.acc?'0–100 în '+nfmt.acc(c.acc):'',c.vmax?c.vmax+' km/h':''].filter(Boolean).join(' · ')}<br>${esc(c.curiozitate||'')}</div><button class="btn big" data-act="carNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi recenzia 🏁'}</button>`:''}</div>`}
 A.carMod=d=>{UI.sub={m:d.k};render();scrollTo(0,0)};
 A.carCont=d=>{UI.carCont=d.k;render()};
 function pick3(cands,ok,key){const out=[],seen=new Set([key(ok)]);for(const x of cands){const k=key(x);if(!seen.has(k)){seen.add(k);out.push(x)}if(out.length===3)break}return out}
-function numOpts(c,f,all){const v=+c[f],far=(a,b)=>a!==b&&(f==='acc'?Math.abs(a-b)>=1.2:Math.abs(a-b)>=Math.abs(b)*.2);
+function numOpts(c,f,all){const v=+c[f],far=(a,b)=>a!==b&&(f==='acc'?Math.abs(a-b)>=1.2:f==='an'?Math.abs(a-b)>=5&&a<=new Date().getFullYear():Math.abs(a-b)>=Math.abs(b)*.2);
  const vals=[];for(const x of shuf(all.map(y=>+y[f]).filter(n=>n>0))){if(far(x,v)&&vals.every(w=>far(x,w)))vals.push(x);if(vals.length===3)break}
- const k=[.55,1.6,2.2];let guard=0;while(vals.length<3&&guard++<30){const i=vals.length,w=f==='acc'?Math.round(v*k[i]*10)/10:Math.round(v*k[i]);if(far(w,v)&&vals.every(z=>far(w,z)))vals.push(w);else k[i]+=.25}
+ const k=f==='an'?[-12,-24,9]:[.55,1.6,2.2];let guard=0;while(vals.length<3&&guard++<30){const i=vals.length,w=f==='an'?v+k[i]:f==='acc'?Math.round(v*k[i]*10)/10:Math.round(v*k[i]);if(far(w,v)&&vals.every(z=>far(w,z)))vals.push(w);else k[i]+=f==='an'?(k[i]<0?-3:3):.25}
  return vals}
 function carQ(c,l,all){const sameC=all.filter(x=>x.continent===c.continent);
  if(l==='marca'){const br=[...new Set((sameC.length>8?sameC:all).map(x=>x.marca))].filter(b=>b!==c.marca);const o=shuf([c.marca,...shuf(br).slice(0,3)]);return{car:c,txt:'Ce marcă e mașina asta?',o,c:o.indexOf(c.marca)}}
  if(l==='model'){const ds=[...shuf(all.filter(x=>x.marca===c.marca&&x!==c)),...shuf(all.filter(x=>x.marca!==c.marca&&x.caroserie===c.caroserie)),...shuf(all.filter(x=>x!==c))];
   const o=shuf([c,...pick3(ds,c,carName)]).map(carName);return{car:c,txt:'Ce model e exact?',o,c:o.indexOf(carName(c))}}
- const types=['acc','vmax','tip','tara','cp','autonomie'].filter(f=>f==='tip'||f==='tara'||c[f]);const t=pick(types),nm=esc(carName(c));
+ const types=['acc','vmax','tip','tara','cp','autonomie'].filter(f=>f==='tip'||f==='tara'||c[f]);if(c.status==='istoric')types.push('an','an');const t=pick(types),nm=esc(carName(c));
  if(t==='tip'){const o=['electric','hibrid','benzină','diesel'];return{car:c,txt:`Ce fel de motor are ${nm}?`,o:o.map(x=>x[0].toUpperCase()+x.slice(1)),c:o.indexOf(c.tip)}}
  if(t==='tara'){const tz=[...new Set(all.map(x=>x.tara))].filter(x=>x!==c.tara);const o=shuf([c.tara,...shuf(tz).slice(0,3)]);return{car:c,txt:`Din ce țară e marca ${esc(c.marca)}?`,o:o.map(x=>flag(x)+' '+cname(x)),c:o.indexOf(c.tara)}}
- const Q={cp:`Câți cai putere are ${nm}?`,acc:`În câte secunde ajunge ${nm} de la 0 la 100 km/h?`,vmax:`Ce viteză maximă are ${nm}?`,autonomie:`Câți km merge ${nm} cu bateria plină?`}[t];
+ const Q={cp:`Câți cai putere are ${nm}?`,acc:`În câte secunde ajunge ${nm} de la 0 la 100 km/h?`,vmax:`Ce viteză maximă are ${nm}?`,autonomie:`Câți km merge ${nm} cu bateria plină?`,an:`În ce an a apărut ${nm}?`}[t];
  const v=+c[t],o=shuf([v,...numOpts(c,t,all)]);return{car:c,txt:Q,o:o.map(nfmt[t]),c:o.indexOf(v)}}
 A.carLvl=async d=>{const m=UI.sub.m;if(!carUnl(m,d.l)){toast('🔒 Treci întâi nivelul de dinainte cu minim '+CARPASS+'/'+CARN);return}
  if(!DATA.geo)try{await loadData('geo','data/geo.json')}catch(e){}
@@ -680,7 +680,7 @@ A.carNext=()=>{const g=G.car;g.i++;g.ans=null;if(g.i<g.q.length){render();scroll
  g.end=true;const st=cst(g.m),pass=g.ok>=CARPASS;if(st.best[g.l]==null||g.ok>st.best[g.l])st.best[g.l]=g.ok;
  let gain=0;if(pass&&!st.pass[g.l]){st.pass[g.l]=today();g.newPass=true;gain+=5}if(g.ok===g.q.length)gain+=5;g.gain=gain;
  if(gain)reward(gain,mid(),true);else{save();if(pass)fireworks()}render();scrollTo(0,0)};
-function carSheet(c){const r=[['Țara',flag(c.tara)+' '+cname(c.tara)],['An',c.an],['Versiune',c.versiune],['Tip',c.tip],['Caroserie',c.caroserie],['Motor',c.motor],['Putere',c.cp?c.cp+' CP':'nedezvăluită încă'],['0–100 km/h',nfmt.acc(c.acc)],['Viteză maximă',c.vmax+' km/h'],c.autonomie?['Autonomie',c.autonomie+' km']:null,c.pret?['Preț de pornire','≈ '+c.pret.toLocaleString('ro-RO')+' €']:null,c.status==='anunțat'?['Stare','anunțată, încă nu se vinde']:null].filter(Boolean);
+function carSheet(c){const r=[['Țara',flag(c.tara)+' '+cname(c.tara)],['An',c.an],['Versiune',c.versiune],['Tip',c.tip],['Caroserie',c.caroserie],['Motor',c.motor],['Putere',c.cp?c.cp+' CP':'nedezvăluită încă'],c.acc?['0–100 km/h',nfmt.acc(c.acc)]:null,c.vmax?['Viteză maximă',c.vmax+' km/h']:null,c.autonomie?['Autonomie',c.autonomie+' km']:null,c.pret?['Preț de pornire','≈ '+c.pret.toLocaleString('ro-RO')+' €']:null,c.status==='anunțat'?['Stare','anunțată, încă nu se vinde']:c.status==='istoric'?['Stare','mașină clasică, din istorie']:null].filter(Boolean);
  return `<div class="kv">${r.map(([a,b])=>`<span>${a}</span><b>${esc(String(b))}</b>`).join('')}</div><p style="font-size:14.5px;line-height:1.45;margin:6px 0">📖 ${esc(c.poveste)}</p>${c.curiozitate?`<p class="hint">💡 ${esc(c.curiozitate)}</p>`:''}`}
 function carReview(g,lv){const pass=g.ok>=CARPASS;
  return `${backBtn(lv[1]+' Recenzie')}<div class="card trophy"><div class="t">${g.ok===g.q.length?'🏆':pass?'🥇':'💪'}</div><b>${g.ok} din ${g.q.length}</b><div class="mut">${pass?(g.newPass?'Nivel trecut! 🔓 '+(g.l==='marca'?'Ai deblocat Modelul.':g.l==='model'?'Ai deblocat Detaliile tehnice.':'Ești expert în mașini!'):'Foarte bine!'):'Ai nevoie de '+CARPASS+' ca să treci. Citește fișele de mai jos și încearcă din nou!'}${g.gain?`<br>+${g.gain} ⭐`:''}</div>
@@ -894,8 +894,8 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=5;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!'};
+const APP_VER=6;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!'};
 function migrate(){if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
  if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};
  const old=S.ver||1;let news=null;if(old<APP_VER){news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}

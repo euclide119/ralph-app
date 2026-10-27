@@ -5,7 +5,7 @@ from wikiimg import thumbs
 an,out=sys.argv[1],sys.argv[2];src=sys.argv[3:]
 cars=[c for f in src for c in json.load(open(f))]
 def slug(s):return re.sub(r'[^a-z0-9]+','-',unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode().lower()).strip('-')
-need=['marca','model','tara','continent','an','tip','caroserie','versiune','motor','cp','acc','vmax','poveste','wiki']
+need=['marca','model','tara','continent','an','tip','caroserie','versiune','motor','vmax','poveste','wiki']
 err=[]
 for c in cars:
     c['id']=slug(c['marca']+' '+c['model'])
@@ -23,6 +23,12 @@ for c in cars:
         if r:c['img']=list(r.values())[0]
         else:miss.append(c['id'])
     c.pop('img_ro',None)
+# poze alese de mână (generația corectă), dacă există
+fp=os.path.join(os.path.dirname(os.path.abspath(__file__)),'data',f'poze_{an}.json')
+if os.path.exists(fp):
+    P=json.load(open(fp))
+    for c in cars:
+        if c['id'] in P:c['img']=P[c['id']]
 os.makedirs(os.path.join(out,'cars'),exist_ok=True)
 json.dump(cars,open(os.path.join(out,'cars',f'{an}.json'),'w'),ensure_ascii=False,separators=(',',':'))
 idx=os.path.join(out,'cars','index.json')
