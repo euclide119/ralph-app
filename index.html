@@ -10,14 +10,14 @@
 <meta name="theme-color" content="#0a84ff">
 <meta name="color-scheme" content="light">
 <link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-icon" href="icon-180.png?v=9">
 <link rel="icon" href="icon-192.png">
 <title>Ralph’s Vault</title>
 <style>
 :root{--bg:#f2f6fa;--ink:#0b1b2b;--mut:#6b7a8c;--acc:#0a84ff;--acc2:#2ad4c9;--soft:#e6f4fb;--sh:0 1px 2px rgba(10,40,80,.06),0 4px 14px rgba(10,60,120,.08);color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"SF Pro Text","SF Pro Display",system-ui,"Helvetica Neue",sans-serif;font-size:17px;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
-body{padding-bottom:calc(96px + env(safe-area-inset-bottom));-webkit-user-select:none;user-select:none}
+body{padding-bottom:calc(36px + env(safe-area-inset-bottom));-webkit-user-select:none;user-select:none}
 input,textarea,select{-webkit-user-select:text;user-select:text}
 button{font:inherit;color:inherit;cursor:pointer}
 #top{position:sticky;top:0;z-index:20;padding:calc(10px + env(safe-area-inset-top)) 16px 12px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:0 0 22px 22px;box-shadow:0 6px 20px rgba(10,100,180,.22);transition:background .3s}
@@ -34,6 +34,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 #intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
 #intro .skip{position:absolute;right:16px;bottom:calc(24px + env(safe-area-inset-bottom));border:0;border-radius:99px;padding:9px 16px;background:rgba(0,0,0,.45);color:#fff;font-size:14px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
 #intro .tap{position:absolute;bottom:calc(90px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:#f5d58a;font-weight:700;letter-spacing:.04em;display:none;text-shadow:0 2px 8px #000}
+.me.back{font-size:34px;font-weight:300;line-height:1;color:#fff;padding-bottom:4px}
+nav#tabs{display:none!important}
 .me{width:48px;height:48px;border-radius:50%;border:3px solid rgba(255,255,255,.7);background:rgba(255,255,255,.25);font-size:28px;display:grid;place-items:center;padding:0}
 .hi{flex:1;min-width:0}.hi small{display:block;opacity:.9;font-size:13px}.hi b{display:block;font-size:22px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stars{border:0;background:rgba(255,255,255,.95);color:#e08a00;border-radius:99px;padding:7px 13px;font-size:17px;font-weight:600}
@@ -62,7 +64,7 @@ main{padding:14px 12px}
 .add input,.add2 input{width:100%;border:0;background:rgba(255,255,255,.6);border-radius:12px;padding:9px 10px;font:inherit;font-size:16px;margin-top:4px;outline:none}
 .add2{display:flex;gap:6px;align-items:center}.add2 .dt{width:130px;flex:none}
 @keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
-.fab{position:fixed;right:18px;bottom:calc(88px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:32px;font-weight:300;box-shadow:0 8px 20px rgba(10,110,200,.35);z-index:25;line-height:1}
+.fab{position:fixed;right:18px;bottom:calc(22px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:32px;font-weight:300;box-shadow:0 8px 20px rgba(10,110,200,.35);z-index:25;line-height:1}
 .fab:active{transform:scale(.92)}
 nav#tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(249,251,253,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);padding:5px 4px calc(4px + env(safe-area-inset-bottom));border-top:.5px solid rgba(0,0,0,.15);z-index:30}
 nav#tabs button{flex:1;min-width:0;border:0;background:none;font-size:9px;line-height:1.05;letter-spacing:-.02em;text-align:center;font-weight:500;color:#8a96a3;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:2px;padding:4px 0}
@@ -404,7 +406,7 @@ const greet=()=>{const h=new Date().getHours();return (h>=5&&h<11?'Bună diminea
 const bankName=()=>S.bank.name||('Banca lui '+(S.profile.name||'Campion'));
 
 function renderTop(){const t=TABS.find(x=>x.id===UI.tab),p=S.profile;const nb=BADGES.find(b=>p.stars<b[0]);const pv=[...BADGES].reverse().find(b=>p.stars>=b[0]);const lo=pv?pv[0]:0;
- $('#top').innerHTML=`<div class="row"><button class="me" data-act="settings">${esc(p.avatar)}</button><button class="hlogo" data-act="home" aria-label="Acasă">${CAPY}</button><div class="hi"><small>${greet()} ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
+ $('#top').innerHTML=`<div class="row"><button class="me back" data-act="home" aria-label="Înapoi la seif">‹</button><button class="hlogo" data-act="home" aria-label="Acasă">${CAPY}</button><div class="hi"><small>${greet()} ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
  <div class="nxt">${nb?`<div class="bar w"><i style="width:${(p.stars-lo)/(nb[0]-lo)*100}%"></i></div><small>Următorul premiu: ${nb[1]} ${nb[2]} la ${nb[0]} ⭐</small>`:'<small>Ai toate premiile! Ești o legendă 🚀</small>'}</div>`}
 function render(){const t=TABS.find(x=>x.id===UI.tab);const st=document.documentElement.style;st.setProperty('--acc',t.c1);st.setProperty('--acc2',t.c2);st.setProperty('--soft',t.soft);
  if(UI.tab!=='jocuri'||UI.game!=='snake')snakeStop();
@@ -1040,11 +1042,23 @@ function homeHTML(){const p=S.profile,nb=BADGES.find(b=>p.stars<b[0]),pv=[...BAD
  <div class="hm-stats"><div class="hm-stat"><b>${zd}/${zi.length}</b><small>bifate azi</small></div><div class="hm-stat"><b>${p.stars}</b><small>stele strânse</small></div><div class="hm-stat"><b>${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).slice(-2).join('')||'—'}</b><small>medalii</small></div></div>
  <div class="hm-h">Compartimentele seifului</div>
  <div class="hm-grid">${B.map((x,i)=>box(...x,i)).join('')}</div>
- <div class="hm-quote">„${pick(QUOTES)}”</div>`}
+ <div class="hm-quote">„${pick(QUOTES)}”</div><div id="offln" style="text-align:center;font-size:12px;color:#8f877a;margin-top:12px">${offTxt()}</div>`}
 function showHome(){const h=$('#home');h.innerHTML=homeHTML();h.scrollTop=0;h.classList.remove('hide')}
 function hideHome(){$('#home').classList.add('hide')}
 A.home=()=>showHome();
 A.homeGo=d=>{if(d.k==='premii'){A.prizes();return}hideHome();A.tab({k:d.k})};
+
+/* ---------- fără internet: pozele se salvează în memoria telefonului ---------- */
+const OFF={tot:0,ok:0,run:false};
+async function offlineSync(){if(OFF.run||!('caches'in window)||!navigator.onLine)return;OFF.run=true;
+ try{const list=await (await fetch('data/imagini.json')).json(),c=await caches.open('ralph-img-v1');OFF.tot=list.length;OFF.ok=0;
+  const todo=[];for(const u of list){if(await c.match(u))OFF.ok++;else todo.push(u)}
+  let i=0;const w=async()=>{while(i<todo.length){const u=todo[i++];try{await c.add(u);OFF.ok++}catch(e){}}};
+  await Promise.all([w(),w(),w(),w()]);
+  try{localStorage.setItem('ralph_offline',OFF.ok+'/'+OFF.tot)}catch(e){}
+ }catch(e){}OFF.run=false;const h=$('#offln');if(h)h.textContent=offTxt()}
+const offTxt=()=>OFF.tot?(OFF.ok>=OFF.tot?'📶 Merge și fără internet ✅':`📥 Pregătesc modul fără internet: ${OFF.ok}/${OFF.tot} poze`):(()=>{try{const v=localStorage.getItem('ralph_offline');return v?'📶 Merge și fără internet ✅':''}catch(e){return ''}})();
+setInterval(()=>{const h=$('#offln');if(h&&OFF.run)h.textContent=offTxt()},1000);
 
 /* ---------- evenimente ---------- */
 A.tab=d=>{UI.tab=d.k;try{localStorage.setItem('ralph_tab',d.k)}catch(e){}render();scrollTo(0,0);if(d.k==='banca'&&UI.bank==='lectii')calc()};
@@ -1059,8 +1073,8 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=8;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐'};
+const APP_VER=9;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶'};
 function migrate(){S.profile.name='Ralph';S.profile.welcomed=true;if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
  if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};
  const old=S.ver||1;let news=null;if(old<APP_VER){if(DB.db&&S.profile.welcomed)DB.set('copie_inainte_de_v'+APP_VER,JSON.parse(JSON.stringify(S))).catch(()=>{});news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
@@ -1076,7 +1090,7 @@ function migrate(){S.profile.name='Ralph';S.profile.welcomed=true;if(!S.challeng
  render();if(UI.tab==='banca'&&UI.bank==='lectii')calc();
  showHome();introDone.then(()=>{if(news)setTimeout(()=>{fireworks();toast('✨ Ralph’s Vault s-a actualizat: '+news)},300)});
  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
- if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+ if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))navigator.serviceWorker.register('sw.js').then(()=>navigator.serviceWorker.ready).then(()=>setTimeout(offlineSync,3000)).catch(()=>{});
 })();
 </script>
 </body>
