@@ -6,13 +6,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ralph">
+<meta name="apple-mobile-web-app-title" content="Ralph’s Vault">
 <meta name="theme-color" content="#0a84ff">
 <meta name="color-scheme" content="light">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
-<title>Ralph.app</title>
+<title>Ralph’s Vault</title>
 <style>
 :root{--bg:#f2f6fa;--ink:#0b1b2b;--mut:#6b7a8c;--acc:#0a84ff;--acc2:#2ad4c9;--soft:#e6f4fb;--sh:0 1px 2px rgba(10,40,80,.06),0 4px 14px rgba(10,60,120,.08);color-scheme:light}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -22,6 +22,12 @@ input,textarea,select{-webkit-user-select:text;user-select:text}
 button{font:inherit;color:inherit;cursor:pointer}
 #top{position:sticky;top:0;z-index:20;padding:calc(10px + env(safe-area-inset-top)) 16px 12px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:0 0 22px 22px;box-shadow:0 6px 20px rgba(10,100,180,.22);transition:background .3s}
 .row{display:flex;align-items:center;gap:10px}.row.end{justify-content:flex-end;flex-wrap:wrap}.grow{flex:1;min-width:0}
+.hlogo{width:46px;height:46px;flex:none;filter:drop-shadow(0 3px 6px rgba(0,0,0,.35))}
+#intro{position:fixed;inset:0;z-index:200;background:#07080a url(vault-bg.jpg) center/cover;display:flex;align-items:center;justify-content:center;transition:opacity .7s}
+#intro.out{opacity:0;pointer-events:none}
+#intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:transparent}
+#intro .skip{position:absolute;right:16px;bottom:calc(24px + env(safe-area-inset-bottom));border:0;border-radius:99px;padding:9px 16px;background:rgba(0,0,0,.45);color:#fff;font-size:14px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+#intro .tap{position:absolute;bottom:calc(90px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:#f5d58a;font-weight:700;letter-spacing:.04em;display:none;text-shadow:0 2px 8px #000}
 .me{width:48px;height:48px;border-radius:50%;border:3px solid rgba(255,255,255,.7);background:rgba(255,255,255,.25);font-size:28px;display:grid;place-items:center;padding:0}
 .hi{flex:1;min-width:0}.hi small{display:block;opacity:.9;font-size:13px}.hi b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .stars{border:0;background:rgba(255,255,255,.95);color:#e08a00;border-radius:99px;padding:7px 13px;font-size:17px;font-weight:600}
@@ -105,7 +111,17 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 .zbtn button{width:38px;height:38px;border-radius:10px;border:0;background:rgba(255,255,255,.92);font-size:19px;box-shadow:var(--sh)}
 .carph{margin:12px -4px 4px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--soft);display:grid;place-items:center;font-size:60px}
 .carph img{width:100%;height:100%;object-fit:cover}
+.qt{color:var(--acc)}.qt.low{color:#ff3b30}
 .gprog{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-bottom:6px}
+.lvgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin:4px 0 14px}
+.lv{aspect-ratio:1/1.12;border:0;border-radius:16px;background:linear-gradient(145deg,var(--acc),var(--acc2));color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(10,80,160,.25);position:relative;padding:4px 2px;min-width:0}
+.lv span{font-size:26px;font-weight:800;line-height:1}.lv small{font-size:9px;font-weight:600;line-height:1.1;margin-top:4px;text-align:center;overflow:hidden;max-width:100%}
+.lv.lock{background:linear-gradient(145deg,#d9e0e7,#c4ced8);color:#7d8a97;box-shadow:none}.lv.lock span{font-size:22px}
+.lv.done::after{content:"✓";position:absolute;top:5px;right:5px;width:17px;height:17px;border-radius:50%;background:#34c759;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center}
+.lv.sel{outline:3px solid #ffd60a;outline-offset:2px}
+.joke{position:relative;padding-left:52px}.joke p{margin:0;white-space:pre-line;font-size:16.5px;line-height:1.45}.joke .jc{position:absolute;left:14px;top:13px;font-size:26px}
+.heart{border:0;background:none;font-size:26px;padding:2px 4px}.heart.pop{animation:pop .4s}
+.joke.glow{box-shadow:0 0 0 3px #ffd60a,var(--sh);transition:box-shadow .3s}
 .banner{display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#0a84ff,#2ad4c9);color:#fff;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.35}
 .banner .btn{background:#fff;color:#0a84ff;flex:none}
 .share-ic{display:inline-block;border:1.5px solid currentColor;border-radius:4px;padding:0 4px;font-size:12px}
@@ -213,6 +229,7 @@ details[open]>summary .chev{transform:rotate(90deg)}
 </style>
 </head>
 <body>
+<div id="intro"><video id="introV" src="intro.mp4" muted playsinline autoplay preload="auto"></video><div class="tap" id="introTap">Atinge ca să deschizi seiful</div><button class="skip" id="introSkip">Sari peste ›</button></div>
 <header id="top"></header>
 <main id="main"></main>
 <nav id="tabs"></nav>
@@ -222,6 +239,12 @@ details[open]>summary .chev{transform:rotate(90deg)}
 <input type="file" id="picker" accept="image/*" class="vh">
 <script>
 'use strict';
+/* video de deschidere: câteva secunde, apoi aplicația; se poate sări peste */
+const introDone=new Promise(res=>{const o=document.getElementById('intro'),v=document.getElementById('introV');let done=false;
+ const end=()=>{if(done)return;done=true;o.classList.add('out');setTimeout(()=>o.remove(),750);res()};
+ v.addEventListener('ended',end);document.getElementById('introSkip').onclick=end;o.addEventListener('click',e=>{if(e.target.id==='introSkip')return;if(v.paused){const q=v.play();if(q&&q.catch)q.catch(end);document.getElementById('introTap').style.display='none'}});
+ v.addEventListener('error',()=>setTimeout(end,1200));setTimeout(end,12000);
+ const pr=v.play&&v.play();if(pr&&pr.catch)pr.catch(()=>{document.getElementById('introTap').style.display='block'})});
 /* ---------- utilitare ---------- */
 const $=s=>document.querySelector(s);
 const uid=()=>Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);
@@ -248,8 +271,8 @@ const DB={db:null,
  open(){return new Promise((res,rej)=>{try{const r=indexedDB.open('ralph',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>{this.db=r.result;res()};r.onerror=()=>rej(r.error)}catch(e){rej(e)}})},
  get(k){return new Promise((res,rej)=>{const q=this.db.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})},
  set(k,v){return new Promise((res,rej)=>{const t=this.db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}};
-let S,saveT;
-function save(){clearTimeout(saveT);saveT=setTimeout(async()=>{try{if(!DB.db)throw 0;await DB.set('state',JSON.parse(JSON.stringify(S)))}catch(e){try{localStorage.setItem('ralph',JSON.stringify(S))}catch(e2){toast('⚠️ Memoria e plină — fă o copie de rezervă')}}},250)}
+let S,saveT,LOADFAIL=false;
+function save(){if(LOADFAIL)return;clearTimeout(saveT);saveT=setTimeout(async()=>{try{if(!DB.db)throw 0;await DB.set('state',JSON.parse(JSON.stringify(S)))}catch(e){try{localStorage.setItem('ralph',JSON.stringify(S))}catch(e2){toast('⚠️ Memoria e plină — fă o copie de rezervă')}}},250)}
 
 function defState(){const d=today();return{v:1,
  profile:{name:'Ralph',avatar:'🦸',stars:0,spent:0,badges:[],sound:true,created:d,lastBackup:'',welcomed:false},
@@ -339,7 +362,7 @@ const VIEWS={},A={},FORMS={};
 const bankName=()=>S.bank.name||('Banca lui '+(S.profile.name||'Campion'));
 
 function renderTop(){const t=TABS.find(x=>x.id===UI.tab),p=S.profile;const nb=BADGES.find(b=>p.stars<b[0]);const pv=[...BADGES].reverse().find(b=>p.stars>=b[0]);const lo=pv?pv[0]:0;
- $('#top').innerHTML=`<div class="row"><button class="me" data-act="settings">${esc(p.avatar)}</button><div class="hi"><small>Salut, ${esc(p.name||'campionule')}! ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
+ $('#top').innerHTML=`<div class="row"><button class="me" data-act="settings">${esc(p.avatar)}</button><img class="hlogo" src="logo.png" alt="" data-act="tab" data-k="agenda"><div class="hi"><small>Salut, ${esc(p.name||'campionule')}! ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
  <div class="nxt">${nb?`<div class="bar w"><i style="width:${(p.stars-lo)/(nb[0]-lo)*100}%"></i></div><small>Următorul premiu: ${nb[1]} ${nb[2]} la ${nb[0]} ⭐</small>`:'<small>Ai toate premiile! Ești o legendă 🚀</small>'}</div>`}
 function render(){const t=TABS.find(x=>x.id===UI.tab);const st=document.documentElement.style;st.setProperty('--acc',t.c1);st.setProperty('--acc2',t.c2);st.setProperty('--soft',t.soft);
  if(UI.tab!=='jocuri'||UI.game!=='snake')snakeStop();
@@ -495,20 +518,76 @@ async function loadData(k,path){if(DATA[k])return DATA[k];const r=await fetch(pa
 const backBtn=t=>`<div class="gbar"><button class="btn sm ghost" data-act="backGame">‹ Înapoi</button><b>${t}</b></div>`;
 const loading=t=>backBtn(t)+'<div class="empty"><div class="e">⏳</div><b>Se încarcă…</b>Ai nevoie de internet prima dată.</div>';
 function need(k,path){if(DATA[k])return true;loadData(k,path).then(()=>{if(UI.tab==='jocuri')render()}).catch(()=>toast('Nu am putut încărca jocul — verifică internetul'));return false}
-VIEWS.jocuri=()=>{if(UI.game==='snake')return snakeView();if(UI.game==='cars')return carsView();if(UI.game==='trivia')return triviaView();if(UI.game==='geo')return geoView();
- return `<p class="lead">🎮 Jocuri care te fac mai deștept. Câștigi ⭐ când joci bine și când îți bați recordul!</p>
- <button class="gcard" data-act="openGame" data-k="snake"><span class="gi" style="background:#43523d">🐍</span><span class="grow"><b>Snake</b><small>Ca pe Nokia: mănâncă și crește · record ${S.games.snake.best||0}</small></span><span class="chev">›</span></button>
- <button class="gcard" data-act="openGame" data-k="trivia"><span class="gi">🧠</span><span class="grow"><b>Trivia</b><small>Grecia antică și Biblia · seturi de câte 19 întrebări</small></span><span class="chev">›</span></button>
- <button class="gcard" data-act="openGame" data-k="geo"><span class="gi">🌍</span><span class="grow"><b>Geografie pe hartă</b><small>Țări, capitale, steaguri, celebrități — pe continente</small></span><span class="chev">›</span></button>
- <button class="gcard" data-act="openGame" data-k="cars"><span class="gi">🏎️</span><span class="grow"><b>Cars</b><small>Ghicește marca, modelul și fișa tehnică · mașinile din 2026</small></span><span class="chev">›</span></button>`};
+VIEWS.jocuri=()=>{if(UI.game==='bancuri')return jokesView();if(UI.game==='snake')return snakeView();if(UI.game==='cars')return carsView();if(UI.game==='trivia')return triviaView();if(UI.game==='geo')return geoView();
+ return `<p class="lead">🎮 Jocuri și bancuri. Fiecare joc are 5 niveluri: deschizi un nivel doar după ce l-ai trecut pe cel dinainte. 🔒</p>
+ <button class="gcard" data-act="openGame" data-k="bancuri"><span class="gi">😂</span><span class="grow"><b>Bancuri</b><small>${JOKES.length+jst().own.length} glume bune · ❤️ ${Object.keys(jst().likes).length} preferate</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="openGame" data-k="snake"><span class="gi" style="background:#43523d">🐍</span><span class="grow"><b>Snake</b><small>Ca pe Nokia · 5 viteze · record ${S.games.snake.best||0}</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="openGame" data-k="trivia"><span class="gi">🧠</span><span class="grow"><b>Trivia</b><small>Grecia antică și Biblia · 5 niveluri</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="openGame" data-k="geo"><span class="gi">🌍</span><span class="grow"><b>Geografie pe hartă</b><small>6 continente · 5 niveluri fiecare</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="openGame" data-k="cars"><span class="gi">🏎️</span><span class="grow"><b>Cars</b><small>Marca, modelul, fișa tehnică · 2026 și clasice</small></span><span class="chev">›</span></button>`};
 A.openGame=d=>{UI.game=d.k;UI.sub=null;render();scrollTo(0,0)};
-A.backGame=()=>{snakeStop();if(UI.game==='geo'&&UI.sub&&UI.sub.l){UI.sub={c:UI.sub.c};G.geo=null}else if(UI.game==='cars'&&UI.sub&&UI.sub.l){UI.sub={m:UI.sub.m};G.car=null}else if(UI.sub&&UI.game!=='snake')UI.sub=null;else UI.game=null;render();scrollTo(0,0)};
+A.backGame=()=>{snakeStop();if(UI.game==='trivia'&&UI.sub&&UI.sub.play){UI.sub={t:UI.sub.t};G.tr=null;render();scrollTo(0,0);return}if(UI.game==='geo'&&UI.sub&&UI.sub.l){UI.sub={c:UI.sub.c};G.geo=null}else if(UI.game==='cars'&&UI.sub&&UI.sub.l){UI.sub={m:UI.sub.m};G.car=null}else if(UI.sub&&UI.game!=='snake')UI.sub=null;else UI.game=null;render();scrollTo(0,0)};
 const G={};
+function lvGrid(L,act){return `<div class="lvgrid">${L.map(x=>`<button class="lv ${x.ok?'':'lock'} ${x.done?'done':''} ${x.sel?'sel':''}" data-act="${act}" data-n="${x.n}"><span>${x.ok?x.n:'🔒'}</span><small>${esc(x.name)}</small></button>`).join('')}</div>`}
+const lockMsg=(n,need)=>toast(`🔒 Termină întâi nivelul ${n-1}${need?' ('+need+')':''}`);
+setInterval(()=>{if(UI.tab!=='jocuri')return;const g=UI.game==='trivia'?G.tr:UI.game==='cars'?G.car:null;if(!g||g.end||g.ans!=null||!g.deadline)return;
+ const left=Math.ceil((g.deadline-Date.now())/1000),el=$('#qt');if(el){el.textContent='⏱ '+Math.max(0,left);el.classList.toggle('low',left<=5)}
+ if(left<=0){g.deadline=null;g.ans=-1;if(g.res)g.res.push(false);beep(180,.25);render()}},250);
 function gameMount(){if(UI.game==='snake')snakeInit();if(UI.game==='geo')geoMount()}
+
+/* --- Bancuri: glume curate pentru 7–15 ani; ❤️ = preferate; Ralph își poate adăuga bancurile lui --- */
+const JOKES=[
+['🏫','— Ionel, de ce ai venit la școală cu o scară?\n— Păi doamna a zis că anul ăsta trecem la un nivel mai înalt!'],
+['🏫','— Doamna învățătoare, m-ați pedepsi pentru ceva ce n-am făcut?\n— Bineînțeles că nu!\n— Bine. N-am făcut tema.'],
+['🏫','— Ionel, de ce ai predat o foaie goală?\n— E o vacă pe o pajiște.\n— Și unde e iarba?\n— A mâncat-o vaca.\n— Și vaca unde e?\n— A plecat. Ce să mai stea, dacă nu mai era iarbă?'],
+['🏫','— Bulă, dacă am 5 mere într-o mână și 6 mere în cealaltă, ce am?\n— Niște mâini foarte mari, doamna învățătoare!'],
+['🏫','— Tată, tu poți să scrii pe întuneric?\n— Cred că da.\n— Atunci stinge lumina și semnează-mi carnetul.'],
+['🏫','— Bulă, unde se află Marea Neagră?\n— Nu știu, doamnă, dar vă jur că nu eu am mutat-o!'],
+['🏫','— Ionel, spune-mi două pronume.\n— Cine, eu?\n— Bravo, corect!'],
+['🏫','— Bulă, ce e mai departe: Luna sau China?\n— China!\n— De ce?\n— Pentru că Luna o văd de la fereastră, iar China nu.'],
+['🏫','— Ce-ai făcut în vacanță, Ionel?\n— Am crescut.\n— Și altceva?\n— Atât. A fost foarte obositor!'],
+['🐟','De ce merg peștii la școală?\nPentru că învață în bancuri! 😄'],
+['🐟','De ce nu joacă peștii tenis?\nPentru că le e frică de plasă.'],
+['🐟','— Ionuț, i-ai schimbat peștelui apa?\n— Nu, mamă, încă n-a terminat-o pe cea veche!'],
+['🐾','Ce animal sare mai sus decât o casă?\nOricare! Casele nu sar.'],
+['🐾','Care animal e cel mai bun la matematică?\nIepurele — se înmulțește foarte repede!'],
+['🐾','Ce iese dacă pui o vacă pe o trambulină?\nLapte bătut! 🥛'],
+['🐌','Un melc își cumpără o mașină sport și cere să i se picteze un „S” mare pe uși.\n— De ce „S”?\n— Ca toată lumea să strige când trec: „Uite-l pe S-uper Melcul!”'],
+['🐶','— Doctore, cred că sunt un câine!\n— De când ai impresia asta?\n— De când eram cățeluș!'],
+['🏥','— Domnule doctor, mă doare când apăs aici, aici și aici!\n— Ai degetul lovit, băiete.'],
+['🔢','Ce-i spune cifra 0 cifrei 8?\nFrumoasă curea!'],
+['✏️','Ce-i spune pixul creionului?\n— Ce faci, ascuțitule?'],
+['🧱','Ce-i spune un zid altui zid?\nNe vedem la colț!'],
+['📖','Care e cel mai lung cuvânt din limba română?\n„Elastic” — pentru că se poate întinde cât vrei!'],
+['🦁','Culmea curajului: să-i spui unui leu că ar trebui să se spele pe dinți.'],
+['🍫','Culmea răbdării: să păstrezi o ciocolată pentru mâine. Și mâine s-o păstrezi pentru poimâine.'],
+['🏃','Culmea vitezei: să alergi în jurul unui copac și să te prinzi singur din urmă.'],
+['🤖','Doi roboți se întâlnesc.\n— Ce faci, ești bine?\n— Nu prea. Doctorul mi-a zis să mă închid și să mă deschid din nou.'],
+['🍾','Ce are gât, dar n-are cap?\nSticla!'],
+['🌙','— Mamă, pot să ies afară să văd eclipsa?\n— Da, dar nu sta prea aproape!'],
+['🚗','— Tată, de ce are mașina volan?\n— Ca să nu stea șoferul cu mâinile în buzunar!'],
+['⚽','— De ce a luat portarul o lanternă la meci?\n— Pentru că antrenorul i-a zis să nu lase nicio minge să treacă pe întuneric!']
+].map(([c,t],i)=>({id:'b'+(i+1),c,t}));
+const jst=()=>S.jokes||(S.jokes={likes:{},own:[]});
+function jokesView(){const J=jst(),all=[...J.own.map(x=>({...x,mine:1})),...JOKES],f=UI.jf||'toate';
+ const L=f==='fav'?all.filter(x=>J.likes[x.id]):f==='mine'?all.filter(x=>x.mine):all;
+ return `${backBtn('😂 Bancuri')}<div class="chips"><button class="chip ${f==='toate'?'on':''}" data-act="jf" data-k="toate">Toate <small>${all.length}</small></button><button class="chip ${f==='fav'?'on':''}" data-act="jf" data-k="fav">❤️ Preferate <small>${all.filter(x=>J.likes[x.id]).length}</small></button><button class="chip ${f==='mine'?'on':''}" data-act="jf" data-k="mine">✍️ Ale mele <small>${J.own.length}</small></button></div>
+ <div class="row" style="margin-bottom:12px"><button class="btn grow" data-act="jRand">🎲 Un banc la întâmplare</button><button class="btn ghost" data-act="jAdd">＋ Bancul meu</button></div>
+ ${L.length?L.map(x=>`<div class="card joke" id="j_${x.id}"><span class="jc">${x.c||'✍️'}</span><p>${esc(x.t)}</p><div class="row end"><button class="heart ${J.likes[x.id]?'on':''}" data-act="jLike" data-id="${x.id}">${J.likes[x.id]?'❤️':'🤍'}</button>${x.mine?`<button class="del" data-act="jDel" data-id="${x.id}">✕</button>`:''}</div></div>`).join(''):empty(f==='fav'?'❤️':'✍️',f==='fav'?'Niciun banc preferat încă':'Niciun banc de-al tău încă',f==='fav'?'Apasă pe inimioară la bancurile care te-au făcut să râzi.':'Apasă pe „＋ Bancul meu” și scrie-l.')}`}
+A.jf=d=>{UI.jf=d.k;render()};
+A.jLike=(d,el)=>{const J=jst();if(J.likes[d.id])delete J.likes[d.id];else{J.likes[d.id]=today();const p=pos(el);burst(p.x,p.y,18);chime()}save();el.classList.toggle('on',!!J.likes[d.id]);el.textContent=J.likes[d.id]?'❤️':'🤍';el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop')};
+A.jRand=()=>{const all=[...jst().own,...JOKES];const x=pick(all);UI.jf='toate';render();const el=$('#j_'+x.id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.add('glow');setTimeout(()=>el.classList.remove('glow'),1600)}};
+A.jAdd=()=>formSheet({title:'✍️ Bancul meu',fields:[{k:'t',l:'Scrie bancul',t:'textarea',rows:5,req:1,ph:'— Știi de ce...?\n— Pentru că...'}],onSave:v=>{jst().own.unshift({id:'m'+uid(),t:v.t,c:'✍️'});UI.jf='mine';reward(1)}});
+A.jDel=d=>{if(!confirm('Ștergi bancul tău?'))return;const J=jst();J.own=J.own.filter(x=>x.id!==d.id);delete J.likes[d.id];save();render()};
 
 /* --- Snake (ca pe Nokia: trece prin pereți, moare dacă se mușcă) --- */
 const SN={N:21};
-function snakeView(){return `${backBtn('🐍 Snake')}<div class="nokia"><div class="nk-top" id="nkTop"><span id="snkSc">0000</span><span>REC ${String(S.games.snake.best||0).padStart(4,'0')}</span></div><canvas id="snk"></canvas><div id="snkMsg" data-act="snkPlay">SNAKE\n\n▶ Apasă ca să începi</div></div>
+const SNL=[[1,'Încet',200,10],[2,'Normal',170,15],[3,'Rapid',140,20],[4,'Turbo',115,25],[5,'Nokia PRO',90,30]];
+const snS=()=>{const g=S.games.snake;g.pass=g.pass||{};g.bestL=g.bestL||{};return g};
+const snUnl=n=>n===1||!!snS().pass[n-1];
+const snCur=()=>{let n=UI.snL||1;if(!snUnl(n))n=1;return SNL[n-1]};
+A.snkLvl=d=>{const n=+d.n;if(!snUnl(n)){lockMsg(n,'mănâncă '+SNL[n-2][3]+' mere');return}UI.snL=n;snakeStop();render()};
+function snakeView(){const L=snCur(),g=snS();return `${backBtn('🐍 Snake')}${lvGrid(SNL.map(([n,nm])=>({n,name:nm,ok:snUnl(n),done:!!g.pass[n],sel:n===L[0]})),'snkLvl')}<p class="hint" style="margin:-6px 0 10px">Nivelul ${L[0]} · ${L[1]}: ${g.pass[L[0]]?'trecut ✅':'mănâncă <b>'+L[3]+' mere</b> într-un joc ca să deblochezi nivelul '+(L[0]+1)}${L[0]===5?'':''}</p><div class="nokia"><div class="nk-top" id="nkTop"><span id="snkSc">0000</span><span>NIV ${L[0]} · REC ${String(g.bestL[L[0]]||0).padStart(3,'0')}</span></div><canvas id="snk"></canvas><div id="snkMsg" data-act="snkPlay">SNAKE\n\n▶ Apasă ca să începi</div></div>
  <div class="dpad"><span></span><button data-d="0,-1">▲</button><span></span><button data-d="-1,0">◀</button><button class="pl" data-act="snkPlay">START</button><button data-d="1,0">▶</button><span></span><button data-d="0,1">▼</button><span></span></div>
  <p class="hint" style="text-align:center">Poți și glisa cu degetul pe ecran. ⭐ pentru fiecare 5 mere.</p>`}
 function snakeInit(){const c=$('#snk');if(!c)return;const W=Math.min(c.parentNode.clientWidth-24,400);SN.cell=Math.floor(W/SN.N);const px=SN.cell*SN.N,r=devicePixelRatio||1;
@@ -519,7 +598,7 @@ function snakeInit(){const c=$('#snk');if(!c)return;const W=Math.min(c.parentNod
  c.addEventListener('touchend',e=>{if(!t0)return;const dx=e.changedTouches[0].clientX-t0[0],dy=e.changedTouches[0].clientY-t0[1];if(Math.max(Math.abs(dx),Math.abs(dy))>18)snakeDir(Math.abs(dx)>Math.abs(dy)?[Math.sign(dx),0]:[0,Math.sign(dy)]);t0=null},{passive:true})}
 function snakeDir(d){if(!SN.alive||!SN.t){return}const q=SN.q;const last=q.length?q[q.length-1]:SN.d;if((d[0]===-last[0]&&d[1]===-last[1])||(d[0]===last[0]&&d[1]===last[1]))return;if(q.length<3)q.push(d)}
 addEventListener('keydown',e=>{if(UI.game!=='snake')return;const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[e.key];if(m){e.preventDefault();snakeDir(m)}else if(e.key===' '&&!SN.t)A.snkPlay()});
-function snakeReset(){const m=Math.floor(SN.N/2);SN.s=[[m-3,m],[m-2,m],[m-1,m],[m,m]];SN.d=[1,0];SN.q=[];SN.score=0;SN.speed=165;SN.alive=true;snakeFood()}
+function snakeReset(){const m=Math.floor(SN.N/2);SN.s=[[m-3,m],[m-2,m],[m-1,m],[m,m]];SN.d=[1,0];SN.q=[];SN.score=0;SN.lv=snCur();SN.speed=SN.lv[2];SN.alive=true;snakeFood()}
 function snakeFood(){do{SN.f=[Math.floor(Math.random()*SN.N),Math.floor(Math.random()*SN.N)]}while(SN.s.some(p=>p[0]===SN.f[0]&&p[1]===SN.f[1]))}
 function snakeStop(){clearTimeout(SN.t);SN.t=null}
 A.snkPlay=()=>{if(SN.t)return;if(!SN.alive||SN.over){snakeReset();SN.over=false}$('#snkMsg').style.display='none';SN.alive=true;SN.t=setTimeout(snakeTick,SN.speed)};
@@ -527,57 +606,77 @@ function beep(f,d){if(!S.profile.sound)return;try{AC=AC||new(window.AudioContext
 function snakeTick(){if(!$('#snk')){snakeStop();return}if(SN.q.length)SN.d=SN.q.shift();const N=SN.N,h=SN.s[SN.s.length-1],n=[(h[0]+SN.d[0]+N)%N,(h[1]+SN.d[1]+N)%N];
  const eat=n[0]===SN.f[0]&&n[1]===SN.f[1],body=eat?SN.s:SN.s.slice(1);
  if(body.some(p=>p[0]===n[0]&&p[1]===n[1]))return snakeOver();
- SN.s.push(n);if(eat){SN.score++;SN.speed=Math.max(70,SN.speed-4);snakeFood();beep(880,.06);$('#snkSc').textContent=String(SN.score).padStart(4,'0')}else SN.s.shift();
+ SN.s.push(n);if(eat){SN.score++;SN.speed=Math.max(Math.round(SN.lv[2]*.6),SN.speed-3);snakeFood();beep(880,.06);$('#snkSc').textContent=String(SN.score).padStart(4,'0');const g=snS(),n=SN.lv[0];if(SN.score===SN.lv[3]&&!g.pass[n]){g.pass[n]=today();burst(innerWidth/2,innerHeight/3,60,1.2);chime(true);toast(n<5?`🔓 Nivelul ${n+1} deblocat! Continuă!`:'👑 Ai terminat Snake PRO!');save()}}else SN.s.shift();
  snakeDraw();SN.t=setTimeout(snakeTick,SN.speed)}
 function snakeDraw(){const x=SN.x,c=SN.cell,N=SN.N;x.fillStyle='#c7f0d8';x.fillRect(0,0,c*N,c*N);x.fillStyle='#43523d';
  SN.s.forEach(([a,b])=>x.fillRect(a*c+1,b*c+1,c-2,c-2));const h=SN.s[SN.s.length-1];x.fillStyle='#c7f0d8';x.fillRect(h[0]*c+c/2-1.5,h[1]*c+c/2-1.5,3,3);
  const[a,b]=SN.f,m=c/2;x.fillStyle='#43523d';x.beginPath();x.moveTo(a*c+m,b*c+2);x.lineTo(a*c+c-2,b*c+m);x.lineTo(a*c+m,b*c+c-2);x.lineTo(a*c+2,b*c+m);x.fill()}
-function snakeOver(){snakeStop();SN.alive=false;SN.over=true;beep(160,.35);const g=S.games.snake,rec=SN.score>(g.best||0);if(rec)g.best=SN.score;g.games=(g.games||0)+1;
- const st=Math.min(5,Math.floor(SN.score/5));$('#snkMsg').style.display='flex';$('#snkMsg').textContent=`GAME OVER\n\nMere: ${SN.score}${rec&&SN.score?'\n★ RECORD NOU ★':''}\n\n▶ Încă o dată`;
+function snakeOver(){snakeStop();SN.alive=false;SN.over=true;beep(160,.35);const g=snS(),n=SN.lv[0],rec=SN.score>(g.bestL[n]||0);if(rec)g.bestL[n]=SN.score;if(SN.score>(g.best||0))g.best=SN.score;g.games=(g.games||0)+1;
+ const st=Math.min(5,Math.floor(SN.score/5));$('#snkMsg').style.display='flex';$('#snkMsg').textContent=`GAME OVER\n\nMere: ${SN.score}${rec&&SN.score?'\n★ RECORD NOU ★':''}${g.pass[n]&&n<5&&SN.score>=SN.lv[3]?'\n🔓 Nivelul '+(n+1)+' e deschis':''}\n\n▶ Încă o dată`;
  if(st)reward(st+(rec?2:0),mid(),rec);else save()}
 
-/* --- Trivia --- */
-function triviaView(){if(!need('trivia','data/trivia.json'))return loading('🧠 Trivia');const T=DATA.trivia.teme;
- if(!UI.sub)return `${backBtn('🧠 Trivia')}${T.map((t,ti)=>`<div class="card"><b style="font-size:19px">${t.emoji} ${esc(t.titlu)}</b>${t.seturi.map((s,si)=>{const b=S.games.trivia[t.id+si];return `<button class="setb" data-act="trStart" data-t="${ti}" data-s="${si}"><b>${esc(s.nume)}</b><span>${b!=null?(b===s.intrebari.length?'🏆 ':'⭐ ')+b+'/'+s.intrebari.length:'nou'}</span></button>`}).join('')}</div>`).join('')}
- <p class="hint">Pentru fiecare 2 răspunsuri peste recordul tău primești ⭐. Toate corecte = 🏆 +5 ⭐.</p>`;
- const g=G.tr,t=T[g.t];if(g.end)return `${backBtn(t.emoji+' '+esc(t.titlu))}<div class="card trophy"><div class="t">${g.ok===g.q.length?'🏆':g.ok>=14?'🥇':g.ok>=10?'🥈':'💪'}</div><b>${g.ok} din ${g.q.length}</b><div class="mut">${g.ok===g.q.length?'Perfect! Ești un adevărat savant!':g.ok>=14?'Foarte bine!':g.ok>=10?'Bine! Mai încearcă o dată ca să-ți bați recordul.':'Fiecare încercare te învață ceva nou. Hai din nou!'}${g.gain?`<br>+${g.gain} ⭐`:''}</div><button class="btn big" data-act="trStart" data-t="${g.t}" data-s="${g.s}">🔁 Joc din nou</button><button class="btn ghost big" data-act="backGame">Alt set</button></div>`;
+/* --- Trivia: 5 niveluri pe temă — seturile 1–3, apoi amestec, apoi expert cu cronometru --- */
+const TRL=[[1,'Setul 1'],[2,'Setul 2'],[3,'Setul 3'],[4,'Amestec'],[5,'Expert ⏱']];
+const TRPASS=13,TRSEC=15;
+function trPass(t){const P=(S.games.trivia.pass=S.games.trivia.pass||{});return P[t.id]||(P[t.id]={})}
+const trKey=(t,n)=>n<=3?t.id+(n-1):t.id+'L'+n;
+const trDone=(t,n)=>!!trPass(t)[n]||(n<=3&&(S.games.trivia[trKey(t,n)]||0)>=TRPASS);
+const trUnl=(t,n)=>n===1||trDone(t,n-1);
+function triviaView(){if(!need('trivia','data/trivia.json'))return loading('🧠 Trivia');const T=DATA.trivia.teme,s=UI.sub;
+ if(!s)return `${backBtn('🧠 Trivia')}${T.map((t,ti)=>`<button class="gcard" data-act="trTopic" data-t="${ti}"><span class="gi">${t.emoji}</span><span class="grow"><b>${esc(t.titlu)}</b><small>5 niveluri · ${[1,2,3,4,5].filter(n=>trDone(t,n)).length}/5 trecute</small></span><span class="chev">›</span></button>`).join('')}`;
+ const t=T[s.t];
+ if(!s.play)return `${backBtn(t.emoji+' '+esc(t.titlu))}${lvGrid(TRL.map(([n,nm])=>({n,name:nm,ok:trUnl(t,n),done:trDone(t,n)})),'trStart')}
+  <div class="card">${TRL.map(([n])=>{const nm=n<=3?t.seturi[n-1].nume.replace(/^Setul \d+ · /,''):n===4?'Amestec din toate seturile':'Expert: amestec, '+TRSEC+' secunde pe întrebare';const b=S.games.trivia[trKey(t,n)];return `<div class="rw"><b style="width:24px">${trUnl(t,n)?n:'🔒'}</b><span class="grow">${esc(nm)}</span><small class="mut">${b!=null?b+'/19':''}${trDone(t,n)?' ✅':''}</small></div>`}).join('')}</div>
+  <p class="hint">Fiecare nivel are 19 întrebări. Ai nevoie de minim ${TRPASS} corecte ca să deschizi nivelul următor.</p>`;
+ const g=G.tr;if(!g)return backBtn('');
+ if(g.end)return `${backBtn(t.emoji+' '+esc(t.titlu))}<div class="card trophy"><div class="t">${g.ok===g.q.length?'🏆':g.ok>=TRPASS?'🥇':'💪'}</div><b>${g.ok} din ${g.q.length}</b><div class="mut">${g.ok>=TRPASS?(g.newPass&&g.n<5?'🔓 Ai deblocat nivelul '+(g.n+1)+'!':g.n===5&&g.newPass?'👑 Ai terminat toate nivelurile!':'Nivel trecut!'):'Ai nevoie de '+TRPASS+' ca să treci. Mai încearcă!'}${g.gain?`<br>+${g.gain} ⭐`:''}</div><button class="btn big" data-act="trStart" data-n="${g.n}">🔁 Joc din nou</button><button class="btn ghost big" data-act="backGame">Niveluri</button></div>`;
  const q=g.q[g.i],ans=g.ans;
- return `${backBtn(t.emoji+' '+esc(t.seturi[g.s].nume))}<div class="card"><div class="gprog"><span>Întrebarea ${g.i+1} din ${g.q.length}</span><span>✅ ${g.ok}</span></div><div class="bar"><i style="width:${g.i/g.q.length*100}%"></i></div>
+ return `${backBtn(t.emoji+' Nivel '+g.n+' · '+esc(TRL[g.n-1][1]))}<div class="card"><div class="gprog"><span>Întrebarea ${g.i+1} din ${g.q.length}</span><span>${g.n===5&&ans==null?`<b id="qt" class="qt">⏱ ${TRSEC}</b> · `:''}✅ ${g.ok}</span></div><div class="bar"><i style="width:${g.i/g.q.length*100}%"></i></div>
  <div class="tq">${esc(q.q)}</div>${q.a.map((a,i)=>`<button class="ans ${ans==null?'':i===q.c?'ok':i===ans?'bad':''}" data-act="trAns" data-i="${i}" ${ans!=null?'disabled':''}>${ans!=null&&i===q.c?'✅ ':ans===i?'❌ ':''}${esc(a)}</button>`).join('')}
- ${ans!=null?`<div class="expl">${ans===q.c?'🎉 <b>Corect!</b> ':'💡 '}${esc(q.e)}</div><button class="btn big" data-act="trNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi rezultatul 🏁'}</button>`:''}</div>`}
+ ${ans!=null?`<div class="expl">${ans===q.c?'🎉 <b>Corect!</b> ':ans===-1?'⏰ <b>Timpul a expirat!</b> ':'💡 '}${esc(q.e)}</div><button class="btn big" data-act="trNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi rezultatul 🏁'}</button>`:''}</div>`}
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
-A.trStart=d=>{const t=DATA.trivia.teme[+d.t],s=t.seturi[+d.s];G.tr={t:+d.t,s:+d.s,i:0,ok:0,ans:null,end:false,q:shuf(s.intrebari).map(q=>{const o=shuf(q.a.map((a,i)=>({a,i})));return{q:q.q,e:q.e,a:o.map(x=>x.a),c:o.findIndex(x=>x.i===q.c)}})};UI.sub={t:+d.t,s:+d.s};render();scrollTo(0,0)};
-A.trAns=(d,el)=>{const g=G.tr;if(g.ans!=null)return;g.ans=+d.i;const p=pos(el);if(g.ans===g.q[g.i].c){g.ok++;burst(p.x,p.y,30);chime()}else beep(200,.15);render()};
-A.trNext=()=>{const g=G.tr;g.i++;g.ans=null;if(g.i>=g.q.length){g.end=true;const t=DATA.trivia.teme[g.t],k=t.id+g.s,old=S.games.trivia[k];const best=old==null?0:old;
+A.trTopic=d=>{UI.sub={t:+d.t};render();scrollTo(0,0)};
+A.trStart=d=>{const ti=UI.sub.t,t=DATA.trivia.teme[ti],n=+d.n;if(!trUnl(t,n)){lockMsg(n,'minim '+TRPASS+' din 19');return}
+ const src=n<=3?t.seturi[n-1].intrebari:shuf(t.seturi.flatMap(x=>x.intrebari)).slice(0,19);
+ G.tr={t:ti,n,i:0,ok:0,ans:null,end:false,deadline:n===5?Date.now()+TRSEC*1000:null,q:shuf(src).map(q=>{const o=shuf(q.a.map((a,i)=>({a,i})));return{q:q.q,e:q.e,a:o.map(x=>x.a),c:o.findIndex(x=>x.i===q.c)}})};
+ UI.sub={t:ti,play:true};render();scrollTo(0,0)};
+A.trAns=(d,el)=>{const g=G.tr;if(g.ans!=null)return;g.ans=+d.i;g.deadline=null;const p=pos(el);if(g.ans===g.q[g.i].c){g.ok++;burst(p.x,p.y,30);chime()}else beep(200,.15);render()};
+A.trNext=()=>{const g=G.tr;g.i++;g.ans=null;if(g.i<g.q.length){if(g.n===5)g.deadline=Date.now()+TRSEC*1000;render();return}
+ g.end=true;const t=DATA.trivia.teme[g.t],k=trKey(t,g.n),old=S.games.trivia[k],best=old==null?0:old;
  g.gain=Math.max(0,Math.floor((g.ok-best)/2))+(g.ok===g.q.length&&best<g.q.length?5:0);if(old==null||g.ok>old)S.games.trivia[k]=g.ok;
- if(g.gain)reward(g.gain,mid(),g.ok===g.q.length);else{save();if(g.ok>=14)fireworks()}}render();scrollTo(0,0)};
+ if(g.ok>=TRPASS&&!trPass(t)[g.n]){trPass(t)[g.n]=today();g.newPass=true;g.gain+=3}
+ if(g.gain)reward(g.gain,mid(),g.ok>=TRPASS);else{save();if(g.ok>=14)fireworks()}render();scrollTo(0,0)};
 
 /* --- Geografie pe hartă --- */
 const CONT=[['europa','Europa','🏰'],['asia','Asia','🐉'],['africa','Africa','🦁'],['america_nord','America de Nord','🗽'],['america_sud','America de Sud','🦜'],['oceania','Oceania','🦘']];
-const LV=[['tari','🗺️','Țări','Găsește țara pe hartă'],['capitale','🏙️','Capitale','Unde se află capitala?'],['steaguri','🚩','Steaguri','Al cui e steagul?'],['celebru','⭐','Celebrități și cultură','Fotbaliști, invenții, clădiri, mașini, strămoși, scrieri']];
+const LV=[['tari','🗺️','Țări','Găsește țara pe hartă'],['capitale','🏙️','Capitale','Unde se află capitala?'],['steaguri','🚩','Steaguri','Al cui e steagul?'],['celebru','⭐','Celebrități','Fotbaliști, invenții, clădiri, mașini, strămoși, scrieri'],['expert','🏆','Expert','Toate amestecate, fără indicii']];
 const CAT={fotbalist:'⚽ Fotbalist',celebritate:'🌟 Celebritate',inventie:'💡 Invenție',cladire:'🏛️ Clădire celebră',masina:'🚗 Mașină',istorie:'📜 Istorie',stramosi:'🏺 Strămoși',scrieri:'📚 Scrieri'};
 const flag=iso=>iso&&iso.length===2?String.fromCodePoint(...[...iso.toUpperCase()].map(c=>127397+c.charCodeAt())):'🏳️';
 let RN;try{RN=new Intl.DisplayNames(['ro'],{type:'region'})}catch(e){}
 const cname=iso=>(DATA.geo&&DATA.geo.tari[iso]&&DATA.geo.tari[iso].nume)||(RN&&iso?RN.of(iso):iso)||'';
 const gst=c=>S.games.geo[c]||(S.games.geo[c]={learned:{},pass:{}});
-const unlocked=(c,l)=>l==='tari'||l==='capitale'||(gst(c).pass.tari&&gst(c).pass.capitale);
+const unlocked=(c,l)=>{const i=LV.findIndex(x=>x[0]===l);return i<=0||!!gst(c).pass[LV[i-1][0]]};
 const playSet=c=>{const m=DATA['map_'+c];return new Set(m.c.filter(r=>r[1]&&DATA.geo.tari[r[0]]).map(r=>r[0]))};
 const imgTag=(src,fb)=>src?`<img src="${src}" alt="" onerror="this.outerHTML='<span class=&quot;ph0&quot;>${fb}</span>'">`:`<span class="ph0">${fb}</span>`;
 function geoView(){if(!need('geo','data/geo.json'))return loading('🌍 Geografie');const s=UI.sub;
- if(!s)return `${backBtn('🌍 Geografie')}<p class="lead">Alege un continent. Începe cu <b>Țări</b> și <b>Capitale</b> — după ce le treci (minim 7 din 10), se deblochează steagurile și celebritățile.</p>
- ${CONT.map(([k,n,e])=>{const L=gst(k).learned,cnt=Object.keys(L).filter(x=>x.startsWith('tari:')).length;return `<button class="gcard" data-act="geoCont" data-k="${k}"><span class="gi">${e}</span><span class="grow"><b>${n}</b><small>${cnt?cnt+' țări învățate':'neînceput'} · ${['tari','capitale','steaguri','celebru'].filter(l=>gst(k).pass[l]).length}/4 niveluri</small></span><span class="chev">›</span></button>`}).join('')}`;
+ if(!s)return `${backBtn('🌍 Geografie')}<p class="lead">Alege un continent. Fiecare continent are 5 niveluri: Țări → Capitale → Steaguri → Celebrități → Expert. Treci un nivel cu minim 7 din 10 ca să-l deschizi pe următorul.</p>
+ ${CONT.map(([k,n,e])=>{const L=gst(k).learned,cnt=Object.keys(L).filter(x=>x.startsWith('tari:')).length;return `<button class="gcard" data-act="geoCont" data-k="${k}"><span class="gi">${e}</span><span class="grow"><b>${n}</b><small>${cnt?cnt+' țări învățate':'neînceput'} · ${LV.filter(x=>gst(k).pass[x[0]]).length}/5 niveluri</small></span><span class="chev">›</span></button>`}).join('')}`;
  const cn=CONT.find(x=>x[0]===s.c);if(!need('map_'+s.c,'geo/'+s.c+'.json'))return loading(cn[2]+' '+cn[1]);
- if(!s.l)return `${backBtn(cn[2]+' '+cn[1])}${LV.map(([l,e,n,dsc])=>{const ok=unlocked(s.c,l),p=gst(s.c).pass[l];return `<button class="gcard ${ok?'':'lock'}" data-act="geoLvl" data-l="${l}"><span class="gi">${ok?e:'🔒'}</span><span class="grow"><b>${n}${p?' ✅':''}</b><small>${ok?dsc:'Se deblochează după ce treci Țări și Capitale'}</small></span><span class="chev">›</span></button>`}).join('')}`;
+ if(!s.l)return `${backBtn(cn[2]+' '+cn[1])}${lvGrid(LV.map(([l,e,n],k)=>({n:k+1,name:n,ok:unlocked(s.c,l),done:!!gst(s.c).pass[l]})),'geoLvlN')}
+  <div class="card">${LV.map(([l,e,n,d],k)=>`<div class="rw"><span style="font-size:20px">${unlocked(s.c,l)?e:'🔒'}</span><span class="grow"><b style="font-size:15px">${k+1}. ${n}</b><br><small class="mut">${d}</small></span>${gst(s.c).pass[l]?'✅':''}</div>`).join('')}</div>`;
  const g=G.geo,lv=LV.find(x=>x[0]===s.l);
- if(g.done){const pass=g.ok>=Math.ceil(g.items.length*.7);return `${backBtn(cn[1]+' · '+lv[2])}<div class="card trophy"><div class="t">${pass?'🏆':'💪'}</div><b>${g.ok} din ${g.items.length} din prima</b><div class="mut">${pass?(g.newPass?'Nivel trecut! +5 ⭐'+(g.unlock?'<br>🔓 Ai deblocat Steaguri și Celebrități!':''):'Bravo, încă o rundă reușită!'):'Ai nevoie de '+Math.ceil(g.items.length*.7)+' ca să treci nivelul. Mai încearcă!'}</div><button class="btn big" data-act="geoLvl" data-l="${s.l}">🔁 Încă o rundă</button><button class="btn ghost big" data-act="backGame">Alt nivel</button></div>`}
+ if(g.done){const pass=g.ok>=Math.ceil(g.items.length*.7);return `${backBtn(cn[1]+' · '+lv[2])}<div class="card trophy"><div class="t">${pass?'🏆':'💪'}</div><b>${g.ok} din ${g.items.length} din prima</b><div class="mut">${pass?(g.newPass?'Nivel trecut! +5 ⭐'+(g.unlock?'<br>🔓 Ai deblocat: '+g.unlock:'<br>👑 Ai terminat continentul!'):'Bravo, încă o rundă reușită!'):'Ai nevoie de '+Math.ceil(g.items.length*.7)+' ca să treci nivelul. Mai încearcă!'}</div><button class="btn big" data-act="geoLvl" data-l="${s.l}">🔁 Încă o rundă</button><button class="btn ghost big" data-act="backGame">Alt nivel</button></div>`}
  return `${backBtn(cn[2]+' '+cn[1]+' · '+lv[2])}<div class="card" id="gq"></div><div class="mapbox" id="mapHolder"></div><p class="hint" style="text-align:center">Mărești cu ＋ sau cu două degete, muți harta trăgând de ea.</p>`}
 A.geoCont=d=>{UI.sub={c:d.k};render();scrollTo(0,0)};
-A.geoLvl=d=>{const c=UI.sub.c;if(!unlocked(c,d.l)){toast('🔒 Treci întâi Țări și Capitale (minim 7 din 10)');return}
+A.geoLvlN=d=>A.geoLvl({l:LV[+d.n-1][0]});
+A.geoLvl=d=>{const c=UI.sub.c;if(!unlocked(c,d.l)){const i=LV.findIndex(x=>x[0]===d.l);lockMsg(i+1,'minim 7 din 10');return}
  const P=[...playSet(c)],T=DATA.geo.tari,L=gst(c).learned;let pool;
- if(d.l==='celebru')pool=P.flatMap(iso=>(DATA.geo.det[iso]||[]).map(x=>({iso,key:iso+':'+x.nume,...x})));
- else pool=P.map(iso=>({iso,key:iso}));
+ const det=P.flatMap(iso=>(DATA.geo.det[iso]||[]).map(x=>({iso,key:iso+':'+x.nume,t:'celebru',...x})));
+ if(d.l==='celebru')pool=det;
+ else if(d.l==='expert')pool=[...P.flatMap(iso=>['tari','capitale','steaguri'].map(t=>({iso,key:iso,t}))),...det];
+ else pool=P.map(iso=>({iso,key:iso,t:d.l}));
  if(!pool.length){toast('Încă nu avem date pentru acest nivel aici');return}
- const fresh=shuf(pool.filter(x=>!L[d.l+':'+x.key])),old=shuf(pool.filter(x=>L[d.l+':'+x.key]));
+ const fresh=shuf(pool.filter(x=>!L[x.t+':'+x.key])),old=shuf(pool.filter(x=>L[x.t+':'+x.key]));
  G.geo={c,l:d.l,items:[...fresh,...old].slice(0,10),i:0,ok:0,tries:0,wait:false,done:false};UI.sub={c,l:d.l};render();scrollTo(0,0)};
 function geoMount(){const g=G.geo,hold=$('#mapHolder');if(!g||!hold||g.done)return;const m=DATA['map_'+g.c],P=playSet(g.c);
  const aw=hold.clientWidth,h=Math.min(aw*m.h/m.w,innerHeight*.5),w=h*m.w/m.h;
@@ -585,7 +684,7 @@ function geoMount(){const g=G.geo,hold=$('#mapHolder');if(!g||!hold||g.done)retu
  m.c.forEach(r=>{const pl=r[1]&&P.has(r[0]);s+=`<path d="${r[2]}" class="${pl?'pc':'np'}" ${pl?`data-iso="${r[0]}"`:r[0]?`data-x="${r[0]}"`:''}/>`});
  m.c.forEach(r=>{if(r[5]&&r[1]&&P.has(r[0]))s+=`<circle cx="${r[3]}" cy="${r[4]}" r="8" class="pc dot" data-iso="${r[0]}"/>`});
  hold.innerHTML=s+'</svg><div class="zbtn"><button data-act="mz" data-z="0.6">＋</button><button data-act="mz" data-z="1.6">－</button><button data-act="mz" data-z="0">⟲</button></div>';
- if(g.l!=='celebru'){const L=gst(g.c).learned;Object.keys(L).filter(k=>k.startsWith(g.l+':')).forEach(k=>mapCls(k.split(':')[1],'old',true))}
+ if(g.l!=='celebru'&&g.l!=='expert'){const L=gst(g.c).learned;Object.keys(L).filter(k=>k.startsWith(g.l+':')).forEach(k=>mapCls(k.split(':')[1],'old',true))}
  g.vb=[0,0,m.w,m.h];panZoom($('#map'),m);geoShow()}
 function mapCls(iso,c,on){document.querySelectorAll(`#map [data-iso="${iso}"]`).forEach(e=>e.classList.toggle(c,on))}
 function panZoom(svg,m){const P=new Map();let st=null,pin=null,moved=false;const g=G.geo;
@@ -607,52 +706,54 @@ function geoQ(it,l){const T=DATA.geo.tari[it.iso];
  if(l==='capitale')return `${imgTag(T.capImg,'🏙️')}<div><div class="big">${esc(T.cap)}</div><small>E capitala cărei țări?</small></div>`;
  if(l==='steaguri')return `<span class="flag">${flag(it.iso)}</span><div><div class="big">Al cui e steagul?</div><small>Atinge țara pe hartă</small></div>`;
  return `${imgTag(it.img,(CAT[it.cat]||'⭐').split(' ')[0])}<div><small>${CAT[it.cat]||''}</small><div class="big">${esc(it.nume)}</div><small>Din ce țară e?</small></div>`}
-function geoShow(){const g=G.geo,it=g.items[g.i];$('#gq').className='card';$('#gq').innerHTML=`<div class="gprog"><span>${g.i+1} din ${g.items.length}</span><span>✅ ${g.ok}</span></div><div class="gq">${geoQ(it,g.l)}</div>`}
-function geoInfo(it,first){const g=G.geo,T=DATA.geo.tari[it.iso],f=flag(it.iso);let h;
- if(g.l==='tari')h=`<span class="flag">${f}</span><div><div class="big">${esc(T.nume)}</div><small>Capitala: ${esc(T.cap)}</small><p>${esc(T.fapt)}</p></div>`;
- else if(g.l==='capitale')h=`${imgTag(T.capImg,'🏙️')}<div><div class="big">${esc(T.cap)}</div><small>capitala țării ${f} ${esc(T.nume)}</small><p>${esc(T.cap_info)}</p></div>`;
- else if(g.l==='steaguri')h=`<span class="flag">${f}</span><div><div class="big">${esc(T.nume)}</div><small>Capitala: ${esc(T.cap)}</small><p>${esc(T.fapt)}</p></div>`;
+function geoShow(){const g=G.geo,it=g.items[g.i];$('#gq').className='card';$('#gq').innerHTML=`<div class="gprog"><span>${g.i+1} din ${g.items.length}${g.l==='expert'?' · '+(LV.find(x=>x[0]===it.t)||LV[0])[1]:''}</span><span>✅ ${g.ok}</span></div><div class="gq">${geoQ(it,it.t||g.l)}</div>`}
+function geoInfo(it,first){const g=G.geo,T=DATA.geo.tari[it.iso],f=flag(it.iso),lt=it.t||g.l;let h;
+ if(lt==='tari')h=`<span class="flag">${f}</span><div><div class="big">${esc(T.nume)}</div><small>Capitala: ${esc(T.cap)}</small><p>${esc(T.fapt)}</p></div>`;
+ else if(lt==='capitale')h=`${imgTag(T.capImg,'🏙️')}<div><div class="big">${esc(T.cap)}</div><small>capitala țării ${f} ${esc(T.nume)}</small><p>${esc(T.cap_info)}</p></div>`;
+ else if(lt==='steaguri')h=`<span class="flag">${f}</span><div><div class="big">${esc(T.nume)}</div><small>Capitala: ${esc(T.cap)}</small><p>${esc(T.fapt)}</p></div>`;
  else h=`${imgTag(it.img,'⭐')}<div><small>${CAT[it.cat]||''} · ${f} ${esc(T.nume)}</small><div class="big">${esc(it.nume)}</div><p>${esc(it.info)}</p></div>`;
  $('#gq').className='card ginfo'+(first?'':' miss');$('#gq').innerHTML=`<div class="gprog"><span>${first?'🎉 Corect din prima!':'👉 Aici era'}</span><span>✅ ${g.ok}</span></div><div class="gq" style="align-items:flex-start">${h}</div><button class="btn big" data-act="geoNext">${g.i+1<g.items.length?'Mai departe ›':'Vezi rezultatul 🏁'}</button>`;
  $('#gq').scrollIntoView({behavior:'smooth',block:'nearest'})}
 function geoTap(el,x,y){const g=G.geo;if(!g||g.wait||!el)return;const it=g.items[g.i],iso=el.dataset.iso;
  if(!iso){toast(`Asta e ${cname(el.dataset.x)} — nu e în joc aici`);return}
  if(iso===it.iso){g.wait=true;const first=g.tries===0;mapCls(it.iso,'hint',false);mapCls(iso,'got',true);
-  if(first){g.ok++;const L=gst(g.c).learned,k=g.l+':'+it.key;if(!L[k]){L[k]=1;reward(1,{x,y})}else{burst(x,y,26);chime()}}else chime();
+  if(first){g.ok++;const L=gst(g.c).learned,k=(it.t||g.l)+':'+it.key;if(!L[k]){L[k]=1;reward(1,{x,y})}else{burst(x,y,26);chime()}}else chime();
   geoInfo(it,first)}
  else{g.tries++;mapCls(iso,'wrong',true);setTimeout(()=>mapCls(iso,'wrong',false),700);beep(200,.12);toast(`Nu — asta e ${cname(iso)}`);
-  if(g.tries===2)mapCls(it.iso,'hint',true);
+  if(g.tries===2&&g.l!=='expert')mapCls(it.iso,'hint',true);
   if(g.tries>=3){g.wait=true;mapCls(it.iso,'hint',false);mapCls(it.iso,'got',true);geoInfo(it,false)}}}
 A.geoNext=()=>{const g=G.geo;g.i++;g.tries=0;g.wait=false;if(g.i<g.items.length){geoShow();$('#gq').scrollIntoView({behavior:'smooth',block:'nearest'});return}
  g.done=true;const s=gst(g.c),pass=g.ok>=Math.ceil(g.items.length*.7);
- if(pass&&!s.pass[g.l]){s.pass[g.l]=today();g.newPass=true;g.unlock=(g.l==='tari'||g.l==='capitale')&&s.pass.tari&&s.pass.capitale;reward(5,mid(),true)}else{save();if(pass)fireworks()}
+ if(pass&&!s.pass[g.l]){s.pass[g.l]=today();g.newPass=true;const li=LV.findIndex(x=>x[0]===g.l);g.unlock=LV[li+1]?LV[li+1][2]:null;reward(5,mid(),true)}else{save();if(pass)fireworks()}
  render();scrollTo(0,0)};
 
 /* --- Cars: module pe ani (2026, apoi 2025, 2024, clasice), 3 niveluri, seturi de 19 --- */
 const CARC=[['toate','🌐 Toate'],['europa','🇪🇺 Europa'],['asia','🌏 Asia'],['america','🌎 America']];
-const CARL=[['marca','🏷️','Nivel 1 · Producătorul','Ghicește marca după poză'],['model','🚘','Nivel 2 · Modelul','Ghicește exact modelul'],['tehnic','⚙️','Nivel 3 · Detalii tehnice','Putere, viteză, 0–100, motor, autonomie']];
+const CARL=[['marca','🏷️','Nivel 1 · Producătorul','Ghicește marca după poză'],['model','🚘','Nivel 2 · Modelul','Ghicește exact modelul'],['tehnic','⚙️','Nivel 3 · Detalii tehnice','Putere, viteză, 0–100, motor, autonomie'],['mix','🔀','Nivel 4 · Amestec','Marcă, model și tehnic, amestecate'],['expert','⏱️','Nivel 5 · Expert','Amestec contra cronometru: 12 secunde pe întrebare']];
+const CARSEC=12;
 const CARN=19,CARPASS=13;
 function cst(m){S.games.cars=S.games.cars||{};return S.games.cars[m]||(S.games.cars[m]={pass:{},best:{},learned:{}})}
-const carUnl=(m,l)=>l==='marca'||(l==='model'&&!!cst(m).pass.marca)||(l==='tehnic'&&!!cst(m).pass.model);
+const carUnl=(m,l)=>{const i=CARL.findIndex(x=>x[0]===l);return i<=0||!!cst(m).pass[CARL[i-1][0]]};
 const carName=c=>c.marca+' '+c.model;
 const nfmt={cp:v=>v+' CP',acc:v=>String(v).replace('.',',')+' s',vmax:v=>v+' km/h',autonomie:v=>v+' km',an:v=>'în '+v};
 function carPool(m,k){const L=DATA['cars_'+m]||[];return k==='toate'?L:L.filter(c=>c.continent===k)}
 function carsView(){if(!need('cars','data/cars/index.json'))return loading('🏎️ Cars');const s=UI.sub,M=DATA.cars.module;
  if(!s)return `${backBtn('🏎️ Cars')}<p class="lead">🏎️ Alege colecția. Începi cu mașinile din 2026; urmează 2025, 2024 și mașinile clasice.</p>
- ${M.map(m=>m.file?`<button class="gcard" data-act="carMod" data-k="${m.id}"><span class="gi">${m.emoji}</span><span class="grow"><b>${esc(m.titlu)}</b><small>${m.n} mașini · ${['marca','model','tehnic'].filter(l=>cst(m.id).pass[l]).length}/3 niveluri trecute</small></span><span class="chev">›</span></button>`
+ ${M.map(m=>m.file?`<button class="gcard" data-act="carMod" data-k="${m.id}"><span class="gi">${m.emoji}</span><span class="grow"><b>${esc(m.titlu)}</b><small>${m.n} mașini · ${CARL.filter(x=>cst(m.id).pass[x[0]]).length}/5 niveluri trecute</small></span><span class="chev">›</span></button>`
   :`<div class="gcard lock"><span class="gi">${m.emoji}</span><span class="grow"><b>${esc(m.titlu)}</b><small>În curând</small></span></div>`).join('')}`;
  const mod=M.find(x=>x.id===s.m);if(!need('cars_'+s.m,'data/'+mod.file))return loading(mod.emoji+' '+mod.titlu);
  UI.carCont=UI.carCont||'toate';
  if(!s.l){const st=cst(s.m);return `${backBtn(mod.emoji+' '+esc(mod.titlu))}<div class="chips">${CARC.map(([k,n])=>`<button class="chip ${UI.carCont===k?'on':''}" data-act="carCont" data-k="${k}">${n} <small>${carPool(s.m,k).length}</small></button>`).join('')}</div>
-  ${CARL.map(([l,e,n,d])=>{const ok=carUnl(s.m,l),b=st.best[l];return `<button class="gcard ${ok?'':'lock'}" data-act="carLvl" data-l="${l}"><span class="gi">${ok?e:'🔒'}</span><span class="grow"><b>${n}${st.pass[l]?' ✅':''}</b><small>${ok?d+(b!=null?` · record ${b}/${CARN}`:''):'Se deblochează cu minim '+CARPASS+'/'+CARN+' la nivelul de dinainte'}</small></span><span class="chev">›</span></button>`}).join('')}
+  ${lvGrid(CARL.map(([l,e,n],k)=>({n:k+1,name:n.replace(/^Nivel \d · /,''),ok:carUnl(s.m,l),done:!!st.pass[l]})),'carLvlN')}
+  <div class="card">${CARL.map(([l,e,n,d])=>`<div class="rw"><span style="font-size:20px">${carUnl(s.m,l)?e:'🔒'}</span><span class="grow"><b style="font-size:15px">${n}</b><br><small class="mut">${d}</small></span><small class="mut">${st.best[l]!=null?st.best[l]+'/'+CARN:''}${st.pass[l]?' ✅':''}</small></div>`).join('')}</div>
   <p class="hint">Fiecare set are ${CARN} mașini. La final primești recenzia: ce ai știut, ce nu, plus fișa tehnică și povestea fiecărei mașini.</p>`}
  const g=G.car,lv=CARL.find(x=>x[0]===s.l);if(!g)return backBtn(lv[2]);
  if(g.end)return carReview(g,lv);
  const q=g.q[g.i],c=q.car,a=g.ans;
- return `${backBtn(lv[1]+' '+lv[2])}<div class="card"><div class="gprog"><span>${g.i+1} din ${g.q.length}</span><span>✅ ${g.ok}</span></div><div class="bar"><i style="width:${g.i/g.q.length*100}%"></i></div>
+ return `${backBtn(lv[1]+' '+lv[2])}<div class="card"><div class="gprog"><span>${g.i+1} din ${g.q.length}</span><span>${g.l==='expert'&&a==null?`<b id="qt" class="qt">⏱ ${CARSEC}</b> · `:''}✅ ${g.ok}</span></div><div class="bar"><i style="width:${g.i/g.q.length*100}%"></i></div>
  <div class="carph">${c.img?`<img src="${c.img}" alt="">`:'<span>🚗</span>'}</div>
  <div class="tq">${q.txt}</div>${q.o.map((o,i)=>`<button class="ans ${a==null?'':i===q.c?'ok':i===a?'bad':''}" data-act="carAns" data-i="${i}" ${a!=null?'disabled':''}>${a!=null&&i===q.c?'✅ ':a===i?'❌ ':''}${esc(o)}</button>`).join('')}
- ${a!=null?`<div class="expl">${a===q.c?'🎉 <b>Corect!</b> ':'💡 '}<b>${esc(carName(c))}</b> · ${flag(c.tara)} · ${[c.status==='istoric'?'din '+c.an:'',c.cp?c.cp+' CP':'putere nedezvăluită',c.acc?'0–100 în '+nfmt.acc(c.acc):'',c.vmax?c.vmax+' km/h':''].filter(Boolean).join(' · ')}<br>${esc(c.curiozitate||'')}</div><button class="btn big" data-act="carNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi recenzia 🏁'}</button>`:''}</div>`}
+ ${a!=null?`<div class="expl">${a===q.c?'🎉 <b>Corect!</b> ':a===-1?'⏰ <b>Timpul a expirat!</b> ':'💡 '}<b>${esc(carName(c))}</b> · ${flag(c.tara)} · ${[c.status==='istoric'?'din '+c.an:'',c.cp?c.cp+' CP':'putere nedezvăluită',c.acc?'0–100 în '+nfmt.acc(c.acc):'',c.vmax?c.vmax+' km/h':''].filter(Boolean).join(' · ')}<br>${esc(c.curiozitate||'')}</div><button class="btn big" data-act="carNext">${g.i+1<g.q.length?'Următoarea ›':'Vezi recenzia 🏁'}</button>`:''}</div>`}
 A.carMod=d=>{UI.sub={m:d.k};render();scrollTo(0,0)};
 A.carCont=d=>{UI.carCont=d.k;render()};
 function pick3(cands,ok,key){const out=[],seen=new Set([key(ok)]);for(const x of cands){const k=key(x);if(!seen.has(k)){seen.add(k);out.push(x)}if(out.length===3)break}return out}
@@ -660,7 +761,7 @@ function numOpts(c,f,all){const v=+c[f],far=(a,b)=>a!==b&&(f==='acc'?Math.abs(a-
  const vals=[];for(const x of shuf(all.map(y=>+y[f]).filter(n=>n>0))){if(far(x,v)&&vals.every(w=>far(x,w)))vals.push(x);if(vals.length===3)break}
  const k=f==='an'?[-12,-24,9]:[.55,1.6,2.2];let guard=0;while(vals.length<3&&guard++<30){const i=vals.length,w=f==='an'?v+k[i]:f==='acc'?Math.round(v*k[i]*10)/10:Math.round(v*k[i]);if(far(w,v)&&vals.every(z=>far(w,z)))vals.push(w);else k[i]+=f==='an'?(k[i]<0?-3:3):.25}
  return vals}
-function carQ(c,l,all){const sameC=all.filter(x=>x.continent===c.continent);
+function carQ(c,l,all){if(l==='mix'||l==='expert')l=pick(['marca','model','tehnic']);const sameC=all.filter(x=>x.continent===c.continent);
  if(l==='marca'){const br=[...new Set((sameC.length>8?sameC:all).map(x=>x.marca))].filter(b=>b!==c.marca);const o=shuf([c.marca,...shuf(br).slice(0,3)]);return{car:c,txt:'Ce marcă e mașina asta?',o,c:o.indexOf(c.marca)}}
  if(l==='model'){const ds=[...shuf(all.filter(x=>x.marca===c.marca&&x!==c)),...shuf(all.filter(x=>x.marca!==c.marca&&x.caroserie===c.caroserie)),...shuf(all.filter(x=>x!==c))];
   const o=shuf([c,...pick3(ds,c,carName)]).map(carName);return{car:c,txt:'Ce model e exact?',o,c:o.indexOf(carName(c))}}
@@ -669,21 +770,22 @@ function carQ(c,l,all){const sameC=all.filter(x=>x.continent===c.continent);
  if(t==='tara'){const tz=[...new Set(all.map(x=>x.tara))].filter(x=>x!==c.tara);const o=shuf([c.tara,...shuf(tz).slice(0,3)]);return{car:c,txt:`Din ce țară e marca ${esc(c.marca)}?`,o:o.map(x=>flag(x)+' '+cname(x)),c:o.indexOf(c.tara)}}
  const Q={cp:`Câți cai putere are ${nm}?`,acc:`În câte secunde ajunge ${nm} de la 0 la 100 km/h?`,vmax:`Ce viteză maximă are ${nm}?`,autonomie:`Câți km merge ${nm} cu bateria plină?`,an:`În ce an a apărut ${nm}?`}[t];
  const v=+c[t],o=shuf([v,...numOpts(c,t,all)]);return{car:c,txt:Q,o:o.map(nfmt[t]),c:o.indexOf(v)}}
-A.carLvl=async d=>{const m=UI.sub.m;if(!carUnl(m,d.l)){toast('🔒 Treci întâi nivelul de dinainte cu minim '+CARPASS+'/'+CARN);return}
+A.carLvlN=d=>A.carLvl({l:CARL[+d.n-1][0]});
+A.carLvl=async d=>{const m=UI.sub.m;if(!carUnl(m,d.l)){lockMsg(CARL.findIndex(x=>x[0]===d.l)+1,'minim '+CARPASS+' din '+CARN);return}
  if(!DATA.geo)try{await loadData('geo','data/geo.json')}catch(e){}
  const all=DATA['cars_'+m],pool=carPool(m,UI.carCont),L=cst(m).learned;if(pool.length<4){toast('Prea puține mașini aici');return}
  const fresh=shuf(pool.filter(c=>!L[d.l+':'+c.id])),old=shuf(pool.filter(c=>L[d.l+':'+c.id]));
- G.car={m,l:d.l,i:0,ok:0,ans:null,end:false,res:[],q:[...fresh,...old].slice(0,CARN).map(c=>carQ(c,d.l,all))};UI.sub={m,l:d.l};render();scrollTo(0,0)};
-A.carAns=(d,el)=>{const g=G.car;if(g.ans!=null)return;g.ans=+d.i;const q=g.q[g.i],ok=g.ans===q.c;g.res.push(ok);const p=pos(el);
+ G.car={m,l:d.l,i:0,ok:0,ans:null,end:false,res:[],deadline:d.l==='expert'?Date.now()+CARSEC*1000:null,q:[...fresh,...old].slice(0,CARN).map(c=>carQ(c,d.l,all))};UI.sub={m,l:d.l};render();scrollTo(0,0)};
+A.carAns=(d,el)=>{const g=G.car;if(g.ans!=null)return;g.ans=+d.i;g.deadline=null;const q=g.q[g.i],ok=g.ans===q.c;g.res.push(ok);const p=pos(el);
  if(ok){g.ok++;const L=cst(g.m).learned,k=g.l+':'+q.car.id;if(!L[k]){L[k]=1;reward(1,p)}else{burst(p.x,p.y,28);chime()}}else beep(200,.15);render()};
-A.carNext=()=>{const g=G.car;g.i++;g.ans=null;if(g.i<g.q.length){render();scrollTo(0,0);return}
+A.carNext=()=>{const g=G.car;g.i++;g.ans=null;if(g.i<g.q.length){if(g.l==='expert')g.deadline=Date.now()+CARSEC*1000;render();scrollTo(0,0);return}
  g.end=true;const st=cst(g.m),pass=g.ok>=CARPASS;if(st.best[g.l]==null||g.ok>st.best[g.l])st.best[g.l]=g.ok;
  let gain=0;if(pass&&!st.pass[g.l]){st.pass[g.l]=today();g.newPass=true;gain+=5}if(g.ok===g.q.length)gain+=5;g.gain=gain;
  if(gain)reward(gain,mid(),true);else{save();if(pass)fireworks()}render();scrollTo(0,0)};
 function carSheet(c){const r=[['Țara',flag(c.tara)+' '+cname(c.tara)],['An',c.an],['Versiune',c.versiune],['Tip',c.tip],['Caroserie',c.caroserie],['Motor',c.motor],['Putere',c.cp?c.cp+' CP':'nedezvăluită încă'],c.acc?['0–100 km/h',nfmt.acc(c.acc)]:null,c.vmax?['Viteză maximă',c.vmax+' km/h']:null,c.autonomie?['Autonomie',c.autonomie+' km']:null,c.pret?['Preț de pornire','≈ '+c.pret.toLocaleString('ro-RO')+' €']:null,c.status==='anunțat'?['Stare','anunțată, încă nu se vinde']:c.status==='istoric'?['Stare','mașină clasică, din istorie']:null].filter(Boolean);
  return `<div class="kv">${r.map(([a,b])=>`<span>${a}</span><b>${esc(String(b))}</b>`).join('')}</div><p style="font-size:14.5px;line-height:1.45;margin:6px 0">📖 ${esc(c.poveste)}</p>${c.curiozitate?`<p class="hint">💡 ${esc(c.curiozitate)}</p>`:''}`}
 function carReview(g,lv){const pass=g.ok>=CARPASS;
- return `${backBtn(lv[1]+' Recenzie')}<div class="card trophy"><div class="t">${g.ok===g.q.length?'🏆':pass?'🥇':'💪'}</div><b>${g.ok} din ${g.q.length}</b><div class="mut">${pass?(g.newPass?'Nivel trecut! 🔓 '+(g.l==='marca'?'Ai deblocat Modelul.':g.l==='model'?'Ai deblocat Detaliile tehnice.':'Ești expert în mașini!'):'Foarte bine!'):'Ai nevoie de '+CARPASS+' ca să treci. Citește fișele de mai jos și încearcă din nou!'}${g.gain?`<br>+${g.gain} ⭐`:''}</div>
+ return `${backBtn(lv[1]+' Recenzie')}<div class="card trophy"><div class="t">${g.ok===g.q.length?'🏆':pass?'🥇':'💪'}</div><b>${g.ok} din ${g.q.length}</b><div class="mut">${pass?(g.newPass?(()=>{const i=CARL.findIndex(x=>x[0]===g.l);return CARL[i+1]?'Nivel trecut! 🔓 Ai deblocat '+CARL[i+1][2]+'.':'👑 Ești expert în mașini!'})():'Foarte bine!'):'Ai nevoie de '+CARPASS+' ca să treci. Citește fișele de mai jos și încearcă din nou!'}${g.gain?`<br>+${g.gain} ⭐`:''}</div>
  <div class="row" style="margin-top:12px"><button class="btn grow" data-act="carLvl" data-l="${g.l}">🔁 Set nou</button><button class="btn ghost grow" data-act="backGame">Niveluri</button></div></div>
  <div class="h2">📋 Verifică-ți răspunsurile</div>
  ${g.q.map((q,i)=>{const c=q.car,ok=g.res[i];return `<details class="card friend"><summary>${c.img?`<img src="${c.img}" style="width:72px;height:50px;object-fit:cover;border-radius:10px;flex:none">`:'<span class="ph0">🚗</span>'}<span class="fn"><b style="font-size:16px">${ok?'✅':'❌'} ${esc(carName(c))}</b><small>${ok?'ai știut':'corect era: '+esc(q.o[q.c])}</small></span><span class="chev">›</span></summary><div class="fb">${carSheet(c)}</div></details>`}).join('')}`}
@@ -864,12 +966,12 @@ A.backup=()=>backupJSON();
 A.hideInstall=()=>{UI.noInstall=true;render()};
 const isIOS=/iPhone|iPad|iPod/.test(navigator.userAgent),standalone=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
 function banners(){let h='';
- if(isIOS&&!standalone&&!UI.noInstall)h+=/CriOS|FxiOS|EdgiOS/.test(navigator.userAgent)?`<div class="banner">🧭<div class="grow"><b>Deschide linkul în Safari</b><br>De acolo se poate pune Ralph.app pe ecranul principal.</div></div>`
-  :`<div class="banner">📲<div class="grow"><b>Instalează Ralph.app</b><br>Apasă <span class="share-ic">⬆︎</span> <b>Distribuie</b> (jos) → <b>Adaugă pe ecranul principal</b></div><button class="x" data-act="hideInstall" style="background:rgba(255,255,255,.25);color:#fff">✕</button></div>`;
+ if(isIOS&&!standalone&&!UI.noInstall)h+=/CriOS|FxiOS|EdgiOS/.test(navigator.userAgent)?`<div class="banner">🧭<div class="grow"><b>Deschide linkul în Safari</b><br>De acolo se poate pune Ralph’s Vault pe ecranul principal.</div></div>`
+  :`<div class="banner">📲<div class="grow"><b>Instalează Ralph’s Vault</b><br>Apasă <span class="share-ic">⬆︎</span> <b>Distribuie</b> (jos) → <b>Adaugă pe ecranul principal</b></div><button class="x" data-act="hideInstall" style="background:rgba(255,255,255,.25);color:#fff">✕</button></div>`;
  if(sinceBackup()>=7)h+=`<div class="banner">💾<div class="grow"><b>E timpul pentru o copie</b><br>${S.profile.lastBackup?'Ultima copie: acum '+sinceBackup()+' zile':'Nu ai salvat încă nicio copie'}</div><button class="btn sm" data-act="backup">Salvează</button></div>`;
  return h}
 A.settings=()=>{const p=S.profile;formSheet({title:'⚙️ Profilul meu',fields:[{k:'name',l:'Numele meu',req:1},{k:'avatar',l:'Avatarul meu',t:'emoji',o:AVATARS},{k:'sound',l:'🔊 Sunete la bifat',t:'check'}],data:p,onSave:v=>Object.assign(p,v),
- top:''});const fm=$('#fs');fm.insertAdjacentHTML('beforeend',`<div class="h2" style="margin-left:0">💾 Datele mele</div><p class="hint">Datele stau pe acest telefon și nu se pierd cât timp Ralph.app e pe ecranul principal. Se pierd doar dacă ștergi aplicația sau schimbi telefonul — de aceea, o dată pe săptămână, salvează o copie: în <b>Fișiere → iCloud Drive</b> sau trimite-o pe e-mail/WhatsApp unui părinte.${p.lastBackup?'<br>Ultima copie: <b>'+fmtD(p.lastBackup)+'</b>':''}</p>
+ top:''});const fm=$('#fs');fm.insertAdjacentHTML('beforeend',`<div class="h2" style="margin-left:0">💾 Datele mele</div><p class="hint">Datele stau pe acest telefon și nu se pierd cât timp Ralph’s Vault e pe ecranul principal. Se pierd doar dacă ștergi aplicația sau schimbi telefonul — de aceea, o dată pe săptămână, salvează o copie: în <b>Fișiere → iCloud Drive</b> sau trimite-o pe e-mail/WhatsApp unui părinte.${p.lastBackup?'<br>Ultima copie: <b>'+fmtD(p.lastBackup)+'</b>':''}</p>
  <button type="button" class="btn big" id="exp" style="margin-top:6px">💾 Salvez copia completă (cu poze)</button>
  <button type="button" class="btn ghost big" id="csv" style="margin-top:8px">📊 Trimit tabel pentru Excel (.csv)</button>
  <label class="btn ghost big" style="display:block;text-align:center;margin-top:8px">📥 Încarc o copie salvată<input type="file" accept=".json,application/json" class="vh" id="imp"></label>
@@ -879,7 +981,7 @@ A.settings=()=>{const p=S.profile;formSheet({title:'⚙️ Profilul meu',fields:
  $('#csv').onclick=()=>shareBlob(new Blob([csv()],{type:'text/csv'}),'ralph-tabel-'+today()+'.csv');
  $('#imp').onchange=async e=>{try{const o=JSON.parse(await e.target.files[0].text());if(!o.profile||!o.notes)throw 0;if(!confirm('Înlocuiesc datele de acum cu copia?'))return;S=o;save();closeSheet();render();toast('✅ Copia a fost încărcată')}catch(er){toast('Fișierul nu e o copie validă')}};
  $('#rst').onclick=()=>{if(confirm('Sigur ștergi TOT?')&&confirm('Chiar sigur? Nu se mai poate recupera.')){S=defState();save();closeSheet();render();welcome()}}};
-function welcome(){formSheet({title:'👋 Bun venit în Ralph.app!',top:'<p class="mut">Aici îți plănuiești zilele, prieteniile, obiectivele, visele și chiar propria bancă. Pentru fiecare lucru bifat primești ⭐ și artificii!</p>',fields:[{k:'name',l:'Cum te cheamă?',req:1},{k:'avatar',l:'Alege-ți avatarul',t:'emoji',o:AVATARS}],data:S.profile,onSave:v=>{Object.assign(S.profile,v,{welcomed:true});setTimeout(()=>{fireworks();toast('Hai să începem, '+v.name+'! 🚀')},300)}})}
+function welcome(){formSheet({title:'👋 Bun venit în Ralph’s Vault!',top:'<p class="mut">Aici îți plănuiești zilele, prieteniile, obiectivele, visele și chiar propria bancă. Pentru fiecare lucru bifat primești ⭐ și artificii!</p>',fields:[{k:'name',l:'Cum te cheamă?',req:1},{k:'avatar',l:'Alege-ți avatarul',t:'emoji',o:AVATARS}],data:S.profile,onSave:v=>{Object.assign(S.profile,v,{welcomed:true});setTimeout(()=>{fireworks();toast('Hai să începem, '+v.name+'! 🚀')},300)}})}
 
 /* ---------- evenimente ---------- */
 A.tab=d=>{UI.tab=d.k;try{localStorage.setItem('ralph_tab',d.k)}catch(e){}render();scrollTo(0,0);if(d.k==='banca'&&UI.bank==='lectii')calc()};
@@ -894,20 +996,22 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=6;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!'};
+const APP_VER=7;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!'};
 function migrate(){if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
  if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};
- const old=S.ver||1;let news=null;if(old<APP_VER){news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
+ const old=S.ver||1;let news=null;if(old<APP_VER){if(DB.db&&S.profile.welcomed)DB.set('copie_inainte_de_v'+APP_VER,JSON.parse(JSON.stringify(S))).catch(()=>{});news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
 
 /* ---------- pornire ---------- */
 (async()=>{fx.c=$('#fx');fx.x=fx.c.getContext('2d');fxSize();
- try{await DB.open();S=await DB.get('state')}catch(e){}
+ let dbErr=false;try{await DB.open();S=await DB.get('state')}catch(e){dbErr=true}
  if(!S){try{S=JSON.parse(localStorage.getItem('ralph')||'null')}catch(e){}}
+ // dacă memoria n-a putut fi citită, NU pornim de la zero peste datele existente
+ if(!S&&dbErr){S=defState();LOADFAIL=true;setTimeout(()=>toast('⚠️ Nu am putut citi datele. Închide și redeschide aplicația — nimic nu s-a șters.'),1500)}
  if(!S)S=defState();
  const news=migrate();
- render();if(news)setTimeout(()=>{fireworks();toast('✨ Ralph.app s-a actualizat: '+news)},700);if(UI.tab==='banca'&&UI.bank==='lectii')calc();
- if(!S.profile.welcomed)setTimeout(welcome,400);
+ render();if(UI.tab==='banca'&&UI.bank==='lectii')calc();
+ introDone.then(()=>{if(!S.profile.welcomed)setTimeout(welcome,300);else if(news)setTimeout(()=>{fireworks();toast('✨ Ralph’s Vault s-a actualizat: '+news)},300)});
  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
  if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
 })();
