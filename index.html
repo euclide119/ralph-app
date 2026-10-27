@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Misiunea Mea">
+<meta name="theme-color" content="#6c3cff">
+<meta name="color-scheme" content="light">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>Misiunea Mea</title>
+<style>
+:root{--bg:#f3f0ff;--ink:#2a2350;--mut:#7a7399;--acc:#ff7a45;--acc2:#ffb02e;--soft:#fff0e6;--sh:0 6px 18px rgba(60,40,140,.12);color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-rounded,"SF Pro Rounded",-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;font-size:16px}
+body{padding-bottom:calc(96px + env(safe-area-inset-bottom));-webkit-user-select:none;user-select:none}
+input,textarea,select{-webkit-user-select:text;user-select:text}
+button{font:inherit;color:inherit;cursor:pointer}
+#top{position:sticky;top:0;z-index:20;padding:calc(12px + env(safe-area-inset-top)) 16px 12px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;border-radius:0 0 26px 26px;box-shadow:var(--sh);transition:background .3s}
+.row{display:flex;align-items:center;gap:10px}.row.end{justify-content:flex-end;flex-wrap:wrap}.grow{flex:1;min-width:0}
+.me{width:48px;height:48px;border-radius:50%;border:3px solid rgba(255,255,255,.7);background:rgba(255,255,255,.25);font-size:28px;display:grid;place-items:center;padding:0}
+.hi{flex:1;min-width:0}.hi small{display:block;opacity:.9}.hi b{display:block;font-size:21px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stars{border:0;background:rgba(255,255,255,.95);color:#e08a00;border-radius:99px;padding:8px 14px;font-size:18px;box-shadow:0 3px 10px rgba(0,0,0,.12)}
+.stars b{color:var(--ink)}
+.nxt{margin-top:10px}.nxt small{opacity:.95;font-size:12px}
+.bar{height:12px;background:#ece8ff;border-radius:99px;overflow:hidden;margin:6px 0}
+.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:99px;transition:width .5s}
+.bar.w{background:rgba(255,255,255,.3);height:9px}.bar.w>i{background:#fff}
+main{padding:14px 12px}
+.card{background:#fff;border-radius:20px;padding:14px;margin-bottom:12px;box-shadow:var(--sh)}
+.chips{display:flex;gap:8px;margin-bottom:12px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:0;background:#fff;border-radius:99px;padding:9px 14px;white-space:nowrap;box-shadow:var(--sh);font-weight:600;color:var(--mut)}
+.chip.on{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff}
+.chip small{opacity:.8;font-weight:500}
+.masonry{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.note{border-radius:18px;padding:12px;box-shadow:0 4px 12px rgba(60,40,140,.1);min-width:0}
+.nh{display:flex;align-items:flex-start;gap:6px;margin-bottom:4px}.nh b{flex:1;font-size:17px}
+.mini{border:0;background:rgba(0,0,0,.06);border-radius:10px;padding:2px 9px;font-size:16px}
+.it{display:flex;align-items:flex-start;gap:9px;padding:6px 0}
+.ck{flex:none;width:28px;height:28px;border-radius:50%;border:2.5px solid rgba(42,35,80,.35);display:grid;place-items:center;background:rgba(255,255,255,.7);font-size:16px;font-weight:800;padding:0;color:#fff}
+.it.done .ck{background:#22b07d;border-color:#22b07d;animation:pop .35s}
+.tx{flex:1;padding-top:4px;line-height:1.3;overflow-wrap:break-word;-webkit-hyphens:auto;hyphens:auto}
+.it.done .tx{text-decoration:line-through;opacity:.5}
+.del{border:0;background:none;opacity:.3;font-size:13px;padding:6px 2px}
+.add input,.add2 input{width:100%;border:0;background:rgba(255,255,255,.6);border-radius:12px;padding:9px 10px;font:inherit;font-size:16px;margin-top:4px;outline:none}
+.add2{display:flex;gap:6px;align-items:center}.add2 .dt{width:130px;flex:none}
+@keyframes pop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+.fab{position:fixed;right:18px;bottom:calc(92px + env(safe-area-inset-bottom));width:62px;height:62px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:34px;box-shadow:0 8px 22px rgba(60,40,140,.35);z-index:25;line-height:1}
+.fab:active{transform:scale(.92)}
+nav#tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:#fff;padding:6px 6px calc(6px + env(safe-area-inset-bottom));box-shadow:0 -4px 20px rgba(60,40,140,.12);border-radius:24px 24px 0 0;z-index:30}
+nav#tabs button{flex:1;border:0;background:none;font-size:11px;color:var(--mut);display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border-radius:16px}
+nav#tabs button .i{font-size:25px;transition:transform .2s}
+nav#tabs button.on{color:var(--ink);font-weight:700;background:var(--soft)}
+nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
+.empty{text-align:center;padding:34px 16px;color:var(--mut)}.empty .e{font-size:58px}.empty b{display:block;color:var(--ink);font-size:19px;margin:6px 0}
+.lead{background:var(--soft);border-radius:16px;padding:11px 13px;margin:0 0 12px;font-size:14px;line-height:1.4}
+.btn{border:0;border-radius:14px;padding:11px 16px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-weight:700}
+.btn.sm{padding:7px 12px;font-size:14px;border-radius:12px}
+.btn.big{width:100%;padding:14px;font-size:17px;margin-top:12px}
+.btn.ghost{background:var(--soft);color:var(--ink)}
+.btn.danger{background:#ffe6e6;color:#d32f2f;width:100%;margin-top:8px}
+.btn:active{transform:scale(.96)}
+/* prieteni */
+.friend{padding:0;overflow:hidden}
+summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
+.friend>summary{display:flex;align-items:center;gap:12px;padding:12px 14px}
+.av{flex:none;width:58px;height:58px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-size:30px;overflow:hidden;border:3px solid var(--acc2)}
+.av img{width:100%;height:100%;object-fit:cover}
+.fn{flex:1;min-width:0}.fn b{display:block;font-size:18px}.fn small{color:var(--mut)}
+.chev{font-size:26px;color:var(--mut);transition:transform .2s}
+details[open]>summary .chev{transform:rotate(90deg)}
+.fb{padding:0 14px 14px}
+.sec-t{font-weight:700;margin:8px 0 2px}
+.sub{background:var(--soft);border-radius:14px;margin-top:8px}
+.sub>summary{padding:11px 12px;font-weight:600;display:flex;gap:6px}
+.sub>summary::after{content:"▾";margin-left:auto;transition:transform .2s}
+.sub[open]>summary::after{transform:rotate(180deg)}
+.sub textarea{display:block;width:calc(100% - 16px);margin:0 8px 8px;border:0;border-radius:12px;padding:10px;font:inherit;font-size:16px;resize:vertical;outline:none;min-height:70px}
+.date{font-style:normal;font-size:12px;background:var(--soft);border-radius:8px;padding:1px 6px;margin-left:4px;white-space:nowrap}
+/* smart */
+.goal .gt{flex:1;font-size:17px}
+.star{border:0;background:none;font-size:28px;color:#ccc;padding:0 2px;line-height:1}.star.on{color:#ffb800}
+.badge{font-size:12px;font-weight:700;border-radius:99px;padding:4px 9px;background:#eee;white-space:nowrap}
+.gact .badge{background:#ffe9d6;color:#e8590c}.gdone .badge{background:#dff7ea;color:#17a673}.glock .badge{background:#eee;color:#777}
+.smart{display:flex;gap:6px;margin:12px 0 6px}
+.L{flex:1;border:2px dashed #cfc8ee;background:#faf9ff;border-radius:14px;padding:6px 0;display:flex;flex-direction:column;align-items:center}
+.L b{font-size:22px;color:#b5aedb}.L small{font-size:9.5px;color:var(--mut)}
+.L.ok{border:2px solid #17a673;background:#e3f8ee;animation:pop .35s}.L.ok b{color:#17a673}
+.hint{font-size:13px;color:var(--mut);margin:6px 0 0}
+.due{font-size:13px;margin-top:8px;color:var(--mut)}
+.gdone{opacity:.85}
+.h2{font-size:18px;font-weight:800;margin:16px 4px 8px}
+.bigL{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:34px;font-weight:900;display:grid;place-items:center;flex:none}
+.ex{background:var(--soft);border-radius:12px;padding:10px;font-size:14px}
+/* vise */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dream{padding:0;overflow:hidden;margin:0}
+.ph{position:relative;aspect-ratio:1/1;background:linear-gradient(135deg,#efeaff,#ffe8f2);display:grid;place-items:center;text-align:center;font-size:34px;color:var(--mut)}
+.ph small{font-size:12px}
+.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.ph .cam{position:absolute;right:8px;bottom:8px;font-style:normal;font-size:14px;background:rgba(255,255,255,.9);border-radius:99px;padding:3px 8px}
+.ph .ok{position:absolute;left:8px;top:8px;font-style:normal;font-size:13px;background:#ffd60a;color:#5a4400;border-radius:99px;padding:3px 9px;font-weight:700}
+.thumbs{display:flex;gap:4px;padding:6px 8px 0;overflow-x:auto}
+.thumbs img{width:38px;height:38px;border-radius:9px;object-fit:cover;flex:none}
+.db{padding:10px}.db b{display:block}.db small{display:block;color:var(--mut);font-size:12.5px;margin-top:2px}
+.db .row{margin-top:8px;gap:6px}
+.ddone .ph::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 5px #ffd60a}
+/* banca */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.tile{background:#fff;border-radius:18px;padding:12px;box-shadow:var(--sh);border:0;text-align:left}
+.tile .ic{font-size:24px}.tile small{display:block;color:var(--mut);font-size:12px}.tile b{display:block;font-size:19px;margin:2px 0}
+.tile .s{font-size:11.5px;color:var(--mut)}
+.stack{display:flex;height:22px;border-radius:99px;overflow:hidden;margin:10px 0 8px;background:#eee}
+.stack i{display:block;height:100%}
+.leg{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px}.leg span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;background:var(--c)}
+.tip{padding:9px 0;border-top:1px solid #f0edfa;font-size:14px;line-height:1.4}.tip:first-of-type{border-top:0}
+.golden{background:linear-gradient(135deg,#fff7d6,#ffe9b3);font-size:14px;line-height:1.45}
+.ent .ava{font-size:28px;width:46px;height:46px;border-radius:14px;background:var(--soft);display:grid;place-items:center;flex:none}
+.ent b{font-size:17px}.ent small{display:block;color:var(--mut);font-size:12.5px}
+.amt{font-size:17px;white-space:nowrap}
+.kv{display:grid;grid-template-columns:1fr auto;gap:5px 10px;font-size:13.5px;margin:12px 0 8px;background:#faf9ff;border-radius:12px;padding:10px}
+.kv span{color:var(--mut)}.kv b{font-size:13.5px;text-align:right}
+.grade{font-weight:900;font-size:15px;border-radius:12px;padding:5px 10px;color:#fff;white-space:nowrap}
+.warn{background:#fff1e6;border-radius:10px;padding:8px 10px;font-size:13px;margin:6px 0}
+.okb{background:#e3f8ee;border-radius:10px;padding:8px 10px;font-size:13px;margin:6px 0}
+.sc{display:flex;gap:6px;font-size:11.5px;margin:6px 0}.sc div{flex:1;background:#faf9ff;border-radius:10px;padding:6px;text-align:center}.sc b{display:block;font-size:15px}
+.gl{margin-bottom:10px}.gl b{font-size:16px}.gl p{margin:4px 0 0;font-size:14px;line-height:1.45;color:#4a4370}
+#calc .fl{margin-top:8px}
+.res{background:var(--soft);border-radius:14px;padding:12px;margin-top:12px;font-size:15px;line-height:1.6}
+.res b{font-size:20px}
+.medal{font-size:20px}
+/* sheet & forms */
+#sheet{position:fixed;inset:0;z-index:50;display:none}#sheet.on{display:block}
+.sheet-bg{position:absolute;inset:0;background:rgba(30,20,70,.5);animation:fade .2s}
+.sheet-card{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;border-radius:26px 26px 0 0;padding:16px 16px calc(24px + env(safe-area-inset-bottom));animation:up .28s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}@keyframes fade{from{opacity:0}}
+.sh-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.sh-head b{flex:1;font-size:20px}.sh-head>div{flex:1}
+.x{border:0;background:#f1eefb;border-radius:50%;width:36px;height:36px;font-size:16px;flex:none}
+.mut{color:var(--mut);font-size:14px}
+.fl{display:block;margin-top:12px}.fl-l{display:block;font-weight:700;font-size:14px;margin-bottom:5px}
+.fl input,.fl textarea,.fl select,#lt{width:100%;border:2px solid #ebe7fa;border-radius:14px;padding:11px 12px;font:inherit;font-size:16px;background:#faf9ff;outline:none;-webkit-appearance:none;appearance:none;color:var(--ink)}
+.fl input:focus,.fl textarea:focus,#lt:focus{border-color:var(--acc)}
+.fh{display:block;color:var(--mut);font-size:12.5px;margin-top:4px;line-height:1.35}
+.chk{display:flex;align-items:center;gap:8px;font-weight:600}.chk input{width:22px;height:22px;-webkit-appearance:auto;appearance:auto}
+.starsel button{border:0;background:none;font-size:34px;color:#ddd;padding:0 3px}.starsel button.on{color:#ffb800}
+.colsel,.emosel{display:flex;flex-wrap:wrap;gap:8px}
+.colsel button{width:38px;height:38px;border-radius:50%;border:2px solid #ddd}.colsel button.on{border:3px solid var(--ink);transform:scale(1.1)}
+.emosel button{width:46px;height:46px;border-radius:14px;border:2px solid transparent;background:#f6f4ff;font-size:26px;padding:0}.emosel button.on{border-color:var(--acc);background:var(--soft)}
+.phsel{display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:var(--soft);font-size:36px;overflow:hidden;border:3px dashed var(--acc2);position:relative}
+.phsel img{width:100%;height:100%;object-fit:cover}
+.vh{position:absolute;opacity:0;width:1px;height:1px;overflow:hidden;pointer-events:none}
+#toast{position:fixed;left:50%;top:calc(14px + env(safe-area-inset-top));transform:translate(-50%,-150%);background:#2a2350;color:#fff;padding:11px 18px;border-radius:99px;font-weight:700;z-index:70;transition:transform .3s cubic-bezier(.2,.9,.3,1.3);box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:92vw;text-align:center;font-size:15px}
+#toast.on{transform:translate(-50%,0)}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
+.bdg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.bdg div{text-align:center;background:#faf9ff;border-radius:14px;padding:8px 2px;font-size:11px}
+.bdg div i{display:block;font-style:normal;font-size:30px}.bdg .lk{opacity:.35;filter:grayscale(1)}
+.rw{display:flex;align-items:center;gap:8px;padding:9px 0;border-top:1px solid #f0edfa}
+.trophy{text-align:center;padding:10px 0}.trophy .t{font-size:90px;animation:pop .6s}.trophy b{display:block;font-size:24px;margin:6px 0}
+.cert img{width:100%;border-radius:12px;box-shadow:var(--sh);-webkit-user-select:auto;user-select:auto;-webkit-touch-callout:default}
+.viewer img{width:100%;border-radius:14px}
+</style>
+</head>
+<body>
+<header id="top"></header>
+<main id="main"></main>
+<nav id="tabs"></nav>
+<div id="sheet"></div>
+<div id="toast"></div>
+<canvas id="fx"></canvas>
+<input type="file" id="picker" accept="image/*" class="vh">
+<script>
+'use strict';
+/* ---------- utilitare ---------- */
+const $=s=>document.querySelector(s);
+const uid=()=>Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=v=>{const n=parseFloat(String(v??'').replace(/\s/g,'').replace(',','.'));return isFinite(n)?n:0};
+const r2=n=>Math.round((+n||0)*100)/100;
+const lei=n=>r2(n).toLocaleString('ro-RO',{maximumFractionDigits:2})+' lei';
+const pct=n=>(Math.round((+n||0)*10)/10).toLocaleString('ro-RO')+'%';
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const D=s=>new Date(s+'T12:00');
+const fmtD=s=>s?D(s).toLocaleDateString('ro-RO',{day:'numeric',month:'short',year:'numeric'}):'';
+const addM=(s,m)=>{const d=D(s);d.setMonth(d.getMonth()+(+m||0));return d.toISOString().slice(0,10)};
+const daysTo=s=>Math.round((D(s)-D(today()))/864e5);
+const daysLeft=s=>{const n=daysTo(s);return n>1?`· mai sunt ${n} zile`:n===1?'· mâine!':n===0?'· azi!':'· termenul a trecut'};
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const PRAISE=['Bravo!','Super!','Ești tare!','Campion!','Așa da!','Wow!','Excelent!','Ce frumos!','Fantastic!','Încă unul!'];
+const KEEP=['#fff4a3','#ffd6a5','#ffadad','#caffbf','#9bf6ff','#bdb2ff','#ffc6ff','#ffffff'];
+const AVATARS=['🦸','🦁','🐯','🦊','🐼','🐸','🐵','🦖','🐲','🚀','⚽','🎮','🤖','👾','🧙','🥷'];
+const FEMO=['🙂','😎','🤓','😄','🦁','🐶','⚽','🎮','🎸','🏀','🚲','🧩'];
+const BADGES=[[10,'🥉','Începător'],[25,'🥈','Harnic'],[50,'🥇','Campion'],[100,'🏆','Super-erou'],[200,'💎','Diamant'],[350,'👑','Regele planurilor'],[500,'🚀','Legendă']];
+
+/* ---------- memorie (IndexedDB, cu rezervă localStorage) ---------- */
+const DB={db:null,
+ open(){return new Promise((res,rej)=>{try{const r=indexedDB.open('misiunea',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>{this.db=r.result;res()};r.onerror=()=>rej(r.error)}catch(e){rej(e)}})},
+ get(k){return new Promise((res,rej)=>{const q=this.db.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})},
+ set(k,v){return new Promise((res,rej)=>{const t=this.db.transaction('kv','readwrite');t.objectStore('kv').put(v,k);t.oncomplete=res;t.onerror=()=>rej(t.error)})}};
+let S,saveT;
+function save(){clearTimeout(saveT);saveT=setTimeout(async()=>{try{if(!DB.db)throw 0;await DB.set('state',JSON.parse(JSON.stringify(S)))}catch(e){try{localStorage.setItem('misiunea',JSON.stringify(S))}catch(e2){toast('⚠️ Memoria e plină — fă o copie de rezervă')}}},250)}
+
+function defState(){const d=today();return{v:1,
+ profile:{name:'',avatar:'🦸',stars:0,spent:0,badges:[],sound:true},
+ rewards:[{id:uid(),name:'30 min de joc în plus',cost:30},{id:uid(),name:'Aleg eu filmul de seară',cost:50},{id:uid(),name:'Ieșire la înghețată',cost:80}],
+ notes:[
+  {id:uid(),scope:'zi',title:'Azi 🌞',color:'#fff4a3',items:[{id:uid(),text:'Îmi fac patul',done:false},{id:uid(),text:'Temele la mate',done:false},{id:uid(),text:'30 de minute de citit',done:false}]},
+  {id:uid(),scope:'zi',title:'După școală',color:'#ffc6ff',items:[{id:uid(),text:'Antrenament',done:false},{id:uid(),text:'Pregătesc ghiozdanul',done:false}]},
+  {id:uid(),scope:'sapt',title:'Săptămâna asta',color:'#caffbf',items:[{id:uid(),text:'Sun bunicii',done:false},{id:uid(),text:'Fac ordine în cameră',done:false}]},
+  {id:uid(),scope:'luna',title:'Luna asta 🚀',color:'#9bf6ff',items:[{id:uid(),text:'Termin o carte întreagă',done:false}]}],
+ friends:[],
+ goals:[{id:uid(),title:'Să înot 25 m fără pauză',top:true,activated:false,done:false,steps:[],
+  L:{S:{t:'Să învăț să înot craul',ok:true},M:{t:'',ok:false},A:{t:'',ok:false},R:{t:'',ok:false},T:{t:'',ok:false,date:''}}}],
+ dreams:[{id:uid(),title:'O bicicletă nouă',why:'Să merg cu prietenii în parc',cost:1200,saved:150,photos:[],done:false}],
+ bank:{name:'',inflation:6,
+  deps:[{id:uid(),name:'Mama',type:'recurent',amount:50,freq:'lunar',start:d,months:12,rate:3}],
+  invs:[{id:uid(),name:'Tata',amount:200,date:d,exp:5}],
+  loans:[],
+  projects:[{id:uid(),name:'Stand de limonadă',desc:'Vând limonadă în parc, vara',invest:100,ret:160,months:3,risk:2,status:'idee'}]}}}
+
+/* ---------- artificii + sunet ---------- */
+const fx={c:null,x:null,p:[],run:false};
+const FXC=['#ff4f9a','#ffb02e','#22b07d','#1677ff','#7a5cff','#ff5a36','#ffd60a'];
+function fxSize(){const r=devicePixelRatio||1;fx.c.width=innerWidth*r;fx.c.height=innerHeight*r;fx.x.setTransform(r,0,0,r,0,0)}
+function burst(x,y,n=36,pw=1){for(let i=0;i<n;i++){const a=Math.random()*Math.PI*2,s=(2+Math.random()*6)*pw;fx.p.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-2.5*pw,l:0,L:55+Math.random()*40,c:FXC[i%FXC.length],r:3+Math.random()*4,sh:Math.random()<.14?'s':Math.random()<.5?'c':'r',rot:Math.random()*6})}
+ if(!fx.run){fx.run=true;requestAnimationFrame(fxLoop)}}
+function fxLoop(){const x=fx.x;x.clearRect(0,0,innerWidth,innerHeight);fx.p=fx.p.filter(p=>p.l<p.L);
+ for(const p of fx.p){p.l++;p.vy+=.16;p.vx*=.985;p.vy*=.985;p.x+=p.vx;p.y+=p.vy;p.rot+=.2;x.globalAlpha=Math.max(0,1-p.l/p.L);
+  if(p.sh==='s'){x.font='18px sans-serif';x.fillText('⭐',p.x,p.y)}else{x.fillStyle=p.c;if(p.sh==='c'){x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()}else{x.save();x.translate(p.x,p.y);x.rotate(p.rot);x.fillRect(-p.r,-p.r/2,p.r*2,p.r);x.restore()}}}
+ x.globalAlpha=1;if(fx.p.length)requestAnimationFrame(fxLoop);else fx.run=false}
+function fireworks(){for(let k=0;k<8;k++)setTimeout(()=>burst(innerWidth*(.12+Math.random()*.76),innerHeight*(.12+Math.random()*.45),60,1.3),k*200);chime(true)}
+let AC;function chime(big){if(!S.profile.sound)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();const t0=AC.currentTime;(big?[523,659,784,1047,1319]:[784,1175]).forEach((f,i)=>{const o=AC.createOscillator(),g=AC.createGain(),t=t0+i*.09;o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.22,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+.4);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.45)})}catch(e){}}
+const pos=el=>{const r=el.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}};
+const mid=()=>({x:innerWidth/2,y:innerHeight/2.6});
+
+/* recompense: stele, premii */
+function reward(n,p,big){const pr=S.profile;pr.stars=Math.max(0,pr.stars+n);
+ if(n>0){p=p||mid();burst(p.x,p.y,big?70:34,big?1.3:1);big?fireworks():chime();toast(pick(PRAISE)+' +'+n+' ⭐')}
+ save();setTimeout(checkBadges,big?900:300)}
+function checkBadges(){const pr=S.profile;const nb=BADGES.find(b=>pr.stars>=b[0]&&!pr.badges.includes(b[0]));if(!nb)return;pr.badges.push(nb[0]);save();fireworks();
+ sheet(`<div class="trophy"><div class="t">${nb[1]}</div><b>Premiu nou: ${nb[2]}!</b><div class="mut">Ai strâns ${nb[0]} stele. Ești minunat! 🎉</div><button class="btn big" data-act="closeSheet">Yeee! 🙌</button></div>`);renderTop()}
+
+/* ---------- toast + sheet + formulare ---------- */
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),2200)}
+function sheet(html,mount){const o=$('#sheet');o.innerHTML=`<div class="sheet-bg" data-act="closeSheet"></div><div class="sheet-card">${html}</div>`;o.classList.add('on');mount&&mount(o)}
+function closeSheet(){const o=$('#sheet');o.classList.remove('on');o.innerHTML=''}
+function fieldHTML(f,v){const h=f.hint?`<small class="fh">${f.hint}</small>`:'';const L=`<span class="fl-l">${f.l}</span>`;
+ switch(f.t){
+  case 'textarea':return `<label class="fl">${L}<textarea name="${f.k}" rows="${f.rows||3}" placeholder="${esc(f.ph||'')}">${esc(v??'')}</textarea>${h}</label>`;
+  case 'select':return `<label class="fl">${L}<select name="${f.k}">${f.o.map(([a,b])=>`<option value="${a}" ${String(v??f.o[0][0])===String(a)?'selected':''}>${b}</option>`).join('')}</select>${h}</label>`;
+  case 'num':return `<label class="fl">${L}<input name="${f.k}" inputmode="decimal" value="${v??''}" placeholder="${esc(f.ph||'0')}" autocomplete="off">${h}</label>`;
+  case 'date':return `<label class="fl">${L}<input type="date" name="${f.k}" value="${v||''}">${h}</label>`;
+  case 'stars':return `<div class="fl">${L}<div class="starsel" data-k="${f.k}" data-v="${v||0}">${[1,2,3,4,5].map(i=>`<button type="button" data-act="starSel" data-i="${i}" class="${i<=(v||0)?'on':''}">★</button>`).join('')}</div>${h}</div>`;
+  case 'color':{const c=v||KEEP[0];return `<div class="fl">${L}<div class="colsel" data-k="${f.k}" data-v="${c}">${KEEP.map(x=>`<button type="button" data-act="optSel" data-v="${x}" style="background:${x}" class="${x===c?'on':''}"></button>`).join('')}</div></div>`}
+  case 'emoji':{const c=v||f.o[0];return `<div class="fl">${L}<div class="emosel" data-k="${f.k}" data-v="${c}">${f.o.map(x=>`<button type="button" data-act="optSel" data-v="${x}" class="${x===c?'on':''}">${x}</button>`).join('')}</div></div>`}
+  case 'photo':return `<div class="fl">${L}<label class="phsel" data-k="${f.k}">${v?`<img src="${v}">`:'📷'}<input type="file" accept="image/*" class="vh" data-photo="${f.k}"></label>${h}</div>`;
+  case 'check':return `<label class="fl chk"><input type="checkbox" name="${f.k}" ${v?'checked':''}> ${f.l}</label>`;
+  default:return `<label class="fl">${L}<input name="${f.k}" value="${esc(v??'')}" placeholder="${esc(f.ph||'')}" autocomplete="off">${h}</label>`}}
+function readForm(fm,fields){const o={};for(const f of fields){
+ if(f.t==='stars'||f.t==='color'||f.t==='emoji')o[f.k]=f.t==='stars'?+fm.querySelector(`[data-k="${f.k}"]`).dataset.v:fm.querySelector(`[data-k="${f.k}"]`).dataset.v;
+ else if(f.t==='photo')o[f.k]=fm.querySelector(`.phsel[data-k="${f.k}"]`)._v||'';
+ else if(f.t==='check')o[f.k]=fm.elements[f.k].checked;
+ else if(f.t==='num')o[f.k]=num(fm.elements[f.k].value);
+ else o[f.k]=fm.elements[f.k].value.trim()}return o}
+function formSheet({title,fields,data={},onSave,onDelete,top=''}){
+ sheet(`<div class="sh-head"><b>${title}</b><button type="button" class="x" data-act="closeSheet">✕</button></div>${top}<form id="fs">${fields.map(f=>fieldHTML(f,data[f.k])).join('')}<button class="btn big" type="submit">💾 Salvează</button>${onDelete?'<button type="button" class="btn danger" id="fsDel">🗑️ Șterge</button>':''}</form>`,o=>{
+  const fm=o.querySelector('#fs');fields.filter(f=>f.t==='photo').forEach(f=>fm.querySelector(`.phsel[data-k="${f.k}"]`)._v=data[f.k]||'');
+  fm.onsubmit=e=>{e.preventDefault();const v=readForm(fm,fields);const miss=fields.find(f=>f.req&&!v[f.k]);if(miss){toast('Completează: '+miss.l);return}closeSheet();onSave(v);save();render()};
+  if(onDelete)o.querySelector('#fsDel').onclick=()=>{if(confirm('Sigur ștergi?')){closeSheet();onDelete();save();render()}}})}
+function loadImg(file,max=900){return new Promise((res,rej)=>{const u=URL.createObjectURL(file);const im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.naturalWidth,im.naturalHeight));const c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.78))};im.onerror=()=>{URL.revokeObjectURL(u);rej()};im.src=u})}
+function pickPhoto(cb,max){const p=$('#picker');p.value='';p.onchange=async()=>{const f=p.files[0];if(!f)return;try{cb(await loadImg(f,max));save();render()}catch(e){toast('Nu am putut încărca poza 😕')}};p.click()}
+const empty=(e,t,s)=>`<div class="empty"><div class="e">${e}</div><b>${t}</b>${s}</div>`;
+const itemHTML=(x,act,attrs)=>`<div class="it ${x.done?'done':''}"><button class="ck" data-act="${act}" ${attrs} data-id="${x.id}">${x.done?'✓':''}</button><span class="tx" data-act="${act}" ${attrs} data-id="${x.id}">${esc(x.text)}${x.date?` <em class="date">📅 ${fmtD(x.date)}</em>`:''}</span><button class="del" data-act="del_${act}" ${attrs} data-id="${x.id}">✕</button></div>`;
+
+/* ---------- capitole ---------- */
+const TABS=[
+ {id:'agenda',ico:'📅',name:'Agenda',title:'Agenda mea',c1:'#ff7a45',c2:'#ffb02e',soft:'#fff0e6'},
+ {id:'prieteni',ico:'🤝',name:'Prieteni',title:'Prietenii mei',c1:'#ff4f9a',c2:'#ff8ac0',soft:'#ffe8f2'},
+ {id:'smart',ico:'🎯',name:'Obiective',title:'Obiective SMART',c1:'#17a673',c2:'#5fd39c',soft:'#e3f8ee'},
+ {id:'vise',ico:'🌈',name:'Vise',title:'Vise și dorințe',c1:'#7a5cff',c2:'#b48cff',soft:'#efeaff'},
+ {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#1677ff',c2:'#38c3ff',soft:'#e6f2ff'}];
+let UI={tab:'agenda',scope:'zi',bank:'panou',open:new Set()};
+try{const t=localStorage.getItem('misiunea_tab');if(TABS.some(x=>x.id===t))UI.tab=t}catch(e){}
+const VIEWS={},A={},FORMS={};
+const bankName=()=>S.bank.name||('Banca lui '+(S.profile.name||'Campion'));
+
+function renderTop(){const t=TABS.find(x=>x.id===UI.tab),p=S.profile;const nb=BADGES.find(b=>p.stars<b[0]);const pv=[...BADGES].reverse().find(b=>p.stars>=b[0]);const lo=pv?pv[0]:0;
+ $('#top').innerHTML=`<div class="row"><button class="me" data-act="settings">${esc(p.avatar)}</button><div class="hi"><small>Salut, ${esc(p.name||'campionule')}! ${p.badges.map(b=>BADGES.find(x=>x[0]===b)[1]).join('')}</small><b>${t.ico} ${esc(t.title||bankName())}</b></div><button class="stars" data-act="prizes">⭐ <b>${p.stars}</b></button></div>
+ <div class="nxt">${nb?`<div class="bar w"><i style="width:${(p.stars-lo)/(nb[0]-lo)*100}%"></i></div><small>Următorul premiu: ${nb[1]} ${nb[2]} la ${nb[0]} ⭐</small>`:'<small>Ai toate premiile! Ești o legendă 🚀</small>'}</div>`}
+function render(){const t=TABS.find(x=>x.id===UI.tab);const st=document.documentElement.style;st.setProperty('--acc',t.c1);st.setProperty('--acc2',t.c2);st.setProperty('--soft',t.soft);
+ renderTop();$('#main').innerHTML=VIEWS[UI.tab]();
+ $('#tabs').innerHTML=TABS.map(x=>`<button class="${x.id===UI.tab?'on':''}" data-act="tab" data-k="${x.id}"><span class="i">${x.ico}</span>${x.name}</button>`).join('')}
+
+/* ===== 1. AGENDA ===== */
+const SCOPES=[['zi','☀️ Azi'],['sapt','📆 Săptămâna'],['luna','🗓️ Luna']];
+VIEWS.agenda=()=>{const ns=S.notes.filter(n=>n.scope===UI.scope),all=ns.flatMap(n=>n.items),dn=all.filter(i=>i.done).length;
+ return `<div class="chips">${SCOPES.map(([k,l])=>{const its=S.notes.filter(n=>n.scope===k).flatMap(n=>n.items);return `<button class="chip ${UI.scope===k?'on':''}" data-act="scope" data-k="${k}">${l} <small>${its.filter(i=>i.done).length}/${its.length}</small></button>`}).join('')}</div>
+ <div class="card"><div class="row"><b class="grow">${all.length&&dn===all.length?'🎉 Ai terminat tot! Ești super!':UI.scope==='zi'?'Planul de azi · '+new Date().toLocaleDateString('ro-RO',{weekday:'long',day:'numeric',month:'long'}):'Progresul tău'}</b><b>${dn}/${all.length}</b></div><div class="bar"><i style="width:${all.length?dn/all.length*100:0}%"></i></div></div>
+ ${ns.length?`<div class="masonry">${ns.map(n=>`<div class="note" style="background:${n.color}"><div class="nh"><b>${esc(n.title)}</b><button class="mini" data-act="editNote" data-id="${n.id}">⋯</button></div>
+  ${n.items.map(i=>itemHTML(i,'tItem',`data-n="${n.id}"`)).join('')}
+  <form class="add" data-form="addItem" data-id="${n.id}"><input name="t" placeholder="＋ adaugă" enterkeyhint="done" autocomplete="off"></form></div>`).join('')}</div>`:empty('📝','Nicio listă încă','Apasă pe ＋ ca să-ți faci prima listă.')}
+ <button class="fab" data-act="addNote">＋</button>`};
+const noteF=[{k:'title',l:'Titlu',ph:'ex: Azi, Weekend, Vacanța',req:1},{k:'scope',l:'Pentru',t:'select',o:[['zi','☀️ Azi'],['sapt','📆 Săptămâna asta'],['luna','🗓️ Luna asta']]},{k:'color',l:'Culoare',t:'color'},{k:'items',l:'Ce am de făcut (câte unul pe rând)',t:'textarea',rows:5,ph:'Teme\nAntrenament\nCitit'}];
+A.scope=d=>{UI.scope=d.k;render()};
+A.addNote=()=>formSheet({title:'📝 Listă nouă',fields:noteF,data:{scope:UI.scope},onSave:v=>{S.notes.unshift({id:uid(),scope:v.scope,title:v.title,color:v.color,items:v.items.split('\n').map(s=>s.trim()).filter(Boolean).map(text=>({id:uid(),text,done:false}))});UI.scope=v.scope}});
+A.editNote=d=>{const n=S.notes.find(x=>x.id===d.id);formSheet({title:'✏️ Editez lista',fields:noteF,data:{...n,items:n.items.map(i=>i.text).join('\n')},onSave:v=>{const old=n.items;Object.assign(n,{title:v.title,scope:v.scope,color:v.color});n.items=v.items.split('\n').map(s=>s.trim()).filter(Boolean).map(text=>old.find(o=>o.text===text)||{id:uid(),text,done:false})},onDelete:()=>S.notes=S.notes.filter(x=>x!==n)})};
+A.tItem=(d,el)=>{const n=S.notes.find(x=>x.id===d.n),i=n.items.find(x=>x.id===d.id);const was=n.items.every(x=>x.done);i.done=!i.done;
+ if(i.done){const all=n.items.every(x=>x.done);reward(all?4:1,pos(el),all);if(all)setTimeout(()=>toast('🏁 Ai terminat lista „'+n.title+'”!'),1300)}else reward(was?-4:-1);render()};
+A.del_tItem=d=>{const n=S.notes.find(x=>x.id===d.n);n.items=n.items.filter(x=>x.id!==d.id);save();render()};
+FORMS.addItem=f=>{const t=f.t.value.trim();if(!t)return;S.notes.find(x=>x.id===f.dataset.id).items.push({id:uid(),text:t,done:false});save();render();refocus('addItem',f.dataset.id)};
+function refocus(form,id){const i=document.querySelector(`form[data-form="${form}"][data-id="${id}"] input`);i&&i.focus()}
+
+/* ===== 2. PRIETENI ===== */
+const FSEC=[['propun','🎯','Ce îmi propun în prietenia cu {n}','ex: Să ne vedem în fiecare sâmbătă, să ne ajutăm la teme…'],['invat','📚','Ce am de învățat de la {n}','ex: E foarte răbdător, știe să deseneze…'],['apreciez','💖','Ce apreciez la {n}','ex: E sincer, mă face să râd, mă ajută…'],['nupreiau','🚫','Ce aș vrea să nu preiau de la {n}','ex: Uneori se enervează repede…']];
+VIEWS.prieteni=()=>`<p class="lead">🤝 Prietenii cu care vrei să petreci timp. Apasă pe poză ca s-o schimbi, iar pe nume ca să deschizi fișa.</p>
+ ${S.friends.length?'':empty('🧑‍🤝‍🧑','Adaugă-ți prietenii','Apasă pe ＋ și scrie primul nume.')}
+ ${S.friends.map(f=>{const a=f.acts||[],dn=a.filter(x=>x.done).length;return `<details class="card friend" data-oid="${f.id}" ${UI.open.has(f.id)?'open':''}><summary><span class="av" data-act="fPhoto" data-id="${f.id}">${f.photo?`<img src="${f.photo}">`:esc(f.emoji||'🙂')}</span><span class="fn"><b>${esc(f.name)}</b><small>${a.length?`🎈 ${dn}/${a.length} activități făcute`:'nicio activitate încă'}${f.likes?' · '+esc(f.likes):''}</small></span><span class="chev">›</span></summary>
+ <div class="fb"><div class="sec-t">🎈 Ce plănuim să facem împreună</div>
+ ${a.map(x=>itemHTML(x,'tAct',`data-f="${f.id}"`)).join('')}
+ <form class="add2" data-form="addAct" data-id="${f.id}"><input name="t" placeholder="＋ activitate nouă" autocomplete="off"><input name="d" type="date" class="dt"><button class="btn sm">＋</button></form>
+ ${FSEC.map(([k,ic,lab,ph])=>`<details class="sub" data-oid="${f.id+k}" ${UI.open.has(f.id+k)?'open':''}><summary>${ic} ${esc(lab.replace('{n}',f.name))} ${(f[k]||'').trim()?'✅':''}</summary><textarea data-bind="${f.id}:${k}" rows="3" placeholder="${ph}">${esc(f[k]||'')}</textarea></details>`).join('')}
+ <div class="row end" style="margin-top:10px"><button class="btn sm ghost" data-act="editFriend" data-id="${f.id}">✏️ Editează</button></div></div></details>`}).join('')}
+ <button class="fab" data-act="addFriend">＋</button>`;
+const friendF=[{k:'photo',l:'Poza (apasă pe cerc)',t:'photo'},{k:'name',l:'Numele',req:1},{k:'emoji',l:'Sau un simbol, dacă nu ai poză',t:'emoji',o:FEMO},{k:'likes',l:'Ce ne place să facem',ph:'ex: fotbal, Minecraft, biciclete'}];
+A.addFriend=()=>formSheet({title:'🤝 Prieten nou',fields:friendF,onSave:v=>{const f={id:uid(),...v,acts:[]};S.friends.push(f);UI.open.add(f.id);reward(2)}});
+A.editFriend=d=>{const f=S.friends.find(x=>x.id===d.id);formSheet({title:'✏️ '+esc(f.name),fields:friendF,data:f,onSave:v=>Object.assign(f,v),onDelete:()=>S.friends=S.friends.filter(x=>x!==f)})};
+A.fPhoto=(d,el,e)=>{e.preventDefault();pickPhoto(u=>S.friends.find(x=>x.id===d.id).photo=u,320)};
+A.tAct=(d,el)=>{const x=S.friends.find(f=>f.id===d.f).acts.find(a=>a.id===d.id);x.done=!x.done;reward(x.done?2:-2,pos(el));render()};
+A.del_tAct=d=>{const f=S.friends.find(x=>x.id===d.f);f.acts=f.acts.filter(a=>a.id!==d.id);save();render()};
+FORMS.addAct=f=>{const t=f.t.value.trim();if(!t)return;S.friends.find(x=>x.id===f.dataset.id).acts.push({id:uid(),text:t,date:f.d.value,done:false});save();render();refocus('addAct',f.dataset.id)};
+
+/* ===== 3. OBIECTIVE SMART ===== */
+const SM=[['S','Specific','Ce anume vreau? Spune exact, ca să înțeleagă oricine.','Ex: Să învăț să înot craul.'],['M','Măsurabil','Cum știu că am reușit? Ce pot număra?','Ex: Înot 25 de metri fără pauză.'],['A','Accesibil','Pot să-l fac? De ce am nevoie și cine mă ajută?','Ex: Merg la bazin de 2 ori pe săptămână, cu tata.'],['R','Relevant','De ce e important pentru mine?','Ex: Vreau să înot cu prietenii la mare.'],['T','Timp','Până când îl ating? Alege și data.','Ex: Până la 1 iunie.']];
+const okCount=g=>SM.filter(([k])=>g.L[k].ok).length;
+VIEWS.smart=()=>{const G=S.goals,top=G.filter(g=>g.top&&!g.done),rest=G.filter(g=>!g.top&&!g.done),done=G.filter(g=>g.done);
+ return `<p class="lead">🎯 Un obiectiv devine <b>ACTIV</b> 🔥 doar după ce bifezi toate cele 5 litere <b>S·M·A·R·T</b>. Apasă pe o literă ca s-o completezi. Steluța ☆ îl pune în Top.</p>
+ ${G.length?'':empty('🎯','Niciun obiectiv încă','Apasă pe ＋ și scrie ce vrei să reușești.')}
+ ${top.length?`<div class="h2">🏆 Top obiective</div>${top.map(goalHTML).join('')}`:''}
+ ${rest.length?`<div class="h2">📋 Alte obiective</div>${rest.map(goalHTML).join('')}`:''}
+ ${done.length?`<div class="h2">✅ Obiective atinse</div>${done.map(goalHTML).join('')}`:''}
+ <button class="fab" data-act="addGoal">＋</button>`};
+function goalHTML(g){const ok=okCount(g),act=ok===5,st=g.steps||[],sd=st.filter(s=>s.done).length;
+ return `<div class="card goal ${g.done?'gdone':act?'gact':'glock'}"><div class="row"><button class="star ${g.top?'on':''}" data-act="topGoal" data-id="${g.id}">${g.top?'★':'☆'}</button><b class="gt" data-act="editGoal" data-id="${g.id}">${esc(g.title)}</b><span class="badge">${g.done?'✅ Atins':act?'🔥 ACTIV':`🔒 ${ok}/5`}</span></div>
+ <div class="smart">${SM.map(([k,n])=>`<button class="L ${g.L[k].ok?'ok':''}" data-act="letter" data-id="${g.id}" data-k="${k}"><b>${k}</b><small>${n}</small></button>`).join('')}</div>
+ ${act?`<div class="row"><span class="sec-t grow">👣 Pașii mei</span><small>${sd}/${st.length}</small></div><div class="bar"><i style="width:${st.length?sd/st.length*100:0}%"></i></div>
+  ${st.map(s=>itemHTML(s,'tStep',`data-g="${g.id}"`)).join('')}
+  ${g.done?'':`<form class="add" data-form="addStep" data-id="${g.id}"><input name="t" placeholder="＋ pas nou (ex: prima lecție de înot)" autocomplete="off" style="background:#f6f4ff"></form><button class="btn big" data-act="goalDone" data-id="${g.id}">🏁 Am atins obiectivul!</button>`}`
+  :`<p class="hint">🔒 Mai ai ${5-ok} ${5-ok===1?'literă':'litere'} de bifat ca să pornești obiectivul.</p>`}
+ ${g.L.T.date?`<div class="due">⏰ Termen: ${fmtD(g.L.T.date)} ${g.done?'':daysLeft(g.L.T.date)}</div>`:''}</div>`}
+A.addGoal=()=>formSheet({title:'🎯 Obiectiv nou',fields:[{k:'title',l:'Ce vreau să reușesc?',ph:'ex: Să citesc 10 cărți',req:1},{k:'top',l:'⭐ Îl pun în Top obiective',t:'check'}],onSave:v=>{if(v.top&&S.goals.filter(g=>g.top&&!g.done).length>=3){v.top=false;toast('În Top încap doar 3 obiective')}S.goals.unshift({id:uid(),title:v.title,top:v.top,activated:false,done:false,steps:[],L:{S:{t:v.title,ok:false},M:{t:'',ok:false},A:{t:'',ok:false},R:{t:'',ok:false},T:{t:'',ok:false,date:''}}})}});
+A.editGoal=d=>{const g=S.goals.find(x=>x.id===d.id);formSheet({title:'✏️ Obiectiv',fields:[{k:'title',l:'Obiectivul',req:1}],data:g,onSave:v=>g.title=v.title,onDelete:()=>S.goals=S.goals.filter(x=>x!==g)})};
+A.topGoal=d=>{const g=S.goals.find(x=>x.id===d.id);if(!g.top&&!g.done&&S.goals.filter(x=>x.top&&!x.done).length>=3){toast('În Top încap doar 3 obiective 🏆');return}g.top=!g.top;save();render()};
+A.letter=d=>{const g=S.goals.find(x=>x.id===d.id),[k,n,q,ex]=SM.find(x=>x[0]===d.k),L=g.L[k];
+ sheet(`<div class="sh-head"><span class="bigL">${k}</span><div><b>${n}</b><div class="mut">${q}</div></div><button class="x" data-act="closeSheet">✕</button></div>
+ <p class="ex">💡 ${ex}</p><textarea id="lt" rows="3" placeholder="Scrie aici…">${esc(L.t)}</textarea>
+ ${k==='T'?`<label class="fl"><span class="fl-l">📅 Data limită</span><input type="date" id="ld" value="${L.date||''}"></label>`:''}
+ <button class="btn big" id="lok">✅ Bifez litera ${k}</button>${L.ok?'<button class="btn danger" id="lno">Debifez</button>':''}`,o=>{
+  o.querySelector('#lok').onclick=()=>{const t=o.querySelector('#lt').value.trim(),dt=o.querySelector('#ld')?.value||'';if(!t){toast('Scrie ceva întâi ✍️');return}if(k==='T'&&!dt){toast('Alege și data 📅');return}
+   const first=!L.ok&&!L.got;L.t=t;L.ok=true;if(k==='T')L.date=dt;closeSheet();
+   if(okCount(g)===5&&!g.activated){g.activated=true;reward(5+(first?1:0),mid(),true);setTimeout(()=>toast('🔥 Obiectivul e ACTIV! Acum adaugă pașii.'),1200)}else if(first){L.got=true;reward(1,mid())}
+   save();render()};
+  const no=o.querySelector('#lno');if(no)no.onclick=()=>{L.ok=false;closeSheet();save();render()}})};
+A.tStep=(d,el)=>{const s=S.goals.find(g=>g.id===d.g).steps.find(x=>x.id===d.id);s.done=!s.done;reward(s.done?3:-3,pos(el));render()};
+A.del_tStep=d=>{const g=S.goals.find(x=>x.id===d.g);g.steps=g.steps.filter(x=>x.id!==d.id);save();render()};
+FORMS.addStep=f=>{const t=f.t.value.trim();if(!t)return;S.goals.find(x=>x.id===f.dataset.id).steps.push({id:uid(),text:t,done:false});save();render();refocus('addStep',f.dataset.id)};
+A.goalDone=d=>{const g=S.goals.find(x=>x.id===d.id);if(!confirm('Ai atins cu adevărat obiectivul „'+g.title+'”? 🏁'))return;g.done=true;g.top=false;reward(20,mid(),true);render();
+ setTimeout(()=>sheet(`<div class="trophy"><div class="t">🏆</div><b>Obiectiv atins!</b><div class="mut">„${esc(g.title)}” — ai demonstrat că poți. +20 ⭐</div><button class="btn big" data-act="closeSheet">Sunt mândru! 💪</button></div>`),700)};
+
+/* ===== 4. VISE ===== */
+VIEWS.vise=()=>`<p class="lead">✨ Visele și dorințele mele. Apasă pe poză ca să faci o fotografie sau s-o alegi din telefon. Dacă visul costă bani, adaugă în pușculiță 💰.</p>
+ ${S.dreams.length?'':empty('🌈','Niciun vis încă','Apasă pe ＋ și scrie primul tău vis.')}
+ <div class="grid2">${S.dreams.map(v=>{const ph=v.photos||[],p=v.cost?Math.min(100,v.saved/v.cost*100):0;return `<div class="card dream ${v.done?'ddone':''}">
+ <div class="ph" data-act="dPhoto" data-id="${v.id}">${ph[0]?`<img src="${ph[0]}">`:'<span>📷<br><small>Apasă pentru poză</small></span>'}${v.done?'<i class="ok">🌟 Împlinit!</i>':''}${ph[0]?'<i class="cam">📷＋</i>':''}</div>
+ ${ph.length?`<div class="thumbs">${ph.map((s,i)=>`<img src="${s}" data-act="viewPh" data-id="${v.id}" data-i="${i}">`).join('')}</div>`:''}
+ <div class="db"><b>${esc(v.title)}</b>${v.why?`<small>${esc(v.why)}</small>`:''}
+ ${v.cost?`<div class="bar"><i style="width:${p}%"></i></div><small>💰 ${lei(v.saved)} din ${lei(v.cost)}</small>`:''}
+ <div class="row"><button class="btn sm ghost" data-act="editDream" data-id="${v.id}">✏️</button>${v.cost&&!v.done?`<button class="btn sm ghost" data-act="saveDream" data-id="${v.id}">💰＋</button>`:''}${v.done?'':`<button class="btn sm" data-act="dreamDone" data-id="${v.id}">🌟</button>`}</div></div></div>`}).join('')}</div>
+ <button class="fab" data-act="addDream">＋</button>`;
+const dreamF=[{k:'title',l:'Visul meu',ph:'ex: Să văd Parisul',req:1},{k:'why',l:'De ce îl vreau?',t:'textarea',rows:2},{k:'cost',l:'Cât costă? (lei, dacă e ceva de cumpărat)',t:'num'},{k:'saved',l:'Cât am strâns deja (lei)',t:'num'}];
+A.addDream=()=>formSheet({title:'🌈 Vis nou',fields:dreamF,onSave:v=>{S.dreams.unshift({id:uid(),...v,photos:[],done:false});reward(1)}});
+A.editDream=d=>{const v=S.dreams.find(x=>x.id===d.id);formSheet({title:'✏️ Visul meu',fields:dreamF,data:v,onSave:x=>Object.assign(v,x),onDelete:()=>S.dreams=S.dreams.filter(x=>x!==v)})};
+A.dPhoto=d=>{const v=S.dreams.find(x=>x.id===d.id);if((v.photos||[]).length>=8){toast('Maxim 8 poze pe vis 📸');return}pickPhoto(u=>{v.photos=v.photos||[];v.photos.unshift(u)},1000)};
+A.viewPh=d=>{const v=S.dreams.find(x=>x.id===d.id),i=+d.i;sheet(`<div class="sh-head"><b>${esc(v.title)}</b><button class="x" data-act="closeSheet">✕</button></div><div class="viewer"><img src="${v.photos[i]}"></div><div class="row" style="margin-top:10px">${i?'<button class="btn ghost grow" id="vf">⭐ Pune-o prima</button>':''}<button class="btn danger" style="margin:0;width:auto" id="vd">🗑️ Șterge</button></div>`,o=>{
+ const f=o.querySelector('#vf');if(f)f.onclick=()=>{const [p]=v.photos.splice(i,1);v.photos.unshift(p);closeSheet();save();render()};
+ o.querySelector('#vd').onclick=()=>{if(confirm('Ștergi poza?')){v.photos.splice(i,1);closeSheet();save();render()}}})};
+A.saveDream=d=>{const v=S.dreams.find(x=>x.id===d.id);formSheet({title:'💰 Pun bani în pușculiță',fields:[{k:'a',l:'Câți lei adaug?',t:'num',req:1}],onSave:x=>{v.saved=r2((+v.saved||0)+x.a);reward(1);if(v.saved>=v.cost)setTimeout(()=>{fireworks();toast('🎯 Ai strâns toți banii pentru „'+v.title+'”!')},500)}})};
+A.dreamDone=d=>{const v=S.dreams.find(x=>x.id===d.id);if(!confirm('S-a împlinit visul „'+v.title+'”? 🌟'))return;v.done=true;reward(10,mid(),true);render()};
+
+/* ===== 5. BANCA ===== */
+const BT=[['panou','📊','Panou'],['deps','💰','Deponenți'],['invs','🤝','Investitori'],['loans','📝','Datornici'],['projects','🚀','Proiecte'],['lectii','📖','Lecții']];
+const FREQ={saptamanal:'pe săptămână',lunar:'pe lună'};
+function depPer(d,until){const s=D(d.start),u=until?D(until):D(today());if(u<s)return 0;
+ let p=d.freq==='saptamanal'?Math.floor((u-s)/(7*864e5))+1:(u.getFullYear()-s.getFullYear())*12+u.getMonth()-s.getMonth()+(u.getDate()>=s.getDate()?1:0);
+ const max=+d.months?(d.freq==='saptamanal'?Math.round(+d.months*52/12):+d.months):1e9;return Math.max(0,Math.min(p,max))}
+const depBal=d=>d.type==='unic'?(D(d.start)<=D(today())?+d.amount||0:0):depPer(d)*(+d.amount||0);
+const depFinal=d=>d.type==='unic'?+d.amount||0:(+d.months?depPer(d,addM(d.start,+d.months+1)):depPer(d))*(+d.amount||0);
+const depInt=d=>{const r=(+d.rate||0)/100,m=+d.months||12;return d.type==='unic'?depFinal(d)*r*m/12:depFinal(d)*r*(m/12)/2};
+const loanTot=l=>(+l.amount||0)*(1+(+l.rate||0)/100*(+l.months||0)/12);
+const loanPaid=l=>(l.pays||[]).reduce((s,p)=>s+(+p.a||0),0);
+const loanInst=l=>loanTot(l)/Math.max(1,+l.months||1);
+function score(l){const net=(+l.income||0)-(+l.spend||0),q=net>0?loanInst(l)/net:null;const cap=q===null?0:q<=.2?40:q<=.35?30:q<=.5?15:5;const tr=(+l.trust||0)*6;const cov=(+l.gval||0)/Math.max(1,+l.amount||1);const g=cov>=1?30:cov>=.5?20:cov>0?10:0;const t=cap+tr+g;
+ const gr=t>=80?['A','Excelent','#17a673',2]:t>=60?['B','Bun','#d4a000',4]:t>=40?['C','Atenție','#ff7a1a',7]:['D','Risc mare','#e53935',12];return{t,cap,tr,g,q,gr}}
+function bk(){const b=S.bank,dep=b.deps.reduce((s,d)=>s+depBal(d),0),inv=b.invs.reduce((s,x)=>s+(+x.amount||0),0),cap=dep+inv;
+ const cost=cap?(b.deps.reduce((s,d)=>s+depBal(d)*(+d.rate||0),0)+b.invs.reduce((s,x)=>s+(+x.amount||0)*(+x.exp||0),0))/cap:0;
+ const lent=b.loans.reduce((s,l)=>s+(+l.amount||0),0),paid=b.loans.reduce((s,l)=>s+loanPaid(l),0),owed=b.loans.reduce((s,l)=>s+Math.max(0,loanTot(l)-loanPaid(l)),0);
+ const projIn=b.projects.filter(p=>p.status!=='idee').reduce((s,p)=>s+(+p.invest||0),0),projAct=b.projects.filter(p=>p.status==='finantat').reduce((s,p)=>s+(+p.invest||0),0),projBack=b.projects.filter(p=>p.status==='terminat').reduce((s,p)=>s+(+p.got||0),0);
+ const cash=cap-lent+paid-projIn+projBack;
+ const inc=b.loans.filter(l=>loanTot(l)>loanPaid(l)).reduce((s,l)=>s+(+l.amount||0)*(+l.rate||0)/100,0)+b.projects.filter(p=>p.status==='finantat').reduce((s,p)=>s+((+p.ret||0)-(+p.invest||0))*12/Math.max(1,+p.months||1),0);
+ const yc=cap*cost/100;return{dep,inv,cap,cost,lent,paid,owed,projAct,cash,inc,yc,profit:inc-yc,infl:+b.inflation||0}}
+function pc(p,k){const inv=+p.invest||0,ret=+p.ret||0,m=Math.max(1,+p.months||1),roi=inv?(ret-inv)/inv*100:0,an=roi*12/m,need=k.cost+k.infl;
+ return{roi,an,profit:ret-inv,v:an>need?['🟢','Profitabil! Câștigi mai mult decât costul banilor + inflația.']:an>k.cost?['🟡','Acoperă costul banilor, dar inflația mănâncă din profit.']:['🔴','Nu merită: câștigi mai puțin decât te costă banii.']}}
+VIEWS.banca=()=>{const k=bk();return `<div class="chips">${BT.map(([id,ic,n])=>`<button class="chip ${UI.bank===id?'on':''}" data-act="bankTab" data-k="${id}">${ic} ${n}</button>`).join('')}</div>${BV[UI.bank](k)}`};
+const BV={};
+const tile=(ic,l,v,s,act)=>`<button class="tile" ${act?`data-act="${act}"`:''}><span class="ic">${ic}</span><small>${l}</small><b>${v}</b><span class="s">${s}</span></button>`;
+BV.panou=k=>{const segs=[['#22b07d','Disponibili',Math.max(0,k.cash)],['#ff7a45','La datornici',k.owed],['#7a5cff','În proiecte',k.projAct]];const T=segs.reduce((s,x)=>s+x[2],0)||1;
+ return `<div class="tiles">
+ ${tile('💼','Capital strâns',lei(k.cap),`${lei(k.dep)} depozite + ${lei(k.inv)} investitori`)}
+ ${tile('💵','Bani disponibili',lei(k.cash),k.cash<0?'⚠️ ai dat mai mult decât ai!':'gata de folosit')}
+ ${tile('📝','De primit de la datornici',lei(k.owed),S.bank.loans.length+' împrumuturi')}
+ ${tile('🚀','În proiecte',lei(k.projAct),S.bank.projects.filter(p=>p.status==='finantat').length+' proiecte active')}
+ ${tile('🏷️','Costul banilor',pct(k.cost)+' / an','cât plătești pe banii strânși','lesson')}
+ ${tile('🎈','Inflația',pct(k.infl)+' / an','apasă ca s-o schimbi','bankSet')}
+ </div>
+ <div class="card"><div class="row"><b class="grow">${k.profit>=0?'📈':'📉'} Câștig estimat pe un an</b><b style="color:${k.profit>=0?'#17a673':'#e53935'}">${lei(k.profit)}</b></div><small class="mut">câștig din dobânzi și proiecte ${lei(k.inc)} − ce plătești deponenților și investitorilor ${lei(k.yc)}</small></div>
+ <div class="card"><b>🧺 Unde sunt banii?</b><div class="stack">${segs.map(s=>`<i style="width:${s[2]/T*100}%;background:${s[0]}"></i>`).join('')}</div><div class="leg">${segs.map(s=>`<span style="--c:${s[0]}">${s[1]}: <b>${lei(s[2])}</b></span>`).join('')}</div></div>
+ <div class="card"><b>🧠 Sfaturi deștepte</b>${tips(k).map(t=>`<div class="tip">${t}</div>`).join('')}</div>
+ <div class="card golden">⚖️ <b>Regula de aur:</b> un proiect sau un împrumut e bun doar dacă îți aduce pe an mai mult decât <b>costul banilor (${pct(k.cost)}) + inflația (${pct(k.infl)}) = ${pct(k.cost+k.infl)}</b>.</div>`};
+function tips(k){const b=S.bank,t=[];
+ if(!k.cap)t.push('🌱 Începe prin a strânge capital: adaugă un <b>deponent</b> sau un <b>investitor</b>.');
+ if(k.cash<0)t.push('⚠️ Ai dat cu împrumut sau ai investit mai mulți bani decât ai. Strânge capital nou!');
+ if(k.cash>0&&k.cap&&k.cash/k.cap>.4)t.push(`😴 Ai <b>${lei(k.cash)}</b> care stau degeaba. Inflația îi „micșorează” cu cam <b>${lei(k.cash*k.infl/100)}</b> pe an. Caută un proiect bun!`);
+ const ideas=b.projects.filter(p=>p.status==='idee').map(p=>({p,c:pc(p,k)})).sort((x,y)=>y.c.an-x.c.an);
+ const best=ideas.find(x=>x.c.v[0]==='🟢');if(best)t.push(`🚀 Proiectul <b>${esc(best.p.name)}</b> aduce ${pct(best.c.an)} pe an — peste ${pct(k.cost+k.infl)}. ${(+best.p.invest)<=k.cash?'Ai destui bani: merită finanțat!':`Îți mai lipsesc ${lei(best.p.invest-k.cash)} ca să-l finanțezi.`}`);
+ ideas.filter(x=>x.c.v[0]==='🔴').forEach(x=>t.push(`🔴 <b>${esc(x.p.name)}</b> nu merită: aduce doar ${pct(x.c.an)} pe an.`));
+ b.loans.forEach(l=>{const s=score(l);if(loanTot(l)>loanPaid(l)){if(s.gr[0]==='D')t.push(`🔴 Atenție la <b>${esc(l.name)}</b>: scor ${s.t}/100, risc mare.`);if((+l.rate||0)<k.cost+k.infl)t.push(`🏷️ Împrumutul lui <b>${esc(l.name)}</b> are dobânda ${pct(l.rate)} — mai mică decât costul banilor + inflația. Pierzi bani!`);
+  const due=addM(l.start,+l.months);const n=daysTo(due);if(n>=0&&n<=14)t.push(`⏰ <b>${esc(l.name)}</b> trebuie să returneze banii până pe ${fmtD(due)}.`)}});
+ b.deps.forEach(d=>{if(+d.months){const m=addM(d.start,+d.months),n=daysTo(m);if(n>=0&&n<=30)t.push(`📅 Depozitul lui <b>${esc(d.name)}</b> ajunge la termen pe ${fmtD(m)}: pregătește ${lei(depFinal(d)+depInt(d))}.`)}});
+ if(k.cap&&k.profit<0)t.push('📉 Plătești mai mult decât câștigi. Caută proiecte cu ROI mai mare sau dă dobânzi mai mici la depozite.');
+ if(!t.length)t.push('👍 Banca ta arată bine! Continuă să cauți proiecte profitabile.');return t}
+
+BV.deps=k=>`<p class="lead">💰 <b>Deponenții</b> îți lasă bani la păstrare — o singură dată sau în fiecare lună. Tu le plătești <b>dobândă</b>, iar la termen le dai banii înapoi.</p>
+ ${S.bank.deps.length?'':empty('💰','Niciun deponent','Apasă pe ＋.')}
+ ${S.bank.deps.map(d=>{const m=+d.months?addM(d.start,+d.months):'';return `<div class="card ent"><div class="row"><span class="ava">${d.type==='unic'?'💎':'🔁'}</span><div class="grow"><b>${esc(d.name)}</b><small>${d.type==='unic'?'o singură depunere':`${lei(d.amount)} ${FREQ[d.freq]}`} · dobândă ${pct(d.rate)}/an</small></div><b class="amt">${lei(depBal(d))}</b></div>
+ <div class="kv"><span>Începe pe</span><b>${fmtD(d.start)}</b><span>Termen</span><b>${m?fmtD(m)+` (${d.months} luni)`:'fără termen'}</b>${d.type!=='unic'?`<span>Depuneri până acum</span><b>${depPer(d)}</b>`:''}<span>Total depus la termen</span><b>${lei(depFinal(d))}</b><span>Dobânda de plătit</span><b>${lei(depInt(d))}</b><span>De returnat la termen</span><b>${lei(depFinal(d)+depInt(d))}</b></div>
+ <div class="row end"><button class="btn sm ghost" data-act="editDep" data-id="${d.id}">✏️ Editează</button><button class="btn sm" data-act="certDep" data-id="${d.id}">📜 Certificat</button></div></div>`}).join('')}
+ <button class="fab" data-act="addDep">＋</button>`;
+const depF=[{k:'name',l:'Numele deponentului',req:1,ph:'ex: Bunica'},{k:'type',l:'Cum depune?',t:'select',o:[['unic','💎 O singură dată'],['recurent','🔁 Recurent (regulat)']]},{k:'amount',l:'Suma (lei)',t:'num',req:1,hint:'La recurent: suma depusă de fiecare dată.'},{k:'freq',l:'Cât de des (doar la recurent)',t:'select',o:[['lunar','În fiecare lună'],['saptamanal','În fiecare săptămână']]},{k:'start',l:'Data primei depuneri',t:'date'},{k:'months',l:'Termen (câte luni)',t:'num',hint:'După câte luni îi dai banii înapoi. Lasă 0 dacă nu e stabilit.'},{k:'rate',l:'Dobânda promisă (% pe an)',t:'num',hint:'Ex: 3% pe an → pentru 100 lei ținuți un an îi dai 3 lei în plus. E „costul” banilor pentru tine.'}];
+A.addDep=()=>formSheet({title:'💰 Deponent nou',fields:depF,data:{start:today(),months:12,rate:3},onSave:v=>{S.bank.deps.push({id:uid(),...v,start:v.start||today()});reward(2)}});
+A.editDep=d=>{const x=S.bank.deps.find(y=>y.id===d.id);formSheet({title:'✏️ Deponent',fields:depF,data:x,onSave:v=>Object.assign(x,v),onDelete:()=>S.bank.deps=S.bank.deps.filter(y=>y!==x)})};
+
+BV.invs=k=>{const T=k.inv||1;return `<p class="lead">🤝 <b>Investitorii</b> pun bani în banca ta ca să câștige din profit. Nu le dai dobândă fixă, dar le promiți un <b>randament</b> (câștig) pe an.</p>
+ ${S.bank.invs.length?'':empty('🤝','Niciun investitor','Apasă pe ＋.')}
+ ${S.bank.invs.map(x=>`<div class="card ent"><div class="row"><span class="ava">🤝</span><div class="grow"><b>${esc(x.name)}</b><small>din ${fmtD(x.date)} · așteaptă ${pct(x.exp)}/an</small></div><b class="amt">${lei(x.amount)}</b></div>
+ <div class="kv"><span>Partea lui din investitori</span><b>${pct((+x.amount||0)/T*100)}</b><span>Câștig promis pe an</span><b>${lei((+x.amount||0)*(+x.exp||0)/100)}</b></div>
+ <div class="row end"><button class="btn sm ghost" data-act="editInv" data-id="${x.id}">✏️ Editează</button></div></div>`).join('')}
+ <button class="fab" data-act="addInv">＋</button>`};
+const invF=[{k:'name',l:'Numele investitorului',req:1},{k:'amount',l:'Suma investită (lei)',t:'num',req:1},{k:'date',l:'Data',t:'date'},{k:'exp',l:'Câștigul promis (% pe an)',t:'num',hint:'Investitorii vor de obicei mai mult decât deponenții, pentru că își asumă un risc.'}];
+A.addInv=()=>formSheet({title:'🤝 Investitor nou',fields:invF,data:{date:today(),exp:5},onSave:v=>{S.bank.invs.push({id:uid(),...v,date:v.date||today()});reward(2)}});
+A.editInv=d=>{const x=S.bank.invs.find(y=>y.id===d.id);formSheet({title:'✏️ Investitor',fields:invF,data:x,onSave:v=>Object.assign(x,v),onDelete:()=>S.bank.invs=S.bank.invs.filter(y=>y!==x)})};
+
+BV.loans=k=>`<p class="lead">📝 <b>Datornicii</b> sunt cei cărora le dai bani cu împrumut. Înainte să dai banii, verifică <b>bonitatea</b>: cât câștigă, cât cheltuie, cât de serioși sunt și ce <b>garanție</b> îți lasă.</p>
+ ${S.bank.loans.length?'':empty('📝','Niciun împrumut','Apasă pe ＋ ca să analizezi primul împrumut.')}
+ ${S.bank.loans.map(l=>{const s=score(l),tot=loanTot(l),pd=loanPaid(l),due=addM(l.start,+l.months),rec=k.cost+k.infl+s.gr[3],fin=pd>=tot-.01;return `<div class="card ent"><div class="row"><span class="ava">${fin?'✅':'🧾'}</span><div class="grow"><b>${esc(l.name)}</b><small>${esc(l.purpose||'împrumut')} · ${fmtD(l.start)}</small></div><span class="grade" style="background:${s.gr[2]}">${s.gr[0]} · ${s.t}</span></div>
+ <div class="sc"><div><b>${s.cap}/40</b>Poate plăti${s.q!==null?` (${Math.round(s.q*100)}% din bani liberi)`:''}</div><div><b>${s.tr}/30</b>Încredere ${'★'.repeat(+l.trust||0)}</div><div><b>${s.g}/30</b>Garanție</div></div>
+ <div class="kv"><span>Suma împrumutată</span><b>${lei(l.amount)}</b><span>Dobânda</span><b>${pct(l.rate)}/an</b><span>Durata</span><b>${l.months} luni · până pe ${fmtD(due)}</b><span>Rata lunară</span><b>${lei(loanInst(l))}</b><span>Total de returnat</span><b>${lei(tot)}</b><span>Câștigul băncii</span><b>${lei(tot-(+l.amount||0))}</b><span>Garanția</span><b>${esc(l.guar||'—')}${+l.gval?` (${lei(l.gval)})`:''}</b></div>
+ <div class="bar"><i style="width:${tot?Math.min(100,pd/tot*100):0}%"></i></div><small class="mut">Returnat: ${lei(pd)} din ${lei(tot)}${fin?' — gata! 🎉':''}</small>
+ ${!fin&&(+l.rate||0)<rec?`<div class="warn">💡 Pentru scorul ${s.gr[0]} („${s.gr[1]}”) ar fi corect o dobândă de cel puțin <b>${pct(rec)}</b> = costul banilor + inflația + ${s.gr[3]}% pentru risc.</div>`:''}
+ ${s.gr[0]==='D'&&!fin?'<div class="warn">🔴 Risc mare: s-ar putea să nu-ți primești banii înapoi. Cere o garanție mai bună sau dă o sumă mai mică.</div>':''}
+ <div class="row end" style="margin-top:8px"><button class="btn sm ghost" data-act="editLoan" data-id="${l.id}">✏️</button>${fin?'':`<button class="btn sm ghost" data-act="payLoan" data-id="${l.id}">💵 Plată</button>`}<button class="btn sm" data-act="certLoan" data-id="${l.id}">📜 Certificat</button></div></div>`}).join('')}
+ <button class="fab" data-act="addLoan">＋</button>`;
+const loanF=[{k:'name',l:'Cine împrumută?',req:1},{k:'purpose',l:'Pentru ce are nevoie de bani?',ph:'ex: o minge nouă'},{k:'amount',l:'Suma (lei)',t:'num',req:1},{k:'rate',l:'Dobânda (% pe an)',t:'num',hint:'Cu cât riscul e mai mare, cu atât dobânda trebuie să fie mai mare.'},{k:'months',l:'Pe câte luni?',t:'num',req:1},{k:'start',l:'Data împrumutului',t:'date'},
+ {k:'income',l:'💼 Venitul lui pe lună (lei)',t:'num',hint:'Ex: alocația, banii de buzunar, salariul.'},{k:'spend',l:'🛒 Cheltuielile lui pe lună (lei)',t:'num',hint:'Ce rămâne = venit − cheltuieli. Rata ar trebui să fie cel mult o cincime din ce rămâne.'},
+ {k:'trust',l:'🤝 Cât de mult am încredere în el?',t:'stars',hint:'Și-a ținut promisiunile până acum? E serios?'},{k:'guar',l:'🛡️ Garanția',ph:'ex: își lasă cartea de colecție',hint:'Ceva de valoare pe care îl păstrezi dacă nu plătește.'},{k:'gval',l:'Cât valorează garanția (lei)',t:'num'}];
+A.addLoan=()=>formSheet({title:'📝 Împrumut nou',fields:loanF,data:{start:today(),trust:3,rate:10,months:3},onSave:v=>{const k=bk();if(v.amount>k.cash)setTimeout(()=>toast(`⚠️ Ai doar ${lei(k.cash)} disponibili!`),400);S.bank.loans.push({id:uid(),...v,start:v.start||today(),pays:[]});reward(2)}});
+A.editLoan=d=>{const x=S.bank.loans.find(y=>y.id===d.id);formSheet({title:'✏️ Împrumut',fields:loanF,data:x,onSave:v=>Object.assign(x,v),onDelete:()=>S.bank.loans=S.bank.loans.filter(y=>y!==x)})};
+A.payLoan=d=>{const l=S.bank.loans.find(y=>y.id===d.id);formSheet({title:'💵 Plată de la '+esc(l.name),fields:[{k:'a',l:'Suma primită (lei)',t:'num',req:1,hint:`Rata lunară: ${lei(loanInst(l))} · mai are de dat ${lei(loanTot(l)-loanPaid(l))}`},{k:'d',l:'Data',t:'date'}],data:{a:r2(Math.min(loanInst(l),loanTot(l)-loanPaid(l))),d:today()},onSave:v=>{l.pays=l.pays||[];l.pays.push({a:v.a,d:v.d||today()});if(loanPaid(l)>=loanTot(l)-.01){reward(5,mid(),true);setTimeout(()=>toast('🎉 '+l.name+' a returnat tot împrumutul!'),1200)}else reward(1)}})};
+
+BV.projects=k=>{const P=S.bank.projects.map(p=>({p,c:pc(p,k)})).sort((a,b)=>(a.p.status==='terminat')-(b.p.status==='terminat')||b.c.an-a.c.an);const best=P.find(x=>x.p.status==='idee');
+ return `<p class="lead">🚀 <b>Proiectele</b> sunt idei în care îți pui banii la treabă. <b>ROI</b> arată cât câștigi față de cât pui. Alege-le pe cele care bat <b>${pct(k.cost+k.infl)}</b> pe an (costul banilor + inflația).</p>
+ ${P.length?'':empty('🚀','Niciun proiect','Apasă pe ＋ și scrie o idee de afacere.')}
+ ${P.map(({p,c})=>`<div class="card ent"><div class="row"><span class="ava">${p.status==='terminat'?'🏁':p.status==='finantat'?'⚙️':'💡'}</span><div class="grow"><b>${best&&best.p===p&&c.v[0]==='🟢'?'<span class="medal">🥇</span> ':''}${esc(p.name)}</b><small>${esc(p.desc||'')} · risc ${'⚠️'.repeat(+p.risk||1)}</small></div><b class="amt">${c.v[0]} ${pct(c.an)}</b></div>
+ <div class="kv"><span>Investesc</span><b>${lei(p.invest)}</b><span>Primesc înapoi</span><b>${lei(p.ret)} în ${p.months} luni</b><span>Profit</span><b>${lei(c.profit)}</b><span>ROI</span><b>${pct(c.roi)}</b><span>ROI pe an</span><b>${pct(c.an)}</b><span>ROI real (fără inflație)</span><b>${pct(c.an-k.infl)}</b>${p.status==='terminat'?`<span>Am primit de fapt</span><b>${lei(p.got)}</b>`:''}</div>
+ <div class="${c.v[0]==='🟢'?'okb':'warn'}">${c.v[0]} ${c.v[1]}${(+p.risk||0)>=4?' Atenție: riscul e mare, s-ar putea să nu iasă cum speri.':''}</div>
+ <div class="row end"><button class="btn sm ghost" data-act="editProj" data-id="${p.id}">✏️</button>${p.status==='idee'?`<button class="btn sm" data-act="fundProj" data-id="${p.id}">💸 Finanțez</button>`:p.status==='finantat'?`<button class="btn sm" data-act="doneProj" data-id="${p.id}">🏁 S-a terminat</button>`:''}</div></div>`).join('')}
+ <button class="fab" data-act="addProj">＋</button>`};
+const projF=[{k:'name',l:'Numele proiectului',req:1,ph:'ex: Vând brățări'},{k:'desc',l:'Pe scurt',ph:'ce faci și cui vinzi'},{k:'invest',l:'Cât investești (lei)',t:'num',req:1,hint:'Banii de care ai nevoie la început (materiale, ingrediente…).'},{k:'ret',l:'Cât crezi că primești înapoi (lei)',t:'num',req:1,hint:'Toți banii încasați la final.'},{k:'months',l:'În câte luni?',t:'num',req:1},{k:'risk',l:'Cât de riscant e?',t:'stars',hint:'1 = sigur, 5 = foarte nesigur.'}];
+A.addProj=()=>formSheet({title:'🚀 Proiect nou',fields:projF,data:{risk:2,months:3},onSave:v=>{S.bank.projects.push({id:uid(),...v,status:'idee'});reward(2)}});
+A.editProj=d=>{const x=S.bank.projects.find(y=>y.id===d.id);formSheet({title:'✏️ Proiect',fields:projF,data:x,onSave:v=>Object.assign(x,v),onDelete:()=>S.bank.projects=S.bank.projects.filter(y=>y!==x)})};
+A.fundProj=(d,el)=>{const p=S.bank.projects.find(y=>y.id===d.id),k=bk();if((+p.invest||0)>k.cash){toast(`Nu ai destui bani: ai ${lei(k.cash)}, îți trebuie ${lei(p.invest)}`);return}p.status='finantat';p.fdate=today();reward(3,pos(el));render()};
+A.doneProj=d=>{const p=S.bank.projects.find(y=>y.id===d.id);formSheet({title:'🏁 '+esc(p.name)+' s-a terminat',fields:[{k:'got',l:'Câți bani ai primit în total (lei)?',t:'num',req:1}],data:{got:p.ret},onSave:v=>{p.got=v.got;p.status='terminat';if(v.got>(+p.invest||0)){reward(10,mid(),true);setTimeout(()=>toast(`💰 Profit: ${lei(v.got-p.invest)}!`),1200)}else toast('Nu a ieșit profit de data asta. Și din asta se învață! 💪')}})};
+A.bankSet=()=>formSheet({title:'🏦 Setările băncii',fields:[{k:'name',l:'Numele băncii',ph:bankName()},{k:'inflation',l:'Inflația (% pe an)',t:'num',hint:'Cu cât cresc prețurile într-un an. Întreabă un adult cât e acum în România.'}],data:S.bank,onSave:v=>Object.assign(S.bank,v)});
+
+BV.lectii=k=>`${[['💰','Dobânda','Prețul banilor. Dacă împrumuți 100 lei cu 10% pe an, după un an primești înapoi 110 lei.'],['🎈','Inflația',`Prețurile cresc în timp. Cu inflație de ${pct(k.infl)}, o înghețată de 10 lei va costa ${lei(10*(1+k.infl/100))} peste un an. Banii ținuți în pușculiță „se micșorează”.`],['🏷️','Costul banilor',`Cât plătește banca ta ca să aibă bani: dobânda pentru deponenți și câștigul promis investitorilor. La tine acum: ${pct(k.cost)} pe an.`],['📈','ROI (randamentul)','Cât câștigi față de cât ai pus. Pui 100 lei, primești 130 → ROI = 30%. Ca să compari proiecte, împarte la luni și înmulțește cu 12 = ROI pe an.'],['⚖️','Regula de aur',`Un proiect e bun doar dacă ROI pe an > costul banilor + inflația. La tine: peste ${pct(k.cost+k.infl)}.`],['🧾','Bonitatea','Cât de sigur e că cineva îți dă banii înapoi: cât câștigă, cât cheltuie, dacă și-a ținut promisiunile.'],['🛡️','Garanția','Ceva de valoare pe care îl păstrezi dacă împrumutatul nu plătește. Te protejează de pierdere.'],['⚠️','Riscul','Cu cât riscul e mai mare, cu atât ceri o dobândă mai mare. Nu pune toți banii într-un singur loc!'],['🌱','Dobânda compusă','Dobândă la dobândă: banii fac „pui”, iar puii fac și ei pui. Încearcă mai jos!']].map(([i,t,p])=>`<div class="card gl"><b>${i} ${t}</b><p>${p}</p></div>`).join('')}
+ <div class="card" id="calc"><b>🧮 Calculator: cât cresc banii mei?</b>
+ <label class="fl"><span class="fl-l">Pun acum (lei)</span><input id="c1" inputmode="decimal" value="100"></label>
+ <label class="fl"><span class="fl-l">Adaug în fiecare lună (lei)</span><input id="c2" inputmode="decimal" value="20"></label>
+ <label class="fl"><span class="fl-l">Dobânda (% pe an)</span><input id="c3" inputmode="decimal" value="5"></label>
+ <label class="fl"><span class="fl-l">Câți ani?</span><input id="c4" inputmode="decimal" value="5"></label>
+ <div class="res" id="cres"></div></div>`;
+function calc(){const P=num($('#c1').value),C=num($('#c2').value),r=num($('#c3').value)/100/12,n=Math.round(num($('#c4').value)*12),infl=S.bank.inflation/100;
+ const g=Math.pow(1+r,n),fv=r?P*g+C*(g-1)/r:P+C*n,put=P+C*n,real=fv/Math.pow(1+infl,n/12);
+ $('#cres').innerHTML=`Pui în total: <b>${lei(put)}</b><br>Vei avea: <b>${lei(fv)}</b><br>Banii făcuți de dobândă: <b style="color:#17a673">${lei(fv-put)}</b><br><small class="mut">Cu inflația de ${pct(S.bank.inflation)}, ${lei(fv)} vor cumpăra cât ${lei(real)} azi.</small>`}
+A.bankTab=d=>{UI.bank=d.k;render();if(d.k==='lectii')calc()};
+A.lesson=()=>{UI.bank='lectii';render();calc()};
+
+/* certificate (imagine de salvat sau trimis) */
+function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+function wrap(x,t,cx,y,w,lh){const ws=t.split(' ');let l='';for(const s of ws){const tt=l?l+' '+s:s;if(x.measureText(tt).width>w&&l){x.fillText(l,cx,y);l=s;y+=lh}else l=tt}x.fillText(l,cx,y);return y}
+function certImg(o){const W=1400,H=1000,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d'),F='ui-rounded,-apple-system,"Helvetica Neue",sans-serif';
+ let g=x.createLinearGradient(0,0,W,H);g.addColorStop(0,'#fffaf0');g.addColorStop(1,'#f1ebff');x.fillStyle=g;x.fillRect(0,0,W,H);
+ g=x.createLinearGradient(0,0,W,0);g.addColorStop(0,'#1677ff');g.addColorStop(.5,'#7a5cff');g.addColorStop(1,'#ff4f9a');x.lineWidth=20;x.strokeStyle=g;rr(x,28,28,W-56,H-56,40);x.stroke();
+ x.lineWidth=3;x.strokeStyle='#d4af37';rr(x,62,62,W-124,H-124,26);x.stroke();
+ x.textAlign='center';x.fillStyle='#2a2350';x.font=`bold 40px ${F}`;x.fillText('🏦 '+bankName(),W/2,140);
+ x.fillStyle='#1d3d8f';x.font='bold 74px Georgia,serif';x.fillText(o.title,W/2,235);
+ x.fillStyle='#7a7399';x.font=`26px ${F}`;x.fillText(`Nr. ${o.nr} · emis la ${fmtD(today())}`,W/2,282);
+ x.fillStyle='#2a2350';x.font='italic 32px Georgia,serif';let y=wrap(x,o.text,W/2,345,W-280,44)+60;
+ x.font=`26px ${F}`;const colW=(W-300)/2;o.rows.forEach((r,i)=>{const cx=150+(i%2)*(colW+0),yy=y+Math.floor(i/2)*54;x.textAlign='left';x.fillStyle='#7a7399';x.fillText(r[0],cx,yy);x.textAlign='right';x.fillStyle='#2a2350';x.font=`bold 27px ${F}`;x.fillText(r[1],cx+colW-30,yy);x.font=`26px ${F}`;x.strokeStyle='#e6e0f7';x.lineWidth=1.5;x.beginPath();x.moveTo(cx,yy+14);x.lineTo(cx+colW-30,yy+14);x.stroke()});
+ const sx=W-215,sy=H-205;g=x.createRadialGradient(sx,sy,10,sx,sy,92);g.addColorStop(0,'#ffe58a');g.addColorStop(1,'#d4a017');x.fillStyle=g;x.beginPath();x.arc(sx,sy,90,0,7);x.fill();x.strokeStyle='#fff';x.lineWidth=4;x.beginPath();x.arc(sx,sy,76,0,7);x.stroke();
+ x.textAlign='center';x.fillStyle='#6b4a00';x.font=`bold 24px ${F}`;x.fillText('APROBAT',sx,sy-18);x.font=`bold 46px ${F}`;x.fillText(o.seal,sx,sy+34);
+ x.textAlign='left';x.fillStyle='#2a2350';x.font=`24px ${F}`;[[150,'Bancher: '+(S.profile.name||'')],[560,o.sign]].forEach(([sx2,t])=>{x.strokeStyle='#2a2350';x.lineWidth=2;x.beginPath();x.moveTo(sx2,H-140);x.lineTo(sx2+330,H-140);x.stroke();x.fillText(t,sx2,H-105)});
+ return c.toDataURL('image/png')}
+function showCert(o,fname){const u=certImg(o);sheet(`<div class="sh-head"><b>📜 ${o.title.charAt(0)+o.title.slice(1).toLowerCase()}</b><button class="x" data-act="closeSheet">✕</button></div><div class="cert"><img src="${u}"></div><p class="mut">Ține apăsat pe imagine ca s-o salvezi în Poze, sau trimite-o direct:</p><button class="btn big" id="shc">📤 Trimite / Salvează</button>`,o2=>{o2.querySelector('#shc').onclick=()=>shareFile(u,fname,'image/png')});fireworks()}
+async function shareFile(url,name,type){try{const bl=await(await fetch(url)).blob();const f=new File([bl],name,{type});if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return}const a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download=name;document.body.appendChild(a);a.click();a.remove()}catch(e){}}
+A.certLoan=d=>{const l=S.bank.loans.find(y=>y.id===d.id),s=score(l),i=S.bank.loans.indexOf(l)+1;showCert({title:'CERTIFICAT DE ÎMPRUMUT',nr:'IMP-'+String(i).padStart(3,'0'),seal:s.gr[0],sign:'Împrumutat: '+l.name,
+ text:`Se certifică faptul că ${bankName()} a acordat lui ${l.name} un împrumut de ${lei(l.amount)}${l.purpose?' pentru '+l.purpose:''}. ${l.name} promite să returneze banii, cu dobândă, până la data scadenței.`,
+ rows:[['Suma împrumutată',lei(l.amount)],['Dobânda',pct(l.rate)+' / an'],['Data împrumutului',fmtD(l.start)],['Scadența',fmtD(addM(l.start,+l.months))],['Durata',l.months+' luni'],['Rata lunară',lei(loanInst(l))],['Total de returnat',lei(loanTot(l))],['Scor de bonitate',`${s.gr[0]} · ${s.t}/100`],['Garanția',(l.guar||'fără').slice(0,26)],['Returnat până acum',lei(loanPaid(l))]]},'certificat-imprumut-'+l.name+'.png')};
+A.certDep=d=>{const x=S.bank.deps.find(y=>y.id===d.id),i=S.bank.deps.indexOf(x)+1,m=+x.months?addM(x.start,+x.months):'';showCert({title:'CERTIFICAT DE DEPOZIT',nr:'DEP-'+String(i).padStart(3,'0'),seal:'✓',sign:'Deponent: '+x.name,
+ text:`Se certifică faptul că ${x.name} a depus la ${bankName()} ${x.type==='unic'?'suma de '+lei(x.amount):lei(x.amount)+' '+FREQ[x.freq]}. Banca promite să păstreze banii în siguranță și să plătească dobânda promisă.`,
+ rows:[['Tip depozit',x.type==='unic'?'o singură dată':'recurent'],['Dobânda',pct(x.rate)+' / an'],['Prima depunere',fmtD(x.start)],['Termen',m?fmtD(m):'fără termen'],['Depus până acum',lei(depBal(x))],['Total la termen',lei(depFinal(x))],['Dobânda de primit',lei(depInt(x))],['De primit la termen',lei(depFinal(x)+depInt(x))]]},'certificat-depozit-'+x.name+'.png')};
+
+/* ---------- setări, premii ---------- */
+A.prizes=()=>{const p=S.profile,av=p.stars-(p.spent||0);sheet(`<div class="sh-head"><b>🏆 Premiile mele</b><button class="x" data-act="closeSheet">✕</button></div>
+ <div class="mut">Ai strâns în total <b>${p.stars} ⭐</b>. Primești stele pentru fiecare lucru bifat!</div>
+ <div class="bdg">${BADGES.map(b=>`<div class="${p.stars>=b[0]?'':'lk'}"><i>${b[1]}</i>${b[2]}<br><small>${b[0]} ⭐</small></div>`).join('')}</div>
+ <div class="h2" style="margin-left:0">🎁 Magazinul de recompense <small class="mut">(poți cheltui ${av} ⭐)</small></div>
+ ${S.rewards.map(r=>`<div class="rw"><span class="grow">${esc(r.name)}</span><b>${r.cost} ⭐</b><button class="btn sm" data-act="redeem" data-id="${r.id}" ${av<r.cost?'disabled style="opacity:.4"':''}>Iau!</button><button class="del" data-act="delRw" data-id="${r.id}">✕</button></div>`).join('')}
+ <form class="add2" data-form="addRw" style="margin-top:10px"><input name="t" placeholder="recompensă nouă" style="background:#f6f4ff" autocomplete="off"><input name="c" inputmode="numeric" placeholder="⭐" style="width:64px;background:#f6f4ff"><button class="btn sm">＋</button></form>
+ <p class="hint">Recompensele le stabilești împreună cu părinții. 😉</p>`)};
+A.redeem=d=>{const r=S.rewards.find(x=>x.id===d.id),p=S.profile;if(p.stars-(p.spent||0)<r.cost)return;if(!confirm(`Folosești ${r.cost} ⭐ pentru „${r.name}”?`))return;p.spent=(p.spent||0)+r.cost;save();fireworks();toast('🎁 Bucură-te de: '+r.name+'!');A.prizes()};
+A.delRw=d=>{S.rewards=S.rewards.filter(x=>x.id!==d.id);save();A.prizes()};
+FORMS.addRw=f=>{const t=f.t.value.trim(),c=Math.round(num(f.c.value));if(!t||!c){toast('Scrie recompensa și câte ⭐ costă');return}S.rewards.push({id:uid(),name:t,cost:c});save();A.prizes()};
+A.settings=()=>{const p=S.profile;formSheet({title:'⚙️ Profilul meu',fields:[{k:'name',l:'Numele meu',req:1},{k:'avatar',l:'Avatarul meu',t:'emoji',o:AVATARS},{k:'sound',l:'🔊 Sunete la bifat',t:'check'}],data:p,onSave:v=>Object.assign(p,v),
+ top:''});const fm=$('#fs');fm.insertAdjacentHTML('beforeend',`<div class="h2" style="margin-left:0">💾 Copie de rezervă</div><p class="hint">Datele stau doar pe acest telefon. Fă din când în când o copie (ex. în Fișiere sau iCloud).</p><div class="row"><button type="button" class="btn ghost grow" id="exp">📤 Salvez o copie</button><label class="btn ghost grow" style="text-align:center">📥 Încarc o copie<input type="file" accept=".json,application/json" class="vh" id="imp"></label></div>
+ <div class="h2" style="margin-left:0">📲 Pune aplicația pe ecran</div><p class="hint">În Safari: apasă butonul <b>Distribuie</b> (pătratul cu săgeată) → <b>Adaugă pe ecranul principal</b>.</p><button type="button" class="btn danger" id="rst">♻️ Șterge tot și o iau de la capăt</button>`);
+ $('#exp').onclick=()=>shareFile('data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(S)),'misiunea-copie-'+today()+'.json','application/json');
+ $('#imp').onchange=async e=>{try{const o=JSON.parse(await e.target.files[0].text());if(!o.profile||!o.notes)throw 0;if(!confirm('Înlocuiesc datele de acum cu copia?'))return;S=o;save();closeSheet();render();toast('✅ Copia a fost încărcată')}catch(er){toast('Fișierul nu e o copie validă')}};
+ $('#rst').onclick=()=>{if(confirm('Sigur ștergi TOT?')&&confirm('Chiar sigur? Nu se mai poate recupera.')){S=defState();save();closeSheet();render();welcome()}}};
+function welcome(){formSheet({title:'👋 Bun venit în Misiunea Mea!',top:'<p class="mut">Aici îți plănuiești zilele, prieteniile, obiectivele, visele și chiar propria bancă. Pentru fiecare lucru bifat primești ⭐ și artificii!</p>',fields:[{k:'name',l:'Cum te cheamă?',req:1},{k:'avatar',l:'Alege-ți avatarul',t:'emoji',o:AVATARS}],data:S.profile,onSave:v=>{Object.assign(S.profile,v);setTimeout(()=>{fireworks();toast('Hai să începem, '+v.name+'! 🚀')},300)}})}
+
+/* ---------- evenimente ---------- */
+A.tab=d=>{UI.tab=d.k;try{localStorage.setItem('misiunea_tab',d.k)}catch(e){}render();scrollTo(0,0);if(d.k==='banca'&&UI.bank==='lectii')calc()};
+A.closeSheet=()=>closeSheet();
+A.starSel=(d,el)=>{const p=el.parentNode;p.dataset.v=d.i;[...p.children].forEach((b,i)=>b.classList.toggle('on',i<d.i))};
+A.optSel=(d,el)=>{const p=el.parentNode;p.dataset.v=d.v;[...p.children].forEach(b=>b.classList.toggle('on',b===el))};
+document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el||el.disabled)return;const f=A[el.dataset.act];if(f)f(el.dataset,el,e)});
+document.addEventListener('submit',e=>{const f=e.target;if(!f.dataset.form)return;e.preventDefault();FORMS[f.dataset.form](f)});
+document.addEventListener('input',e=>{const t=e.target;if(t.dataset.bind){const[id,k]=t.dataset.bind.split(':');S.friends.find(x=>x.id===id)[k]=t.value;save()}else if(t.closest&&t.closest('#calc'))calc()});
+document.addEventListener('change',async e=>{const t=e.target;if(!t.dataset.photo||!t.files[0])return;try{const u=await loadImg(t.files[0],400);const l=t.closest('.phsel');l._v=u;const im=l.querySelector('img');if(im)im.src=u;else l.insertAdjacentHTML('afterbegin',`<img src="${u}">`);[...l.childNodes].forEach(n=>n.nodeType===3&&n.remove())}catch(er){toast('Nu am putut încărca poza')}});
+document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.dataset.oid;if(id)e.target.open?UI.open.add(id):UI.open.delete(id)},true);
+addEventListener('resize',fxSize);
+
+/* ---------- pornire ---------- */
+(async()=>{fx.c=$('#fx');fx.x=fx.c.getContext('2d');fxSize();
+ try{await DB.open();S=await DB.get('state')}catch(e){}
+ if(!S){try{S=JSON.parse(localStorage.getItem('misiunea')||'null')}catch(e){}}
+ if(!S)S=defState();
+ render();if(UI.tab==='banca'&&UI.bank==='lectii')calc();
+ if(!S.profile.name)setTimeout(welcome,400);
+ try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+ if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+})();
+</script>
+</body>
+</html>
