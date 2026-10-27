@@ -53,8 +53,8 @@ main{padding:14px 12px}
 .fab{position:fixed;right:18px;bottom:calc(88px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:32px;font-weight:300;box-shadow:0 8px 20px rgba(10,110,200,.35);z-index:25;line-height:1}
 .fab:active{transform:scale(.92)}
 nav#tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:rgba(249,251,253,.86);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);padding:5px 4px calc(4px + env(safe-area-inset-bottom));border-top:.5px solid rgba(0,0,0,.15);z-index:30}
-nav#tabs button{flex:1;border:0;background:none;font-size:10.5px;font-weight:500;color:#8a96a3;display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 0}
-nav#tabs button .i{font-size:24px;transition:transform .2s;filter:grayscale(1) opacity(.55)}
+nav#tabs button{flex:1;min-width:0;border:0;background:none;font-size:9.5px;letter-spacing:-.02em;white-space:nowrap;font-weight:500;color:#8a96a3;display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 0}
+nav#tabs button .i{font-size:22px;transition:transform .2s;filter:grayscale(1) opacity(.55)}
 nav#tabs button.on{color:var(--acc)}
 nav#tabs button.on .i{filter:none}
 nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
@@ -65,6 +65,10 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 .btn.big{width:100%;padding:15px;font-size:17px;margin-top:14px;border-radius:14px}
 .btn.ghost{background:var(--soft);color:var(--acc)}
 .btn.danger{background:#fff0f0;color:#ff3b30;width:100%;margin-top:8px}
+.cht{display:block;font-size:17px}.chav{font-size:26px}
+.cnt{text-align:center;margin:6px 0}.cnt b{font-size:48px;font-weight:800;letter-spacing:-.03em;color:var(--acc)}.cnt span{display:block;color:var(--mut);font-size:14px;margin-top:-4px}
+.cbtn{margin:8px 0}.cbtn .btn{flex:1;padding:12px 0;font-size:17px}
+.chwon{background:linear-gradient(135deg,#fff8d9,#fff 60%)}
 .banner{display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#0a84ff,#2ad4c9);color:#fff;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.35}
 .banner .btn{background:#fff;color:#0a84ff;flex:none}
 .share-ic{display:inline-block;border:1.5px solid currentColor;border-radius:4px;padding:0 4px;font-size:12px}
@@ -288,6 +292,8 @@ const TABS=[
  {id:'prieteni',ico:'🤝',name:'Prieteni',title:'Prietenii mei',c1:'#1e6bff',c2:'#5ac8fa',soft:'#e6f0ff'},
  {id:'smart',ico:'🎯',name:'Obiective',title:'Obiective SMART',c1:'#0898b8',c2:'#30d5b0',soft:'#e0f6f2'},
  {id:'vise',ico:'🌈',name:'Vise',title:'Vise și dorințe',c1:'#3d5afe',c2:'#2ac8e6',soft:'#e8edff'},
+ {id:'provocari',ico:'⚡',name:'Provocări',title:'Provocări',c1:'#0a6cff',c2:'#00d4ff',soft:'#e3f4ff'},
+ {id:'neagra',ico:'⛔',name:'Lista neagră',title:'Lista neagră',c1:'#14213d',c2:'#1f8fff',soft:'#e7edf5'},
  {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#0057d9',c2:'#00c2d1',soft:'#e1f1fb'}];
 let UI={tab:'agenda',scope:'zi',bank:'panou',open:new Set()};
 try{const t=localStorage.getItem('ralph_tab');if(TABS.some(x=>x.id===t))UI.tab=t}catch(e){}
@@ -395,6 +401,54 @@ A.viewPh=d=>{const v=S.dreams.find(x=>x.id===d.id),i=+d.i;sheet(`<div class="sh-
  o.querySelector('#vd').onclick=()=>{if(confirm('Ștergi poza?')){v.photos.splice(i,1);closeSheet();save();render()}}})};
 A.saveDream=d=>{const v=S.dreams.find(x=>x.id===d.id);formSheet({title:'💰 Pun bani în pușculiță',fields:[{k:'a',l:'Câți lei adaug?',t:'num',req:1}],onSave:x=>{v.saved=r2((+v.saved||0)+x.a);reward(1);if(v.saved>=v.cost)setTimeout(()=>{fireworks();toast('🎯 Ai strâns toți banii pentru „'+v.title+'”!')},500)}})};
 A.dreamDone=d=>{const v=S.dreams.find(x=>x.id===d.id);if(!confirm('S-a împlinit visul „'+v.title+'”? 🌟'))return;v.done=true;reward(10,mid(),true);render()};
+
+/* ===== 6. PROVOCĂRI ===== */
+const CHEMO=['👨','👩','👦','👧','👴','👵','💪','🧑‍🏫','⚡'];
+const defChallenges=()=>[
+ {id:uid(),title:'Învăț poezia „Dacă” (If) de Rudyard Kipling',from:'Tata',emoji:'👨',desc:'O poezie despre curaj, răbdare și caracter. La final o reciți în fața tatei, fără foaie.',type:'steps',reward:30,deadline:'',status:'noua',
+  steps:['Citesc poezia și o înțeleg','Învăț strofa 1','Învăț strofa 2','Învăț strofa 3','Învăț strofa 4','O spun toată singur, fără greșeli','O recit în fața tatei 🎤'].map(text=>({id:uid(),text,done:false}))},
+ {id:uid(),title:'150 de genoflexiuni',from:'Ryan',emoji:'💪',desc:'Le poți face în mai multe serii. Notează aici fiecare serie.',type:'count',target:150,count:0,log:[],reward:25,deadline:'',status:'noua',steps:[]}];
+const chProg=c=>c.type==='count'?Math.min(1,(c.count||0)/(+c.target||1)):(c.steps.length?c.steps.filter(s=>s.done).length/c.steps.length:0);
+VIEWS.provocari=()=>{const C=S.challenges,act=C.filter(c=>c.status!=='castigata'),won=C.filter(c=>c.status==='castigata');
+ return `<p class="lead">⚡ Provocări de la familie și prieteni. Acceptă-le, notează-ți progresul și câștigă trofeul!</p>
+ ${C.length?'':empty('⚡','Nicio provocare încă','Apasă pe ＋ ca să adaugi o provocare primită.')}
+ ${act.map(chHTML).join('')}${won.length?`<div class="h2">🏆 Provocări câștigate</div>${won.map(chHTML).join('')}`:''}
+ <button class="fab" data-act="addCh">＋</button>`};
+function chHTML(c){const p=chProg(c),won=c.status==='castigata',nou=c.status==='noua';
+ return `<div class="card ${won?'chwon':''}"><div class="row"><span class="ava chav">${esc(c.emoji||'⚡')}</span><div class="grow"><small class="mut">Provocare de la <b>${esc(c.from)}</b></small><b class="cht">${esc(c.title)}</b></div><span class="badge">${won?'🏆 Câștigată':'+'+c.reward+' ⭐'}</span></div>
+ ${c.desc?`<p class="hint">${esc(c.desc)}</p>`:''}
+ ${nou?`<button class="btn big" data-act="acceptCh" data-id="${c.id}">⚡ Accept provocarea!</button>`:`<div class="row" style="margin-top:10px"><div class="bar grow"><i style="width:${p*100}%"></i></div><b>${Math.round(p*100)}%</b></div>
+ ${c.type==='count'?`<div class="cnt"><b>${c.count||0}</b><span>din ${c.target}</span></div>${won?'':`<div class="row cbtn">${[1,10,25].map(n=>`<button class="btn ghost" data-act="chAdd" data-id="${c.id}" data-n="${n}">+${n}</button>`).join('')}<button class="btn ghost" data-act="chAdd" data-id="${c.id}" data-n="-10">−10</button></div>`}${(c.log||[]).length?`<small class="mut">Ultimele serii: ${c.log.slice(-8).map(l=>l.n).join(' · ')}</small>`:''}`
+ :c.steps.map(s=>itemHTML(s,'tChStep',`data-c="${c.id}"`)).join('')}`}
+ ${c.deadline?`<div class="due">⏰ Termen: ${fmtD(c.deadline)} ${won?'':daysLeft(c.deadline)}</div>`:''}
+ <div class="row end" style="margin-top:8px"><button class="btn sm ghost" data-act="editCh" data-id="${c.id}">✏️</button></div></div>`}
+function chWin(c){if(c.status==='castigata')return;c.status='castigata';c.wonDate=today();reward(+c.reward||20,mid(),true);
+ setTimeout(()=>sheet(`<div class="trophy"><div class="t">🏆</div><b>Provocare câștigată!</b><div class="mut">Ai câștigat provocarea lui ${esc(c.from)}: „${esc(c.title)}”. +${c.reward} ⭐</div><button class="btn big" data-act="closeSheet">Sunt cel mai tare! 💪</button></div>`),800)}
+const chF=[{k:'title',l:'Provocarea',ph:'ex: 50 de flotări',req:1},{k:'from',l:'De la cine e?',ph:'ex: Mama',req:1},{k:'emoji',l:'Simbol',t:'emoji',o:CHEMO},{k:'desc',l:'Detalii',t:'textarea',rows:2},
+ {k:'type',l:'Cum o măsor?',t:'select',o:[['steps','✅ Cu pași de bifat'],['count','🔢 Cu un număr (ex: 100 de flotări)']]},{k:'steps',l:'Pașii (câte unul pe rând, la „pași de bifat”)',t:'textarea',rows:4},{k:'target',l:'Câte trebuie (la „număr”)',t:'num'},{k:'reward',l:'Premiu în ⭐',t:'num'},{k:'deadline',l:'Termen (opțional)',t:'date'}];
+const chSteps=(txt,old=[])=>String(txt||'').split('\n').map(s=>s.trim()).filter(Boolean).map(text=>old.find(o=>o.text===text)||{id:uid(),text,done:false});
+A.addCh=()=>formSheet({title:'⚡ Provocare nouă',fields:chF,data:{reward:20,type:'steps'},onSave:v=>{S.challenges.unshift({id:uid(),...v,steps:chSteps(v.steps),count:0,log:[],status:'noua'})}});
+A.editCh=d=>{const c=S.challenges.find(x=>x.id===d.id);formSheet({title:'✏️ Provocare',fields:chF,data:{...c,steps:c.steps.map(s=>s.text).join('\n')},onSave:v=>{Object.assign(c,v,{steps:chSteps(v.steps,c.steps)})},onDelete:()=>S.challenges=S.challenges.filter(x=>x!==c)})};
+A.acceptCh=(d,el)=>{const c=S.challenges.find(x=>x.id===d.id);c.status='acceptata';reward(1,pos(el));setTimeout(()=>toast('⚡ Provocare acceptată! Hai că poți!'),900);render()};
+A.chAdd=(d,el)=>{const c=S.challenges.find(x=>x.id===d.id),n=+d.n;c.count=Math.max(0,(c.count||0)+n);if(n>0){c.log=c.log||[];c.log.push({n,d:today()});reward(1,pos(el))}else save();if(c.count>=+c.target)chWin(c);render()};
+A.tChStep=(d,el)=>{const c=S.challenges.find(x=>x.id===d.c),s=c.steps.find(x=>x.id===d.id);s.done=!s.done;reward(s.done?2:-2,pos(el));if(c.steps.every(x=>x.done))chWin(c);render()};
+A.del_tChStep=d=>{const c=S.challenges.find(x=>x.id===d.c);c.steps=c.steps.filter(x=>x.id!==d.id);save();render()};
+
+/* ===== 7. LISTA NEAGRĂ — lucruri și obiceiuri de evitat (nu oameni) ===== */
+const BCAT=[['obicei','🔁 Obicei de lăsat'],['mancare','🍬 Mâncare de evitat'],['situatie','⚠️ Situație de evitat'],['cuvinte','🤐 Vorbe pe care nu le mai spun'],['altceva','⛔ Altceva']];
+const streak=b=>Math.max(0,-daysTo(b.start));
+VIEWS.neagra=()=>`<p class="lead">⛔ Lucrurile de care vreau să mă feresc. Nu e o listă cu oameni, ci cu obiceiuri și situații care nu-mi fac bine. Fiecare zi în care rezist îmi aduce ⭐.</p>
+ ${S.black.length?'':empty('⛔','Lista e goală','Apasă pe ＋. Exemple: „telefonul în pat”, „dulciuri înainte de masă”, „să mă cert la joc”.')}
+ ${S.black.map(b=>{const n=streak(b),ok=b.lastOk===today();return `<div class="card"><div class="row"><span class="ava">${(BCAT.find(c=>c[0]===b.cat)||BCAT[4])[1].split(' ')[0]}</span><div class="grow"><b class="cht">${esc(b.text)}</b>${b.why?`<small class="mut">De ce: ${esc(b.why)}</small>`:''}</div></div>
+ <div class="cnt"><b>${n}</b><span>${n===1?'zi':'zile'} la rând fără${b.best>n?` · record: ${b.best}`:n>0&&n>=(b.best||0)?' · record nou! 🔥':''}</span></div>
+ <div class="row cbtn"><button class="btn" data-act="blOk" data-id="${b.id}" ${ok?'disabled style="opacity:.45"':''}>${ok?'✅ Azi am rezistat':'💪 Azi am rezistat'}</button><button class="btn ghost" data-act="blFail" data-id="${b.id}">😕 Am greșit</button></div>
+ <div class="row end"><button class="btn sm ghost" data-act="editBl" data-id="${b.id}">✏️</button></div></div>`}).join('')}
+ <button class="fab" data-act="addBl">＋</button>`;
+const blF=[{k:'text',l:'Ce vreau să evit?',req:1,ph:'ex: telefonul în pat'},{k:'cat',l:'Ce fel de lucru e?',t:'select',o:BCAT},{k:'why',l:'De ce vreau să-l evit?',t:'textarea',rows:2,ph:'ex: dorm prost și sunt obosit la școală'}];
+A.addBl=()=>formSheet({title:'⛔ Pe lista neagră',fields:blF,data:{cat:'obicei'},onSave:v=>{S.black.unshift({id:uid(),...v,start:today(),best:0,lastOk:''});reward(1)}});
+A.editBl=d=>{const b=S.black.find(x=>x.id===d.id);formSheet({title:'✏️ Lista neagră',fields:blF,data:b,onSave:v=>Object.assign(b,v),onDelete:()=>S.black=S.black.filter(x=>x!==b)})};
+A.blOk=(d,el)=>{const b=S.black.find(x=>x.id===d.id);if(b.lastOk===today())return;b.lastOk=today();const n=streak(b);b.best=Math.max(b.best||0,n);const big=n>0&&n%7===0;reward(big?5:1,pos(el),big);if(big)setTimeout(()=>toast(`🔥 ${n} zile la rând! Ești de neoprit!`),1200);render()};
+A.blFail=d=>{const b=S.black.find(x=>x.id===d.id);if(!confirm('Ai greșit azi? Nu-i nimic — o luăm de la capăt, mai puternici.'))return;b.best=Math.max(b.best||0,streak(b));b.start=today();b.lastOk='';save();render();toast('💙 Se întâmplă oricui. Mâine încerci din nou!')};
 
 /* ===== 5. BANCA ===== */
 const BT=[['panou','📊','Panou'],['deps','💰','Deponenți'],['invs','🤝','Investitori'],['loans','📝','Datornici'],['projects','🚀','Proiecte'],['lectii','📖','Lecții']];
@@ -564,6 +618,8 @@ function csv(){const R=[['Capitol','Tip','Nume / Titlu','Detalii','Sumă (lei)',
  S.bank.invs.forEach(x=>R.push(['Banca','Investitor',x.name,`câștig promis ${x.exp}%/an`,r2(x.amount),x.date,'']));
  S.bank.loans.forEach(l=>{const s=score(l);R.push(['Banca','Datornic',l.name,`${l.purpose||''} · dobândă ${l.rate}% · ${l.months} luni · scor ${s.gr[0]} ${s.t}/100 · garanție: ${l.guar||'—'}`,r2(l.amount),l.start,`returnat ${r2(loanPaid(l))} din ${r2(loanTot(l))}`])});
  S.bank.projects.forEach(p=>{const c=pc(p,k);R.push(['Banca','Proiect',p.name,`investiție ${p.invest} → ${p.ret} în ${p.months} luni · ROI/an ${r2(c.an)}%`,r2(p.invest),p.fdate||'',p.status])});
+ (S.challenges||[]).forEach(c=>R.push(['Provocări','De la '+c.from,c.title,c.type==='count'?`${c.count||0} din ${c.target}`:c.steps.map(s=>(s.done?'✓ ':'○ ')+s.text).join(' | '),'',c.wonDate||c.deadline||'',{noua:'nouă',acceptata:'în lucru',castigata:'câștigată'}[c.status]]));
+ (S.black||[]).forEach(b=>R.push(['Lista neagră',(BCAT.find(c=>c[0]===b.cat)||BCAT[4])[1],b.text,b.why||'',`${streak(b)} zile la rând · record ${b.best||0}`,b.start,'']));
  R.push(['Premii','Stele',S.profile.name,'',S.profile.stars,today(),'']);
  return '﻿'+R.map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(';')).join('\r\n')}
 A.backup=()=>backupJSON();
@@ -599,12 +655,18 @@ document.addEventListener('change',async e=>{const t=e.target;if(!t.dataset.phot
 document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.dataset.oid;if(id)e.target.open?UI.open.add(id):UI.open.delete(id)},true);
 addEventListener('resize',fxSize);
 
+/* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
+const APP_VER=3;
+function migrate(){let news=false;if(!S.challenges){S.challenges=defChallenges();news=!!S.profile.welcomed}if(!S.black)S.black=[];
+ if((S.ver||1)<APP_VER){S.ver=APP_VER;save()}return news}
+
 /* ---------- pornire ---------- */
 (async()=>{fx.c=$('#fx');fx.x=fx.c.getContext('2d');fxSize();
  try{await DB.open();S=await DB.get('state')}catch(e){}
  if(!S){try{S=JSON.parse(localStorage.getItem('ralph')||'null')}catch(e){}}
  if(!S)S=defState();
- render();if(UI.tab==='banca'&&UI.bank==='lectii')calc();
+ const news=migrate();
+ render();if(news)setTimeout(()=>{fireworks();toast('✨ Ralph.app s-a actualizat: ⚡ Provocări și ⛔ Lista neagră!')},700);if(UI.tab==='banca'&&UI.bank==='lectii')calc();
  if(!S.profile.welcomed)setTimeout(welcome,400);
  try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
  if('serviceWorker'in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
