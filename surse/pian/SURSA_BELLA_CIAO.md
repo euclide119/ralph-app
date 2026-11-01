@@ -12,3 +12,11 @@
 Melodia și versurile piesei sunt protejate de drepturi de autor, iar aplicația e publică pe GitHub Pages. De aceea secțiunea Pian are doar **acordurile strofei**
 (C – Am – C – Am – F – G – C – G – C – F – G – Am – F – G – E7 – Am, în Do major) și un arpegiu simplu pentru mâna dreaptă: scheletul peste care se cântă piesa.
 Acordurile sunt o progresie armonică, nu melodia. Nu s-au adăugat note de melodie și nici versuri.
+
+## Oda bucuriei (Beethoven, 1824) — domeniu public
+Melodia mâinii drepte (16 măsuri, Do major, doar clape albe) verificată cu tutorialul de pe piano-keyboard-guide.com: E E F G | G F E D | C C D E | E D D | … | D D E C | D E F E C | D E F E D | C D G.
+Mâna stângă: aranjament simplificat (C și G). Ritmul „E D D” (pătrime cu punct + optime + doime) e cel clasic.
+
+## Versiunea pe acorduri (la fiecare melodie)
+În `index.html`: `SONGS.<melodie>.cv` (acordurile pe măsuri; „X→Y” = două acorduri într-o măsură) și tabela `PQ` (rădăcina acordului + notele lui).
+Mâna stângă cântă rădăcina, mâna dreaptă un arpegiu. Progresul se salvează separat: cheile `c_rh`, `c_lh`, `c_both` (la melodie: `rh`, `lh`, `both`).

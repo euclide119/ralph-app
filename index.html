@@ -1057,7 +1057,7 @@ const PNS=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','La�
 const PMID={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
 const pMidi=s=>12*(+s.slice(-1)+1)+PMID[s[0]]+(s[1]==='#'?1:0);
 const pBlack=m=>[1,3,6,8,10].includes(m%12);
-const P={song:'bella',mode:null,bpm:80,solf:true,timers:[],run:false,steps:[],i:0,got:new Set(),err:0,done:false,ctx:null};
+const P={song:'bella',ver:'mel',mode:null,bpm:80,solf:true,timers:[],run:false,steps:[],i:0,got:new Set(),err:0,done:false,ctx:null};
 const pName=m=>(P.solf?PNS:PLS)[m%12];
 /* Bella Ciao — melodie populară (domeniu public), după partitura de pe Wikipedia, transpusă în La minor (doar clape albe).
    Mâna stângă: aranjament simplificat pentru începători (acorduri Am – E – Dm). Duratele sunt în timpi (1 = pătrime). */
@@ -1071,18 +1071,35 @@ const SONGS={bella:{t:'Bella Ciao',nv:'10 ani',cheie:'La minor, doar clape albe'
  lh:[[['A2','E3'],'Am'],[['A2','E3'],'Am'],[['A2','E3'],'Am'],[['E2','B2'],'E'],[['D3','A3'],'Dm'],[['D3','A2'],'Dm→Am'],[['E2','B2'],'E'],[['A2'],'Am']]}};
 SONGS.bella.pick=1.5;SONGS.bella.bars=8;SONGS.bella.chords=SONGS.bella.lh.map(x=>x[1]);SONGS.bella.tip=()=>`Începe cu degetul mare al mâinii drepte pe <b>${pName(64)}</b>, iar mâna stângă pe <b>${pName(45)}</b> mic. Atinge tastele luminate, în ordine.`;
 SONGS.bella.nota='Melodia e populară (domeniu public), după partitura de pe Wikipedia, în La minor; mâna stângă e un aranjament simplificat.';
-/* Hallelujah (Leonard Cohen): DOAR acordurile strofei, în Do major. Melodia și versurile sunt protejate de drepturi de autor și nu sunt în aplicație.
-   Aici mâna stângă cântă rădăcina acordului, iar mâna dreaptă un arpegiu simplu: scheletul pe care se cântă piesa. */
-SONGS.halle={t:'Hallelujah (acordurile)',nv:'10 ani',cheie:'Do major · acorduri',pick:0,bars:16,chords:['C','Am','C','Am','F','G','C','G','C','F','G','Am','F','G','E7','Am'],
- tip:()=>'Ascultă piesa lui Leonard Cohen și cântă acordurile peste ea: mâna stângă cântă nota de jos a acordului, mâna dreaptă urcă pe notele lui, una câte una. Acordul <b>E7</b> are și o clapă neagră (Sol♯).',
- nota:'Aici sunt doar acordurile strofei (forma cea mai răspândită, în Do major), nu melodia. Melodia și versurile piesei „Hallelujah” a lui Leonard Cohen sunt protejate de drepturi de autor, așa că nu le-am pus în aplicație.',
- build(){const Q={C:['C3',['C4','E4','G4','E4']],Am:['A2',['A3','C4','E4','C4']],F:['F2',['F3','A3','C4','A3']],G:['G2',['G3','B3','D4','B3']],E7:['E2',['E4','G#4','B4','D5']]},ev=[];
-  this.chords.forEach((c,k)=>{const[r,n]=Q[c],b=4*k;ev.push({h:'l',m:pMidi(r),t:b,d:4,ch:c});n.forEach((x,i)=>ev.push({h:'r',m:pMidi(x),t:b+i,d:1,s:i?'':c}))});return ev}};
-function pSong(){const s=SONGS[P.song];if(s._ev)return s._ev;let ev=[],t=0;
- if(s.build){ev=s.build();t=s.bars*4}else{
+SONGS.bella.cv={pick:0,bars:8,chords:SONGS.bella.chords};
+/* Oda bucuriei (Beethoven, 1824) — domeniu public. Melodia în Do major, doar clape albe (verificată cu tutorialul piano-keyboard-guide.com);
+   mâna stângă: aranjament simplificat. */
+(()=>{const b1=[['E4',1],['E4',1],['F4',1],['G4',1]],b2=[['G4',1],['F4',1],['E4',1],['D4',1]],b3=[['C4',1],['C4',1],['D4',1],['E4',1]],b4=[['E4',1.5],['D4',.5],['D4',2]],b8=[['D4',1.5],['C4',.5],['C4',2]],
+  b9=[['D4',1],['D4',1],['E4',1],['C4',1]],b10=[['D4',1],['E4',.5],['F4',.5],['E4',1],['C4',1]],b11=[['D4',1],['E4',.5],['F4',.5],['E4',1],['D4',1]],b12=[['C4',1],['D4',1],['G3',2]];
+ const bars=[b1,b2,b3,b4,b1,b2,b3,b8,b9,b10,b11,b12,b1,b2,b3,b8];
+ const lh=[[['C3','G3'],'C'],[['G2','D3'],'G'],[['C3','G3'],'C'],[['C3','G2'],'C→G'],[['C3','G3'],'C'],[['G2','D3'],'G'],[['C3','G3'],'C'],[['G2','C3'],'G→C'],[['G2','C3'],'G→C'],[['G2','C3'],'G→C'],[['G2','D3'],'G'],[['C3','G2'],'C→G'],[['C3','G3'],'C'],[['G2','D3'],'G'],[['C3','G3'],'C'],[['G2','C3'],'G→C']];
+ SONGS.ode={t:'Oda bucuriei',nv:'10 ani',cheie:'Do major, doar clape albe',pick:0,bars:16,rh:bars.flat().map(([n,d])=>[n,d,'']),lh,chords:lh.map(x=>x[1]),
+  tip:()=>`Începe cu degetul mare al mâinii drepte pe <b>${pName(60)}</b>; prima notă e <b>${pName(64)}</b>. Mâna stângă cântă notele de jos ale acordurilor.`,
+  nota:'Melodia (Beethoven, Simfonia a 9-a, 1824) e în domeniul public; mâna stângă e un aranjament simplificat.',cv:{pick:0,bars:16,chords:lh.map(x=>x[1])}}})();
+/* Hallelujah (Leonard Cohen): DOAR acordurile strofei, în Do major. Melodia și versurile sunt protejate de drepturi de autor și nu sunt în aplicație. */
+SONGS.halle={t:'Hallelujah (acordurile)',nv:'10 ani',cheie:'Do major · acorduri',cv:{pick:0,bars:16,chords:['C','Am','C','Am','F','G','C','G','C','F','G','Am','F','G','E7','Am']},
+ tipc:()=>'Ascultă piesa lui Leonard Cohen și cântă acordurile peste ea: mâna stângă cântă nota de jos a acordului, mâna dreaptă urcă pe notele lui, una câte una. Acordul <b>E7</b> are și o clapă neagră (Sol♯).',
+ notac:'Aici sunt doar acordurile strofei (forma cea mai răspândită, în Do major), nu melodia. Melodia și versurile piesei „Hallelujah” a lui Leonard Cohen sunt protejate de drepturi de autor, așa că nu le-am pus în aplicație.'};
+/* Versiunea pe acorduri (la fiecare melodie): mâna stângă = rădăcina acordului, mâna dreaptă = arpegiu. „X→Y” = două acorduri într-o măsură. */
+const PQ={C:['C3',['C4','E4','G4']],Am:['A2',['A3','C4','E4']],F:['F2',['F3','A3','C4']],G:['G2',['G3','B3','D4']],Dm:['D3',['D4','F4','A4']],E:['E2',['E4','G#4','B4']],E7:['E2',['E4','G#4','B4','D5']]};
+function pChordEv(list){const ev=[];list.forEach((c,k)=>{const parts=c.split('→'),dur=4/parts.length;parts.forEach((ch,j)=>{const[r,n]=PQ[ch],t0=4*k+j*dur,seq=parts.length>1?[n[0],n[1]]:n.length>3?n:[n[0],n[1],n[2],n[1]];
+  ev.push({h:'l',m:pMidi(r),t:t0,d:dur,ch});seq.forEach((x,i)=>ev.push({h:'r',m:pMidi(x),t:t0+i*dur/seq.length,d:dur/seq.length,s:i?'':ch}))})});return ev}
+const pVer=()=>{const s=SONGS[P.song];return P.ver==='ch'||!s.rh?'ch':'mel'};
+const pCfg=()=>{const s=SONGS[P.song];return pVer()==='ch'?s.cv:s};
+const pKeyOf=m=>(pVer()==='ch'&&SONGS[P.song].rh)?'c_'+m:m;
+const pTip=()=>{const s=SONGS[P.song];return pVer()==='ch'?(s.tipc?s.tipc():'Mâna stângă cântă nota de jos a acordului, iar mâna dreaptă urcă pe notele lui. Cântă acordurile și cântă melodia cu vocea.'):s.tip()};
+const pNota=()=>{const s=SONGS[P.song];return pVer()==='ch'?(s.notac||'Versiunea pe acorduri: scheletul armonic al melodiei, ca un acompaniament simplu. Poți cânta melodia cu vocea peste el.'):s.nota};
+function pSong(){const s=SONGS[P.song],v=pVer();s._ev=s._ev||{};s._end=s._end||{};if(s._ev[v])return s._ev[v];let ev=[],t=0;
+ if(v==='ch'){ev=pChordEv(s.cv.chords);t=s.cv.bars*4}else{
  s.rh.forEach(([n,d,sy])=>{ev.push({h:'r',m:pMidi(n),t,d,s:sy});t+=d});
- s.lh.forEach(([ns,ch],k)=>{const b=1.5+4*k;if(ns.length===2){ev.push({h:'l',m:pMidi(ns[0]),t:b,d:2,ch},{h:'l',m:pMidi(ns[1]),t:b+2,d:2})}else ev.push({h:'l',m:pMidi(ns[0]),t:b,d:3,ch})})}
- ev.sort((a,b)=>a.t-b.t||(a.h<b.h?-1:1));s._ev=ev;s._end=t;return ev}
+ s.lh.forEach(([ns,ch],k)=>{const b=(s.pick||0)+4*k;if(ns.length===2){ev.push({h:'l',m:pMidi(ns[0]),t:b,d:2,ch},{h:'l',m:pMidi(ns[1]),t:b+2,d:2})}else ev.push({h:'l',m:pMidi(ns[0]),t:b,d:3,ch})})}
+ ev.sort((a,b)=>a.t-b.t||(a.h<b.h?-1:1));s._ev[v]=ev;s._end[v]=t;return ev}
+const pEnd=()=>{pSong();return SONGS[P.song]._end[pVer()]};
 const PLO=40,PHI=77,PKW=44;
 function pKeys(){let w=0,wh='',bl='';for(let m=PLO;m<=PHI;m++){if(pBlack(m)){bl+=`<div class="bk" data-m="${m}" style="left:${w*PKW-14}px"></div>`}else{wh+=`<div class="wk" data-m="${m}" style="left:${w*PKW}px;width:${PKW}px"><span>${pName(m)}${m%12===0?`<i>${Math.floor(m/12)-1}</i>`:''}</span></div>`;w++}}
  return `<div class="kbin" style="width:${w*PKW}px">${wh}${bl}</div>`}
@@ -1094,7 +1111,7 @@ const pKey=m=>document.querySelector(`#kb [data-m="${m}"]`);
 function pFlash(m,cls,ms){const k=pKey(m);if(!k)return;k.classList.add(cls);setTimeout(()=>k.classList.remove(cls),ms)}
 function pScrollTo(m){const kb=$('#kb'),k=pKey(m);if(!kb||!k)return;const x=k.offsetLeft+(k.offsetWidth||PKW)/2-kb.clientWidth/2;kb.scrollTo({left:Math.max(0,x),behavior:'smooth'})}
 function pChips(ev,hand,tt){return ev.filter(e=>e.h===hand&&e.t>=tt[0]&&e.t<tt[1])}
-function pTab(){const ev=pSong(),s=SONGS[P.song],pk=s.pick||0;let h='';
+function pTab(){const ev=pSong(),s=pCfg(),pk=s.pick||0;let h='';
  for(let k=pk?0:1;k<=s.bars;k++){const a=k===0?0:pk+4*(k-1),b=k===0?pk:a+4,rh=pChips(ev,'r',[a,b]),lh=pChips(ev,'l',[a,b]),pre=k===0?(4-pk):0;
   const cell=(e,txt,cls)=>`<div class="tc ${cls}" data-t="${e.t}" data-h="${e.h}" style="flex:${e.d} 1 0"><b>${txt}</b></div>`;
   const row=(arr,f,cls)=>`<div class="tl">${pre?`<i style="flex:${(4-1.5)} 0 0"></i>`:''}${arr.map(e=>f(e)).join('')}</div>`;
@@ -1108,25 +1125,28 @@ function pTab(){const ev=pSong(),s=SONGS[P.song],pk=s.pick||0;let h='';
 function pMark(){document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'));document.querySelectorAll('#kb .on1,#kb .on2').forEach(k=>k.classList.remove('on1','on2'));
  if(!P.run||P.mode==='listen'||!P.steps[P.i])return;const st=P.steps[P.i];st.ev.forEach(e=>{const k=pKey(e.m);if(k)k.classList.add(e.h==='r'?'on1':'on2');document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`).forEach(c=>{c.classList.add('cur');if(e===st.ev[0])c.scrollIntoView({block:'nearest',behavior:'smooth'})})});pScrollTo(st.ev[0].m);
  const e0=st.ev.find(e=>e.h==='r')||st.ev[0];$('#plyr').innerHTML=`<b>${st.ev.map(e=>pName(e.m)).join(' + ')}</b><small>${e0.s||''}</small>`;$('#pprog').style.width=(P.i/P.steps.length*100)+'%'}
-VIEWS.pian=()=>{if(!UI.pn)return `<p class="lead">🎹 Cântă la pian cu două mâini. Fiecare melodie vine cu „tab”: notele scrise pe măsuri, mâna dreaptă sus și mâna stângă jos.</p>
+VIEWS.pian=()=>{if(!UI.pn)return `<p class="lead">🎹 Cântă la pian cu două mâini. Fiecare melodie are două versiuni: <b>melodia</b> și <b>acordurile</b>, fiecare cu „tab”: notele scrise pe măsuri, mâna dreaptă sus și mâna stângă jos.</p>
  <button class="gcard" data-act="pnOpen" data-k="bella"><span class="gi" style="background:linear-gradient(135deg,#1b3fd1,#12b5e5)">🎹</span><span class="grow"><b>Bella Ciao</b><small>Nivel 10 ani · două mâini · doar clape albe${(S.piano&&S.piano.bella&&S.piano.bella.both)?' · ✅ învățată':''}</small></span><span class="chev">›</span></button>
- <button class="gcard" data-act="pnOpen" data-k="halle"><span class="gi" style="background:linear-gradient(135deg,#0d6e8c,#2ad4c9)">🎼</span><span class="grow"><b>Hallelujah — acordurile</b><small>Leonard Cohen · nivel 10 ani · două mâini${(S.piano&&S.piano.halle&&S.piano.halle.both)?' · ✅ învățat':''}</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="pnOpen" data-k="ode"><span class="gi" style="background:linear-gradient(135deg,#0a84ff,#34c759)">🎶</span><span class="grow"><b>Oda bucuriei</b><small>Beethoven · nivel 10 ani · două mâini · doar clape albe${(S.piano&&S.piano.ode&&S.piano.ode.both)?' · ✅ învățată':''}</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="pnOpen" data-k="halle"><span class="gi" style="background:linear-gradient(135deg,#0d6e8c,#2ad4c9)">🎼</span><span class="grow"><b>Hallelujah — acordurile</b><small>Leonard Cohen · nivel 10 ani · două mâini${(S.piano&&S.piano.halle&&(S.piano.halle.both||S.piano.halle.c_both))?' · ✅ învățat':''}</small></span><span class="chev">›</span></button>
  <div class="gcard lock"><span class="gi">🎶</span><span class="grow"><b>Mai multe melodii</b><small>În curând</small></span></div>`;
  const s=SONGS[P.song],pr=(S.piano&&S.piano[P.song])||{},M=[['listen','👂','Ascult'],['rh','🤚','Mâna dreaptă'],['lh','✋','Mâna stângă'],['both','🙌','Două mâini']];
  return `<div class="gbar"><button class="btn sm ghost" data-act="pnBack">‹ Melodii</button><b>🎹 ${s.t}</b></div>
- <div class="card" style="padding:12px 14px"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="badge">Nivel ${s.nv}</span><span class="badge">${s.cheie}</span><span class="badge">4/4</span><span class="badge">${[...new Set(s.chords)].join(' · ')}</span></div>
- <div class="chips" style="margin:10px 0 0">${M.map(([k,e,n])=>`<button class="chip ${P.mode===k&&P.run?'on':''}" data-act="pnMode" data-k="${k}">${e} ${n}${pr[k]&&k!=='listen'?' ✅':''}</button>`).join('')}</div></div>
+ <div class="card" style="padding:12px 14px"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="badge">Nivel ${s.nv}</span><span class="badge">${s.cheie}</span><span class="badge">4/4</span><span class="badge">${[...new Set(pCfg().chords.flatMap(c=>c.split('→')))].join(' · ')}</span></div>
+ ${s.rh?`<div class="chips" style="margin:10px 0 0">${[['mel','🎵 Melodie'],['ch','🎼 Acorduri']].map(([k,n])=>`<button class="chip ${pVer()===k?'on':''}" data-act="pnVer" data-k="${k}">${n}</button>`).join('')}</div>`:''}
+ <div class="chips" style="margin:10px 0 0">${M.map(([k,e,n])=>`<button class="chip ${P.mode===k&&P.run?'on':''}" data-act="pnMode" data-k="${k}">${e} ${n}${pr[pKeyOf(k)]&&k!=='listen'?' ✅':''}</button>`).join('')}</div></div>
  <div class="card pbox"><div id="plyr" class="plyr"><b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small></div><div class="bar"><i id="pprog" style="width:0"></i></div>
  <div class="kb" id="kb">${pKeys()}</div>
  <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="pnStop">⏹ Oprește</button><button class="btn sm ghost" data-act="pnTempo">🐢 Tempo: ${P.bpm}</button><button class="btn sm ghost" data-act="pnSolf">${P.solf?'Do-Re-Mi':'C-D-E'}</button></div></div>
- <div class="lead" style="font-size:13px">🔵 Mâna dreaptă · 🟡 Mâna stângă. ${s.tip()}</div>
+ <div class="lead" style="font-size:13px">🔵 Mâna dreaptă · 🟡 Mâna stângă. ${pTip()}</div>
  <div class="h2" style="margin-left:0">📜 Tab-ul melodiei</div><div id="ptab" class="ptab">${pTab()}</div>
- <p class="hint">Lungimea fiecărei note se vede din lățimea căsuței. Punctul de sus înseamnă octava mai înaltă. ${s.nota}</p>`};
+ <p class="hint">Lungimea fiecărei note se vede din lățimea căsuței. Punctul de sus înseamnă octava mai înaltă. ${pNota()}</p>`};
 function pianMount(){const kb=$('#kb');if(!kb)return;pMark();const m=P.run&&P.steps[P.i]?P.steps[P.i].ev[0].m:64;pScrollTo(m);
  kb.onpointerdown=e=>{const k=e.target.closest('[data-m]');if(!k)return;e.preventDefault();pPress(+k.dataset.m,k)}}
 function pStop(keep){P.timers.forEach(clearTimeout);P.timers=[];if(!keep){P.run=false;P.mode=null}document.querySelectorAll('#kb .wk,#kb .bk').forEach(k=>k.classList.remove('on1','on2','hit'));document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'))}
 function pianStop(){P.timers.forEach(clearTimeout);P.timers=[];P.run=false;P.mode=null}
-A.pnOpen=d=>{P.song=d.k;UI.pn=d.k;render();scrollTo(0,0)};
+A.pnOpen=d=>{pianStop();P.song=d.k;P.ver=SONGS[d.k].rh?'mel':'ch';UI.pn=d.k;render();scrollTo(0,0)};
+A.pnVer=d=>{pianStop();P.ver=d.k;render()};
 A.pnBack=()=>{pianStop();UI.pn=null;render()};
 A.pnStop=()=>{pStop();const l=$('#plyr');if(l)l.innerHTML='<b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small>';const p=$('#pprog');if(p)p.style.width='0';document.querySelectorAll('.pbox').forEach(()=>{});document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))};
 A.pnTempo=()=>{P.bpm=P.bpm===80?60:P.bpm===60?100:80;const b=document.querySelector('[data-act=pnTempo]');if(b)b.textContent='🐢 Tempo: '+P.bpm};
@@ -1134,7 +1154,7 @@ A.pnSolf=()=>{P.solf=!P.solf;const m=P.mode,r=P.run;render();if(r&&m!=='listen')
 A.pnMode=d=>{pAudio();pStop();document.querySelectorAll('.card .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===d.k));P.mode=d.k;P.run=true;P.done=false;if(d.k==='listen'){pPlayDemo();return}
  const ev=pSong().filter(e=>d.k==='both'||(d.k==='rh'?e.h==='r':e.h==='l')),steps=[];ev.forEach(e=>{const l=steps[steps.length-1];if(d.k==='both'&&l&&Math.abs(l.t-e.t)<1e-6)l.ev.push(e);else steps.push({t:e.t,ev:[e]})});
  steps.forEach(s=>s.need=s.ev.map(e=>e.m));P.steps=steps;P.i=0;P.got=new Set();P.err=0;pMark()};
-function pPlayDemo(){const spb=60000/P.bpm,ev=pSong(),end=SONGS[P.song]._end;
+function pPlayDemo(){const spb=60000/P.bpm,ev=pSong(),end=pEnd();
  ev.forEach(e=>P.timers.push(setTimeout(()=>{pTone(e.m,e.d*spb/1000*1.1,e.h==='r'?.6:.45);const k=pKey(e.m);if(k){k.classList.add(e.h==='r'?'on1':'on2');setTimeout(()=>k.classList.remove('on1','on2'),Math.max(160,e.d*spb*.9))}
   const cs=document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`);cs.forEach(c=>{c.classList.add('cur');setTimeout(()=>c.classList.remove('cur'),Math.max(160,e.d*spb*.9));if(e.h==='r')c.scrollIntoView({block:'nearest',behavior:'smooth'})});
   if(e.h==='r'){const l=$('#plyr');if(l)l.innerHTML=`<b>${pName(e.m)}</b><small>${e.s}</small>`;pScrollTo(e.m);const p=$('#pprog');if(p)p.style.width=(e.t/end*100)+'%'}},e.t*spb)));
@@ -1143,8 +1163,8 @@ function pPress(m,el){pAudio();pTone(m);el.classList.add('hit');setTimeout(()=>e
  if(!P.run||P.mode==='listen'||P.done)return;const st=P.steps[P.i];if(!st)return;
  if(st.need.includes(m)){P.got.add(m);if(st.need.every(n=>P.got.has(n))){P.i++;P.got=new Set();if(P.i>=P.steps.length)pFinish();else pMark()}else{const k=pKey(m);if(k)k.classList.remove('on1','on2')}}
  else{P.err++;el.classList.add('bad');setTimeout(()=>el.classList.remove('bad'),300);if(navigator.vibrate)try{navigator.vibrate(30)}catch(e){}}}
-function pFinish(){P.done=true;P.run=false;const k=P.mode,pr=((S.piano=S.piano||{})[P.song]=S.piano[P.song]||{}),old=pr[k],perfect=P.err===0;let gain=0;
- if(!old)gain+=k==='both'?6:3;if(perfect&&!(old&&old.perfect))gain+=2;pr[k]={d:today(),err:old?Math.min(old.err,P.err):P.err,perfect:perfect||!!(old&&old.perfect)};
+function pFinish(){P.done=true;P.run=false;const md=P.mode,k=pKeyOf(md),pr=((S.piano=S.piano||{})[P.song]=S.piano[P.song]||{}),old=pr[k],perfect=P.err===0;let gain=0;
+ if(!old)gain+=md==='both'?6:3;if(perfect&&!(old&&old.perfect))gain+=2;pr[k]={d:today(),err:old?Math.min(old.err,P.err):P.err,perfect:perfect||!!(old&&old.perfect)};
  pMark();const l=$('#plyr');if(l)l.innerHTML=`<b>${perfect?'🏆 Fără nicio greșeală!':'🎉 Ai terminat melodia!'}</b><small>${P.err?P.err+(P.err===1?' greșeală':' greșeli'):'perfect'}${gain?' · +'+gain+' ⭐':''}</small>`;
  const p=$('#pprog');if(p)p.style.width='100%';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'));
  if(gain)reward(gain,mid(),true);else{save();fireworks()}}
@@ -1348,7 +1368,7 @@ function homeHTML(){const p=S.profile,nb=BADGES.find(b=>p.stars<b[0]),pv=[...BAD
  const zi=S.notes.filter(n=>n.scope==='zi').flatMap(n=>n.items),zd=zi.filter(i=>i.done).length;
  const gAct=S.goals.filter(g=>!g.done&&okCount(g)===5).length,ch=(S.challenges||[]).filter(c=>c.status!=='castigata').length;
  const box=(k,e,n,sub,i)=>`<button class="hm-box" data-act="homeGo" data-k="${k}" style="animation-delay:${.08+i*.05}s"><span class="e">${e}</span><b>${n}</b><small>${sub}</small></button>`;
- const B=[['agenda','📅','Agenda',zi.length?`${zi.length-zd} de făcut azi`:'planul zilei'],['prieteni','🤝','Prieteni',S.friends.length+' prieteni'],['smart','🎯','Obiective',gAct?gAct+' active 🔥':'SMART'],['vise','🌈','Vise',S.dreams.length+' vise'],['provocari','⚡','Provocări',ch?ch+' în joc':'acceptă una'],['neagra','⛔','Lista neagră',(S.black||[]).length?'zile la rând':'de evitat'],['banca','🏦','Banca','capital '+Math.round(bk().cap)+' lei'],['jocuri','🎮','Jocuri','5 jocuri'],['harti','🗺️','Hărți','3 hărți'],['pian','🎹','Pian','2 melodii'],['premii','🏆','Premii',p.badges.length+'/'+BADGES.length+' medalii']];
+ const B=[['agenda','📅','Agenda',zi.length?`${zi.length-zd} de făcut azi`:'planul zilei'],['prieteni','🤝','Prieteni',S.friends.length+' prieteni'],['smart','🎯','Obiective',gAct?gAct+' active 🔥':'SMART'],['vise','🌈','Vise',S.dreams.length+' vise'],['provocari','⚡','Provocări',ch?ch+' în joc':'acceptă una'],['neagra','⛔','Lista neagră',(S.black||[]).length?'zile la rând':'de evitat'],['banca','🏦','Banca','capital '+Math.round(bk().cap)+' lei'],['jocuri','🎮','Jocuri','5 jocuri'],['harti','🗺️','Hărți','3 hărți'],['pian','🎹','Pian','3 melodii'],['premii','🏆','Premii',p.badges.length+'/'+BADGES.length+' medalii']];
  return `<div class="hm-top"><button class="hm-pill" data-act="settings">${esc(p.avatar)} Ralph</button><button class="hm-pill" data-act="prizes">⭐ ${p.stars}</button></div>
  <div class="hm-logo"><img src="logo.png" alt=""><div class="hm-capy">${CAPY}</div></div>
  <div class="hm-title">Ralph’s Vault</div>
@@ -1388,8 +1408,8 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=11;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!',11:'🦸 Eroii Greciei, 📜 Istoria grecilor și 🎼 Hallelujah (acordurile)!'};
+const APP_VER=12;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!',11:'🦸 Eroii Greciei, 📜 Istoria grecilor și 🎼 Hallelujah (acordurile)!',12:'🎶 Oda bucuriei și versiunea pe acorduri la fiecare melodie!'};
 function migrate(){S.profile.name='Ralph';S.profile.welcomed=true;if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
  if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};if(!S.piano)S.piano={};
  const old=S.ver||1;let news=null;if(old<APP_VER){if(DB.db&&S.profile.welcomed)DB.set('copie_inainte_de_v'+APP_VER,JSON.parse(JSON.stringify(S))).catch(()=>{});news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
