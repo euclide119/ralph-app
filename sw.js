@@ -1,5 +1,5 @@
 // Ralph's Vault — tot ce trebuie ca aplicația să meargă și fără internet
-const C='ralph-v9',IMG='ralph-img-v1';
+const C='ralph-v10',IMG='ralph-img-v1';
 const F=['./','./index.html','./manifest.json','./icon-180.png','./icon-192.png','./icon-512.png','./logo.png','./vault-bg.jpg','./intro.mp4','./data/imagini.json','./data/trivia.json','./data/geo.json','./data/cars/index.json','./data/cars/2026.json','./data/cars/clasice.json','./geo/europa.json','./geo/asia.json','./geo/africa.json','./geo/america_nord.json','./geo/america_sud.json','./geo/oceania.json'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(C).then(c=>Promise.all(F.map(f=>c.add(f).catch(()=>{})))));self.skipWaiting()});
 // pozele stau într-un cache separat, care nu se golește la versiunile noi

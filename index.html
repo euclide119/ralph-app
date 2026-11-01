@@ -102,7 +102,7 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 .hm-stat{border:1px solid rgba(245,213,138,.22);background:linear-gradient(160deg,rgba(40,38,32,.75),rgba(16,16,18,.8));border-radius:14px;padding:10px 6px;text-align:center}
 .hm-stat b{display:block;font-size:20px;color:#f5d58a}.hm-stat small{font-size:11px;color:#b9b09c}
 .hm-h{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#c9a14a;font-weight:700;margin:0 2px 10px;text-align:center}
-.hm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hm-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.hm-box{grid-column:span 2}.hm-box:nth-last-child(2):nth-child(3n+1){grid-column:2/4}.hm-box:last-child:nth-child(3n+2){grid-column:4/6}
 .hm-box{position:relative;border:1px solid rgba(245,213,138,.3);border-radius:18px;padding:14px 6px 11px;text-align:center;color:#f3e9d2;background:linear-gradient(155deg,#2b2b2e,#151517 55%,#1d1c1a);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 6px 16px rgba(0,0,0,.45);opacity:0;animation:boxin .5s forwards}
 .hm-box::before{content:"";position:absolute;top:7px;left:50%;width:22px;height:3px;margin-left:-11px;border-radius:2px;background:linear-gradient(90deg,#8a6a2c,#f5d58a,#8a6a2c);opacity:.8}
 .hm-box .e{font-size:30px;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}.hm-box b{display:block;font-size:13.5px;margin-top:6px;color:#f5d58a}.hm-box small{display:block;font-size:10.5px;color:#a9a08c;margin-top:2px;min-height:13px}
@@ -156,6 +156,52 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 .joke{position:relative;padding-left:52px}.joke p{margin:0;white-space:pre-line;font-size:16.5px;line-height:1.45}.joke .jc{position:absolute;left:14px;top:13px;font-size:26px}
 .heart{border:0;background:none;font-size:26px;padding:2px 4px}.heart.pop{animation:pop .4s}
 .joke.glow{box-shadow:0 0 0 3px #ffd60a,var(--sh);transition:box-shadow .3s}
+/* hărți + pian */
+.mm{height:64vh;min-height:340px;overflow:auto;-webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid rgba(245,213,138,.35);background:radial-gradient(ellipse at 50% 20%,#1b2c47,#0a1220 70%);box-shadow:var(--sh)}
+#mmsvg{display:block}
+#mmsvg .ge{fill:none;stroke:#e6c46a;stroke-width:2.6;opacity:.6;transition:opacity .25s}
+#mmsvg .ge.dash{stroke-dasharray:7 7;stroke:#9fb4d6}#mmsvg .ge.wed{stroke:#ff8fb1;stroke-width:2.4}#mmsvg .ge.wed.dash{stroke-dasharray:6 6}
+#mmsvg .ge.lit{opacity:1;stroke-width:4}#mmsvg .ge.dim,#mmsvg .gm.dim{opacity:.1}
+#mmsvg .gm circle{fill:#2a1b24;stroke:#ff8fb1;stroke-width:2}#mmsvg .gm text{fill:#ff8fb1;font-size:14px}
+#mmsvg .gn{cursor:pointer;transition:opacity .25s}#mmsvg .gn.dim{opacity:.22}
+#mmsvg .gn .gb{fill:#1d2a3d}#mmsvg .gn .gf{fill:none;stroke:#d8b45a;stroke-width:3}
+#mmsvg .gn .gr{fill:none;stroke:transparent;stroke-width:4}
+#mmsvg .gn.oly .gf{stroke:#f8e3a3;stroke-width:3.5}
+#mmsvg .gn.hot .gr{stroke:#ffd60a;stroke-dasharray:6 5;animation:spin 14s linear infinite;transform-box:fill-box;transform-origin:center}
+#mmsvg .gn.sel .gr{stroke:#2ad4c9;stroke-width:5}
+#mmsvg .gn text{fill:#f5e6b8;font:700 19px -apple-system,system-ui,sans-serif;paint-order:stroke;stroke:#0a1220;stroke-width:5px;stroke-linejoin:round}
+@keyframes spin{to{transform:rotate(360deg)}}
+#mmpop{position:fixed;left:12px;right:12px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:80;max-height:46vh;overflow:auto;border-radius:20px;padding:10px 12px 8px;color:#f3e9d2;background:linear-gradient(160deg,rgba(30,36,50,.97),rgba(11,14,22,.98));border:1px solid rgba(245,213,138,.55);box-shadow:0 14px 40px rgba(0,0,0,.55);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transform:translateY(130%);opacity:0;transition:transform .32s cubic-bezier(.2,.9,.25,1),opacity .25s}
+#mmpop.on{transform:none;opacity:1}
+#mmpop .pbar{height:4px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden;margin:-4px 0 10px}#mmpop .pbar i{display:block;height:100%;background:linear-gradient(90deg,#c9a14a,#f8e3a3);width:100%;transform-origin:left;animation:popbar 4s linear forwards}
+#mmpop.pinned .pbar i{animation:none;opacity:.35}@keyframes popbar{to{transform:scaleX(0)}}
+#mmpop .phead{display:flex;align-items:center;gap:12px;margin-bottom:6px}#mmpop .phead img,#mmpop .pic{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid #d8b45a;flex:none;background:#1d2a3d;display:grid;place-items:center;font-size:30px}
+#mmpop .phead>div{flex:1;min-width:0}#mmpop .phead b{display:block;font-size:20px;color:#f8e3a3}#mmpop .phead small{color:#b9b09c;font-size:13px}
+#mmpop .px{border:0;background:rgba(255,255,255,.12);color:#fff;width:32px;height:32px;border-radius:50%;font-size:14px;flex:none}
+#mmpop p{margin:4px 0;font-size:14px;line-height:1.35;color:#e8dfc8}#mmpop p b{color:#f5d58a}#mmpop .curio{background:rgba(245,213,138,.1);border-radius:12px;padding:8px 10px}
+#mmpop .rrow{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:5px;font-size:12px;color:#b9b09c}
+#mmpop .rc{border:1px solid rgba(245,213,138,.4);background:rgba(245,213,138,.1);color:#f8e3a3;border-radius:99px;padding:3px 9px;font-size:13px;font-weight:600}
+#mmpop .pnote{text-align:center;font-size:11px;color:#8f877a;margin-top:8px}
+.kb{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:12px;border-radius:12px;background:#101319;padding:8px 0 0;touch-action:pan-x}
+.kbin{position:relative;height:200px}
+.wk{position:absolute;top:0;height:200px;background:linear-gradient(180deg,#fff,#f1f3f6);border:1px solid #9aa3ad;border-top:0;border-radius:0 0 8px 8px;box-sizing:border-box;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;-webkit-user-select:none;user-select:none;transition:background .1s,transform .1s}
+.wk span{font-size:12px;font-weight:700;color:#4a5562;pointer-events:none}.wk span i{font-style:normal;font-size:9px;vertical-align:sub;margin-left:1px}
+.bk{position:absolute;top:0;width:28px;height:124px;background:linear-gradient(180deg,#2b2e35,#0c0d10);border-radius:0 0 6px 6px;z-index:2;box-shadow:0 3px 5px rgba(0,0,0,.5)}
+.wk.hit{background:#d6e4ff;transform:translateY(2px)}.bk.hit{background:#4a5160}
+.wk.bad{background:#ffd9d6;animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.wk.on1{background:linear-gradient(180deg,#8fe3ff,#2ad4c9);box-shadow:inset 0 -6px 0 #0a84ff}
+.wk.on2,.bk.on2{background:linear-gradient(180deg,#ffe28a,#f5b83d);box-shadow:inset 0 -6px 0 #c98a00}
+.bk.on1{background:#0a84ff}
+.pbox{padding:12px}.plyr{text-align:center;margin-bottom:8px}.plyr b{display:block;font-size:30px;letter-spacing:-.02em}.plyr small{display:block;color:var(--mut);font-size:17px;min-height:22px}
+.ptab{margin-bottom:14px}.tm{display:flex;gap:8px;align-items:stretch;margin-bottom:8px}.tn{flex:none;width:26px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:11px;color:var(--mut);font-weight:700}
+.tg{flex:1;min-width:0;background:#fff;border-radius:12px;padding:6px;box-shadow:var(--sh)}.tl{display:flex;gap:2px;min-height:30px}.tl i{display:block}
+.tc{border-radius:7px;display:flex;align-items:center;justify-content:center;padding:4px 1px;min-width:0;overflow:hidden;position:relative}.tc b{font-size:13px;font-weight:700;white-space:nowrap}
+.tc.r{background:#dcefff;color:#0a58b6}.tc.l{background:#fff0c4;color:#8a5a00}
+.tc u{position:absolute;top:2px;left:50%;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:currentColor}
+.tc.cur{outline:3px solid #ff9f0a;outline-offset:-1px;background:#ffd60a;color:#2a2350}
+.tl.sy div{font-size:11px;color:#6b7a8c;text-align:center;min-width:0;overflow:hidden;white-space:nowrap}.tl.sy{min-height:16px}
+.tch{font-size:11px;color:#8a5a00;font-weight:700;text-align:right;padding-right:4px}
 .banner{display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#0a84ff,#2ad4c9);color:#fff;border-radius:16px;padding:12px 14px;margin-bottom:12px;font-size:14.5px;line-height:1.35}
 .banner .btn{background:#fff;color:#0a84ff;flex:none}
 .share-ic{display:inline-block;border:1.5px solid currentColor;border-radius:4px;padding:0 4px;font-size:12px}
@@ -279,7 +325,7 @@ const introDone=new Promise(res=>{const o=document.getElementById('intro'),v=doc
  const end=()=>{if(done)return;done=true;o.classList.add('out');setTimeout(()=>o.remove(),750);res()};
  v.addEventListener('ended',end);document.getElementById('introSkip').onclick=end;o.addEventListener('click',e=>{if(e.target.id==='introSkip')return;if(v.paused){const q=v.play();if(q&&q.catch)q.catch(end);document.getElementById('introTap').style.display='none'}});
  v.addEventListener('error',()=>setTimeout(end,1200));setTimeout(end,12000);
- const pr=v.play&&v.play();if(pr&&pr.catch)pr.catch(()=>{document.getElementById('introTap').style.display='block'})});
+ const pr=v.play&&v.play();if(pr&&pr.catch)pr.catch(()=>{const t=document.getElementById('introTap');if(t)t.style.display='block'})});
 /* ---------- utilitare ---------- */
 const $=s=>document.querySelector(s);
 const uid=()=>Math.random().toString(36).slice(2,8)+Date.now().toString(36).slice(-4);
@@ -390,7 +436,9 @@ const TABS=[
  {id:'provocari',ico:'⚡',name:'Provocări',title:'Provocări',c1:'#0a6cff',c2:'#00d4ff',soft:'#e3f4ff'},
  {id:'neagra',ico:'⛔',name:'Lista neagră',title:'Lista neagră',c1:'#14213d',c2:'#1f8fff',soft:'#e7edf5'},
  {id:'banca',ico:'🏦',name:'Banca',title:'',c1:'#0057d9',c2:'#00c2d1',soft:'#e1f1fb'},
- {id:'jocuri',ico:'🎮',name:'Jocuri',title:'Jocuri',c1:'#2563eb',c2:'#22d3ee',soft:'#e4f3fd'}];
+ {id:'jocuri',ico:'🎮',name:'Jocuri',title:'Jocuri',c1:'#2563eb',c2:'#22d3ee',soft:'#e4f3fd'},
+ {id:'harti',ico:'🗺️',name:'Hărți',title:'Hărți',c1:'#0f6fe0',c2:'#14c2b8',soft:'#e1f6f4'},
+ {id:'pian',ico:'🎹',name:'Pian',title:'Pian',c1:'#1b3fd1',c2:'#12b5e5',soft:'#e6edff'}];
 let UI={tab:'agenda',scope:'zi',bank:'panou',open:new Set()};
 try{const t=localStorage.getItem('ralph_tab');if(TABS.some(x=>x.id===t))UI.tab=t}catch(e){}
 const VIEWS={},A={},FORMS={};
@@ -410,7 +458,8 @@ function renderTop(){const t=TABS.find(x=>x.id===UI.tab),p=S.profile;const nb=BA
  <div class="nxt">${nb?`<div class="bar w"><i style="width:${(p.stars-lo)/(nb[0]-lo)*100}%"></i></div><small>Următorul premiu: ${nb[1]} ${nb[2]} la ${nb[0]} ⭐</small>`:'<small>Ai toate premiile! Ești o legendă 🚀</small>'}</div>`}
 function render(){const t=TABS.find(x=>x.id===UI.tab);const st=document.documentElement.style;st.setProperty('--acc',t.c1);st.setProperty('--acc2',t.c2);st.setProperty('--soft',t.soft);
  if(UI.tab!=='jocuri'||UI.game!=='snake')snakeStop();
- renderTop();$('#main').innerHTML=(UI.tab==='jocuri'&&UI.game?'':banners())+VIEWS[UI.tab]();if(UI.tab==='jocuri')gameMount();
+ if(UI.tab!=='pian')pianStop();if(UI.tab!=='harti')mmClosePop();
+ renderTop();$('#main').innerHTML=(UI.tab==='jocuri'&&UI.game?'':banners())+VIEWS[UI.tab]();if(UI.tab==='jocuri')gameMount();if(UI.tab==='harti')mmMount();if(UI.tab==='pian')pianMount();
  $('#tabs').innerHTML=TABS.map(x=>`<button class="${x.id===UI.tab?'on':''}" data-act="tab" data-k="${x.id}"><span class="i">${x.ico}</span>${x.name}</button>`).join('')}
 
 /* ===== 1. AGENDA ===== */
@@ -834,6 +883,170 @@ function carReview(g,lv){const pass=g.ok>=CARPASS;
  <div class="h2">📋 Verifică-ți răspunsurile</div>
  ${g.q.map((q,i)=>{const c=q.car,ok=g.res[i];return `<details class="card friend"><summary>${c.img?`<img src="${c.img}" style="width:72px;height:50px;object-fit:cover;border-radius:10px;flex:none">`:'<span class="ph0">🚗</span>'}<span class="fn"><b style="font-size:16px">${ok?'✅':'❌'} ${esc(carName(c))}</b><small>${ok?'ai știut':'corect era: '+esc(q.o[q.c])}</small></span><span class="chev">›</span></summary><div class="fb">${carSheet(c)}</div></details>`}).join('')}`}
 
+/* ===== 9. HĂRȚI: mindmap interactiv (prima hartă: zeii Olimpului) ===== */
+const GZ={
+ gaia:{n:'Gaia',r:'Terra',x:330,y:70,dom:'Pământul, mama primordială',sim:'pământul, cornul abundenței',fapt:'După povești, din ea s-au născut cerul (Uranus), munții și marea.'},
+ uranus:{n:'Uranus',r:'Caelus',x:770,y:70,dom:'Cerul',sim:'bolta cerească',fapt:'Planeta Uranus e singura planetă cu nume luat de la un zeu grec, nu de la unul roman.'},
+ cronos:{n:'Cronos',r:'Saturn',x:330,y:270,dom:'Titanul care a condus lumea înaintea lui Zeus',sim:'secera',fapt:'Se spune că și-a înghițit copiii, de frică să nu-i ia locul. Zeus a scăpat, ascuns în Creta.'},
+ rheea:{n:'Rheea',r:'Ops',x:770,y:270,dom:'Titanida, mama zeilor mari',sim:'leul',fapt:'L-a păcălit pe Cronos: i-a dat să înghită o piatră înfășată, în locul lui Zeus.'},
+ hestia:{n:'Hestia',r:'Vesta',x:100,y:490,dom:'Vatra și focul căminului',sim:'focul din vatră',fapt:'Unele povești spun că și-a lăsat locul de pe Olimp lui Dionisos, ca să trăiască liniștită.'},
+ demetra:{n:'Demetra',r:'Ceres',x:260,y:490,dom:'Recoltele și agricultura',sim:'spicul de grâu, torța',fapt:'Mitul ei explică anotimpurile: iarna vine cât timp fiica ei, Persefona, e în lumea lui Hades.'},
+ hades:{n:'Hades',r:'Pluto',x:420,y:490,dom:'Stăpânul lumii morților',sim:'coiful invizibilității, câinele Cerber',fapt:'Nu locuia pe Olimp, ci sub pământ. Câinele lui, Cerber, avea trei capete.'},
+ poseidon:{n:'Poseidon',r:'Neptun',x:580,y:490,dom:'Marea, cutremurele și caii',sim:'tridentul, calul',fapt:'S-a întrecut cu Atena pentru orașul Atena. Ea a câștigat, dăruind măslinul.'},
+ zeus:{n:'Zeus',r:'Jupiter',x:790,y:490,dom:'Regele zeilor, stăpânul cerului și al fulgerelor',sim:'fulgerul, vulturul, stejarul',fapt:'Jocurile Olimpice antice se țineau în cinstea lui, la Olimpia.'},
+ hera:{n:'Hera',r:'Iunona',x:970,y:490,dom:'Regina zeilor, zeița căsătoriei și a familiei',sim:'păunul, diadema',fapt:'După o poveste, ochii de pe coada păunului sunt ochii uriașului Argus, puși acolo de ea.'},
+ persefona:{n:'Persefona',r:'Proserpina',x:150,y:740,dom:'Regina lumii de dincolo și zeița primăverii',sim:'rodia, florile',fapt:'A mâncat semințe de rodie în lumea lui Hades, de aceea își petrece acolo o parte din an.',ex:'Părinți: Zeus și Demetra.'},
+ atena:{n:'Atena',r:'Minerva',x:330,y:740,dom:'Înțelepciunea, meșteșugurile și strategia în luptă',sim:'bufnița, măslinul, scutul',fapt:'S-a născut din capul lui Zeus, gata îmbrăcată în armură. Orașul Atena îi poartă numele.',ex:'Mama: Metis.'},
+ apollo:{n:'Apollo',r:'Apollo',x:500,y:740,dom:'Muzica, poezia, profeția și vindecarea',sim:'lira, arcul, laurul',fapt:'Oracolul din Delfi era al lui, iar preoteasa se numea Pythia.',ex:'Mama: Leto. Sora geamănă: Artemis.'},
+ artemis:{n:'Artemis',r:'Diana',x:670,y:740,dom:'Vânătoarea, animalele sălbatice și luna',sim:'arcul, cerbul, luna',fapt:'E sora geamănă a lui Apollo. Poveștile o arată mereu liberă, prin păduri.',ex:'Mama: Leto. Fratele geamăn: Apollo.'},
+ hermes:{n:'Hermes',r:'Mercur',x:850,y:740,dom:'Mesagerul zeilor, drumurile și negustorii',sim:'sandalele înaripate, toiagul cu doi șerpi',fapt:'În ziua în care s-a născut, a furat vitele lui Apollo.',ex:'Mama: Maia.'},
+ ares:{n:'Ares',r:'Marte',x:1030,y:740,dom:'Războiul',sim:'coiful și sulița',fapt:'Romanii l-au numit Marte: după el se numesc planeta Marte și luna martie.'},
+ dionisos:{n:'Dionisos',r:'Bacchus',x:560,y:960,dom:'Viile, petrecerile și teatrul',sim:'via, strugurii, toiagul cu conuri',fapt:'Teatrul grec s-a născut din serbările în cinstea lui.',ex:'Mama: Semele.'},
+ afrodita:{n:'Afrodita',r:'Venus',x:760,y:960,dom:'Iubirea și frumusețea',sim:'porumbelul, scoica, trandafirul',fapt:'După o poveste veche, s-a născut din spuma mării, lângă Cipru.',ex:'Părinți: după Hesiod, spuma mării; după Homer, Zeus și Dione.'},
+ hefaistos:{n:'Hefaistos',r:'Vulcan',x:960,y:960,dom:'Focul, fierăria și meșteșugarii',sim:'ciocanul și nicovala',fapt:'Era fierarul zeilor: a făcut, printre altele, armura lui Ahile.',ex:'Mama: Hera (după Homer, și Zeus e tatăl).'}
+};
+const GU={U0:['gaia','uranus'],U1:['cronos','rheea'],UZ:['zeus','hera']};
+const GE=[['U0','cronos'],['U0','rheea'],['U1','hestia'],['U1','demetra'],['U1','hades'],['U1','poseidon'],['U1','zeus'],['U1','hera'],['UZ','ares'],['hera','hefaistos'],['zeus','atena'],['zeus','apollo'],['zeus','artemis'],['zeus','hermes'],['zeus','dionisos'],['zeus','afrodita','dash'],['demetra','persefona'],['zeus','persefona']];
+const GW=[['hades','persefona'],['hefaistos','afrodita']];
+const OLY=['zeus','hera','poseidon','demetra','atena','apollo','artemis','ares','afrodita','hefaistos','hermes','hestia','dionisos'];
+const TIT=['gaia','uranus','cronos','rheea'];
+const GFACTS=['Muntele Olimp are 2.918 m și e cel mai înalt vârf din Grecia.','Zeii mâncau ambrozie și beau nectar, iar asta îi făcea nemuritori.','Romanii au luat zeii greci și le-au dat alte nume: Zeus a devenit Jupiter.','Zilele săptămânii vin de la zeii romani: marți = Marte, miercuri = Mercur, joi = Jupiter, vineri = Venus.','Planetele Mercur, Venus, Marte, Jupiter și Saturn poartă numele unor zei romani.','Cei 12 olimpieni locuiau pe vârful Olimpului. Hestia și Dionisos își împart al 12-lea loc, după povești.'];
+const MAPS=[{id:'zei',e:'🏛️',t:'Zeii Olimpului',s:'Arborele genealogic al zeilor greci, cu 19 portrete',n:19}];
+const MM={z:.6,sel:null,f:'toti',t:null,pin:false};
+const gMem=k=>GU[k]||[k];
+const gPos=k=>{if(GU[k]){const[a,b]=GU[k];return[(GZ[a].x+GZ[b].x)/2,(GZ[a].y+GZ[b].y)/2]}return[GZ[k].x,GZ[k].y]};
+const GR=36;
+function mmRel(id){const u=a=>[...new Set(a)].filter(x=>x!==id),pa=[],ch=[],sp=[],sib=[];
+ GE.forEach(([f,t])=>{const m=gMem(f);if(t===id)pa.push(...m);if(m.includes(id))ch.push(t)});
+ Object.values(GU).forEach(([a,b])=>{if(a===id)sp.push(b);if(b===id)sp.push(a)});GW.forEach(([a,b])=>{if(a===id)sp.push(b);if(b===id)sp.push(a)});
+ GE.forEach(([f,t])=>{if(t!==id&&gMem(f).some(x=>pa.includes(x)))sib.push(t)});
+ return{pa:u(pa),ch:u(ch),sp:u(sp),sib:u(sib).filter(x=>!pa.includes(x)&&!ch.includes(x)&&!sp.includes(x))}}
+function mmSvg(){let e='',m='',nd='',df='';
+ GE.forEach(([f,t,st])=>{const[ux,uy]=gPos(f),[tx,ty]=gPos(t),y1=GU[f]?uy+12:uy+GR,y2=ty-GR,ym=(y1+y2)/2;
+  e+=`<path class="ge ${st||''}" data-m="${[...gMem(f),t].join(',')}" d="M${ux} ${y1} C${ux} ${ym},${tx} ${ym},${tx} ${y2}"/>`});
+ const wed=(a,b,dash)=>{const[x1,y1]=gPos(a),[x2,y2]=gPos(b),dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,mx=(x1+x2)/2,my=(y1+y2)/2;
+  e+=`<path class="ge wed ${dash?'dash':''}" data-m="${a},${b}" d="M${x1+ux*GR} ${y1+uy*GR} L${x2-ux*GR} ${y2-uy*GR}"/>`;
+  m+=`<g class="gm" data-m="${a},${b}"><circle cx="${mx}" cy="${my}" r="12"/><text x="${mx}" y="${my+5}" text-anchor="middle">♥</text></g>`};
+ Object.values(GU).forEach(([a,b])=>wed(a,b,false));GW.forEach(([a,b])=>wed(a,b,true));
+ Object.entries(GZ).forEach(([k,g])=>{df+=`<clipPath id="c_${k}"><circle cx="${g.x}" cy="${g.y}" r="${GR}"/></clipPath>`;
+  nd+=`<g class="gn ${OLY.includes(k)?'oly':''}" data-act="mmPick" data-id="${k}"><circle class="gr" cx="${g.x}" cy="${g.y}" r="${GR+5}"/><circle class="gb" cx="${g.x}" cy="${g.y}" r="${GR}"/><image href="img/zei/${k}.jpg" xlink:href="img/zei/${k}.jpg" x="${g.x-GR}" y="${g.y-GR}" width="${GR*2}" height="${GR*2}" clip-path="url(#c_${k})" preserveAspectRatio="xMidYMid slice"/><circle class="gf" cx="${g.x}" cy="${g.y}" r="${GR}"/><text x="${g.x}" y="${g.y+GR+22}" text-anchor="middle">${g.n}</text></g>`});
+ return `<svg id="mmsvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1100 1060"><defs>${df}</defs><rect data-act="mmClear" width="1100" height="1060" fill="transparent"/><g>${e}</g><g>${m}</g><g>${nd}</g></svg>`}
+VIEWS.harti=()=>{if(!UI.map)return `<p class="lead">🗺️ Hărți interactive. Atinge o figură ca să vezi povestea ei.</p>${MAPS.map(m=>`<button class="gcard" data-act="mmOpen" data-k="${m.id}"><span class="gi">${m.e}</span><span class="grow"><b>${m.t}</b><small>${m.s}</small></span><span class="chev">›</span></button>`).join('')}<div class="gcard lock"><span class="gi">✨</span><span class="grow"><b>Mai multe hărți</b><small>În curând</small></span></div>`;
+ return `<div class="gbar"><button class="btn sm ghost" data-act="mmBack">‹ Hărți</button><b>🏛️ Zeii Olimpului</b></div>
+ <div class="chips"><button class="chip ${MM.f==='toti'?'on':''}" data-act="mmF" data-k="toti">Toți</button><button class="chip ${MM.f==='oly'?'on':''}" data-act="mmF" data-k="oly">🏛️ Cei 12 olimpieni</button><button class="chip ${MM.f==='tit'?'on':''}" data-act="mmF" data-k="tit">🌍 Titani</button></div>
+ <div class="row" style="margin-bottom:10px"><button class="btn sm grow" data-act="mmFact">💡 Curiozitate</button><button class="btn sm ghost" data-act="mmZ" data-d="-1">－</button><button class="btn sm ghost" data-act="mmZ" data-d="1">＋</button></div>
+ <div class="mm" id="mm">${mmSvg()}</div>
+ <p class="hint" style="text-align:center">Atinge un zeu: se luminează rudele lui. Trage cu degetul ca să te plimbi pe hartă.<br>♥ căsătorie · linie întreruptă = după unele povești</p>`};
+function mmMount(){const mm=$('#mm'),sv=$('#mmsvg');if(!mm||!sv)return;mmZoom(0);mm.scrollLeft=Math.max(0,(1100*MM.z-mm.clientWidth)/2);mmApply()}
+function mmZoom(d){const mm=$('#mm'),sv=$('#mmsvg');if(!sv)return;const old=MM.z,cx=mm?mm.scrollLeft+mm.clientWidth/2:0;MM.z=Math.min(1.25,Math.max(.4,+(MM.z+d*.15).toFixed(2)));sv.style.width=1100*MM.z+'px';sv.style.height=1060*MM.z+'px';if(mm&&d)mm.scrollLeft=cx*MM.z/old-mm.clientWidth/2}
+A.mmOpen=d=>{UI.map=d.k;MM.sel=null;MM.f='toti';render();scrollTo(0,0)};
+A.mmBack=()=>{UI.map=null;mmClosePop();MM.sel=null;render()};
+A.mmF=d=>{MM.f=d.k;MM.sel=null;mmClosePop();document.querySelectorAll('.chips .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===d.k));mmApply()};
+A.mmZ=d=>mmZoom(+d.d);
+A.mmClear=()=>{MM.sel=null;mmClosePop();mmApply()};
+A.mmPick=d=>{mmSelect(d.id)};
+A.mmFact=()=>{MM.sel=null;mmApply();mmPop(`<div class="phead"><span class="pic">💡</span><div><b>Știai că…?</b><small>curiozități despre zeii greci</small></div><button class="px" data-act="mmClose">✕</button></div><p class="curio">${pick(GFACTS)}</p>`)};
+A.mmClose=()=>mmClosePop();
+function mmApply(){const sv=$('#mmsvg');if(!sv)return;let on=null,rel=null;
+ if(MM.sel){const r=mmRel(MM.sel);rel=new Set([MM.sel,...r.pa,...r.ch,...r.sp,...r.sib])}
+ else if(MM.f==='oly')on=new Set(OLY);else if(MM.f==='tit')on=new Set(TIT);
+ sv.querySelectorAll('.gn').forEach(n=>{const id=n.dataset.id;n.classList.toggle('sel',id===MM.sel);n.classList.toggle('dim',rel?!rel.has(id):on?!on.has(id):false);n.classList.toggle('hot',!!on&&on.has(id)&&!rel)});
+ sv.querySelectorAll('.ge,.gm').forEach(e=>{const ms=e.dataset.m.split(',');e.classList.toggle('dim',rel?!ms.every(x=>rel.has(x)):on?true:false);e.classList.toggle('lit',!!rel&&ms.every(x=>rel.has(x)))})}
+function mmSelect(id){MM.sel=id;mmApply();const g=GZ[id],r=mmRel(id),nm=a=>a.map(x=>`<button class="rc" data-act="mmPick" data-id="${x}">${GZ[x].n}</button>`).join('');
+ const row=(ic,l,a)=>a.length?`<div class="rrow"><span>${ic} ${l}</span>${nm(a)}</div>`:'';
+ mmPop(`<div class="phead"><img src="img/zei/${id}.jpg" alt=""><div><b>${g.n}</b><small>la romani: ${g.r}</small></div><button class="px" data-act="mmClose">✕</button></div>
+ <p><b>Domeniu:</b> ${g.dom}</p><p><b>Simboluri:</b> ${g.sim}</p><p class="curio">💡 ${g.fapt}</p>${g.ex?`<p class="mut" style="font-size:13px">${g.ex}</p>`:''}
+ ${row('👪','Părinți',r.pa)}${row('💍','Soț / soție',r.sp)}${row('🌱','Copii',r.ch)}${row('👫','Frați și surori',r.sib)}`)}
+function mmPop(html){let p=$('#mmpop');if(!p){p=document.createElement('div');p.id='mmpop';document.body.appendChild(p);p.addEventListener('pointerdown',()=>{MM.pin=true;clearTimeout(MM.t);p.classList.add('pinned')})}
+ p.className='';p.innerHTML=`<div class="pbar"><i></i></div>${html}<div class="pnote">se închide singur în 4 secunde · atinge ca să-l ții deschis</div>`;MM.pin=false;void p.offsetWidth;p.classList.add('on');clearTimeout(MM.t);MM.t=setTimeout(()=>{if(!MM.pin)mmClosePop()},4000)}
+function mmClosePop(){clearTimeout(MM.t);const p=$('#mmpop');if(p)p.remove()}
+
+/* ===== 10. PIAN: melodii pe două mâini, cu tastatură, demo și exersare pas cu pas ===== */
+const PNS=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','La♯','Si'],PLS=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
+const PMID={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const pMidi=s=>12*(+s.slice(-1)+1)+PMID[s[0]];
+const pBlack=m=>[1,3,6,8,10].includes(m%12);
+const P={song:'bella',mode:null,bpm:80,solf:true,timers:[],run:false,steps:[],i:0,got:new Set(),err:0,done:false,ctx:null};
+const pName=m=>(P.solf?PNS:PLS)[m%12];
+/* Bella Ciao — melodie populară (domeniu public), după partitura de pe Wikipedia, transpusă în La minor (doar clape albe).
+   Mâna stângă: aranjament simplificat pentru începători (acorduri Am – E – Dm). Duratele sunt în timpi (1 = pătrime). */
+const SONGS={bella:{t:'Bella Ciao',nv:'10 ani',cheie:'La minor, doar clape albe',
+ rh:[['E4',.5,'U'],['A4',.5,'na'],['B4',.5,'mat'],['C5',.5,'ti'],['A4',2,'na'],['E4',.5,'mi'],['A4',.5,'son'],['B4',.5,'sve'],['C5',.5,'glia'],['A4',2,'to'],['E4',.5,'o'],['A4',.5,'bel'],['B4',.5,'la'],
+  ['C5',1,'ciao'],['B4',.5,'bel'],['A4',.5,'la'],['C5',1,'ciao'],['B4',.5,'bel'],['A4',.5,'la'],
+  ['E5',1,'ciao'],['E5',1,'ciao'],['E5',.5,'ciao'],['E5',.5,'u'],['D5',.5,'na'],['E5',.5,'mat'],
+  ['F5',.5,'ti'],['F5',2,'na'],['F5',.5,'mi'],['E5',.5,'son'],['D5',.5,'sve'],
+  ['F5',.5,'glia'],['E5',2,'to'],['E5',.5,'e'],['D5',.5,'ho'],['C5',.5,'tro'],
+  ['B4',1,'va'],['E5',1,'to'],['C5',1,"l'in"],['B4',1,'va'],['A4',2,'sor']],
+ lh:[[['A2','E3'],'Am'],[['A2','E3'],'Am'],[['A2','E3'],'Am'],[['E2','B2'],'E'],[['D3','A3'],'Dm'],[['D3','A2'],'Dm→Am'],[['E2','B2'],'E'],[['A2'],'Am']]}};
+function pSong(){const s=SONGS[P.song];if(s._ev)return s._ev;const ev=[];let t=0;
+ s.rh.forEach(([n,d,sy])=>{ev.push({h:'r',m:pMidi(n),t,d,s:sy});t+=d});
+ s.lh.forEach(([ns,ch],k)=>{const b=1.5+4*k;if(ns.length===2){ev.push({h:'l',m:pMidi(ns[0]),t:b,d:2,ch},{h:'l',m:pMidi(ns[1]),t:b+2,d:2})}else ev.push({h:'l',m:pMidi(ns[0]),t:b,d:3,ch})});
+ ev.sort((a,b)=>a.t-b.t||(a.h<b.h?-1:1));s._ev=ev;s._end=t;return ev}
+const PLO=40,PHI=77,PKW=44;
+function pKeys(){let w=0,wh='',bl='';for(let m=PLO;m<=PHI;m++){if(pBlack(m)){bl+=`<div class="bk" data-m="${m}" style="left:${w*PKW-14}px"></div>`}else{wh+=`<div class="wk" data-m="${m}" style="left:${w*PKW}px;width:${PKW}px"><span>${pName(m)}${m%12===0?`<i>${Math.floor(m/12)-1}</i>`:''}</span></div>`;w++}}
+ return `<div class="kbin" style="width:${w*PKW}px">${wh}${bl}</div>`}
+function pAudio(){if(!P.ctx)try{P.ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}if(P.ctx&&P.ctx.state==='suspended')P.ctx.resume();return P.ctx}
+function pTone(m,dur=1.2,vel=.55){const c=pAudio();if(!c||!S.profile.sound)return;const f=440*Math.pow(2,(m-69)/12),t=c.currentTime,g=c.createGain();
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vel*.38,t+.008);g.gain.exponentialRampToValueAtTime(vel*.12,t+.35);g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(.5,dur));g.connect(c.destination);
+ [[1,'triangle',1],[2,'sine',.28],[3,'sine',.09]].forEach(([k,ty,a])=>{const o=c.createOscillator(),gg=c.createGain();o.type=ty;o.frequency.value=f*k;gg.gain.value=a;o.connect(gg);gg.connect(g);o.start(t);o.stop(t+Math.max(.6,dur)+.05)})}
+const pKey=m=>document.querySelector(`#kb [data-m="${m}"]`);
+function pFlash(m,cls,ms){const k=pKey(m);if(!k)return;k.classList.add(cls);setTimeout(()=>k.classList.remove(cls),ms)}
+function pScrollTo(m){const kb=$('#kb'),k=pKey(m);if(!kb||!k)return;const x=k.offsetLeft+(k.offsetWidth||PKW)/2-kb.clientWidth/2;kb.scrollTo({left:Math.max(0,x),behavior:'smooth'})}
+function pChips(ev,hand,tt){return ev.filter(e=>e.h===hand&&e.t>=tt[0]&&e.t<tt[1])}
+function pTab(){const ev=pSong(),s=SONGS[P.song];let h='';
+ for(let k=0;k<=8;k++){const a=k===0?0:1.5+4*(k-1),b=k===0?1.5:a+4,rh=pChips(ev,'r',[a,b]),lh=pChips(ev,'l',[a,b]),pre=k===0?(4-1.5)/4*100:0;
+  const cell=(e,txt,cls)=>`<div class="tc ${cls}" data-t="${e.t}" data-h="${e.h}" style="flex:${e.d} 1 0"><b>${txt}</b></div>`;
+  const row=(arr,f,cls)=>`<div class="tl">${pre?`<i style="flex:${(4-1.5)} 0 0"></i>`:''}${arr.map(e=>f(e)).join('')}</div>`;
+  const used=r=>r.reduce((x,e)=>x+e.d,0)+(pre?2.5:0);
+  const tail=r=>used(r)<3.99?`<i style="flex:${(4-used(r)).toFixed(2)} 0 0"></i>`:'';
+  h+=`<div class="tm"><div class="tn">${k===0?'începutul':k}</div><div class="tg">
+  <div class="tl">${pre?`<i style="flex:2.5 0 0"></i>`:''}${rh.map(e=>cell(e,`${pName(e.m)}${e.m>=72?'<u></u>':''}`,'r')).join('')}${tail(rh)}</div>
+  <div class="tl sy">${pre?`<i style="flex:2.5 0 0"></i>`:''}${rh.map(e=>`<div style="flex:${e.d} 1 0">${e.s}</div>`).join('')}${tail(rh)}</div>
+  ${lh.length?`<div class="tl">${lh.map(e=>cell(e,pName(e.m),'l')).join('')}${tail(lh)}</div><div class="tch">${s.lh[k-1][1]}</div>`:''}</div></div>`}
+ return h}
+function pMark(){document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'));document.querySelectorAll('#kb .on1,#kb .on2').forEach(k=>k.classList.remove('on1','on2'));
+ if(!P.run||P.mode==='listen'||!P.steps[P.i])return;const st=P.steps[P.i];st.ev.forEach(e=>{const k=pKey(e.m);if(k)k.classList.add(e.h==='r'?'on1':'on2');document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`).forEach(c=>{c.classList.add('cur');if(e===st.ev[0])c.scrollIntoView({block:'nearest',behavior:'smooth'})})});pScrollTo(st.ev[0].m);
+ const e0=st.ev.find(e=>e.h==='r')||st.ev[0];$('#plyr').innerHTML=`<b>${st.ev.map(e=>pName(e.m)).join(' + ')}</b><small>${e0.s||''}</small>`;$('#pprog').style.width=(P.i/P.steps.length*100)+'%'}
+VIEWS.pian=()=>{if(!UI.pn)return `<p class="lead">🎹 Cântă la pian cu două mâini. Fiecare melodie vine cu „tab”: notele scrise pe măsuri, mâna dreaptă sus și mâna stângă jos.</p>
+ <button class="gcard" data-act="pnOpen" data-k="bella"><span class="gi" style="background:linear-gradient(135deg,#1b3fd1,#12b5e5)">🎹</span><span class="grow"><b>Bella Ciao</b><small>Nivel 10 ani · două mâini · doar clape albe${(S.piano&&S.piano.bella&&S.piano.bella.both)?' · ✅ învățată':''}</small></span><span class="chev">›</span></button>
+ <div class="gcard lock"><span class="gi">🎶</span><span class="grow"><b>Mai multe melodii</b><small>În curând</small></span></div>`;
+ const s=SONGS[P.song],pr=(S.piano&&S.piano.bella)||{},M=[['listen','👂','Ascult'],['rh','🤚','Dreapta'],['lh','✋','Stânga'],['both','🙌','Amândouă']];
+ return `<div class="gbar"><button class="btn sm ghost" data-act="pnBack">‹ Melodii</button><b>🎹 ${s.t}</b></div>
+ <div class="card" style="padding:12px 14px"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="badge">Nivel ${s.nv}</span><span class="badge">${s.cheie}</span><span class="badge">4/4</span><span class="badge">Am · E · Dm</span></div>
+ <div class="chips" style="margin:10px 0 0">${M.map(([k,e,n])=>`<button class="chip ${P.mode===k&&P.run?'on':''}" data-act="pnMode" data-k="${k}">${e} ${n}${pr[k]&&k!=='listen'?' ✅':''}</button>`).join('')}</div></div>
+ <div class="card pbox"><div id="plyr" class="plyr"><b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small></div><div class="bar"><i id="pprog" style="width:0"></i></div>
+ <div class="kb" id="kb">${pKeys()}</div>
+ <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="pnStop">⏹ Oprește</button><button class="btn sm ghost" data-act="pnTempo">🐢 Tempo: ${P.bpm}</button><button class="btn sm ghost" data-act="pnSolf">${P.solf?'Do-Re-Mi':'C-D-E'}</button></div></div>
+ <div class="lead" style="font-size:13px">🔵 Mâna dreaptă · 🟡 Mâna stângă. Începe cu degetul mare al mâinii drepte pe <b>${pName(64)}</b>, iar mâna stângă pe <b>${pName(45)}</b> mic. Atinge tastele luminate, în ordine.</div>
+ <div class="h2" style="margin-left:0">📜 Tab-ul melodiei</div><div id="ptab" class="ptab">${pTab()}</div>
+ <p class="hint">Lungimea fiecărei note se vede din lățimea căsuței. Punctul de sus înseamnă octava mai înaltă. Melodia e populară (domeniu public), după partitura de pe Wikipedia, în La minor; mâna stângă e un aranjament simplificat.</p>`};
+function pianMount(){const kb=$('#kb');if(!kb)return;pMark();const m=P.run&&P.steps[P.i]?P.steps[P.i].ev[0].m:64;pScrollTo(m);
+ kb.onpointerdown=e=>{const k=e.target.closest('[data-m]');if(!k)return;e.preventDefault();pPress(+k.dataset.m,k)}}
+function pStop(keep){P.timers.forEach(clearTimeout);P.timers=[];if(!keep){P.run=false;P.mode=null}document.querySelectorAll('#kb .wk,#kb .bk').forEach(k=>k.classList.remove('on1','on2','hit'));document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'))}
+function pianStop(){P.timers.forEach(clearTimeout);P.timers=[];P.run=false;P.mode=null}
+A.pnOpen=d=>{P.song=d.k;UI.pn=d.k;render();scrollTo(0,0)};
+A.pnBack=()=>{pianStop();UI.pn=null;render()};
+A.pnStop=()=>{pStop();const l=$('#plyr');if(l)l.innerHTML='<b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small>';const p=$('#pprog');if(p)p.style.width='0';document.querySelectorAll('.pbox').forEach(()=>{});document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))};
+A.pnTempo=()=>{P.bpm=P.bpm===80?60:P.bpm===60?100:80;const b=document.querySelector('[data-act=pnTempo]');if(b)b.textContent='🐢 Tempo: '+P.bpm};
+A.pnSolf=()=>{P.solf=!P.solf;const m=P.mode,r=P.run;render();if(r&&m!=='listen'){P.run=true;P.mode=m;pMark()}};
+A.pnMode=d=>{pAudio();pStop();document.querySelectorAll('.card .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===d.k));P.mode=d.k;P.run=true;P.done=false;if(d.k==='listen'){pPlayDemo();return}
+ const ev=pSong().filter(e=>d.k==='both'||(d.k==='rh'?e.h==='r':e.h==='l')),steps=[];ev.forEach(e=>{const l=steps[steps.length-1];if(d.k==='both'&&l&&Math.abs(l.t-e.t)<1e-6)l.ev.push(e);else steps.push({t:e.t,ev:[e]})});
+ steps.forEach(s=>s.need=s.ev.map(e=>e.m));P.steps=steps;P.i=0;P.got=new Set();P.err=0;pMark()};
+function pPlayDemo(){const spb=60000/P.bpm,ev=pSong(),end=SONGS[P.song]._end;
+ ev.forEach(e=>P.timers.push(setTimeout(()=>{pTone(e.m,e.d*spb/1000*1.1,e.h==='r'?.6:.45);const k=pKey(e.m);if(k){k.classList.add(e.h==='r'?'on1':'on2');setTimeout(()=>k.classList.remove('on1','on2'),Math.max(160,e.d*spb*.9))}
+  const cs=document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`);cs.forEach(c=>{c.classList.add('cur');setTimeout(()=>c.classList.remove('cur'),Math.max(160,e.d*spb*.9));if(e.h==='r')c.scrollIntoView({block:'nearest',behavior:'smooth'})});
+  if(e.h==='r'){const l=$('#plyr');if(l)l.innerHTML=`<b>${pName(e.m)}</b><small>${e.s}</small>`;pScrollTo(e.m);const p=$('#pprog');if(p)p.style.width=(e.t/end*100)+'%'}},e.t*spb)));
+ P.timers.push(setTimeout(()=>{P.run=false;P.mode=null;const p=$('#pprog');if(p)p.style.width='100%';const l=$('#plyr');if(l)l.innerHTML='<b>Gata! 🎶</b><small>Acum încearcă tu, pe rând.</small>';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))},(end+1)*spb))}
+function pPress(m,el){pAudio();pTone(m);el.classList.add('hit');setTimeout(()=>el.classList.remove('hit'),140);
+ if(!P.run||P.mode==='listen'||P.done)return;const st=P.steps[P.i];if(!st)return;
+ if(st.need.includes(m)){P.got.add(m);if(st.need.every(n=>P.got.has(n))){P.i++;P.got=new Set();if(P.i>=P.steps.length)pFinish();else pMark()}else{const k=pKey(m);if(k)k.classList.remove('on1','on2')}}
+ else{P.err++;el.classList.add('bad');setTimeout(()=>el.classList.remove('bad'),300);if(navigator.vibrate)try{navigator.vibrate(30)}catch(e){}}}
+function pFinish(){P.done=true;P.run=false;const k=P.mode,pr=((S.piano=S.piano||{}).bella=S.piano.bella||{}),old=pr[k],perfect=P.err===0;let gain=0;
+ if(!old)gain+=k==='both'?6:3;if(perfect&&!(old&&old.perfect))gain+=2;pr[k]={d:today(),err:old?Math.min(old.err,P.err):P.err,perfect:perfect||!!(old&&old.perfect)};
+ pMark();const l=$('#plyr');if(l)l.innerHTML=`<b>${perfect?'🏆 Fără nicio greșeală!':'🎉 Ai terminat melodia!'}</b><small>${P.err?P.err+(P.err===1?' greșeală':' greșeli'):'perfect'}${gain?' · +'+gain+' ⭐':''}</small>`;
+ const p=$('#pprog');if(p)p.style.width='100%';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'));
+ if(gain)reward(gain,mid(),true);else{save();fireworks()}renderTop()}
+
 /* ===== 5. BANCA ===== */
 const BT=[['panou','📊','Panou'],['deps','💰','Deponenți'],['invs','🤝','Investitori'],['loans','📝','Datornici'],['projects','🚀','Proiecte'],['lectii','📖','Lecții']];
 const FREQ={saptamanal:'pe săptămână',lunar:'pe lună'};
@@ -1033,7 +1246,7 @@ function homeHTML(){const p=S.profile,nb=BADGES.find(b=>p.stars<b[0]),pv=[...BAD
  const zi=S.notes.filter(n=>n.scope==='zi').flatMap(n=>n.items),zd=zi.filter(i=>i.done).length;
  const gAct=S.goals.filter(g=>!g.done&&okCount(g)===5).length,ch=(S.challenges||[]).filter(c=>c.status!=='castigata').length;
  const box=(k,e,n,sub,i)=>`<button class="hm-box" data-act="homeGo" data-k="${k}" style="animation-delay:${.08+i*.05}s"><span class="e">${e}</span><b>${n}</b><small>${sub}</small></button>`;
- const B=[['agenda','📅','Agenda',zi.length?`${zi.length-zd} de făcut azi`:'planul zilei'],['prieteni','🤝','Prieteni',S.friends.length+' prieteni'],['smart','🎯','Obiective',gAct?gAct+' active 🔥':'SMART'],['vise','🌈','Vise',S.dreams.length+' vise'],['provocari','⚡','Provocări',ch?ch+' în joc':'acceptă una'],['neagra','⛔','Lista neagră',(S.black||[]).length?'zile la rând':'de evitat'],['banca','🏦','Banca','capital '+Math.round(bk().cap)+' lei'],['jocuri','🎮','Jocuri','5 jocuri'],['premii','🏆','Premii',p.badges.length+'/'+BADGES.length+' medalii']];
+ const B=[['agenda','📅','Agenda',zi.length?`${zi.length-zd} de făcut azi`:'planul zilei'],['prieteni','🤝','Prieteni',S.friends.length+' prieteni'],['smart','🎯','Obiective',gAct?gAct+' active 🔥':'SMART'],['vise','🌈','Vise',S.dreams.length+' vise'],['provocari','⚡','Provocări',ch?ch+' în joc':'acceptă una'],['neagra','⛔','Lista neagră',(S.black||[]).length?'zile la rând':'de evitat'],['banca','🏦','Banca','capital '+Math.round(bk().cap)+' lei'],['jocuri','🎮','Jocuri','5 jocuri'],['harti','🗺️','Hărți','zeii Olimpului'],['pian','🎹','Pian','Bella Ciao'],['premii','🏆','Premii',p.badges.length+'/'+BADGES.length+' medalii']];
  return `<div class="hm-top"><button class="hm-pill" data-act="settings">${esc(p.avatar)} Ralph</button><button class="hm-pill" data-act="prizes">⭐ ${p.stars}</button></div>
  <div class="hm-logo"><img src="logo.png" alt=""><div class="hm-capy">${CAPY}</div></div>
  <div class="hm-title">Ralph’s Vault</div>
@@ -1073,10 +1286,10 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=9;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶'};
+const APP_VER=10;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!'};
 function migrate(){S.profile.name='Ralph';S.profile.welcomed=true;if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
- if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};
+ if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};if(!S.piano)S.piano={};
  const old=S.ver||1;let news=null;if(old<APP_VER){if(DB.db&&S.profile.welcomed)DB.set('copie_inainte_de_v'+APP_VER,JSON.parse(JSON.stringify(S))).catch(()=>{});news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
 
 /* ---------- pornire ---------- */
