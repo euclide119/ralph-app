@@ -162,6 +162,10 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 #mmsvg .ge{fill:none;stroke:#e6c46a;stroke-width:2.6;opacity:.6;transition:opacity .25s}
 #mmsvg .ge.dash{stroke-dasharray:7 7;stroke:#9fb4d6}#mmsvg .ge.wed{stroke:#ff8fb1;stroke-width:2.4}#mmsvg .ge.wed.dash{stroke-dasharray:6 6}
 #mmsvg .ge.lit{opacity:1;stroke-width:4}#mmsvg .ge.dim,#mmsvg .gm.dim{opacity:.1}
+#mmsvg .ge.al{stroke:#2ad4c9;opacity:.8}#mmsvg .ge.foe{stroke:#ff6b6b;stroke-dasharray:7 6;opacity:.8}#mmsvg .ge.lk{stroke:#9fb4d6;stroke-dasharray:3 7;opacity:.6}#mmsvg .ge.tm{stroke:#f5d58a;stroke-width:5;opacity:.5}
+#mmsvg .gm.fm circle{fill:#2a1b1b;stroke:#ff6b6b}#mmsvg .gm.fm text{fill:#ff6b6b;font-size:13px}
+#mmsvg .gd{fill:#c9bd9a;font:600 14px -apple-system,system-ui,sans-serif;paint-order:stroke;stroke:#0a1220;stroke-width:4px}
+#mmsvg .gt{fill:#e6c46a;font:800 21px -apple-system,system-ui,sans-serif;letter-spacing:.04em}#mmsvg .gl{stroke:rgba(230,196,106,.35);stroke-width:1.5}
 #mmsvg .gm circle{fill:#2a1b24;stroke:#ff8fb1;stroke-width:2}#mmsvg .gm text{fill:#ff8fb1;font-size:14px}
 #mmsvg .gn{cursor:pointer;transition:opacity .25s}#mmsvg .gn.dim{opacity:.22}
 #mmsvg .gn .gb{fill:#1d2a3d}#mmsvg .gn .gf{fill:none;stroke:#d8b45a;stroke-width:3}
@@ -883,7 +887,8 @@ function carReview(g,lv){const pass=g.ok>=CARPASS;
  <div class="h2">📋 Verifică-ți răspunsurile</div>
  ${g.q.map((q,i)=>{const c=q.car,ok=g.res[i];return `<details class="card friend"><summary>${c.img?`<img src="${c.img}" style="width:72px;height:50px;object-fit:cover;border-radius:10px;flex:none">`:'<span class="ph0">🚗</span>'}<span class="fn"><b style="font-size:16px">${ok?'✅':'❌'} ${esc(carName(c))}</b><small>${ok?'ai știut':'corect era: '+esc(q.o[q.c])}</small></span><span class="chev">›</span></summary><div class="fb">${carSheet(c)}</div></details>`}).join('')}`}
 
-/* ===== 9. HĂRȚI: mindmap interactiv (prima hartă: zeii Olimpului) ===== */
+/* ===== 9. HĂRȚI: mindmap interactiv (zeii Olimpului, eroii Greciei, istoria grecilor) ===== */
+/* --- harta 1: zeii Olimpului --- */
 const GZ={
  gaia:{n:'Gaia',r:'Terra',x:330,y:70,dom:'Pământul, mama primordială',sim:'pământul, cornul abundenței',fapt:'După povești, din ea s-au născut cerul (Uranus), munții și marea.'},
  uranus:{n:'Uranus',r:'Caelus',x:770,y:70,dom:'Cerul',sim:'bolta cerească',fapt:'Planeta Uranus e singura planetă cu nume luat de la un zeu grec, nu de la unul roman.'},
@@ -911,52 +916,138 @@ const GW=[['hades','persefona'],['hefaistos','afrodita']];
 const OLY=['zeus','hera','poseidon','demetra','atena','apollo','artemis','ares','afrodita','hefaistos','hermes','hestia','dionisos'];
 const TIT=['gaia','uranus','cronos','rheea'];
 const GFACTS=['Muntele Olimp are 2.918 m și e cel mai înalt vârf din Grecia.','Zeii mâncau ambrozie și beau nectar, iar asta îi făcea nemuritori.','Romanii au luat zeii greci și le-au dat alte nume: Zeus a devenit Jupiter.','Zilele săptămânii vin de la zeii romani: marți = Marte, miercuri = Mercur, joi = Jupiter, vineri = Venus.','Planetele Mercur, Venus, Marte, Jupiter și Saturn poartă numele unor zei romani.','Cei 12 olimpieni locuiau pe vârful Olimpului. Hestia și Dionisos își împart al 12-lea loc, după povești.'];
-const MAPS=[{id:'zei',e:'🏛️',t:'Zeii Olimpului',s:'Arborele genealogic al zeilor greci, cu 19 portrete',n:19}];
+/* --- harta 2: Eroii Greciei antice --- */
+const HZ={
+ zeus:{n:'Zeus',x:870,y:130,r:'regele zeilor',dom:'Tatăl zeilor și al multor eroi, între care Heracle și Perseu.',sim:'Eroii care aveau un părinte zeu și unul om se numeau semizei.',fapt:'Mulți eroi greci erau „fii ai lui Zeus”: Heracle, Perseu, Elena și alții.',im:'img/zei/zeus.jpg'},
+ hera:{n:'Hera',x:230,y:130,r:'regina zeilor',dom:'Soția lui Zeus și dușmana lui Heracle.',sim:'Din gelozie, i-a pus lui Heracle în cale probe grele și monștri.',fapt:'Numele „Heracle” înseamnă „gloria Herei”, deși ea l-a urmărit toată viața.',im:'img/zei/hera.jpg'},
+ hidra:{n:'Hidra din Lerna',x:230,y:360,r:'monstru',dom:'Un șarpe uriaș cu mai multe capete, ascuns într-o mlaștină, la Lerna.',sim:'A doua muncă a lui Heracle: când i se tăia un cap, creșteau altele.',fapt:'Heracle a învins-o cu ajutorul nepotului său, Iolaos, care ardea locul tăieturii.'},
+ heracle:{n:'Heracle',x:550,y:360,r:'la romani: Hercule',dom:'Cel mai puternic erou grec, fiul lui Zeus și al muritoarei Alcmena.',sim:'A îndeplinit 12 munci grele, poruncite de regele Euristeu.',fapt:'În unele povești a pornit și el cu Argonauții, la începutul călătoriei.'},
+ cerber:{n:'Cerber',x:870,y:360,r:'câinele lumii de dincolo',dom:'Câinele cu trei capete care păzea intrarea în lumea lui Hades.',sim:'A douăsprezecea muncă: Heracle l-a adus în lumea celor vii și apoi l-a dus înapoi.',fapt:'Cerber lăsa pe oricine să intre, dar nu lăsa pe nimeni să iasă.'},
+ meduza:{n:'Meduza',x:230,y:580,r:'Gorgonă',dom:'Una dintre cele trei Gorgone; avea șerpi în loc de păr.',sim:'Privirea ei transforma oamenii în piatră.',fapt:'Din sângele ei s-a născut, după povești, calul înaripat Pegas.'},
+ perseu:{n:'Perseu',x:550,y:580,r:'erou, fiul lui Zeus',dom:'Erou din Argos, fiul lui Zeus și al Danaei.',sim:'I-a tăiat capul Meduzei, privind-o doar în reflexia unui scut lustruit.',fapt:'Scutul în care s-a uitat i l-a dat zeița Atena.'},
+ andromeda:{n:'Andromeda',x:870,y:580,r:'prințesă, soția lui Perseu',dom:'Prințesa legată de o stâncă, ca jertfă pentru un monstru marin.',sim:'Perseu a salvat-o, iar apoi s-au căsătorit.',fapt:'O constelație și o galaxie îi poartă numele.'},
+ minotaur:{n:'Minotaurul',x:230,y:800,r:'monstru',dom:'Jumătate om, jumătate taur, închis în Labirintul din Creta.',sim:'Atena trimitea tineri ca tribut, până a venit Tezeu.',fapt:'Numele lui adevărat, spun poveștile, era Asterion.'},
+ tezeu:{n:'Tezeu',x:550,y:800,r:'erou, regele Atenei',dom:'Erou și rege al Atenei, fiul regelui Egeu.',sim:'A intrat în Labirint și l-a învins pe Minotaur.',fapt:'Povestea spune că tatăl lui, Egeu, a crezut că fiul a murit, și de la el ar veni numele Mării Egee.'},
+ ariadna:{n:'Ariadna',x:870,y:800,r:'prințesa Cretei',dom:'Fiica regelui Minos, din Creta.',sim:'I-a dat lui Tezeu un ghem de fir, ca să găsească ieșirea din Labirint.',fapt:'După poveste, mai târziu a devenit soția zeului Dionisos.'},
+ orfeu:{n:'Orfeu',x:230,y:1020,r:'poet și muzician',dom:'Cântărețul legendar, care cânta la liră.',sim:'A pornit cu Argonauții, iar cântecul lui a acoperit cântecul Sirenelor.',fapt:'A coborât în lumea morților ca să-și caute soția, Euridice.'},
+ iason:{n:'Iason',x:550,y:1020,r:'conducătorul Argonauților',dom:'Erou din Iolcos, conducătorul echipajului corăbiei Argo.',sim:'A pornit după lâna de aur, păzită într-o țară îndepărtată, Colchida.',fapt:'Argonauții înseamnă „marinarii de pe Argo”, numele corăbiei lor.'},
+ medeea:{n:'Medeea',x:870,y:1020,r:'vrăjitoare din Colchida',dom:'Prințesă și vrăjitoare, fiica regelui Colchidei.',sim:'L-a ajutat pe Iason să ia lâna de aur și a plecat cu el.',fapt:'Colchida era pe malul Mării Negre, în Georgia de azi.'},
+ patrocle:{n:'Patrocle',x:150,y:1240,r:'prietenul lui Ahile',dom:'Cel mai bun prieten al lui Ahile.',sim:'A luptat purtând armura lui Ahile și a murit în duel cu Hector.',fapt:'Moartea lui l-a făcut pe Ahile să se întoarcă în luptă.'},
+ ahile:{n:'Ahile',x:350,y:1240,r:'cel mai puternic războinic grec',dom:'Războinic grec la Troia, fiul lui Peleu și al zeiței Thetis.',sim:'L-a învins pe Hector sub zidurile Troiei.',fapt:'„Călcâiul lui Ahile” înseamnă azi punctul slab al cuiva: după o poveste mai târzie, doar călcâiul lui era vulnerabil.'},
+ hector:{n:'Hector',x:550,y:1240,r:'prințul Troiei',dom:'Fiul regelui Priam și cel mai bun războinic troian.',sim:'A apărat Troia timp de zece ani.',fapt:'După duel, Ahile a înapoiat trupul lui Hector tatălui său, Priam.'},
+ paris:{n:'Paris',x:750,y:1240,r:'prinț troian',dom:'Fiul lui Priam și fratele lui Hector.',sim:'A luat-o pe Elena la Troia, iar asta a pornit războiul.',fapt:'Povestea spune că a ales-o drept „cea mai frumoasă” pe Afrodita, care i-a promis dragostea Elenei.'},
+ elena:{n:'Elena',x:950,y:1240,r:'Elena din Troia',dom:'Frumoasa soție a regelui Menelau, din Sparta.',sim:'Plecarea ei la Troia a dus la războiul troian.',fapt:'Se spunea că e fiica lui Zeus.'},
+ agamemnon:{n:'Agamemnon',x:350,y:1440,r:'regele Micenei',dom:'Regele Micenei și conducătorul grecilor la Troia.',sim:'A adunat armata și corăbiile grecești ca să-și ajute fratele.',fapt:'S-a certat cu Ahile din cauza unei captive, iar Ahile a refuzat un timp să lupte.'},
+ menelau:{n:'Menelau',x:600,y:1440,r:'regele Spartei',dom:'Regele Spartei, soțul Elenei și fratele lui Agamemnon.',sim:'A cerut ajutorul grecilor ca să-și aducă soția înapoi.',fapt:'După război, Elena s-a întors cu el la Sparta.'},
+ penelopa:{n:'Penelopa',x:230,y:1680,r:'soția lui Odiseu',dom:'Regina Itacăi, soția lui Odiseu.',sim:'A așteptat 20 de ani și a țesut un giulgiu, desfăcându-l noaptea, ca să amâne pețitorii.',fapt:'Numele ei a ajuns simbol al credinței și al răbdării.'},
+ odiseu:{n:'Odiseu',x:550,y:1680,r:'la romani: Ulise',dom:'Regele Itacăi, cel mai iscusit erou grec.',sim:'A născocit calul de lemn prin care grecii au intrat în Troia.',fapt:'Drumul lui spre casă a durat zece ani. Cuvântul „odisee” înseamnă azi o călătorie lungă, plină de peripeții.'},
+ polifem:{n:'Polifem',x:870,y:1680,r:'ciclop, fiul lui Poseidon',dom:'Ciclopul cu un singur ochi, care ținea oamenii prizonieri într-o peșteră.',sim:'Odiseu l-a orbit și a scăpat ascuns sub o oaie.',fapt:'Odiseu i-a spus că se numește „Nimeni”, așa că ceilalți ciclopi n-au venit în ajutor.'},
+ telemah:{n:'Telemah',x:390,y:1850,r:'fiul lui Odiseu',dom:'Fiul lui Odiseu și al Penelopei.',sim:'A pornit în căutarea tatălui său și l-a ajutat să-și recapete casa.',fapt:'Era doar un bebeluș când Odiseu a plecat la război.'}
+};
+const HU={UO:['penelopa','odiseu']};
+const HE=[['zeus','heracle'],['zeus','perseu'],['zeus','hera','w'],['hera','heracle','f'],['heracle','hidra','f'],['heracle','cerber','f'],['perseu','meduza','f'],['perseu','andromeda','w'],['tezeu','minotaur','f'],['ariadna','tezeu','a'],['orfeu','iason','a'],['iason','medeea','w'],['patrocle','ahile','a'],['ahile','hector','f'],['hector','paris','b'],['paris','elena','wd'],['menelau','elena','w'],['agamemnon','menelau','b'],['agamemnon','odiseu','a'],['odiseu','polifem','f'],['UO','telemah']];
+const HT=[[550,60,'👑 Zeus și Hera'],[550,250,'💪 Ciclul lui Heracle'],[550,470,'🪞 Perseu și Meduza'],[550,690,'🌀 Tezeu și Labirintul'],[550,910,'⛵ Iason și Argonauții'],[550,1130,'🏛️ Războiul troian'],[550,1570,'🌊 Călătoria lui Odiseu']];
+const HFACTS=['Eroii greci erau oameni cu puteri neobișnuite, adesea fii ai unui zeu și ai unui om.','Războiul troian a durat zece ani, iar întoarcerea lui Odiseu acasă încă zece.','Cuvântul „odisee” înseamnă azi o călătorie lungă și plină de peripeții, după eroul Odiseu.','„Călcâiul lui Ahile” înseamnă azi punctul slab al cuiva.','Heracle a avut de îndeplinit 12 munci, printre care Hidra din Lerna și aducerea lui Cerber.','Corabia Argo a dat numele Argonauților, adică „marinarii de pe Argo”.'];
+
+/* --- harta 3: Istoria grecilor (axa timpului) --- */
+const ISEQ=[['E','Epoca bronzului · aprox. 2000–1100 î.Hr.'],'minoici','miceni','troia',['E','Epoca arhaică · aprox. 800–480 î.Hr.'],'homer','olimpice','colonizare','clistene',['E','Epoca clasică · 480–323 î.Hr.'],'maraton','termopile','pericle','peloponesiac','socrate','alexandru',['E','Epoca elenistică și romană · 323 î.Hr. – 330 d.Hr.'],'alexandria','arhimede','corint',['E','Epoca bizantină · 330–1453'],'constantinopol','cadere',['E','Grecia modernă · de la 1821'],'revolutie'];
+const ID={
+ minoici:{n:'Minoicii',d:'aprox. 2000–1450 î.Hr.',dom:'Aprox. 2000–1450 î.Hr., pe insula Creta.',sim:'Prima mare civilizație din Grecia: palate mari, ca cel de la Cnossos, pline de fresce.',fapt:'Unii cercetători cred că legenda Labirintului vine de la palatul de la Cnossos.'},
+ miceni:{n:'Micenienii',d:'aprox. 1600–1100 î.Hr.',dom:'Aprox. 1600–1100 î.Hr., în Peloponez.',sim:'Războinici cu cetăți întărite, ca Micene și Tirint. Scriau pe tăblițe în limba greacă veche.',fapt:'Poarta Leilor de la Micene se păstrează și azi, cu doi lei sculptați deasupra intrării.'},
+ troia:{n:'Războiul troian',d:'aprox. 1200 î.Hr., după tradiție',dom:'Aprox. 1200 î.Hr., după tradiție.',sim:'Povestea celor zece ani de asediu a Troiei, cântată mai târziu de Homer în „Iliada”.',fapt:'Ruinele orașului Troia au fost găsite în Turcia de azi, la Hisarlik.'},
+ homer:{n:'Homer și alfabetul',d:'sec. VIII î.Hr.',dom:'Secolul al VIII-lea î.Hr.',sim:'Grecii au început să scrie cu un alfabet luat de la fenicieni, la care au adăugat vocale. „Iliada” și „Odiseea” sunt puse pe seama lui Homer.',fapt:'Cuvântul „alfabet” vine de la primele litere grecești: alfa și beta.'},
+ olimpice:{n:'Primele Jocuri Olimpice',d:'776 î.Hr. (data tradițională)',dom:'776 î.Hr., după data tradițională.',sim:'La Olimpia, în cinstea lui Zeus, la fiecare patru ani. Pe durata lor, războaiele se opreau.',fapt:'Câștigătorii primeau o coroană de ramuri de măslin.'},
+ colonizare:{n:'Colonii grecești',d:'sec. VIII–VI î.Hr.',dom:'Secolele VIII–VI î.Hr.',sim:'Cetățile grecești au întemeiat colonii pe țărmurile Mării Mediterane și ale Mării Negre.',fapt:'Histria, pe coasta României de azi, a fost întemeiată în jurul anului 657 î.Hr. de coloniști din Milet. Mai târziu au apărut Tomis (Constanța) și Callatis (Mangalia).'},
+ clistene:{n:'Democrația la Atena',d:'508 î.Hr.',dom:'508 î.Hr.',sim:'Clistene a făcut reforme prin care cetățenii hotărau împreună, în adunarea de pe dealul Pnyx.',fapt:'„Democrație” înseamnă „puterea poporului”, dar votau doar bărbații liberi născuți la Atena, nu femeile și nu sclavii.'},
+ maraton:{n:'Bătălia de la Maraton',d:'490 î.Hr.',dom:'490 î.Hr.',sim:'Atenienii i-au învins pe perși la Maraton, deși erau mai puțini.',fapt:'Legenda spune că un mesager a alergat de la Maraton la Atena să anunțe victoria. De aici vine proba de maraton.'},
+ termopile:{n:'Termopile și Salamina',d:'480 î.Hr.',dom:'480 î.Hr.',sim:'La Termopile, regele spartan Leonida a ținut piept armatei persane. La Salamina, flota greacă a învins flota persană.',fapt:'Flota de la Salamina a fost pregătită de atenianul Temistocle.'},
+ pericle:{n:'Epoca lui Pericle',d:'sec. V î.Hr.',dom:'Secolul al V-lea î.Hr.; Partenonul s-a construit între 447 și 432 î.Hr.',sim:'Atena era orașul cel mai bogat și mai strălucit. S-au construit Partenonul și teatre, iar acolo au trăit Sofocle și Socrate.',fapt:'Partenonul era templul zeiței Atena.'},
+ peloponesiac:{n:'Războiul peloponesiac',d:'431–404 î.Hr.',dom:'431–404 î.Hr.',sim:'Atena și Sparta, cu aliații lor, s-au războit aproape 30 de ani. A câștigat Sparta.',fapt:'Războiul a slăbit cetățile grecești, așa că mai târziu regele Macedoniei le-a putut cuceri.'},
+ socrate:{n:'Socrate',d:'399 î.Hr.',dom:'399 î.Hr.',sim:'Filozoful care punea întrebări a fost judecat la Atena și condamnat să bea otravă (cucută).',fapt:'N-a scris nimic: știm ce a spus din cărțile elevului său, Platon.'},
+ alexandru:{n:'Alexandru cel Mare',d:'336–323 î.Hr.',dom:'336–323 î.Hr.',sim:'Regele Macedoniei a cucerit Imperiul Persan și a ajuns până în India.',fapt:'A murit la numai 32 de ani, la Babilon.'},
+ alexandria:{n:'Alexandria și regatele elenistice',d:'după 323 î.Hr.',dom:'După 323 î.Hr.',sim:'După moartea lui Alexandru, generalii lui au împărțit imperiul în regate. Limba și cultura greacă s-au răspândit în tot Orientul.',fapt:'Biblioteca din Alexandria, în Egipt, strângea foarte multe suluri de papirus.'},
+ arhimede:{n:'Arhimede',d:'212 î.Hr.',dom:'Mort în 212 î.Hr., la Siracuza.',sim:'Savantul din Siracuza, colonie greacă din Sicilia, a descoperit legile pârghiei și ale plutirii.',fapt:'Se spune că ar fi strigat „Evrika!” („Am găsit!”) când a înțeles cum plutesc corpurile.'},
+ corint:{n:'Romanii cuceresc Grecia',d:'146 î.Hr.',dom:'146 î.Hr.',sim:'Romanii au distrus Corintul, iar Grecia a ajuns sub stăpânirea Romei.',fapt:'Poetul roman Horațiu spunea că Grecia cucerită și-a cucerit învingătorul prin cultură.'},
+ constantinopol:{n:'Constantinopol',d:'330 d.Hr.',dom:'330 d.Hr.',sim:'Împăratul Constantin cel Mare a făcut din vechiul oraș Bizanț noua capitală a imperiului: Constantinopol.',fapt:'În Imperiul Bizantin se vorbea greaca, iar el a durat mai bine de o mie de ani.'},
+ cadere:{n:'Căderea Constantinopolului',d:'1453',dom:'1453',sim:'Turcii otomani, conduși de sultanul Mehmed al II-lea, au cucerit orașul. Imperiul Bizantin s-a sfârșit.',fapt:'Biserica Sfânta Sofia, construită în anul 537, a devenit moschee.'},
+ revolutie:{n:'Revoluția din 1821',d:'1821–1830',dom:'1821–1830',sim:'Grecii s-au răsculat împotriva stăpânirii otomane, iar Grecia a devenit stat independent, recunoscut în 1830.',fapt:'Mișcarea a pornit de la Iași, în Moldova, condusă de Alexandru Ipsilanti.'}
+};
+const IZ={},IE=[],IT=[],IL=[['miceni','troia'],['pericle','socrate'],['clistene','pericle'],['colonizare','olimpice']];
+(function(){let y=70,i=0,prev=null,era='';ISEQ.forEach(s=>{if(Array.isArray(s)){era=s[1];IT.push([550,y,s[1]]);y+=110}else{const x=i%2?720:380;IZ[s]={...ID[s],x,y,r:era.split(' · ')[0]};if(prev)IE.push([prev,s,'t']);prev=s;i++;y+=175}});IL.forEach(([a,b])=>IE.push([a,b,'l']));IZ._h=y})();
+const IFACTS=['Grecii antici își spuneau „elini”, iar țara lor „Hellas”.','Cuvintele „istorie”, „democrație”, „teatru” și „olimpiadă” vin din greacă.','Alfabetul grec e strămoșul alfabetelor latin și chirilic.','Cetățile grecești nu au fost aproape niciodată o singură țară: fiecare avea propriile legi.','Grecia veche a lăsat lumii filozofia, teatrul, democrația și Jocurile Olimpice.'];
+const IH=(()=>{let m=0;Object.entries(IZ).forEach(([k,g])=>{if(k!=='_h')m=Math.max(m,g.y)});delete IZ._h;return m+130})();
+
+/* --- motorul de hărți (comun) --- */
+const MAPS=[{id:'zei',e:'🏛️',t:'Zeii Olimpului',s:'Arborele genealogic al zeilor greci, cu 19 portrete'},{id:'eroi',e:'🦸',t:'Eroii Greciei antice',s:'De la Heracle și Ahile până la Odiseu, cu monștrii pe care i-au înfruntat'},{id:'istorie',e:'📜',t:'Istoria grecilor',s:'De la minoici până la 1821, pe o axă a timpului'}];
+const MD={
+ zei:{t:'Zeii Olimpului',e:'🏛️',w:1100,h:1060,z:.6,R:36,N:GZ,U:GU,E:GE,W:GW,T:[],dir:'img/zei',oly:OLY,
+  F:[['toti','Toți',null],['oly','🏛️ Cei 12 olimpieni',OLY],['tit','🌍 Titani',TIT]],facts:GFACTS,
+  sub:g=>`la romani: ${g.r}`,body:g=>`<p><b>Domeniu:</b> ${g.dom}</p><p><b>Simboluri:</b> ${g.sim}</p><p class="curio">💡 ${g.fapt}</p>${g.ex?`<p class="mut" style="font-size:13px">${g.ex}</p>`:''}`,
+  leg:'Atinge un zeu: se luminează rudele lui. Trage cu degetul ca să te plimbi pe hartă.<br>♥ căsătorie · linie întreruptă = după unele povești'},
+ eroi:{t:'Eroii Greciei antice',e:'🦸',w:1100,h:1940,z:.6,R:36,N:HZ,U:HU,E:HE,W:[],T:HT,dir:'img/eroi',
+  F:[['toti','Toți',null],['troia','🏛️ Războiul troian',['patrocle','ahile','hector','paris','elena','agamemnon','menelau']],['monstri','🐉 Monștri',['hidra','cerber','minotaur','meduza','polifem']]],facts:HFACTS,
+  sub:g=>g.r,body:g=>`<p><b>Cine e:</b> ${g.dom}</p><p><b>Faptă faimoasă:</b> ${g.sim}</p><p class="curio">💡 ${g.fapt}</p>`,
+  leg:'Atinge un erou: se luminează aliații și dușmanii lui. Trage cu degetul ca să te plimbi pe hartă.<br>♥ căsătorie · 🤝 aliați sau frați (linie turcoaz) · ⚔ dușmani (linie roșie)'},
+ istorie:{t:'Istoria grecilor',e:'📜',w:1100,h:IH,z:.6,R:36,N:IZ,U:{},E:IE,W:[],T:IT,dir:'img/istorie',
+  F:[['toti','Toate',null],['razboi','⚔️ Războaie',['troia','maraton','termopile','peloponesiac','corint','cadere','revolutie']],['idei','🎭 Oameni și idei',['homer','clistene','socrate','alexandru','alexandria','arhimede']]],facts:IFACTS,
+  sub:g=>g.r,body:g=>`<p><b>Când:</b> ${g.dom}</p><p><b>Ce s-a întâmplat:</b> ${g.sim}</p><p class="curio">💡 ${g.fapt}</p>`,
+  leg:'Atinge un eveniment: vezi ce a fost înainte, ce a urmat și ce e legat de el.<br>Linia groasă = ordinea în timp · linia punctată = legătură între evenimente'}
+};
+const CM=()=>MD[UI.map]||MD.zei;
 const MM={z:.6,sel:null,f:'toti',t:null,pin:false};
-const gMem=k=>GU[k]||[k];
-const gPos=k=>{if(GU[k]){const[a,b]=GU[k];return[(GZ[a].x+GZ[b].x)/2,(GZ[a].y+GZ[b].y)/2]}return[GZ[k].x,GZ[k].y]};
-const GR=36;
-function mmRel(id){const u=a=>[...new Set(a)].filter(x=>x!==id),pa=[],ch=[],sp=[],sib=[];
- GE.forEach(([f,t])=>{const m=gMem(f);if(t===id)pa.push(...m);if(m.includes(id))ch.push(t)});
- Object.values(GU).forEach(([a,b])=>{if(a===id)sp.push(b);if(b===id)sp.push(a)});GW.forEach(([a,b])=>{if(a===id)sp.push(b);if(b===id)sp.push(a)});
- GE.forEach(([f,t])=>{if(t!==id&&gMem(f).some(x=>pa.includes(x)))sib.push(t)});
- return{pa:u(pa),ch:u(ch),sp:u(sp),sib:u(sib).filter(x=>!pa.includes(x)&&!ch.includes(x)&&!sp.includes(x))}}
-function mmSvg(){let e='',m='',nd='',df='';
- GE.forEach(([f,t,st])=>{const[ux,uy]=gPos(f),[tx,ty]=gPos(t),y1=GU[f]?uy+12:uy+GR,y2=ty-GR,ym=(y1+y2)/2;
-  e+=`<path class="ge ${st||''}" data-m="${[...gMem(f),t].join(',')}" d="M${ux} ${y1} C${ux} ${ym},${tx} ${ym},${tx} ${y2}"/>`});
- const wed=(a,b,dash)=>{const[x1,y1]=gPos(a),[x2,y2]=gPos(b),dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L,mx=(x1+x2)/2,my=(y1+y2)/2;
-  e+=`<path class="ge wed ${dash?'dash':''}" data-m="${a},${b}" d="M${x1+ux*GR} ${y1+uy*GR} L${x2-ux*GR} ${y2-uy*GR}"/>`;
-  m+=`<g class="gm" data-m="${a},${b}"><circle cx="${mx}" cy="${my}" r="12"/><text x="${mx}" y="${my+5}" text-anchor="middle">♥</text></g>`};
- Object.values(GU).forEach(([a,b])=>wed(a,b,false));GW.forEach(([a,b])=>wed(a,b,true));
- Object.entries(GZ).forEach(([k,g])=>{df+=`<clipPath id="c_${k}"><circle cx="${g.x}" cy="${g.y}" r="${GR}"/></clipPath>`;
-  nd+=`<g class="gn ${OLY.includes(k)?'oly':''}" data-act="mmPick" data-id="${k}"><circle class="gr" cx="${g.x}" cy="${g.y}" r="${GR+5}"/><circle class="gb" cx="${g.x}" cy="${g.y}" r="${GR}"/><image href="img/zei/${k}.jpg" xlink:href="img/zei/${k}.jpg" x="${g.x-GR}" y="${g.y-GR}" width="${GR*2}" height="${GR*2}" clip-path="url(#c_${k})" preserveAspectRatio="xMidYMid slice"/><circle class="gf" cx="${g.x}" cy="${g.y}" r="${GR}"/><text x="${g.x}" y="${g.y+GR+22}" text-anchor="middle">${g.n}</text></g>`});
- return `<svg id="mmsvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1100 1060"><defs>${df}</defs><rect data-act="mmClear" width="1100" height="1060" fill="transparent"/><g>${e}</g><g>${m}</g><g>${nd}</g></svg>`}
-VIEWS.harti=()=>{if(!UI.map)return `<p class="lead">🗺️ Hărți interactive. Atinge o figură ca să vezi povestea ei.</p>${MAPS.map(m=>`<button class="gcard" data-act="mmOpen" data-k="${m.id}"><span class="gi">${m.e}</span><span class="grow"><b>${m.t}</b><small>${m.s}</small></span><span class="chev">›</span></button>`).join('')}<div class="gcard lock"><span class="gi">✨</span><span class="grow"><b>Mai multe hărți</b><small>În curând</small></span></div>`;
- return `<div class="gbar"><button class="btn sm ghost" data-act="mmBack">‹ Hărți</button><b>🏛️ Zeii Olimpului</b></div>
- <div class="chips"><button class="chip ${MM.f==='toti'?'on':''}" data-act="mmF" data-k="toti">Toți</button><button class="chip ${MM.f==='oly'?'on':''}" data-act="mmF" data-k="oly">🏛️ Cei 12 olimpieni</button><button class="chip ${MM.f==='tit'?'on':''}" data-act="mmF" data-k="tit">🌍 Titani</button></div>
+const gMem=k=>(CM().U||{})[k]||[k];
+function mmPos(k){const M=CM(),U=M.U||{},N=M.N;if(U[k]){const[a,b]=U[k];return[(N[a].x+N[b].x)/2,(N[a].y+N[b].y)/2]}return[N[k].x,N[k].y]}
+function mmRel(id){const M=CM(),u=a=>[...new Set(a)].filter(x=>x!==id),pa=[],ch=[],sp=[],sib=[],al=[],fo=[],bf=[],af=[],lk=[],br=[];
+ M.E.forEach(([f,t,ty])=>{ty=ty||'p';const m=gMem(f);
+  if(ty==='p'||ty==='dash'){if(t===id)pa.push(...m);if(m.includes(id))ch.push(t)}
+  else if(ty==='w'||ty==='wd'){if(f===id)sp.push(t);if(t===id)sp.push(f)}
+  else if(ty==='a'){if(f===id)al.push(t);if(t===id)al.push(f)}
+  else if(ty==='b'){if(f===id)br.push(t);if(t===id)br.push(f)}
+  else if(ty==='f'){if(f===id)fo.push(t);if(t===id)fo.push(f)}
+  else if(ty==='t'){if(f===id)af.push(t);if(t===id)bf.push(f)}
+  else if(ty==='l'){if(f===id)lk.push(t);if(t===id)lk.push(f)}});
+ Object.values(M.U||{}).forEach(([a,b])=>{if(a===id)sp.push(b);if(b===id)sp.push(a)});(M.W||[]).forEach(([a,b])=>{if(a===id)sp.push(b);if(b===id)sp.push(a)});
+ M.E.forEach(([f,t,ty])=>{ty=ty||'p';if((ty==='p'||ty==='dash')&&t!==id&&gMem(f).some(x=>pa.includes(x)))sib.push(t)});
+ const P=u(pa),C=u(ch),S=u(sp);return{pa:P,ch:C,sp:S,sib:u([...sib,...br]).filter(x=>!P.includes(x)&&!C.includes(x)&&!S.includes(x)),al:u(al),fo:u(fo),bf:u(bf),af:u(af),lk:u(lk)}}
+function mmSvg(){const M=CM(),R=M.R,N=M.N,U=M.U||{};let e='',m='',nd='',df='',ti='';
+ const line=(a,b,cls,mk)=>{const[x1,y1]=mmPos(a),[x2,y2]=mmPos(b),dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy)||1,ux=dx/L,uy=dy/L,mx=(x1+x2)/2,my=(y1+y2)/2,ms=[...gMem(a),...gMem(b)].join(',');
+  e+=`<path class="ge ${cls}" data-m="${ms}" d="M${x1+ux*R} ${y1+uy*R} L${x2-ux*R} ${y2-uy*R}"/>`;
+  if(mk)m+=`<g class="gm ${mk[1]||''}" data-m="${ms}"><circle cx="${mx}" cy="${my}" r="12"/><text x="${mx}" y="${my+5}" text-anchor="middle">${mk[0]}</text></g>`};
+ (M.T||[]).forEach(([x,y,t])=>{ti+=`<text class="gt" x="${x}" y="${y}" text-anchor="middle">${t}</text><line class="gl" x1="60" x2="${M.w-60}" y1="${y+14}" y2="${y+14}"/>`});
+ M.E.forEach(([f,t,ty])=>{ty=ty||'p';
+  if(ty==='p'||ty==='dash'||ty==='t'){const[ux,uy]=mmPos(f),[tx,ty2]=mmPos(t),y1=U[f]?uy+12:uy+R,y2=ty2-R,ym=(y1+y2)/2;
+   e+=`<path class="ge ${ty==='dash'?'dash':ty==='t'?'tm':''}" data-m="${[...gMem(f),t].join(',')}" d="M${ux} ${y1} C${ux} ${ym},${tx} ${ym},${tx} ${y2}"/>`}
+  else if(ty==='w')line(f,t,'wed',['♥']);else if(ty==='wd')line(f,t,'wed dash',['♥']);else if(ty==='f')line(f,t,'foe',['⚔','fm']);else if(ty==='l')line(f,t,'lk',null);else line(f,t,'al',null)});
+ Object.values(U).forEach(([a,b])=>line(a,b,'wed',['♥']));(M.W||[]).forEach(([a,b])=>line(a,b,'wed dash',['♥']));
+ Object.entries(N).forEach(([k,g])=>{const im=g.im||`${M.dir}/${k}.jpg`;df+=`<clipPath id="c_${k}"><circle cx="${g.x}" cy="${g.y}" r="${R}"/></clipPath>`;
+  nd+=`<g class="gn ${M.oly&&M.oly.includes(k)?'oly':''}" data-act="mmPick" data-id="${k}"><circle class="gr" cx="${g.x}" cy="${g.y}" r="${R+5}"/><circle class="gb" cx="${g.x}" cy="${g.y}" r="${R}"/><image href="${im}" xlink:href="${im}" x="${g.x-R}" y="${g.y-R}" width="${R*2}" height="${R*2}" clip-path="url(#c_${k})" preserveAspectRatio="xMidYMid slice"/><circle class="gf" cx="${g.x}" cy="${g.y}" r="${R}"/><text x="${g.x}" y="${g.y+R+22}" text-anchor="middle">${g.n}</text>${g.d?`<text class="gd" x="${g.x}" y="${g.y+R+41}" text-anchor="middle">${g.d}</text>`:''}</g>`});
+ return `<svg id="mmsvg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${M.w} ${M.h}"><defs>${df}</defs><rect data-act="mmClear" width="${M.w}" height="${M.h}" fill="transparent"/><g>${ti}</g><g>${e}</g><g>${m}</g><g>${nd}</g></svg>`}
+VIEWS.harti=()=>{if(!UI.map)return `<p class="lead">🗺️ Hărți interactive. Atinge o figură sau un eveniment ca să vezi povestea lui.</p>${MAPS.map(m=>`<button class="gcard" data-act="mmOpen" data-k="${m.id}"><span class="gi">${m.e}</span><span class="grow"><b>${m.t}</b><small>${m.s}</small></span><span class="chev">›</span></button>`).join('')}<div class="gcard lock"><span class="gi">✨</span><span class="grow"><b>Mai multe hărți</b><small>În curând</small></span></div>`;
+ const M=CM();return `<div class="gbar"><button class="btn sm ghost" data-act="mmBack">‹ Hărți</button><b>${M.e} ${M.t}</b></div>
+ <div class="chips">${M.F.map(([k,l])=>`<button class="chip ${MM.f===k?'on':''}" data-act="mmF" data-k="${k}">${l}</button>`).join('')}</div>
  <div class="row" style="margin-bottom:10px"><button class="btn sm grow" data-act="mmFact">💡 Curiozitate</button><button class="btn sm ghost" data-act="mmZ" data-d="-1">－</button><button class="btn sm ghost" data-act="mmZ" data-d="1">＋</button></div>
  <div class="mm" id="mm">${mmSvg()}</div>
- <p class="hint" style="text-align:center">Atinge un zeu: se luminează rudele lui. Trage cu degetul ca să te plimbi pe hartă.<br>♥ căsătorie · linie întreruptă = după unele povești</p>`};
-function mmMount(){const mm=$('#mm'),sv=$('#mmsvg');if(!mm||!sv)return;mmZoom(0);mm.scrollLeft=Math.max(0,(1100*MM.z-mm.clientWidth)/2);mmApply()}
-function mmZoom(d){const mm=$('#mm'),sv=$('#mmsvg');if(!sv)return;const old=MM.z,cx=mm?mm.scrollLeft+mm.clientWidth/2:0;MM.z=Math.min(1.25,Math.max(.4,+(MM.z+d*.15).toFixed(2)));sv.style.width=1100*MM.z+'px';sv.style.height=1060*MM.z+'px';if(mm&&d)mm.scrollLeft=cx*MM.z/old-mm.clientWidth/2}
-A.mmOpen=d=>{UI.map=d.k;MM.sel=null;MM.f='toti';render();scrollTo(0,0)};
+ <p class="hint" style="text-align:center">${M.leg}</p>`};
+function mmMount(){const mm=$('#mm'),sv=$('#mmsvg');if(!mm||!sv)return;mmZoom(0);mm.scrollLeft=Math.max(0,(CM().w*MM.z-mm.clientWidth)/2);mm.scrollTop=0;mmApply()}
+function mmZoom(d){const M=CM(),mm=$('#mm'),sv=$('#mmsvg');if(!sv)return;const old=MM.z,cx=mm?mm.scrollLeft+mm.clientWidth/2:0;MM.z=Math.min(1.25,Math.max(.4,+(MM.z+d*.15).toFixed(2)));sv.style.width=M.w*MM.z+'px';sv.style.height=M.h*MM.z+'px';if(mm&&d)mm.scrollLeft=cx*MM.z/old-mm.clientWidth/2}
+A.mmOpen=d=>{UI.map=d.k;MM.sel=null;MM.f='toti';MM.z=MD[d.k].z;render();scrollTo(0,0)};
 A.mmBack=()=>{UI.map=null;mmClosePop();MM.sel=null;render()};
 A.mmF=d=>{MM.f=d.k;MM.sel=null;mmClosePop();document.querySelectorAll('.chips .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===d.k));mmApply()};
 A.mmZ=d=>mmZoom(+d.d);
 A.mmClear=()=>{MM.sel=null;mmClosePop();mmApply()};
 A.mmPick=d=>{mmSelect(d.id)};
-A.mmFact=()=>{MM.sel=null;mmApply();mmPop(`<div class="phead"><span class="pic">💡</span><div><b>Știai că…?</b><small>curiozități despre zeii greci</small></div><button class="px" data-act="mmClose">✕</button></div><p class="curio">${pick(GFACTS)}</p>`)};
+A.mmFact=()=>{MM.sel=null;mmApply();mmPop(`<div class="phead"><span class="pic">💡</span><div><b>Știai că…?</b><small>curiozități</small></div><button class="px" data-act="mmClose">✕</button></div><p class="curio">${pick(CM().facts)}</p>`)};
 A.mmClose=()=>mmClosePop();
-function mmApply(){const sv=$('#mmsvg');if(!sv)return;let on=null,rel=null;
- if(MM.sel){const r=mmRel(MM.sel);rel=new Set([MM.sel,...r.pa,...r.ch,...r.sp,...r.sib])}
- else if(MM.f==='oly')on=new Set(OLY);else if(MM.f==='tit')on=new Set(TIT);
+function mmApply(){const sv=$('#mmsvg');if(!sv)return;const M=CM();let on=null,rel=null;
+ if(MM.sel){const r=mmRel(MM.sel);rel=new Set([MM.sel,...r.pa,...r.ch,...r.sp,...r.sib,...r.al,...r.fo,...r.bf,...r.af,...r.lk])}
+ else{const f=M.F.find(x=>x[0]===MM.f);if(f&&f[2])on=new Set(f[2])}
  sv.querySelectorAll('.gn').forEach(n=>{const id=n.dataset.id;n.classList.toggle('sel',id===MM.sel);n.classList.toggle('dim',rel?!rel.has(id):on?!on.has(id):false);n.classList.toggle('hot',!!on&&on.has(id)&&!rel)});
  sv.querySelectorAll('.ge,.gm').forEach(e=>{const ms=e.dataset.m.split(',');e.classList.toggle('dim',rel?!ms.every(x=>rel.has(x)):on?true:false);e.classList.toggle('lit',!!rel&&ms.every(x=>rel.has(x)))})}
-function mmSelect(id){MM.sel=id;mmApply();const g=GZ[id],r=mmRel(id),nm=a=>a.map(x=>`<button class="rc" data-act="mmPick" data-id="${x}">${GZ[x].n}</button>`).join('');
+function mmSelect(id){const M=CM();MM.sel=id;mmApply();const g=M.N[id],r=mmRel(id),im=g.im||`${M.dir}/${id}.jpg`,nm=a=>a.map(x=>`<button class="rc" data-act="mmPick" data-id="${x}">${M.N[x].n}</button>`).join('');
  const row=(ic,l,a)=>a.length?`<div class="rrow"><span>${ic} ${l}</span>${nm(a)}</div>`:'';
- mmPop(`<div class="phead"><img src="img/zei/${id}.jpg" alt=""><div><b>${g.n}</b><small>la romani: ${g.r}</small></div><button class="px" data-act="mmClose">✕</button></div>
- <p><b>Domeniu:</b> ${g.dom}</p><p><b>Simboluri:</b> ${g.sim}</p><p class="curio">💡 ${g.fapt}</p>${g.ex?`<p class="mut" style="font-size:13px">${g.ex}</p>`:''}
- ${row('👪','Părinți',r.pa)}${row('💍','Soț / soție',r.sp)}${row('🌱','Copii',r.ch)}${row('👫','Frați și surori',r.sib)}`)}
+ mmPop(`<div class="phead"><img src="${im}" alt=""><div><b>${g.n}</b><small>${M.sub(g)}</small></div><button class="px" data-act="mmClose">✕</button></div>
+ ${M.body(g)}${g.ex?`<p class="mut" style="font-size:13px">${g.ex}</p>`:''}
+ ${row('👪','Părinți',r.pa)}${row('💍','Soț / soție',r.sp)}${row('🌱','Copii',r.ch)}${row('👫','Frați și surori',r.sib)}${row('🤝','Aliați',r.al)}${row('⚔️','Dușmani',r.fo)}${row('⏮️','Înainte',r.bf)}${row('⏭️','După',r.af)}${row('🔗','Legat de',r.lk)}`)}
 function mmPop(html){let p=$('#mmpop');if(!p){p=document.createElement('div');p.id='mmpop';document.body.appendChild(p);p.addEventListener('pointerdown',()=>{MM.pin=true;clearTimeout(MM.t);p.classList.add('pinned')})}
  p.className='';p.innerHTML=`<div class="pbar"><i></i></div>${html}<div class="pnote">se închide singur în 4 secunde · atinge ca să-l ții deschis</div>`;MM.pin=false;void p.offsetWidth;p.classList.add('on');clearTimeout(MM.t);MM.t=setTimeout(()=>{if(!MM.pin)mmClosePop()},4000)}
 function mmClosePop(){clearTimeout(MM.t);const p=$('#mmpop');if(p)p.remove()}
@@ -964,7 +1055,7 @@ function mmClosePop(){clearTimeout(MM.t);const p=$('#mmpop');if(p)p.remove()}
 /* ===== 10. PIAN: melodii pe două mâini, cu tastatură, demo și exersare pas cu pas ===== */
 const PNS=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','La♯','Si'],PLS=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
 const PMID={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
-const pMidi=s=>12*(+s.slice(-1)+1)+PMID[s[0]];
+const pMidi=s=>12*(+s.slice(-1)+1)+PMID[s[0]]+(s[1]==='#'?1:0);
 const pBlack=m=>[1,3,6,8,10].includes(m%12);
 const P={song:'bella',mode:null,bpm:80,solf:true,timers:[],run:false,steps:[],i:0,got:new Set(),err:0,done:false,ctx:null};
 const pName=m=>(P.solf?PNS:PLS)[m%12];
@@ -978,9 +1069,19 @@ const SONGS={bella:{t:'Bella Ciao',nv:'10 ani',cheie:'La minor, doar clape albe'
   ['F5',.5,'glia'],['E5',2,'to'],['E5',.5,'e'],['D5',.5,'ho'],['C5',.5,'tro'],
   ['B4',1,'va'],['E5',1,'to'],['C5',1,"l'in"],['B4',1,'va'],['A4',2,'sor']],
  lh:[[['A2','E3'],'Am'],[['A2','E3'],'Am'],[['A2','E3'],'Am'],[['E2','B2'],'E'],[['D3','A3'],'Dm'],[['D3','A2'],'Dm→Am'],[['E2','B2'],'E'],[['A2'],'Am']]}};
-function pSong(){const s=SONGS[P.song];if(s._ev)return s._ev;const ev=[];let t=0;
+SONGS.bella.pick=1.5;SONGS.bella.bars=8;SONGS.bella.chords=SONGS.bella.lh.map(x=>x[1]);SONGS.bella.tip=()=>`Începe cu degetul mare al mâinii drepte pe <b>${pName(64)}</b>, iar mâna stângă pe <b>${pName(45)}</b> mic. Atinge tastele luminate, în ordine.`;
+SONGS.bella.nota='Melodia e populară (domeniu public), după partitura de pe Wikipedia, în La minor; mâna stângă e un aranjament simplificat.';
+/* Hallelujah (Leonard Cohen): DOAR acordurile strofei, în Do major. Melodia și versurile sunt protejate de drepturi de autor și nu sunt în aplicație.
+   Aici mâna stângă cântă rădăcina acordului, iar mâna dreaptă un arpegiu simplu: scheletul pe care se cântă piesa. */
+SONGS.halle={t:'Hallelujah (acordurile)',nv:'10 ani',cheie:'Do major · acorduri',pick:0,bars:16,chords:['C','Am','C','Am','F','G','C','G','C','F','G','Am','F','G','E7','Am'],
+ tip:()=>'Ascultă piesa lui Leonard Cohen și cântă acordurile peste ea: mâna stângă cântă nota de jos a acordului, mâna dreaptă urcă pe notele lui, una câte una. Acordul <b>E7</b> are și o clapă neagră (Sol♯).',
+ nota:'Aici sunt doar acordurile strofei (forma cea mai răspândită, în Do major), nu melodia. Melodia și versurile piesei „Hallelujah” a lui Leonard Cohen sunt protejate de drepturi de autor, așa că nu le-am pus în aplicație.',
+ build(){const Q={C:['C3',['C4','E4','G4','E4']],Am:['A2',['A3','C4','E4','C4']],F:['F2',['F3','A3','C4','A3']],G:['G2',['G3','B3','D4','B3']],E7:['E2',['E4','G#4','B4','D5']]},ev=[];
+  this.chords.forEach((c,k)=>{const[r,n]=Q[c],b=4*k;ev.push({h:'l',m:pMidi(r),t:b,d:4,ch:c});n.forEach((x,i)=>ev.push({h:'r',m:pMidi(x),t:b+i,d:1,s:i?'':c}))});return ev}};
+function pSong(){const s=SONGS[P.song];if(s._ev)return s._ev;let ev=[],t=0;
+ if(s.build){ev=s.build();t=s.bars*4}else{
  s.rh.forEach(([n,d,sy])=>{ev.push({h:'r',m:pMidi(n),t,d,s:sy});t+=d});
- s.lh.forEach(([ns,ch],k)=>{const b=1.5+4*k;if(ns.length===2){ev.push({h:'l',m:pMidi(ns[0]),t:b,d:2,ch},{h:'l',m:pMidi(ns[1]),t:b+2,d:2})}else ev.push({h:'l',m:pMidi(ns[0]),t:b,d:3,ch})});
+ s.lh.forEach(([ns,ch],k)=>{const b=1.5+4*k;if(ns.length===2){ev.push({h:'l',m:pMidi(ns[0]),t:b,d:2,ch},{h:'l',m:pMidi(ns[1]),t:b+2,d:2})}else ev.push({h:'l',m:pMidi(ns[0]),t:b,d:3,ch})})}
  ev.sort((a,b)=>a.t-b.t||(a.h<b.h?-1:1));s._ev=ev;s._end=t;return ev}
 const PLO=40,PHI=77,PKW=44;
 function pKeys(){let w=0,wh='',bl='';for(let m=PLO;m<=PHI;m++){if(pBlack(m)){bl+=`<div class="bk" data-m="${m}" style="left:${w*PKW-14}px"></div>`}else{wh+=`<div class="wk" data-m="${m}" style="left:${w*PKW}px;width:${PKW}px"><span>${pName(m)}${m%12===0?`<i>${Math.floor(m/12)-1}</i>`:''}</span></div>`;w++}}
@@ -993,33 +1094,34 @@ const pKey=m=>document.querySelector(`#kb [data-m="${m}"]`);
 function pFlash(m,cls,ms){const k=pKey(m);if(!k)return;k.classList.add(cls);setTimeout(()=>k.classList.remove(cls),ms)}
 function pScrollTo(m){const kb=$('#kb'),k=pKey(m);if(!kb||!k)return;const x=k.offsetLeft+(k.offsetWidth||PKW)/2-kb.clientWidth/2;kb.scrollTo({left:Math.max(0,x),behavior:'smooth'})}
 function pChips(ev,hand,tt){return ev.filter(e=>e.h===hand&&e.t>=tt[0]&&e.t<tt[1])}
-function pTab(){const ev=pSong(),s=SONGS[P.song];let h='';
- for(let k=0;k<=8;k++){const a=k===0?0:1.5+4*(k-1),b=k===0?1.5:a+4,rh=pChips(ev,'r',[a,b]),lh=pChips(ev,'l',[a,b]),pre=k===0?(4-1.5)/4*100:0;
+function pTab(){const ev=pSong(),s=SONGS[P.song],pk=s.pick||0;let h='';
+ for(let k=pk?0:1;k<=s.bars;k++){const a=k===0?0:pk+4*(k-1),b=k===0?pk:a+4,rh=pChips(ev,'r',[a,b]),lh=pChips(ev,'l',[a,b]),pre=k===0?(4-pk):0;
   const cell=(e,txt,cls)=>`<div class="tc ${cls}" data-t="${e.t}" data-h="${e.h}" style="flex:${e.d} 1 0"><b>${txt}</b></div>`;
   const row=(arr,f,cls)=>`<div class="tl">${pre?`<i style="flex:${(4-1.5)} 0 0"></i>`:''}${arr.map(e=>f(e)).join('')}</div>`;
-  const used=r=>r.reduce((x,e)=>x+e.d,0)+(pre?2.5:0);
+  const used=r=>r.reduce((x,e)=>x+e.d,0)+(pre?pre:0);
   const tail=r=>used(r)<3.99?`<i style="flex:${(4-used(r)).toFixed(2)} 0 0"></i>`:'';
   h+=`<div class="tm"><div class="tn">${k===0?'începutul':k}</div><div class="tg">
-  <div class="tl">${pre?`<i style="flex:2.5 0 0"></i>`:''}${rh.map(e=>cell(e,`${pName(e.m)}${e.m>=72?'<u></u>':''}`,'r')).join('')}${tail(rh)}</div>
-  <div class="tl sy">${pre?`<i style="flex:2.5 0 0"></i>`:''}${rh.map(e=>`<div style="flex:${e.d} 1 0">${e.s}</div>`).join('')}${tail(rh)}</div>
-  ${lh.length?`<div class="tl">${lh.map(e=>cell(e,pName(e.m),'l')).join('')}${tail(lh)}</div><div class="tch">${s.lh[k-1][1]}</div>`:''}</div></div>`}
+  <div class="tl">${pre?`<i style="flex:${pre} 0 0"></i>`:''}${rh.map(e=>cell(e,`${pName(e.m)}${e.m>=72?'<u></u>':''}`,'r')).join('')}${tail(rh)}</div>
+  <div class="tl sy">${pre?`<i style="flex:${pre} 0 0"></i>`:''}${rh.map(e=>`<div style="flex:${e.d} 1 0">${e.s}</div>`).join('')}${tail(rh)}</div>
+  ${lh.length?`<div class="tl">${lh.map(e=>cell(e,pName(e.m),'l')).join('')}${tail(lh)}</div><div class="tch">${s.chords[k-1]}</div>`:''}</div></div>`}
  return h}
 function pMark(){document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'));document.querySelectorAll('#kb .on1,#kb .on2').forEach(k=>k.classList.remove('on1','on2'));
  if(!P.run||P.mode==='listen'||!P.steps[P.i])return;const st=P.steps[P.i];st.ev.forEach(e=>{const k=pKey(e.m);if(k)k.classList.add(e.h==='r'?'on1':'on2');document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`).forEach(c=>{c.classList.add('cur');if(e===st.ev[0])c.scrollIntoView({block:'nearest',behavior:'smooth'})})});pScrollTo(st.ev[0].m);
  const e0=st.ev.find(e=>e.h==='r')||st.ev[0];$('#plyr').innerHTML=`<b>${st.ev.map(e=>pName(e.m)).join(' + ')}</b><small>${e0.s||''}</small>`;$('#pprog').style.width=(P.i/P.steps.length*100)+'%'}
 VIEWS.pian=()=>{if(!UI.pn)return `<p class="lead">🎹 Cântă la pian cu două mâini. Fiecare melodie vine cu „tab”: notele scrise pe măsuri, mâna dreaptă sus și mâna stângă jos.</p>
  <button class="gcard" data-act="pnOpen" data-k="bella"><span class="gi" style="background:linear-gradient(135deg,#1b3fd1,#12b5e5)">🎹</span><span class="grow"><b>Bella Ciao</b><small>Nivel 10 ani · două mâini · doar clape albe${(S.piano&&S.piano.bella&&S.piano.bella.both)?' · ✅ învățată':''}</small></span><span class="chev">›</span></button>
+ <button class="gcard" data-act="pnOpen" data-k="halle"><span class="gi" style="background:linear-gradient(135deg,#0d6e8c,#2ad4c9)">🎼</span><span class="grow"><b>Hallelujah — acordurile</b><small>Leonard Cohen · nivel 10 ani · două mâini${(S.piano&&S.piano.halle&&S.piano.halle.both)?' · ✅ învățat':''}</small></span><span class="chev">›</span></button>
  <div class="gcard lock"><span class="gi">🎶</span><span class="grow"><b>Mai multe melodii</b><small>În curând</small></span></div>`;
- const s=SONGS[P.song],pr=(S.piano&&S.piano.bella)||{},M=[['listen','👂','Ascult'],['rh','🤚','Dreapta'],['lh','✋','Stânga'],['both','🙌','Amândouă']];
+ const s=SONGS[P.song],pr=(S.piano&&S.piano[P.song])||{},M=[['listen','👂','Ascult'],['rh','🤚','Mâna dreaptă'],['lh','✋','Mâna stângă'],['both','🙌','Două mâini']];
  return `<div class="gbar"><button class="btn sm ghost" data-act="pnBack">‹ Melodii</button><b>🎹 ${s.t}</b></div>
- <div class="card" style="padding:12px 14px"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="badge">Nivel ${s.nv}</span><span class="badge">${s.cheie}</span><span class="badge">4/4</span><span class="badge">Am · E · Dm</span></div>
+ <div class="card" style="padding:12px 14px"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="badge">Nivel ${s.nv}</span><span class="badge">${s.cheie}</span><span class="badge">4/4</span><span class="badge">${[...new Set(s.chords)].join(' · ')}</span></div>
  <div class="chips" style="margin:10px 0 0">${M.map(([k,e,n])=>`<button class="chip ${P.mode===k&&P.run?'on':''}" data-act="pnMode" data-k="${k}">${e} ${n}${pr[k]&&k!=='listen'?' ✅':''}</button>`).join('')}</div></div>
  <div class="card pbox"><div id="plyr" class="plyr"><b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small></div><div class="bar"><i id="pprog" style="width:0"></i></div>
  <div class="kb" id="kb">${pKeys()}</div>
  <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="pnStop">⏹ Oprește</button><button class="btn sm ghost" data-act="pnTempo">🐢 Tempo: ${P.bpm}</button><button class="btn sm ghost" data-act="pnSolf">${P.solf?'Do-Re-Mi':'C-D-E'}</button></div></div>
- <div class="lead" style="font-size:13px">🔵 Mâna dreaptă · 🟡 Mâna stângă. Începe cu degetul mare al mâinii drepte pe <b>${pName(64)}</b>, iar mâna stângă pe <b>${pName(45)}</b> mic. Atinge tastele luminate, în ordine.</div>
+ <div class="lead" style="font-size:13px">🔵 Mâna dreaptă · 🟡 Mâna stângă. ${s.tip()}</div>
  <div class="h2" style="margin-left:0">📜 Tab-ul melodiei</div><div id="ptab" class="ptab">${pTab()}</div>
- <p class="hint">Lungimea fiecărei note se vede din lățimea căsuței. Punctul de sus înseamnă octava mai înaltă. Melodia e populară (domeniu public), după partitura de pe Wikipedia, în La minor; mâna stângă e un aranjament simplificat.</p>`};
+ <p class="hint">Lungimea fiecărei note se vede din lățimea căsuței. Punctul de sus înseamnă octava mai înaltă. ${s.nota}</p>`};
 function pianMount(){const kb=$('#kb');if(!kb)return;pMark();const m=P.run&&P.steps[P.i]?P.steps[P.i].ev[0].m:64;pScrollTo(m);
  kb.onpointerdown=e=>{const k=e.target.closest('[data-m]');if(!k)return;e.preventDefault();pPress(+k.dataset.m,k)}}
 function pStop(keep){P.timers.forEach(clearTimeout);P.timers=[];if(!keep){P.run=false;P.mode=null}document.querySelectorAll('#kb .wk,#kb .bk').forEach(k=>k.classList.remove('on1','on2','hit'));document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'))}
@@ -1041,11 +1143,11 @@ function pPress(m,el){pAudio();pTone(m);el.classList.add('hit');setTimeout(()=>e
  if(!P.run||P.mode==='listen'||P.done)return;const st=P.steps[P.i];if(!st)return;
  if(st.need.includes(m)){P.got.add(m);if(st.need.every(n=>P.got.has(n))){P.i++;P.got=new Set();if(P.i>=P.steps.length)pFinish();else pMark()}else{const k=pKey(m);if(k)k.classList.remove('on1','on2')}}
  else{P.err++;el.classList.add('bad');setTimeout(()=>el.classList.remove('bad'),300);if(navigator.vibrate)try{navigator.vibrate(30)}catch(e){}}}
-function pFinish(){P.done=true;P.run=false;const k=P.mode,pr=((S.piano=S.piano||{}).bella=S.piano.bella||{}),old=pr[k],perfect=P.err===0;let gain=0;
+function pFinish(){P.done=true;P.run=false;const k=P.mode,pr=((S.piano=S.piano||{})[P.song]=S.piano[P.song]||{}),old=pr[k],perfect=P.err===0;let gain=0;
  if(!old)gain+=k==='both'?6:3;if(perfect&&!(old&&old.perfect))gain+=2;pr[k]={d:today(),err:old?Math.min(old.err,P.err):P.err,perfect:perfect||!!(old&&old.perfect)};
  pMark();const l=$('#plyr');if(l)l.innerHTML=`<b>${perfect?'🏆 Fără nicio greșeală!':'🎉 Ai terminat melodia!'}</b><small>${P.err?P.err+(P.err===1?' greșeală':' greșeli'):'perfect'}${gain?' · +'+gain+' ⭐':''}</small>`;
  const p=$('#pprog');if(p)p.style.width='100%';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'));
- if(gain)reward(gain,mid(),true);else{save();fireworks()}renderTop()}
+ if(gain)reward(gain,mid(),true);else{save();fireworks()}}
 
 /* ===== 5. BANCA ===== */
 const BT=[['panou','📊','Panou'],['deps','💰','Deponenți'],['invs','🤝','Investitori'],['loans','📝','Datornici'],['projects','🚀','Proiecte'],['lectii','📖','Lecții']];
@@ -1246,7 +1348,7 @@ function homeHTML(){const p=S.profile,nb=BADGES.find(b=>p.stars<b[0]),pv=[...BAD
  const zi=S.notes.filter(n=>n.scope==='zi').flatMap(n=>n.items),zd=zi.filter(i=>i.done).length;
  const gAct=S.goals.filter(g=>!g.done&&okCount(g)===5).length,ch=(S.challenges||[]).filter(c=>c.status!=='castigata').length;
  const box=(k,e,n,sub,i)=>`<button class="hm-box" data-act="homeGo" data-k="${k}" style="animation-delay:${.08+i*.05}s"><span class="e">${e}</span><b>${n}</b><small>${sub}</small></button>`;
- const B=[['agenda','📅','Agenda',zi.length?`${zi.length-zd} de făcut azi`:'planul zilei'],['prieteni','🤝','Prieteni',S.friends.length+' prieteni'],['smart','🎯','Obiective',gAct?gAct+' active 🔥':'SMART'],['vise','🌈','Vise',S.dreams.length+' vise'],['provocari','⚡','Provocări',ch?ch+' în joc':'acceptă una'],['neagra','⛔','Lista neagră',(S.black||[]).length?'zile la rând':'de evitat'],['banca','🏦','Banca','capital '+Math.round(bk().cap)+' lei'],['jocuri','🎮','Jocuri','5 jocuri'],['harti','🗺️','Hărți','zeii Olimpului'],['pian','🎹','Pian','Bella Ciao'],['premii','🏆','Premii',p.badges.length+'/'+BADGES.length+' medalii']];
+ const B=[['agenda','📅','Agenda',zi.length?`${zi.length-zd} de făcut azi`:'planul zilei'],['prieteni','🤝','Prieteni',S.friends.length+' prieteni'],['smart','🎯','Obiective',gAct?gAct+' active 🔥':'SMART'],['vise','🌈','Vise',S.dreams.length+' vise'],['provocari','⚡','Provocări',ch?ch+' în joc':'acceptă una'],['neagra','⛔','Lista neagră',(S.black||[]).length?'zile la rând':'de evitat'],['banca','🏦','Banca','capital '+Math.round(bk().cap)+' lei'],['jocuri','🎮','Jocuri','5 jocuri'],['harti','🗺️','Hărți','3 hărți'],['pian','🎹','Pian','2 melodii'],['premii','🏆','Premii',p.badges.length+'/'+BADGES.length+' medalii']];
  return `<div class="hm-top"><button class="hm-pill" data-act="settings">${esc(p.avatar)} Ralph</button><button class="hm-pill" data-act="prizes">⭐ ${p.stars}</button></div>
  <div class="hm-logo"><img src="logo.png" alt=""><div class="hm-capy">${CAPY}</div></div>
  <div class="hm-title">Ralph’s Vault</div>
@@ -1286,8 +1388,8 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=10;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!'};
+const APP_VER=11;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!',11:'🦸 Eroii Greciei, 📜 Istoria grecilor și 🎼 Hallelujah (acordurile)!'};
 function migrate(){S.profile.name='Ralph';S.profile.welcomed=true;if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
  if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};if(!S.piano)S.piano={};
  const old=S.ver||1;let news=null;if(old<APP_VER){if(DB.db&&S.profile.welcomed)DB.set('copie_inainte_de_v'+APP_VER,JSON.parse(JSON.stringify(S))).catch(()=>{});news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
