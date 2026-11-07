@@ -20,3 +20,12 @@ Mâna stângă: aranjament simplificat (C și G). Ritmul „E D D” (pătrime c
 ## Versiunea pe acorduri (la fiecare melodie)
 În `index.html`: `SONGS.<melodie>.cv` (acordurile pe măsuri; „X→Y” = două acorduri într-o măsură) și tabela `PQ` (rădăcina acordului + notele lui).
 Mâna stângă cântă rădăcina, mâna dreaptă un arpegiu. Progresul se salvează separat: cheile `c_rh`, `c_lh`, `c_both` (la melodie: `rh`, `lh`, `both`).
+
+## Banda de note care cad (v13)
+Fiecare melodie se cântă cu o bandă de note care cad spre clape (canvas `#lane`), sub antet, împreună cu tastatura: lungimea barei = durata notei (60 px pe timp),
+🔵 mâna dreaptă, 🟡 mâna stângă. În exersare, nota curentă așteaptă la linia de lovire până e cântată, apoi banda înaintează la nota următoare; la „Ascult” banda cade în ritmul melodiei.
+Tab-ul pe măsuri rămâne dedesubt, pliat.
+
+## Ce nu e în aplicație (drepturi de autor)
+Melodiile „Hallelujah” (Leonard Cohen) și tema „Star Wars” (John Williams) nu sunt incluse ca note de melodie. La Hallelujah există doar acordurile; pentru Star Wars nu s-a putut verifica o progresie de acorduri
+(sursele diferă chiar la tonalitate), așa că nu s-a adăugat nimic. Melodii libere de drepturi sugerate: Greensleeves, Für Elise, Jingle Bells, „Marte” din „Planetele” de Holst.

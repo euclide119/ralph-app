@@ -187,17 +187,18 @@ nav#tabs button.on .i{transform:scale(1.18) translateY(-2px)}
 #mmpop .rc{border:1px solid rgba(245,213,138,.4);background:rgba(245,213,138,.1);color:#f8e3a3;border-radius:99px;padding:3px 9px;font-size:13px;font-weight:600}
 #mmpop .pnote{text-align:center;font-size:11px;color:#8f877a;margin-top:8px}
 .kb{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:12px;border-radius:12px;background:#101319;padding:8px 0 0;touch-action:pan-x}
-.kbin{position:relative;height:200px}
-.wk{position:absolute;top:0;height:200px;background:linear-gradient(180deg,#fff,#f1f3f6);border:1px solid #9aa3ad;border-top:0;border-radius:0 0 8px 8px;box-sizing:border-box;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;-webkit-user-select:none;user-select:none;transition:background .1s,transform .1s}
+.kbin{position:relative}.kbin canvas{display:block}.keys{position:relative;height:112px}
+.wk{position:absolute;top:0;height:112px;background:linear-gradient(180deg,#fff,#f1f3f6);border:1px solid #9aa3ad;border-top:0;border-radius:0 0 8px 8px;box-sizing:border-box;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;-webkit-user-select:none;user-select:none;transition:background .1s,transform .1s}
 .wk span{font-size:12px;font-weight:700;color:#4a5562;pointer-events:none}.wk span i{font-style:normal;font-size:9px;vertical-align:sub;margin-left:1px}
-.bk{position:absolute;top:0;width:28px;height:124px;background:linear-gradient(180deg,#2b2e35,#0c0d10);border-radius:0 0 6px 6px;z-index:2;box-shadow:0 3px 5px rgba(0,0,0,.5)}
+.bk{position:absolute;top:0;width:28px;height:68px;background:linear-gradient(180deg,#2b2e35,#0c0d10);border-radius:0 0 6px 6px;z-index:2;box-shadow:0 3px 5px rgba(0,0,0,.5)}
 .wk.hit{background:#d6e4ff;transform:translateY(2px)}.bk.hit{background:#4a5160}
 .wk.bad{background:#ffd9d6;animation:shake .3s}
 @keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 .wk.on1{background:linear-gradient(180deg,#8fe3ff,#2ad4c9);box-shadow:inset 0 -6px 0 #0a84ff}
 .wk.on2,.bk.on2{background:linear-gradient(180deg,#ffe28a,#f5b83d);box-shadow:inset 0 -6px 0 #c98a00}
 .bk.on1{background:#0a84ff}
-.pbox{padding:12px}.plyr{text-align:center;margin-bottom:8px}.plyr b{display:block;font-size:30px;letter-spacing:-.02em}.plyr small{display:block;color:var(--mut);font-size:17px;min-height:22px}
+.pbox{padding:8px 10px 10px;position:sticky;top:var(--hh,118px);z-index:14;box-shadow:0 10px 26px rgba(10,60,120,.22)}.pmodes{margin:0 0 6px}.plyr{text-align:center;margin-bottom:6px}.plyr b{display:inline-block;font-size:22px;letter-spacing:-.02em;margin-right:8px}.plyr small{display:inline-block;color:var(--mut);font-size:14px;min-height:18px}
+.kb{margin-top:8px}.tabdet>summary{padding:12px 14px;font-weight:700;font-size:16px}.tabdet .ptab{padding:0 8px 8px;margin:0}
 .ptab{margin-bottom:14px}.tm{display:flex;gap:8px;align-items:stretch;margin-bottom:8px}.tn{flex:none;width:26px;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;font-size:11px;color:var(--mut);font-weight:700}
 .tg{flex:1;min-width:0;background:#fff;border-radius:12px;padding:6px;box-shadow:var(--sh)}.tl{display:flex;gap:2px;min-height:30px}.tl i{display:block}
 .tc{border-radius:7px;display:flex;align-items:center;justify-content:center;padding:4px 1px;min-width:0;overflow:hidden;position:relative}.tc b{font-size:13px;font-weight:700;white-space:nowrap}
@@ -1057,7 +1058,7 @@ const PNS=['Do','Do♯','Re','Re♯','Mi','Fa','Fa♯','Sol','Sol♯','La','La�
 const PMID={C:0,D:2,E:4,F:5,G:7,A:9,B:11};
 const pMidi=s=>12*(+s.slice(-1)+1)+PMID[s[0]]+(s[1]==='#'?1:0);
 const pBlack=m=>[1,3,6,8,10].includes(m%12);
-const P={song:'bella',ver:'mel',mode:null,bpm:80,solf:true,timers:[],run:false,steps:[],i:0,got:new Set(),err:0,done:false,ctx:null};
+const P={song:'bella',ver:'mel',pos:0,pos0:0,t0:0,fx:[],raf:0,anim:null,mode:null,bpm:80,solf:true,timers:[],run:false,steps:[],i:0,got:new Set(),err:0,done:false,ctx:null};
 const pName=m=>(P.solf?PNS:PLS)[m%12];
 /* Bella Ciao — melodie populară (domeniu public), după partitura de pe Wikipedia, transpusă în La minor (doar clape albe).
    Mâna stângă: aranjament simplificat pentru începători (acorduri Am – E – Dm). Duratele sunt în timpi (1 = pătrime). */
@@ -1101,8 +1102,9 @@ function pSong(){const s=SONGS[P.song],v=pVer();s._ev=s._ev||{};s._end=s._end||{
  ev.sort((a,b)=>a.t-b.t||(a.h<b.h?-1:1));s._ev[v]=ev;s._end[v]=t;return ev}
 const pEnd=()=>{pSong();return SONGS[P.song]._end[pVer()]};
 const PLO=40,PHI=77,PKW=44;
-function pKeys(){let w=0,wh='',bl='';for(let m=PLO;m<=PHI;m++){if(pBlack(m)){bl+=`<div class="bk" data-m="${m}" style="left:${w*PKW-14}px"></div>`}else{wh+=`<div class="wk" data-m="${m}" style="left:${w*PKW}px;width:${PKW}px"><span>${pName(m)}${m%12===0?`<i>${Math.floor(m/12)-1}</i>`:''}</span></div>`;w++}}
- return `<div class="kbin" style="width:${w*PKW}px">${wh}${bl}</div>`}
+const PX={},PLH=176,PPB=60;
+function pKeys(){let w=0,wh='',bl='';for(let m=PLO;m<=PHI;m++){if(pBlack(m)){PX[m]={x:w*PKW-11,w:22};bl+=`<div class="bk" data-m="${m}" style="left:${w*PKW-14}px"></div>`}else{PX[m]={x:w*PKW+3,w:PKW-6};wh+=`<div class="wk" data-m="${m}" style="left:${w*PKW}px;width:${PKW}px"><span>${pName(m)}${m%12===0?`<i>${Math.floor(m/12)-1}</i>`:''}</span></div>`;w++}}
+ return `<div class="kbin" style="width:${w*PKW}px"><canvas id="lane" style="width:${w*PKW}px;height:${PLH}px"></canvas><div class="keys">${wh}${bl}</div></div>`}
 function pAudio(){if(!P.ctx)try{P.ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}if(P.ctx&&P.ctx.state==='suspended')P.ctx.resume();return P.ctx}
 function pTone(m,dur=1.2,vel=.55){const c=pAudio();if(!c||!S.profile.sound)return;const f=440*Math.pow(2,(m-69)/12),t=c.currentTime,g=c.createGain();
  g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vel*.38,t+.008);g.gain.exponentialRampToValueAtTime(vel*.12,t+.35);g.gain.exponentialRampToValueAtTime(.0001,t+Math.max(.5,dur));g.connect(c.destination);
@@ -1110,6 +1112,7 @@ function pTone(m,dur=1.2,vel=.55){const c=pAudio();if(!c||!S.profile.sound)retur
 const pKey=m=>document.querySelector(`#kb [data-m="${m}"]`);
 function pFlash(m,cls,ms){const k=pKey(m);if(!k)return;k.classList.add(cls);setTimeout(()=>k.classList.remove(cls),ms)}
 function pScrollTo(m){const kb=$('#kb'),k=pKey(m);if(!kb||!k)return;const x=k.offsetLeft+(k.offsetWidth||PKW)/2-kb.clientWidth/2;kb.scrollTo({left:Math.max(0,x),behavior:'smooth'})}
+function pEnsure(m){const kb=$('#kb'),q=PX[m];if(!kb||!q)return;const c=q.x+q.w/2,l=kb.scrollLeft,w=kb.clientWidth;if(c<l+50||c>l+w-50)kb.scrollTo({left:Math.max(0,c-w/2),behavior:'smooth'})}
 function pChips(ev,hand,tt){return ev.filter(e=>e.h===hand&&e.t>=tt[0]&&e.t<tt[1])}
 function pTab(){const ev=pSong(),s=pCfg(),pk=s.pick||0;let h='';
  for(let k=pk?0:1;k<=s.bars;k++){const a=k===0?0:pk+4*(k-1),b=k===0?pk:a+4,rh=pChips(ev,'r',[a,b]),lh=pChips(ev,'l',[a,b]),pre=k===0?(4-pk):0;
@@ -1122,50 +1125,74 @@ function pTab(){const ev=pSong(),s=pCfg(),pk=s.pick||0;let h='';
   <div class="tl sy">${pre?`<i style="flex:${pre} 0 0"></i>`:''}${rh.map(e=>`<div style="flex:${e.d} 1 0">${e.s}</div>`).join('')}${tail(rh)}</div>
   ${lh.length?`<div class="tl">${lh.map(e=>cell(e,pName(e.m),'l')).join('')}${tail(lh)}</div><div class="tch">${s.chords[k-1]}</div>`:''}</div></div>`}
  return h}
+function pRound(g,x,y,w,h,r){r=Math.min(r,h/2,w/2);g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
+function pDraw(){const cv=$('#lane');if(!cv)return;const W=parseInt(cv.style.width),dpr=devicePixelRatio||1;if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(PLH*dpr)}
+ const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,PLH);const bg=g.createLinearGradient(0,0,0,PLH);bg.addColorStop(0,'#08101d');bg.addColorStop(1,'#14263f');g.fillStyle=bg;g.fillRect(0,0,W,PLH);
+ g.strokeStyle='rgba(255,255,255,.06)';g.lineWidth=1;for(let m=PLO;m<=PHI;m++)if(!pBlack(m)){g.beginPath();g.moveTo(PX[m].x-3,0);g.lineTo(PX[m].x-3,PLH);g.stroke()}
+ const HY=PLH-6,now=performance.now(),cfg=pCfg(),pk=cfg.pick||0,ev=pSong(),act=P.run&&P.mode&&P.mode!=='listen'?P.mode:null,cur=act&&P.steps[P.i]?P.steps[P.i]:null,pul=.5+.5*Math.sin(now/180);
+ g.strokeStyle='rgba(245,213,138,.22)';for(let k=0;k<=cfg.bars;k++){const y=HY-((pk+4*k)-P.pos)*PPB;if(y>0&&y<PLH){g.beginPath();g.moveTo(0,y);g.lineTo(W,y);g.stroke()}}
+ g.textAlign='center';g.font='700 12px -apple-system,system-ui,sans-serif';
+ ev.forEach(e=>{const bot=HY-(e.t-P.pos)*PPB,top=bot-e.d*PPB;if(bot<-2||top>PLH+2)return;const q=PX[e.m];if(!q)return;
+  const dim=act&&((act==='rh'&&e.h!=='r')||(act==='lh'&&e.h!=='l')),isCur=cur&&cur.ev.includes(e),playing=P.run&&P.mode==='listen'&&e.t<=P.pos&&P.pos<e.t+e.d,got=isCur&&P.got.has(e.m);
+  const y=top+1.5,h=Math.max(9,bot-top-3),x=q.x,w=q.w;const gr=g.createLinearGradient(0,y,0,y+h);
+  if(got){gr.addColorStop(0,'#7be495');gr.addColorStop(1,'#34c759')}else if(e.h==='r'){gr.addColorStop(0,playing?'#d6f4ff':'#7fdcff');gr.addColorStop(1,playing?'#7fdcff':'#0a84ff')}else{gr.addColorStop(0,playing?'#fff1c2':'#ffe28a');gr.addColorStop(1,playing?'#ffe28a':'#f0aa22')}
+  g.globalAlpha=dim?.22:1;g.shadowColor=isCur?(e.h==='r'?'#2ad4c9':'#ffd60a'):'transparent';g.shadowBlur=isCur?10+10*pul:0;g.fillStyle=gr;pRound(g,x,y,w,h,7);g.fill();g.shadowBlur=0;
+  if(isCur){g.lineWidth=2;g.strokeStyle='rgba(255,255,255,'+(.6+.4*pul)+')';pRound(g,x,y,w,h,7);g.stroke()}
+  if(h>=17&&!dim){g.fillStyle=e.h==='r'?'#05233f':'#4a3000';g.fillText(pName(e.m),x+w/2,y+h-6)}g.globalAlpha=1});
+ const hl=g.createLinearGradient(0,HY,0,PLH);hl.addColorStop(0,'rgba(42,212,201,.85)');hl.addColorStop(1,'rgba(42,212,201,0)');g.fillStyle=hl;g.fillRect(0,HY,W,PLH-HY);
+ P.fx=P.fx.filter(f=>now-f.t<520);P.fx.forEach(f=>{const a=(now-f.t)/520;g.globalAlpha=1-a;g.strokeStyle=f.c;g.lineWidth=3;g.beginPath();g.arc(f.x,HY,8+a*36,0,7);g.stroke();g.fillStyle=f.c;for(let i=0;i<7;i++){const an=i/7*6.283,r=10+a*44;g.beginPath();g.arc(f.x+Math.cos(an)*r,HY-Math.abs(Math.sin(an))*r*.9,3*(1-a)+1,0,7);g.fill()}g.globalAlpha=1})}
+function pTick(){P.raf=0;const now=performance.now();if(P.mode==='listen'&&P.run)P.pos=P.pos0+(now-P.t0)*P.bpm/60000;
+ if(P.anim){const a=Math.min(1,(now-P.anim.t0)/P.anim.dur),e=1-Math.pow(1-a,3);P.pos=P.anim.from+(P.anim.to-P.anim.from)*e;if(a>=1)P.anim=null}
+ pDraw();if((P.run&&P.mode)||P.anim||P.fx.length)pKick()}
+function pKick(){if(!P.raf)P.raf=requestAnimationFrame(pTick)}
+function pGlide(to,dur){P.anim={from:P.pos,to,t0:performance.now(),dur:dur||280};pKick()}
 function pMark(){document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'));document.querySelectorAll('#kb .on1,#kb .on2').forEach(k=>k.classList.remove('on1','on2'));
- if(!P.run||P.mode==='listen'||!P.steps[P.i])return;const st=P.steps[P.i];st.ev.forEach(e=>{const k=pKey(e.m);if(k)k.classList.add(e.h==='r'?'on1':'on2');document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`).forEach(c=>{c.classList.add('cur');if(e===st.ev[0])c.scrollIntoView({block:'nearest',behavior:'smooth'})})});pScrollTo(st.ev[0].m);
+ if(!P.run||P.mode==='listen'||!P.steps[P.i])return;const st=P.steps[P.i];st.ev.forEach(e=>{const k=pKey(e.m);if(k)k.classList.add(e.h==='r'?'on1':'on2');document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`).forEach(c=>c.classList.add('cur'))});pEnsure((st.ev.find(e=>e.h==='r')||st.ev[0]).m);
  const e0=st.ev.find(e=>e.h==='r')||st.ev[0];$('#plyr').innerHTML=`<b>${st.ev.map(e=>pName(e.m)).join(' + ')}</b><small>${e0.s||''}</small>`;$('#pprog').style.width=(P.i/P.steps.length*100)+'%'}
 VIEWS.pian=()=>{if(!UI.pn)return `<p class="lead">🎹 Cântă la pian cu două mâini. Fiecare melodie are două versiuni: <b>melodia</b> și <b>acordurile</b>, fiecare cu „tab”: notele scrise pe măsuri, mâna dreaptă sus și mâna stângă jos.</p>
  <button class="gcard" data-act="pnOpen" data-k="bella"><span class="gi" style="background:linear-gradient(135deg,#1b3fd1,#12b5e5)">🎹</span><span class="grow"><b>Bella Ciao</b><small>Nivel 10 ani · două mâini · doar clape albe${(S.piano&&S.piano.bella&&S.piano.bella.both)?' · ✅ învățată':''}</small></span><span class="chev">›</span></button>
  <button class="gcard" data-act="pnOpen" data-k="ode"><span class="gi" style="background:linear-gradient(135deg,#0a84ff,#34c759)">🎶</span><span class="grow"><b>Oda bucuriei</b><small>Beethoven · nivel 10 ani · două mâini · doar clape albe${(S.piano&&S.piano.ode&&S.piano.ode.both)?' · ✅ învățată':''}</small></span><span class="chev">›</span></button>
  <button class="gcard" data-act="pnOpen" data-k="halle"><span class="gi" style="background:linear-gradient(135deg,#0d6e8c,#2ad4c9)">🎼</span><span class="grow"><b>Hallelujah — acordurile</b><small>Leonard Cohen · nivel 10 ani · două mâini${(S.piano&&S.piano.halle&&(S.piano.halle.both||S.piano.halle.c_both))?' · ✅ învățat':''}</small></span><span class="chev">›</span></button>
  <div class="gcard lock"><span class="gi">🎶</span><span class="grow"><b>Mai multe melodii</b><small>În curând</small></span></div>`;
- const s=SONGS[P.song],pr=(S.piano&&S.piano[P.song])||{},M=[['listen','👂','Ascult'],['rh','🤚','Mâna dreaptă'],['lh','✋','Mâna stângă'],['both','🙌','Două mâini']];
+ const s=SONGS[P.song],pr=(S.piano&&S.piano[P.song])||{},M=[['listen','👂','Ascult'],['rh','🤚','Dreapta'],['lh','✋','Stânga'],['both','🙌','Amândouă']];
  return `<div class="gbar"><button class="btn sm ghost" data-act="pnBack">‹ Melodii</button><b>🎹 ${s.t}</b></div>
  <div class="card" style="padding:12px 14px"><div class="row" style="gap:6px;flex-wrap:wrap"><span class="badge">Nivel ${s.nv}</span><span class="badge">${s.cheie}</span><span class="badge">4/4</span><span class="badge">${[...new Set(pCfg().chords.flatMap(c=>c.split('→')))].join(' · ')}</span></div>
  ${s.rh?`<div class="chips" style="margin:10px 0 0">${[['mel','🎵 Melodie'],['ch','🎼 Acorduri']].map(([k,n])=>`<button class="chip ${pVer()===k?'on':''}" data-act="pnVer" data-k="${k}">${n}</button>`).join('')}</div>`:''}
- <div class="chips" style="margin:10px 0 0">${M.map(([k,e,n])=>`<button class="chip ${P.mode===k&&P.run?'on':''}" data-act="pnMode" data-k="${k}">${e} ${n}${pr[pKeyOf(k)]&&k!=='listen'?' ✅':''}</button>`).join('')}</div></div>
- <div class="card pbox"><div id="plyr" class="plyr"><b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small></div><div class="bar"><i id="pprog" style="width:0"></i></div>
+</div>
+ <div class="card pbox"><div class="chips pmodes">${M.map(([k,e,n])=>`<button class="chip ${P.mode===k&&P.run?'on':''}" data-act="pnMode" data-k="${k}">${e} ${n}${pr[pKeyOf(k)]&&k!=='listen'?' ✅':''}</button>`).join('')}</div>
+ <div id="plyr" class="plyr"><b>Alege cum vrei să cânți</b><small>Notele cad spre clape: cântă-le când ajung jos</small></div><div class="bar"><i id="pprog" style="width:0"></i></div>
  <div class="kb" id="kb">${pKeys()}</div>
  <div class="row" style="margin-top:10px;gap:8px;flex-wrap:wrap"><button class="btn sm" data-act="pnStop">⏹ Oprește</button><button class="btn sm ghost" data-act="pnTempo">🐢 Tempo: ${P.bpm}</button><button class="btn sm ghost" data-act="pnSolf">${P.solf?'Do-Re-Mi':'C-D-E'}</button></div></div>
  <div class="lead" style="font-size:13px">🔵 Mâna dreaptă · 🟡 Mâna stângă. ${pTip()}</div>
- <div class="h2" style="margin-left:0">📜 Tab-ul melodiei</div><div id="ptab" class="ptab">${pTab()}</div>
- <p class="hint">Lungimea fiecărei note se vede din lățimea căsuței. Punctul de sus înseamnă octava mai înaltă. ${pNota()}</p>`};
-function pianMount(){const kb=$('#kb');if(!kb)return;pMark();const m=P.run&&P.steps[P.i]?P.steps[P.i].ev[0].m:64;pScrollTo(m);
+ <details class="card tabdet"><summary>📜 Tab pe măsuri (de citit)</summary><div id="ptab" class="ptab">${pTab()}</div></details>
+ <p class="hint">Banda de sus arată notele care cad spre clape: cu cât o notă e mai lungă, cu atât bara ei e mai înaltă. 🔵 mâna dreaptă · 🟡 mâna stângă. ${pNota()}</p>`};
+function pianMount(){const kb=$('#kb');if(!kb)return;const hh=$('#top');document.documentElement.style.setProperty('--hh',(hh?hh.offsetHeight:118)+'px');
+ const ev=pSong();if(P.run&&P.mode&&P.mode!=='listen'&&P.steps[P.i])P.pos=P.steps[P.i].t;else if(!P.run)P.pos=ev[0].t-2.6;
+ pMark();pDraw();pEnsure(ev[0].m);if(P.run)pKick();
  kb.onpointerdown=e=>{const k=e.target.closest('[data-m]');if(!k)return;e.preventDefault();pPress(+k.dataset.m,k)}}
-function pStop(keep){P.timers.forEach(clearTimeout);P.timers=[];if(!keep){P.run=false;P.mode=null}document.querySelectorAll('#kb .wk,#kb .bk').forEach(k=>k.classList.remove('on1','on2','hit'));document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'))}
-function pianStop(){P.timers.forEach(clearTimeout);P.timers=[];P.run=false;P.mode=null}
+function pStop(keep){P.timers.forEach(clearTimeout);P.timers=[];cancelAnimationFrame(P.raf);P.raf=0;P.anim=null;if(!keep){P.run=false;P.mode=null}document.querySelectorAll('#kb .wk,#kb .bk').forEach(k=>k.classList.remove('on1','on2','hit'));document.querySelectorAll('#ptab .tc').forEach(c=>c.classList.remove('cur'));if(!keep){P.pos=pSong()[0].t-2.6;P.fx=[];pDraw()}}
+function pianStop(){P.timers.forEach(clearTimeout);P.timers=[];cancelAnimationFrame(P.raf);P.raf=0;P.anim=null;P.run=false;P.mode=null}
 A.pnOpen=d=>{pianStop();P.song=d.k;P.ver=SONGS[d.k].rh?'mel':'ch';UI.pn=d.k;render();scrollTo(0,0)};
 A.pnVer=d=>{pianStop();P.ver=d.k;render()};
 A.pnBack=()=>{pianStop();UI.pn=null;render()};
-A.pnStop=()=>{pStop();const l=$('#plyr');if(l)l.innerHTML='<b>Alege cum vrei să cânți</b><small>Ascult, mâna dreaptă, mâna stângă sau amândouă</small>';const p=$('#pprog');if(p)p.style.width='0';document.querySelectorAll('.pbox').forEach(()=>{});document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))};
+A.pnStop=()=>{pStop();const l=$('#plyr');if(l)l.innerHTML='<b>Alege cum vrei să cânți</b><small>Notele cad spre clape: cântă-le când ajung jos</small>';const p=$('#pprog');if(p)p.style.width='0';document.querySelectorAll('.pbox').forEach(()=>{});document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))};
 A.pnTempo=()=>{P.bpm=P.bpm===80?60:P.bpm===60?100:80;const b=document.querySelector('[data-act=pnTempo]');if(b)b.textContent='🐢 Tempo: '+P.bpm};
 A.pnSolf=()=>{P.solf=!P.solf;const m=P.mode,r=P.run;render();if(r&&m!=='listen'){P.run=true;P.mode=m;pMark()}};
 A.pnMode=d=>{pAudio();pStop();document.querySelectorAll('.card .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===d.k));P.mode=d.k;P.run=true;P.done=false;if(d.k==='listen'){pPlayDemo();return}
  const ev=pSong().filter(e=>d.k==='both'||(d.k==='rh'?e.h==='r':e.h==='l')),steps=[];ev.forEach(e=>{const l=steps[steps.length-1];if(d.k==='both'&&l&&Math.abs(l.t-e.t)<1e-6)l.ev.push(e);else steps.push({t:e.t,ev:[e]})});
- steps.forEach(s=>s.need=s.ev.map(e=>e.m));P.steps=steps;P.i=0;P.got=new Set();P.err=0;pMark()};
-function pPlayDemo(){const spb=60000/P.bpm,ev=pSong(),end=pEnd();
+ steps.forEach(s=>s.need=s.ev.map(e=>e.m));P.steps=steps;P.i=0;P.got=new Set();P.err=0;P.fx=[];pMark();P.pos=steps[0].t-3;pDraw();pGlide(steps[0].t,900)};
+function pPlayDemo(){const spb=60000/P.bpm,ev=pSong(),end=pEnd();P.pos0=ev[0].t-3;P.pos=P.pos0;P.t0=performance.now();P.fx=[];pKick();
  ev.forEach(e=>P.timers.push(setTimeout(()=>{pTone(e.m,e.d*spb/1000*1.1,e.h==='r'?.6:.45);const k=pKey(e.m);if(k){k.classList.add(e.h==='r'?'on1':'on2');setTimeout(()=>k.classList.remove('on1','on2'),Math.max(160,e.d*spb*.9))}
-  const cs=document.querySelectorAll(`#ptab .tc[data-t="${e.t}"][data-h="${e.h}"]`);cs.forEach(c=>{c.classList.add('cur');setTimeout(()=>c.classList.remove('cur'),Math.max(160,e.d*spb*.9));if(e.h==='r')c.scrollIntoView({block:'nearest',behavior:'smooth'})});
-  if(e.h==='r'){const l=$('#plyr');if(l)l.innerHTML=`<b>${pName(e.m)}</b><small>${e.s}</small>`;pScrollTo(e.m);const p=$('#pprog');if(p)p.style.width=(e.t/end*100)+'%'}},e.t*spb)));
- P.timers.push(setTimeout(()=>{P.run=false;P.mode=null;const p=$('#pprog');if(p)p.style.width='100%';const l=$('#plyr');if(l)l.innerHTML='<b>Gata! 🎶</b><small>Acum încearcă tu, pe rând.</small>';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))},(end+1)*spb))}
+  const q=PX[e.m];if(q)P.fx.push({x:q.x+q.w/2,t:performance.now(),c:e.h==='r'?'#7fdcff':'#ffe28a'});
+  if(e.h==='r'){const l=$('#plyr');if(l)l.innerHTML=`<b>${pName(e.m)}</b><small>${e.s||''}</small>`;pEnsure(e.m);const p=$('#pprog');if(p)p.style.width=(e.t/end*100)+'%'}},(e.t-P.pos0)*spb)));
+ P.timers.push(setTimeout(()=>{P.run=false;P.mode=null;const p=$('#pprog');if(p)p.style.width='100%';const l=$('#plyr');if(l)l.innerHTML='<b>Gata! 🎶</b><small>Acum încearcă tu, pe rând.</small>';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'))},(end-P.pos0+1)*spb))}
 function pPress(m,el){pAudio();pTone(m);el.classList.add('hit');setTimeout(()=>el.classList.remove('hit'),140);
  if(!P.run||P.mode==='listen'||P.done)return;const st=P.steps[P.i];if(!st)return;
- if(st.need.includes(m)){P.got.add(m);if(st.need.every(n=>P.got.has(n))){P.i++;P.got=new Set();if(P.i>=P.steps.length)pFinish();else pMark()}else{const k=pKey(m);if(k)k.classList.remove('on1','on2')}}
+ if(st.need.includes(m)){P.got.add(m);if(st.need.every(n=>P.got.has(n))){const nw=performance.now();st.ev.forEach(e=>{const q=PX[e.m];if(q)P.fx.push({x:q.x+q.w/2,t:nw,c:e.h==='r'?'#7fdcff':'#ffe28a'})});P.i++;P.got=new Set();if(P.i>=P.steps.length)pFinish();else{pMark();pGlide(P.steps[P.i].t,260)}}else{const k=pKey(m);if(k)k.classList.remove('on1','on2');pKick()}}
  else{P.err++;el.classList.add('bad');setTimeout(()=>el.classList.remove('bad'),300);if(navigator.vibrate)try{navigator.vibrate(30)}catch(e){}}}
 function pFinish(){P.done=true;P.run=false;const md=P.mode,k=pKeyOf(md),pr=((S.piano=S.piano||{})[P.song]=S.piano[P.song]||{}),old=pr[k],perfect=P.err===0;let gain=0;
  if(!old)gain+=md==='both'?6:3;if(perfect&&!(old&&old.perfect))gain+=2;pr[k]={d:today(),err:old?Math.min(old.err,P.err):P.err,perfect:perfect||!!(old&&old.perfect)};
- pMark();const l=$('#plyr');if(l)l.innerHTML=`<b>${perfect?'🏆 Fără nicio greșeală!':'🎉 Ai terminat melodia!'}</b><small>${P.err?P.err+(P.err===1?' greșeală':' greșeli'):'perfect'}${gain?' · +'+gain+' ⭐':''}</small>`;
+ pMark();pGlide(P.steps[P.steps.length-1].t+3,700);const l=$('#plyr');if(l)l.innerHTML=`<b>${perfect?'🏆 Fără nicio greșeală!':'🎉 Ai terminat melodia!'}</b><small>${P.err?P.err+(P.err===1?' greșeală':' greșeli'):'perfect'}${gain?' · +'+gain+' ⭐':''}</small>`;
  const p=$('#pprog');if(p)p.style.width='100%';document.querySelectorAll('.card .chip').forEach(c=>c.classList.remove('on'));
  if(gain)reward(gain,mid(),true);else{save();fireworks()}}
 
@@ -1408,8 +1435,8 @@ document.addEventListener('toggle',e=>{const id=e.target.dataset&&e.target.datas
 addEventListener('resize',fxSize);
 
 /* ---------- actualizări: completează datele vechi, fără să atingă ce există ---------- */
-const APP_VER=12;
-const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!',11:'🦸 Eroii Greciei, 📜 Istoria grecilor și 🎼 Hallelujah (acordurile)!',12:'🎶 Oda bucuriei și versiunea pe acorduri la fiecare melodie!'};
+const APP_VER=13;
+const NEWS={4:'🎮 Jocuri noi — Snake, Trivia, Geografie!',5:'🏎️ Jocul Cars — mașinile din 2026!',6:'🏆 Cars: 100 de mașini clasice!',7:'noul nume, 🔒 niveluri 1–5 la jocuri și 😂 Bancuri!',8:'prima pagină a seifului 🔐',9:'merge și fără internet 📶',10:'🗺️ Hărți (zeii Olimpului) și 🎹 Pian (Bella Ciao)!',11:'🦸 Eroii Greciei, 📜 Istoria grecilor și 🎼 Hallelujah (acordurile)!',12:'🎶 Oda bucuriei și versiunea pe acorduri la fiecare melodie!',13:'🎹 Pian nou: notele cad spre clape, cu tastatura mereu la vedere!'};
 function migrate(){S.profile.name='Ralph';S.profile.welcomed=true;if(!S.challenges)S.challenges=defChallenges();if(!S.black)S.black=[];
  if(!S.games)S.games={snake:{best:0},trivia:{},geo:{}};if(!S.games.cars)S.games.cars={};if(!S.piano)S.piano={};
  const old=S.ver||1;let news=null;if(old<APP_VER){if(DB.db&&S.profile.welcomed)DB.set('copie_inainte_de_v'+APP_VER,JSON.parse(JSON.stringify(S))).catch(()=>{});news=S.profile.welcomed?(NEWS[APP_VER]||'ceva nou'):null;S.ver=APP_VER;save()}return news}
